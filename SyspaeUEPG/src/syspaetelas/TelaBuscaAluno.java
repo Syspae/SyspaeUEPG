@@ -30,9 +30,9 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
         lblBusca = new javax.swing.JLabel();
         cmbbxBusca = new javax.swing.JComboBox<>();
         txtfldBusca = new javax.swing.JTextField();
-        btn03Buscar = new javax.swing.JButton();
-        btn03Cancelar = new javax.swing.JButton();
-        btn03Selecionar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnSelecionar = new javax.swing.JButton();
 
         setTitle("Buscar Aluno");
 
@@ -44,19 +44,19 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        btn03Buscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn03Buscar.setText("Buscar");
+        btnBuscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnBuscar.setText("Buscar");
 
-        btn03Cancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn03Cancelar.setText("Cancelar");
-        btn03Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn03CancelarActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        btn03Selecionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn03Selecionar.setText("Selecionar");
+        btnSelecionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSelecionar.setText("Selecionar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,12 +72,12 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtfldBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn03Buscar))
+                        .addComponent(btnBuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn03Selecionar)
+                        .addComponent(btnSelecionar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn03Cancelar)))
+                        .addComponent(btnCancelar)))
                 .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
@@ -88,21 +88,21 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
                     .addComponent(lblBusca)
                     .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn03Buscar))
+                    .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn03Cancelar)
-                    .addComponent(btn03Selecionar))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSelecionar))
                 .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn03CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03CancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         TelaBuscaAluno.this.dispose();
-    }//GEN-LAST:event_btn03CancelarActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,9 +140,9 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn03Buscar;
-    private javax.swing.JButton btn03Cancelar;
-    private javax.swing.JButton btn03Selecionar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cmbbxBusca;
     private javax.swing.JLabel lblBusca;
     private javax.swing.JTextField txtfldBusca;

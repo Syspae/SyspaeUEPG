@@ -29,7 +29,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn02Sair = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
         lblNome = new javax.swing.JLabel();
         lblMatricula = new javax.swing.JLabel();
         txtfldMatricula = new javax.swing.JTextField();
@@ -79,7 +79,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         chckbxCarteirasAdaptadas = new javax.swing.JCheckBox();
         chckbxComputadoresAdaptados = new javax.swing.JCheckBox();
         chckbxComunicacaoAlternativa = new javax.swing.JCheckBox();
-        btn02Salvar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         txtfldNascimentoCasamento = new javax.swing.JTextField();
         lblNascimentoCasamento = new javax.swing.JLabel();
         txtfldLivroFolhas = new javax.swing.JTextField();
@@ -137,11 +137,11 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
 
         setTitle("Cadastrar Aluno");
 
-        btn02Sair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn02Sair.setText("Sair");
-        btn02Sair.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn02SairActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
 
@@ -328,7 +328,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         chckbxComunicacaoAlternativa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chckbxComunicacaoAlternativa.setText("Materiais de Comunicação Alternativa e Adaptada");
 
-        btn02Salvar.setText("Salvar");
+        btnSalvar.setText("Salvar");
 
         txtfldNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -623,9 +623,9 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                                 .addGap(413, 413, 413))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn02Salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btn02Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(431, 431, 431))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
@@ -944,8 +944,8 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                                 .addComponent(cmbbxRendaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn02Sair)
-                            .addComponent(btn02Salvar)))
+                            .addComponent(btnSair)
+                            .addComponent(btnSalvar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(lblNEE)
@@ -982,10 +982,10 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn02SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn02SairActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         TelaCadastroAluno.this.dispose();
-    }//GEN-LAST:event_btn02SairActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtfldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldMatriculaActionPerformed
         // TODO add your handling code here:
@@ -1071,8 +1071,8 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn02Sair;
-    private javax.swing.JButton btn02Salvar;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox chckbxAtendente;
     private javax.swing.JCheckBox chckbxAtendimentoEspecializado;
     private javax.swing.JCheckBox chckbxCarteirasAdaptadas;

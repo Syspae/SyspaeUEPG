@@ -159,9 +159,9 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btn02Salvar" min="-2" pref="101" max="-2" attributes="0"/>
+                              <Component id="btnSalvar" min="-2" pref="101" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn02Sair" min="-2" pref="101" max="-2" attributes="0"/>
+                              <Component id="btnSair" min="-2" pref="101" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="431" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -588,8 +588,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn02Sair" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn02Salvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSair" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -637,7 +637,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btn02Sair">
+    <Component class="javax.swing.JButton" name="btnSair">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
@@ -645,7 +645,7 @@
         <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn02SairActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNome">
@@ -1111,7 +1111,7 @@
         <Property name="text" type="java.lang.String" value="Materiais de Comunica&#xe7;&#xe3;o Alternativa e Adaptada"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btn02Salvar">
+    <Component class="javax.swing.JButton" name="btnSalvar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
