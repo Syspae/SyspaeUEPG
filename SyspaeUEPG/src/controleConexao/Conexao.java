@@ -26,4 +26,28 @@ public class Conexao {
             e.printStackTrace();
         }
     }
+    
+    public int executaInsert(String SQL){
+        try {
+            Statement stmt = con.createStatement();
+            int res = stmt.executeUpdate(SQL);
+            con.close();
+            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }    
+    
+    public ResultSet executaBusca(String SQL){
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            con.close();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

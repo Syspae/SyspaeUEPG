@@ -5,6 +5,7 @@
 package syspaetelas;
 
 import static java.lang.System.exit;
+import controleConexao.Conexao;
 
 /**
  *
@@ -160,6 +161,11 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         });
 
         txtfldNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldNomeActionPerformed(evt);
+            }
+        });
 
         txtfldCGM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtfldCGM.addActionListener(new java.awt.event.ActionListener() {
@@ -330,6 +336,11 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         chckbxComunicacaoAlternativa.setText("Materiais de Comunicação Alternativa e Adaptada");
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         txtfldNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -1035,6 +1046,20 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     private void cmbbxEscolariedadeFiliacao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxEscolariedadeFiliacao2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbbxEscolariedadeFiliacao2ActionPerformed
+
+    private void txtfldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldNomeActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        String nome = txtfldNome.getText();
+        Conexao con = new Conexao();
+        String SQL = "INSERT into aluno (nome) values ('" + nome + "')" ; 
+        
+        int insert = con.executaInsert(SQL);
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
