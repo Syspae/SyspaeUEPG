@@ -53,6 +53,11 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
                 txtfldBuscaInputMethodTextChanged(evt);
             }
         });
+        txtfldBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfldBuscaKeyTyped(evt);
+            }
+        });
 
         btnBuscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -128,6 +133,16 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
         // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void txtfldBuscaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtfldBuscaInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldBuscaInputMethodTextChanged
+
+    private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
+        // TODO add your handling code here:
         Conexao con = new Conexao();
         String busca = txtfldBusca.getText();
         String SQL = "Select * from aluno where nome like '" + busca + "%'";
@@ -141,12 +156,7 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-    }//GEN-LAST:event_btnSelecionarActionPerformed
-
-    private void txtfldBuscaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtfldBuscaInputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfldBuscaInputMethodTextChanged
+    }//GEN-LAST:event_txtfldBuscaKeyTyped
 
     /**
      * @param args the command line arguments
