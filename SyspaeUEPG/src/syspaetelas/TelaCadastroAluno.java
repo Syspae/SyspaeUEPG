@@ -153,6 +153,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         lblMatricula.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblMatricula.setText("Matrícula*");
 
+        txtfldMatricula.setEditable(false);
         txtfldMatricula.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtfldMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,6 +336,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         chckbxComunicacaoAlternativa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chckbxComunicacaoAlternativa.setText("Materiais de Comunicação Alternativa e Adaptada");
 
+        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -521,6 +523,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         lblPessoasNaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblPessoasNaCasa.setText("Quantas pessoas moram na casa?");
 
+        spnPessoasNaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         spnPessoasNaCasa.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         lblRendaFamiliar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -564,7 +567,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
-                                                .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(lblPessoasNaCasa)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -945,11 +948,11 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbbxRecebeBPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblPessoasNaCasa)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(spnPessoasNaCasa))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblRendaFamiliar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1058,6 +1061,74 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         String SQL = "INSERT into aluno (nome) values ('" + nome + "')" ; 
         
         int insert = con.executaInsert(SQL);
+        
+        //Abertura da tela de sucesso ou não da operação
+        TelaConfirmação tela07 = new TelaConfirmação(insert);
+        tela07.setVisible(true);
+        
+        //Inativar edição dos campos
+        txtfldNome.setEnabled(false);
+        chckbxAtendente.setEnabled(false);
+        chckbxAtendimentoEspecializado.setEnabled(false);
+        chckbxCarteirasAdaptadas.setEnabled(false);
+        chckbxCentroAtendimentoEspecializado.setEnabled(false);
+        chckbxComputadoresAdaptados.setEnabled(false);
+        chckbxComunicacaoAlternativa.setEnabled(false);
+        chckbxInterpreteLibras.setEnabled(false);
+        chckbxLivrosAmpliados.setEnabled(false);
+        chckbxMuletasBengalas.setEnabled(false);
+        chckbxNaPropriaEscola.setEnabled(false);
+        chckbxOutraEscola.setEnabled(false);
+        chckbxProfessorEspecializado.setEnabled(false);
+        chckbxRegleteSoroba.setEnabled(false);
+        chckbxUsoCadeiraRodas.setEnabled(false);
+        cmbbcEscolariedadeFiliacao1.setEnabled(false);
+        cmbbxDocumentoFiliacao1.setEnabled(false);
+        cmbbxDocumentoResposavel.setEnabled(false);
+        cmbbxEscolariedadeFiliacao2.setEnabled(false);
+        cmbbxEstado.setEnabled(false);
+        cmbbxEstadoCivil.setEnabled(false);
+        cmbbxGrauParentesco.setEnabled(false);
+        cmbbxRecebeBPC.setEnabled(false);
+        cmbbxRecebeBolsaFamilia.setEnabled(false);
+        cmbbxRendaFamiliar.setEnabled(false);
+        cmbbxSexo.setEnabled(false);
+        cmbbxTipoMoradia.setEnabled(false);
+        cmbbxTipoTransporte.setEnabled(false);
+        cmbbxUF.setEnabled(false);
+        fldDataNascimento.setEnabled(false);
+        spnPessoasNaCasa.setEnabled(false);
+        txtfldBairro.setEnabled(false);
+        txtfldCEP.setEnabled(false);
+        txtfldCGM.setEnabled(false);
+        txtfldCPF.setEnabled(false);
+        txtfldCidade.setEnabled(false);
+        txtfldComplemento.setEnabled(false);
+        txtfldDataEmissao.setEnabled(false);
+        txtfldDocumentoFiliacao2.setEnabled(false);
+        txtfldEmail.setEnabled(false);
+        txtfldEndereco.setEnabled(false);
+        txtfldFiliacao1.setEnabled(false);
+        txtfldFiliacao2.setEnabled(false);
+        txtfldLivroFolhas.setEnabled(false);
+        txtfldMatricula.setEnabled(false);
+        txtfldMunicipio.setEnabled(false);
+        txtfldNDocumentoFiliacao1.setEnabled(false);
+        txtfldNDocumentoFiliacao2.setEnabled(false);
+        txtfldNDocumentoResponsavel.setEnabled(false);
+        txtfldNascimentoCasamento.setEnabled(false);
+        txtfldNdaCasa.setEnabled(false);
+        txtfldNome.setEnabled(false);
+        txtfldNomeCartorio.setEnabled(false);
+        txtfldNumeroContato.setEnabled(false);
+        txtfldOrgaoEmissor.setEnabled(false);
+        txtfldPaisNatural.setEnabled(false);
+        txtfldRG.setEnabled(false);
+        txtfldRNE.setEnabled(false);
+        txtfldResponsavel.setEnabled(false);
+        
+        //Desativar botão de Salvar
+        btnSalvar.setEnabled(false);
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 

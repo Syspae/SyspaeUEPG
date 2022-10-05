@@ -57,7 +57,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                              <Component id="spnPessoasNaCasa" min="-2" max="-2" attributes="0"/>
+                                              <Component id="spnPessoasNaCasa" min="-2" pref="85" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="lblPessoasNaCasa" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -574,11 +574,11 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="lblPessoasNaCasa" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="spnPessoasNaCasa" min="-2" max="-2" attributes="0"/>
+                              <Component id="spnPessoasNaCasa" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="lblRendaFamiliar" min="-2" max="-2" attributes="0"/>
@@ -666,6 +666,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtfldMatricula">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
@@ -1116,6 +1117,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSalvar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <Events>
@@ -1702,6 +1706,9 @@
     </Component>
     <Component class="javax.swing.JSpinner" name="spnPessoasNaCasa">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
         </Property>

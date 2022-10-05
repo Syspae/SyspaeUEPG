@@ -46,6 +46,13 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
         cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Telefone", "Nome do Responsável", "Data de Nascimento" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBusca.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtfldBuscaInputMethodTextChanged(evt);
+            }
+        });
 
         btnBuscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -123,7 +130,7 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
         Conexao con = new Conexao();
         String busca = txtfldBusca.getText();
-        String SQL = "Select * from aluno where nome like '" + busca + "'";
+        String SQL = "Select * from aluno where nome like '" + busca + "%'";
         ResultSet rs = con.executaBusca(SQL);
         
         try {
@@ -136,6 +143,10 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void txtfldBuscaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtfldBuscaInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldBuscaInputMethodTextChanged
 
     /**
      * @param args the command line arguments
