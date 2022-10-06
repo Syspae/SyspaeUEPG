@@ -137,38 +137,32 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btn01CadAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01CadAlunoActionPerformed
         // TODO add your handling code here:
-        TelaCadastroAluno tela01 = new TelaCadastroAluno();
-        tela01.setVisible(true);
+        TelaCadastroAluno tela01 = new TelaCadastroAluno(true);
     }//GEN-LAST:event_btn01CadAlunoActionPerformed
 
     private void btn01buscarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01buscarAlunoActionPerformed
         // TODO add your handling code here:
-        TelaBuscaAluno tela02 = new TelaBuscaAluno();
-        tela02.setVisible(true);
+        TelaBuscaAluno tela02 = new TelaBuscaAluno();      
     }//GEN-LAST:event_btn01buscarAlunoActionPerformed
 
     private void btn01NovoAtendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01NovoAtendActionPerformed
         // TODO add your handling code here:
         TelaCadastroAtendimento tela03 = new TelaCadastroAtendimento();
-        tela03.setVisible(true);
     }//GEN-LAST:event_btn01NovoAtendActionPerformed
 
     private void btn01HistAtendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01HistAtendActionPerformed
         // TODO add your handling code here:
         TelaHistoricoAtendimento tela04 = new TelaHistoricoAtendimento();
-        tela04.setVisible(true);
     }//GEN-LAST:event_btn01HistAtendActionPerformed
 
     private void btn01BuscaAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01BuscaAnamneseActionPerformed
         // TODO add your handling code here:
         TelaBuscaAnamnese tela05 = new TelaBuscaAnamnese();
-        tela05.setVisible(true);
     }//GEN-LAST:event_btn01BuscaAnamneseActionPerformed
 
     private void btn01CadEspecialistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01CadEspecialistaActionPerformed
         // TODO add your handling code here:
         TelaCadastroEspecialista tela06 = new TelaCadastroEspecialista();
-        tela06.setVisible(true);
     }//GEN-LAST:event_btn01CadEspecialistaActionPerformed
 
     private void btn01SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01SairActionPerformed

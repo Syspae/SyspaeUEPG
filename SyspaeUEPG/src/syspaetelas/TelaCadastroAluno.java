@@ -16,12 +16,86 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastroAluno
      */
-    public TelaCadastroAluno() {
+    public TelaCadastroAluno(boolean cadastro) {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
+        
+        if(!cadastro){
+            desabilitaCampos();
+        }
+        
+        
+        
     }
+    
+    private boolean desabilitaCampos(){
+        txtfldNome.setEnabled(false);
+            chckbxAtendente.setEnabled(false);
+            chckbxAtendimentoEspecializado.setEnabled(false);
+            chckbxCarteirasAdaptadas.setEnabled(false);
+            chckbxCentroAtendimentoEspecializado.setEnabled(false);
+            chckbxComputadoresAdaptados.setEnabled(false);
+            chckbxComunicacaoAlternativa.setEnabled(false);
+            chckbxInterpreteLibras.setEnabled(false);
+            chckbxLivrosAmpliados.setEnabled(false);
+            chckbxMuletasBengalas.setEnabled(false);
+            chckbxNaPropriaEscola.setEnabled(false);
+            chckbxOutraEscola.setEnabled(false);
+            chckbxProfessorEspecializado.setEnabled(false);
+            chckbxRegleteSoroba.setEnabled(false);
+            chckbxUsoCadeiraRodas.setEnabled(false);
+            cmbbxEscolariedadeFiliacao1.setEnabled(false);
+            cmbbxDocumentoFiliacao1.setEnabled(false);
+            cmbbxDocumentoResposavel.setEnabled(false);
+            cmbbxEscolariedadeFiliacao2.setEnabled(false);
+            cmbbxEstado.setEnabled(false);
+            cmbbxEstadoCivil.setEnabled(false);
+            cmbbxGrauParentesco.setEnabled(false);
+            cmbbxRecebeBPC.setEnabled(false);
+            cmbbxRecebeBolsaFamilia.setEnabled(false);
+            cmbbxRendaFamiliar.setEnabled(false);
+            cmbbxSexo.setEnabled(false);
+            cmbbxTipoMoradia.setEnabled(false);
+            cmbbxTipoTransporte.setEnabled(false);
+            cmbbxUF.setEnabled(false);
+            fldDataNascimento.setEnabled(false);
+            spnPessoasNaCasa.setEnabled(false);
+            txtfldBairro.setEnabled(false);
+            txtfldCEP.setEnabled(false);
+            txtfldCGM.setEnabled(false);
+            txtfldCPF.setEnabled(false);
+            txtfldCidade.setEnabled(false);
+            txtfldComplemento.setEnabled(false);
+            txtfldDataEmissao.setEnabled(false);
+            cmbbxDocumentoFiliacao2.setEnabled(false);
+            txtfldEmail.setEnabled(false);
+            txtfldEndereco.setEnabled(false);
+            txtfldFiliacao1.setEnabled(false);
+            txtfldFiliacao2.setEnabled(false);
+            txtfldLivroFolhas.setEnabled(false);
+            txtfldMatricula.setEnabled(false);
+            txtfldMunicipio.setEnabled(false);
+            txtfldNDocumentoFiliacao1.setEnabled(false);
+            txtfldNDocumentoFiliacao2.setEnabled(false);
+            txtfldNDocumentoResponsavel.setEnabled(false);
+            txtfldNascimentoCasamento.setEnabled(false);
+            txtfldNdaCasa.setEnabled(false);
+            txtfldNome.setEnabled(false);
+            txtfldNomeCartorio.setEnabled(false);
+            txtfldNumeroContato.setEnabled(false);
+            txtfldOrgaoEmissor.setEnabled(false);
+            txtfldPaisNatural.setEnabled(false);
+            txtfldRG.setEnabled(false);
+            txtfldRNE.setEnabled(false);
+            txtfldResponsavel.setEnabled(false);
 
+            //Desativar botão de Salvar
+            btnSalvar.setEnabled(false);
+            
+            return true;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,7 +177,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         lblDocumentoFiliacao1 = new javax.swing.JLabel();
         txtfldNDocumentoFiliacao1 = new javax.swing.JTextField();
         lblNDocumentoFiliacao1 = new javax.swing.JLabel();
-        txtfldDocumentoFiliacao2 = new javax.swing.JComboBox<>();
+        cmbbxDocumentoFiliacao2 = new javax.swing.JComboBox<>();
         lblDocumentoFiliacao2 = new javax.swing.JLabel();
         lblNDocumentoFiliacao2 = new javax.swing.JLabel();
         txtfldNdaCasa = new javax.swing.JTextField();
@@ -121,7 +195,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         lblFiliacao2 = new javax.swing.JLabel();
         txtfldNDocumentoFiliacao2 = new javax.swing.JTextField();
         lblEscolaridadeFiliacao1 = new javax.swing.JLabel();
-        cmbbcEscolariedadeFiliacao1 = new javax.swing.JComboBox<>();
+        cmbbxEscolariedadeFiliacao1 = new javax.swing.JComboBox<>();
         lblTipoTransporte = new javax.swing.JLabel();
         cmbbxTipoTransporte = new javax.swing.JComboBox<>();
         lbllEscolariedadeFiliacao2 = new javax.swing.JLabel();
@@ -193,6 +267,11 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         fldDataNascimento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        fldDataNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fldDataNascimentoActionPerformed(evt);
+            }
+        });
 
         cmbbxSexo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Masculino", "Feminino" }));
@@ -410,8 +489,8 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         lblNDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblNDocumentoFiliacao1.setText("Número");
 
-        txtfldDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtfldDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CPF", "CNH", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CPF", "CNH", "RG", "RNE", "Outro" }));
 
         lblDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoFiliacao2.setText("Documento");
@@ -477,8 +556,8 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         lblEscolaridadeFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblEscolaridadeFiliacao1.setText("Escolariedade Filiação  1");
 
-        cmbbcEscolariedadeFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbcEscolariedadeFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Analfabeto", "Até 5º Ano Incompleto", "5º Ano Completo", "6º ao 9º Ano do Fundamental", "Fundamental Completo", "Médio Incompleto", "Médio Completo", "Superior Incompleto", "Superior Completo", "Mestrado", "Doutorado", "Ignorado" }));
+        cmbbxEscolariedadeFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxEscolariedadeFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Analfabeto", "Até 5º Ano Incompleto", "5º Ano Completo", "6º ao 9º Ano do Fundamental", "Fundamental Completo", "Médio Incompleto", "Médio Completo", "Superior Incompleto", "Superior Completo", "Mestrado", "Doutorado", "Ignorado" }));
 
         lblTipoTransporte.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblTipoTransporte.setText("Tipo de Transporte");
@@ -607,7 +686,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                                                 .addComponent(lblTipoTransporte))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cmbbcEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cmbbxEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(cmbbxEscolariedadeFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(lbllEscolariedadeFiliacao2))
                                                 .addGap(18, 18, 18)
@@ -757,7 +836,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(txtfldDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(27, 27, 27)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(lblEstado)
@@ -887,7 +966,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                             .addComponent(cmbbxDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtfldNDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtfldNDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -926,7 +1005,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                                     .addComponent(lblTipoTransporte))
                                 .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cmbbcEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmbbxEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cmbbxTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1056,7 +1135,65 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        //String nome = txtfldNome.getText();        
+        int id;
         String nome = txtfldNome.getText();
+        String cgm = txtfldCGM.getText();
+        int data_nascimento = (int) fldDataNascimento.getValue();
+        String sexo = cmbbxSexo.getSelectedItem().toString();
+        String estado_civil = cmbbxEstadoCivil.getSelectedItem().toString();
+        String cpf = txtfldCPF.getText();
+        String rg = txtfldRG.getText();
+        String orgao_emissor = txtfldOrgaoEmissor.getText();
+        String naturalidade_municipio = txtfldMunicipio.getText();
+        String uf = cmbbxUF.getSelectedItem().toString();
+        String pais_natural = txtfldPaisNatural.getText();
+        String cep = txtfldCEP.getText();
+        String rne = txtfldRNE.getText();
+        String certidao = txtfldNascimentoCasamento.getText();
+        String livro_folhas = txtfldLivroFolhas.getText();
+        int data_emissao = Integer.parseInt(txtfldDataEmissao.getText());
+        String nome_cartorio = txtfldNomeCartorio.getText();
+        String nome_responsavel = txtfldResponsavel.getText();
+        String doc_resp = cmbbxDocumentoResposavel.getSelectedItem().toString();
+        String num_doc_resp = txtfldNDocumentoResponsavel.getText();
+        String grau_parentesco = cmbbxGrauParentesco.getSelectedItem().toString();
+        String email = txtfldEmail.getText();
+        String telefone_contato = txtfldNumeroContato.getText();
+        String filiacao1 = txtfldFiliacao1.getText();
+        String doc_f1 = cmbbxDocumentoFiliacao1.getSelectedItem().toString();
+        String num_doc_f1 = txtfldNDocumentoFiliacao1.getText();
+        String esc_f1 = cmbbxEscolariedadeFiliacao1.getSelectedItem().toString();
+        String filiacao2 = txtfldFiliacao2.getText();
+        String doc_f2 = cmbbxDocumentoFiliacao2.getSelectedItem().toString();
+        String num_doc_f2 = txtfldNDocumentoFiliacao1.getText();
+        String esc_f2 = cmbbxEscolariedadeFiliacao2.getSelectedItem().toString();
+        String endereco = txtfldEndereco.getText();
+        String num_casa = txtfldNdaCasa.getText();
+        String complemento = txtfldComplemento.getText();
+        String bairro = txtfldBairro.getText();
+        String cidade = txtfldCidade.getText();
+        String estado = cmbbxEstado.getSelectedItem().toString();
+        Boolean interprete_libras = chckbxInterpreteLibras.isEnabled();
+        Boolean atendente = chckbxAtendente.isEnabled();
+        Boolean prof_espec_permanente = chckbxProfessorEspecializado.isEnabled();
+        Boolean atend_edc_espc = chckbxAtendimentoEspecializado.isEnabled();
+        Boolean propria_escola = chckbxNaPropriaEscola.isEnabled();
+        Boolean outra_escola = chckbxOutraEscola.isEnabled();
+        Boolean centro_atd_edc_espc = chckbxCentroAtendimentoEspecializado.isEnabled();
+        Boolean cadeira_rodas = chckbxUsoCadeiraRodas.isEnabled();
+        Boolean muletas_bengalas = chckbxMuletasBengalas.isEnabled();
+        Boolean livros_ampliados = chckbxLivrosAmpliados.isEnabled();
+        Boolean reglete_soroba = chckbxRegleteSoroba.isEnabled();
+        Boolean carteiras_adpts = chckbxCarteirasAdaptadas.isEnabled();
+        Boolean compt_adpts = chckbxComputadoresAdaptados.isEnabled();
+        Boolean mat_comn_alt = chckbxComunicacaoAlternativa.isEnabled();
+        String bolsa_familia = cmbbxRecebeBolsaFamilia.getSelectedItem().toString();
+        String bpc = cmbbxRecebeBPC.getSelectedItem().toString();
+        int pessoas_moram_casa = spnPessoasNaCasa.getComponentCount();
+        String tipo_transporte = cmbbxTipoTransporte.getSelectedItem().toString();
+        String tipo_moradia = cmbbxTipoMoradia.getSelectedItem().toString();
+        
         Conexao con = new Conexao();
         String SQL = "INSERT into aluno (nome) values ('" + nome + "')" ; 
         
@@ -1066,71 +1203,12 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         TelaConfirmação tela07 = new TelaConfirmação(insert);
         tela07.setVisible(true);
         
-        //Inativar edição dos campos
-        txtfldNome.setEnabled(false);
-        chckbxAtendente.setEnabled(false);
-        chckbxAtendimentoEspecializado.setEnabled(false);
-        chckbxCarteirasAdaptadas.setEnabled(false);
-        chckbxCentroAtendimentoEspecializado.setEnabled(false);
-        chckbxComputadoresAdaptados.setEnabled(false);
-        chckbxComunicacaoAlternativa.setEnabled(false);
-        chckbxInterpreteLibras.setEnabled(false);
-        chckbxLivrosAmpliados.setEnabled(false);
-        chckbxMuletasBengalas.setEnabled(false);
-        chckbxNaPropriaEscola.setEnabled(false);
-        chckbxOutraEscola.setEnabled(false);
-        chckbxProfessorEspecializado.setEnabled(false);
-        chckbxRegleteSoroba.setEnabled(false);
-        chckbxUsoCadeiraRodas.setEnabled(false);
-        cmbbcEscolariedadeFiliacao1.setEnabled(false);
-        cmbbxDocumentoFiliacao1.setEnabled(false);
-        cmbbxDocumentoResposavel.setEnabled(false);
-        cmbbxEscolariedadeFiliacao2.setEnabled(false);
-        cmbbxEstado.setEnabled(false);
-        cmbbxEstadoCivil.setEnabled(false);
-        cmbbxGrauParentesco.setEnabled(false);
-        cmbbxRecebeBPC.setEnabled(false);
-        cmbbxRecebeBolsaFamilia.setEnabled(false);
-        cmbbxRendaFamiliar.setEnabled(false);
-        cmbbxSexo.setEnabled(false);
-        cmbbxTipoMoradia.setEnabled(false);
-        cmbbxTipoTransporte.setEnabled(false);
-        cmbbxUF.setEnabled(false);
-        fldDataNascimento.setEnabled(false);
-        spnPessoasNaCasa.setEnabled(false);
-        txtfldBairro.setEnabled(false);
-        txtfldCEP.setEnabled(false);
-        txtfldCGM.setEnabled(false);
-        txtfldCPF.setEnabled(false);
-        txtfldCidade.setEnabled(false);
-        txtfldComplemento.setEnabled(false);
-        txtfldDataEmissao.setEnabled(false);
-        txtfldDocumentoFiliacao2.setEnabled(false);
-        txtfldEmail.setEnabled(false);
-        txtfldEndereco.setEnabled(false);
-        txtfldFiliacao1.setEnabled(false);
-        txtfldFiliacao2.setEnabled(false);
-        txtfldLivroFolhas.setEnabled(false);
-        txtfldMatricula.setEnabled(false);
-        txtfldMunicipio.setEnabled(false);
-        txtfldNDocumentoFiliacao1.setEnabled(false);
-        txtfldNDocumentoFiliacao2.setEnabled(false);
-        txtfldNDocumentoResponsavel.setEnabled(false);
-        txtfldNascimentoCasamento.setEnabled(false);
-        txtfldNdaCasa.setEnabled(false);
-        txtfldNome.setEnabled(false);
-        txtfldNomeCartorio.setEnabled(false);
-        txtfldNumeroContato.setEnabled(false);
-        txtfldOrgaoEmissor.setEnabled(false);
-        txtfldPaisNatural.setEnabled(false);
-        txtfldRG.setEnabled(false);
-        txtfldRNE.setEnabled(false);
-        txtfldResponsavel.setEnabled(false);
-        
-        //Desativar botão de Salvar
-        btnSalvar.setEnabled(false);
-        
+        desabilitaCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void fldDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldDataNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fldDataNascimentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1154,9 +1232,10 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JCheckBox chckbxProfessorEspecializado;
     private javax.swing.JCheckBox chckbxRegleteSoroba;
     private javax.swing.JCheckBox chckbxUsoCadeiraRodas;
-    private javax.swing.JComboBox<String> cmbbcEscolariedadeFiliacao1;
     private javax.swing.JComboBox<String> cmbbxDocumentoFiliacao1;
+    private javax.swing.JComboBox<String> cmbbxDocumentoFiliacao2;
     private javax.swing.JComboBox<String> cmbbxDocumentoResposavel;
+    private javax.swing.JComboBox<String> cmbbxEscolariedadeFiliacao1;
     private javax.swing.JComboBox<String> cmbbxEscolariedadeFiliacao2;
     private javax.swing.JComboBox<String> cmbbxEstado;
     private javax.swing.JComboBox<String> cmbbxEstadoCivil;
@@ -1222,7 +1301,6 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JTextField txtfldCidade;
     private javax.swing.JTextField txtfldComplemento;
     private javax.swing.JFormattedTextField txtfldDataEmissao;
-    private javax.swing.JComboBox<String> txtfldDocumentoFiliacao2;
     private javax.swing.JTextField txtfldEmail;
     private javax.swing.JTextField txtfldEndereco;
     private javax.swing.JTextField txtfldFiliacao1;

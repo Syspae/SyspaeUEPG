@@ -5,6 +5,8 @@
 package syspaetelas;
 import controleConexao.Conexao;
 import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+import syspaetelas.*;
 /**
  *
  * @author carlo
@@ -18,8 +20,12 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
+        
+        
+        
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,6 +35,8 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         lblBusca = new javax.swing.JLabel();
         cmbbxBusca = new javax.swing.JComboBox<>();
         txtfldBusca = new javax.swing.JTextField();
@@ -36,6 +44,21 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnSelecionar = new javax.swing.JButton();
         txtTeste = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setTitle("Buscar Aluno");
 
@@ -44,6 +67,11 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Telefone", "Nome do Responsável", "Data de Nascimento" }));
+        cmbbxBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbxBuscaActionPerformed(evt);
+            }
+        });
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtfldBusca.addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -51,6 +79,11 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 txtfldBuscaInputMethodTextChanged(evt);
+            }
+        });
+        txtfldBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldBuscaActionPerformed(evt);
             }
         });
         txtfldBusca.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -61,6 +94,11 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
 
         btnBuscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -79,6 +117,33 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
         });
 
         txtTeste.setText("jLabel1");
+        txtTeste.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTesteMouseClicked(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null}
+            },
+            new String [] {
+                "Matriula", "Nome"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,17 +158,21 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
                         .addComponent(btnCancelar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTeste)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblBusca)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTeste))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtfldBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                        .addComponent(txtfldBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBuscar)))
                 .addGap(23, 23, 23))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,9 +183,11 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
                     .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTeste)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnSelecionar))
@@ -142,21 +213,42 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfldBuscaInputMethodTextChanged
 
     private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
+
+    }//GEN-LAST:event_txtfldBuscaKeyTyped
+
+    private void txtTesteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTesteMouseClicked
+        // TODO add your handling code here:
+        TelaCadastroAluno tela = new TelaCadastroAluno(false);
+        this.dispose();
+    }//GEN-LAST:event_txtTesteMouseClicked
+
+    private void cmbbxBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxBuscaActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cmbbxBuscaActionPerformed
+
+    private void txtfldBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldBuscaActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         Conexao con = new Conexao();
         String busca = txtfldBusca.getText();
         String SQL = "Select * from aluno where nome like '" + busca + "%'";
         ResultSet rs = con.executaBusca(SQL);
-        
+        DefaultTableModel table = (DefaultTableModel) jTable2.getModel();
+        String nome = null;
         try {
-            while(rs.next()){
-                String nome = rs.getString("nome");
-                txtTeste.setText(nome);
+            while(rs.next()){                                
+                nome = rs.getString("nome");
+                //txtTeste.setText(nome);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_txtfldBuscaKeyTyped
+        table.setValueAt(nome, 1, 2);
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +259,10 @@ public class TelaBuscaAluno extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JComboBox<String> cmbbxBusca;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblBusca;
     private javax.swing.JLabel txtTeste;
     private javax.swing.JTextField txtfldBusca;

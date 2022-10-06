@@ -112,7 +112,7 @@
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="cmbbcEscolariedadeFiliacao1" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                                                  <Component id="cmbbxEscolariedadeFiliacao1" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                                                   <Component id="cmbbxEscolariedadeFiliacao2" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                                                   <Component id="lbllEscolariedadeFiliacao2" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
@@ -317,7 +317,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="txtfldFiliacao2" min="-2" pref="290" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txtfldDocumentoFiliacao2" min="-2" pref="141" max="-2" attributes="0"/>
+                                              <Component id="cmbbxDocumentoFiliacao2" min="-2" pref="141" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
@@ -491,7 +491,7 @@
                           <Component id="cmbbxDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtfldNDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtfldFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbbxDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtfldNDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -545,7 +545,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cmbbcEscolariedadeFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbbxEscolariedadeFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cmbbxTipoTransporte" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -736,6 +736,9 @@
           <Font name="Arial" size="14" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fldDataNascimentoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbbxSexo">
       <Properties>
@@ -1335,7 +1338,7 @@
         <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="txtfldDocumentoFiliacao2">
+    <Component class="javax.swing.JComboBox" name="cmbbxDocumentoFiliacao2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
@@ -1530,7 +1533,7 @@
         <Property name="text" type="java.lang.String" value="Escolariedade Filia&#xe7;&#xe3;o  1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cmbbcEscolariedadeFiliacao1">
+    <Component class="javax.swing.JComboBox" name="cmbbxEscolariedadeFiliacao1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
