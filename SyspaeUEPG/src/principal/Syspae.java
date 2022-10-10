@@ -10,7 +10,7 @@ import syspaetelas.*;
  */
 public class Syspae {
     public static void main(String[] args) {
-        TelaInicial menu = new TelaInicial();
+        MenuInicial menu = new MenuInicial();
         //TelaCadastroAluno teste = new TelaCadastroAluno(true);
     }
 }
