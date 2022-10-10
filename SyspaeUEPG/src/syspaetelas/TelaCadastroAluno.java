@@ -1133,7 +1133,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         int id;
         String nome = txtfldNome.getText();
         String cgm = txtfldCGM.getText();
-        //int data_nascimento = (int) fldDataNascimento.getValue();
+        String data_nascimento = fldDataNascimento.getText();
         String sexo = cmbbxSexo.getSelectedItem().toString();
         String estado_civil = cmbbxEstadoCivil.getSelectedItem().toString();
         String cpf = txtfldCPF.getText();
@@ -1146,7 +1146,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         String rne = txtfldRNE.getText();
         String certidao = txtfldNascimentoCasamento.getText();
         String livro_folhas = txtfldLivroFolhas.getText();
-        //int data_emissao = Integer.parseInt(txtfldDataEmissao.getText());
+        String data_emissao = txtfldDataEmissao.getText();
         String nome_cartorio = txtfldNomeCartorio.getText();
         String nome_responsavel = txtfldResponsavel.getText();
         String doc_resp = cmbbxDocumentoResposavel.getSelectedItem().toString();
@@ -1191,15 +1191,15 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
        
         
         Conexao con = new Conexao();
-        String SQL = "INSERT into aluno (nome, cgm, municipio_nat,"
+        String SQL = "INSERT into aluno (nome, cgm, municipio_nat, data_nascimento,"
                                         + "pais_nat, rg, orgao_rg, cpf, rne, certidao_nascimento, livro_folhas,"
-                                        + " nome_cartorio, responsavel, doc_resp, numero_doc_resp, grau_parentesco,"
+                                        + " nome_cartorio, data_emissao, responsavel, doc_resp, numero_doc_resp, grau_parentesco,"
                                         + " email_resp, telefone_contato, filiacao_1, doc_f1, num_doc_f1,"
                                         + " filiacao_2, doc_f2, num_doc_f2, endereco, num_casa, complemento,"
                                         + " bairro, cidade, cep) "
-                                        + "values ('"+nome+"', '"+cgm+"', '"+naturalidade_municipio+"'"
+                                        + "values ('"+nome+"', '"+cgm+"', '"+naturalidade_municipio+"', '"+data_nascimento+"'"
                                         + ", '"+pais_natural+"', '"+rg+"', '"+orgao_emissor+"', '"+cpf+"', '"+rne+"', '"+certidao+"', '"+livro_folhas+"'"
-                                        + ", '"+nome_cartorio+"', '"+nome_responsavel+"', '"+doc_resp+"', '"+num_doc_resp+"', '"+grau_parentesco+"'"
+                                        + ", '"+nome_cartorio+"', '"+data_emissao+"', '"+nome_responsavel+"', '"+doc_resp+"', '"+num_doc_resp+"', '"+grau_parentesco+"'"
                                         + ", '"+email+"', '"+telefone_contato+"', '"+filiacao1+"', '"+doc_f1+"', '"+num_doc_f1+"', '"+filiacao2+"'"
                                         + ", '"+doc_f2+"', '"+num_doc_f2+"', '"+endereco+"', '"+num_casa+"', '"+complemento+"', '"+bairro+"', '"+cidade+"'"
                                         + ",'"+cep+"'"
