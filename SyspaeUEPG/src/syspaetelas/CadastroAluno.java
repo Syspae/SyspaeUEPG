@@ -96,6 +96,221 @@ public class CadastroAluno extends javax.swing.JFrame {
             return true;
     }
     
+    private char estado_civil(){
+        String getestado_civil = cmbbxEstadoCivil.getSelectedItem().toString();
+        char estado_civil;
+        switch (getestado_civil) {
+            case "Solteiro(a)":
+                estado_civil = 'S';
+                return estado_civil;
+            case "Casado(a)":
+                estado_civil = 'C';
+                return estado_civil;
+            case "Divorciado(a)":
+                estado_civil = 'D';
+                return estado_civil;
+            case "Separado(a)":
+                estado_civil = 'H';
+                return estado_civil;
+            case "Viúvo(a)":
+                estado_civil = 'V';
+                return estado_civil;
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    private String uf(String qual){
+        String getuf = "null";
+        if(qual.equals("nat")) getuf = cmbbxUF.getSelectedItem().toString();
+        if(qual.equals("atual")) getuf = cmbbxEstado.getSelectedItem().toString();
+        String uf_atual;
+        switch (getuf) {
+            case "Acre":
+                uf_atual = "AC";
+                return uf_atual;
+            case "Alagoas":
+                uf_atual = "AL";
+                return uf_atual;
+            case "Amapá":
+                uf_atual = "AP"; 
+                return uf_atual;
+            case "Amazonas":
+                uf_atual = "AM";
+                return uf_atual;
+            case "Bahia":
+                uf_atual = "BH";
+                return uf_atual;
+            case "Ceará":
+                uf_atual = "CE";
+                return uf_atual;
+            case "Distrito Federal":
+                uf_atual = "DF";
+                return uf_atual;
+            case "Espírito Santo":
+                uf_atual = "ES";
+                return uf_atual;
+            case "Goiás":
+                uf_atual = "GO";
+                return uf_atual;
+            case "Maranhão":
+                uf_atual = "MA";
+                return uf_atual;
+            case "Mato Grosso":
+                uf_atual = "MT";
+                return uf_atual;
+            case "Mato Grosso do Sul":
+                uf_atual = "MS";
+                return uf_atual;
+            case "Minas Gerais":
+                uf_atual = "MG";
+                return uf_atual;
+            case "Pará":
+                uf_atual = "PA";
+                return uf_atual;
+            case "Paraíba":
+                uf_atual = "PB";
+                return uf_atual;
+            case "Paraná":
+                uf_atual = "PR";
+                return uf_atual;
+            case "Pernambuco":
+                uf_atual = "PE";
+                return uf_atual;
+            case "Piauí":
+                uf_atual = "PI";
+                return uf_atual;
+            case "Rio de Janeiro":
+                uf_atual = "RJ";
+                return uf_atual;
+            case "Rio Grande do Norte":
+                uf_atual = "RN";
+                return uf_atual;
+            case "Rio Grande do Sul":
+                uf_atual = "RS";
+                return uf_atual;
+            case "Rondônia":
+                uf_atual = "RO";
+                return uf_atual;
+            case "Roraima":
+                uf_atual = "RR";
+                return uf_atual;
+            case "Santa Catarina":
+                uf_atual = "SC";
+                return uf_atual;
+            case "São Paulo":
+                uf_atual = "SP";
+                return uf_atual;
+            case "Sergipe":
+                uf_atual = "SE"; 
+                return uf_atual;
+            case "Tocantins":
+                uf_atual = "TO";
+                return uf_atual;                
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    private char transporte(){
+        char transporte;
+        String getTransporte = cmbbxTipoTransporte.getSelectedItem().toString();
+        switch (getTransporte) {
+            case "Próprio":
+                transporte = 'P';
+                return transporte;
+            case "Escolar Rural":
+                transporte = 'R';
+                return transporte;
+            case "Escolar Urbano":
+                transporte = 'U';
+                return transporte;
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    private char moradia(){
+        char moradia = ' ';
+        String getMoradia = cmbbxTipoMoradia.getSelectedItem().toString();
+        switch (getMoradia) {
+            case "Própria":
+                moradia = 'P';
+                return moradia;
+            case "Alugada":
+                moradia = 'A';
+                return moradia;
+            case "Cedida":
+                moradia = 'C';
+                return moradia;
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    private String renda(){
+        String renda;
+        String getRenda = cmbbxRendaFamiliar.getSelectedItem().toString();
+        switch (getRenda) {
+            case "Sem renda":
+                renda = "NaN";
+                return renda;
+            case "Até 1 sálario mínimo":
+                renda = "at1";
+                return renda;
+            case "Entre 1 e 3 sálarios mínimo":
+                renda = "1a3";
+                return renda;
+            case "Entre 3 e 5 sálarios mínimo":
+                renda = "3a5";
+                return renda;
+            case "Mais de 5 sálarios mínimo":
+                renda = "5ms";
+                return renda;                
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    private char sexo(){
+        char sexo;
+        String getSexo = cmbbxSexo.getSelectedItem().toString();
+        switch (getSexo) {
+            case "Masculino":
+                sexo = 'M';
+                return sexo;
+            case "Feminino":
+                sexo = 'F';
+                return sexo;
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    private boolean bolsa_familia(){
+        String getBolsa = cmbbxRecebeBolsaFamilia.getSelectedItem().toString();
+        switch (getBolsa) {
+            case "Não":
+                return false;
+            case "Sim":
+                return true;
+            default:
+                throw new AssertionError();
+        }
+    }
+    
+    private char bpc(){
+        String getbpc = cmbbxRecebeBPC.getSelectedItem().toString();
+        switch (getbpc) {
+            case "Não":
+                return 'N';
+            case "Sim":
+                return 'S';
+            default:
+                throw new AssertionError();
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -694,9 +909,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblCidade)
-                                            .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(lblCidade))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(25, 25, 25)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -709,7 +922,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblRendaFamiliar)
                                             .addComponent(cmbbxRendaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(413, 413, 413))
+                                .addGap(527, 527, 527))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -831,8 +1044,10 @@ public class CadastroAluno extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(27, 27, 27)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(lblEstado)
                                                     .addComponent(txtfldNDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -974,10 +1189,10 @@ public class CadastroAluno extends javax.swing.JFrame {
                                 .addComponent(lblEstado, javax.swing.GroupLayout.Alignment.LEADING))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtfldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtfldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(cmbbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cmbbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(lblEndereco)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1133,14 +1348,11 @@ public class CadastroAluno extends javax.swing.JFrame {
         int id;
         String nome = txtfldNome.getText();
         String cgm = txtfldCGM.getText();
-        String data_nascimento = fldDataNascimento.getText();
-        String sexo = cmbbxSexo.getSelectedItem().toString();
-        String estado_civil = cmbbxEstadoCivil.getSelectedItem().toString();
+        String data_nascimento = fldDataNascimento.getText();       
         String cpf = txtfldCPF.getText();
         String rg = txtfldRG.getText();
         String orgao_emissor = txtfldOrgaoEmissor.getText();
         String naturalidade_municipio = txtfldMunicipio.getText();
-        String uf = cmbbxUF.getSelectedItem().toString();
         String pais_natural = txtfldPaisNatural.getText();
         String cep = txtfldCEP.getText();
         String rne = txtfldRNE.getText();
@@ -1167,8 +1379,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         String complemento = txtfldComplemento.getText();
         String bairro = txtfldBairro.getText();
         String cidade = txtfldCidade.getText();
-        String estado = cmbbxEstado.getSelectedItem().toString();
-        /*Boolean interprete_libras = chckbxInterpreteLibras.isEnabled();
+        Boolean interprete_libras = chckbxInterpreteLibras.isEnabled();
         Boolean atendente = chckbxAtendente.isEnabled();
         Boolean prof_espec_permanente = chckbxProfessorEspecializado.isEnabled();
         Boolean atend_edc_espc = chckbxAtendimentoEspecializado.isEnabled();
@@ -1181,28 +1392,41 @@ public class CadastroAluno extends javax.swing.JFrame {
         Boolean reglete_soroba = chckbxRegleteSoroba.isEnabled();
         Boolean carteiras_adpts = chckbxCarteirasAdaptadas.isEnabled();
         Boolean compt_adpts = chckbxComputadoresAdaptados.isEnabled();
-        Boolean mat_comn_alt = chckbxComunicacaoAlternativa.isEnabled();*/
-        //String bolsa_familia = cmbbxRecebeBolsaFamilia.getSelectedItem().toString();
-        String renda_familiar = cmbbxRendaFamiliar.getSelectedItem().toString();
-        String bpc = cmbbxRecebeBPC.getSelectedItem().toString();        
-        //int pessoas_moram_casa = spnPessoasNaCasa.getComponentCount();
-        String tipo_transporte = cmbbxTipoTransporte.getSelectedItem().toString();
-        String tipo_moradia = cmbbxTipoMoradia.getSelectedItem().toString();
-       
+        Boolean mat_comn_alt = chckbxComunicacaoAlternativa.isEnabled();        
+        int pessoas_moram_casa = spnPessoasNaCasa.getComponentCount();
+
         
+        char estado_civil = estado_civil();
+        String uf_nat = uf("nat");
+        String uf_atual = uf("atual");
+        char transporte = transporte();
+        char moradia = moradia();
+        String renda = renda();
+        char sexo = sexo();
+        boolean bolsa_familia = bolsa_familia();
+        char bpc = bpc();
+         
         Conexao con = new Conexao();
         String SQL = "INSERT into aluno (nome, cgm, municipio_nat, data_nascimento,"
                                         + "pais_nat, rg, orgao_rg, cpf, rne, certidao_nascimento, livro_folhas,"
                                         + " nome_cartorio, data_emissao, responsavel, doc_resp, numero_doc_resp, grau_parentesco,"
                                         + " email_resp, telefone_contato, filiacao_1, doc_f1, num_doc_f1,"
                                         + " filiacao_2, doc_f2, num_doc_f2, endereco, num_casa, complemento,"
-                                        + " bairro, cidade, cep) "
+                                        + " bairro, cidade, cep, estado_civil, uf_nat, escolaridade_f1, escolaridade_f2, uf_atual,"
+                                        + " tipo_transporte, tipo_moradia, renda_familiar, interprete_libras, atendente, professor_especializado_permanente,"
+                                        + " atendimento_educacional_especializado, na_propria_escola, centro_de_atendimento_educacional_especializado,"
+                                        + " uso_de_cadeira_de_rodas, uso_de_muletas_bengalas, livros_ampliados, reglete_soroba_braile,"
+                                        + " carteiras_adaptadas, computadores_adaptados, sexo, materiais_de_comunicacao_alternativa, outra_escola,"
+                                        + " bolsa_familia, bpc, pessoas_na_casa)"
                                         + "values ('"+nome+"', '"+cgm+"', '"+naturalidade_municipio+"', '"+data_nascimento+"'"
                                         + ", '"+pais_natural+"', '"+rg+"', '"+orgao_emissor+"', '"+cpf+"', '"+rne+"', '"+certidao+"', '"+livro_folhas+"'"
-                                        + ", '"+nome_cartorio+"', '"+data_emissao+"', '"+nome_responsavel+"', '"+doc_resp+"', '"+num_doc_resp+"', '"+grau_parentesco+"'"
+                                        + ", '"+nome_cartorio+"', '"+data_emissao+"', '"+nome_responsavel+"', '"+doc_resp+"', '"+num_doc_resp+"', '"+grau_parentesco+"'"                       
                                         + ", '"+email+"', '"+telefone_contato+"', '"+filiacao1+"', '"+doc_f1+"', '"+num_doc_f1+"', '"+filiacao2+"'"
                                         + ", '"+doc_f2+"', '"+num_doc_f2+"', '"+endereco+"', '"+num_casa+"', '"+complemento+"', '"+bairro+"', '"+cidade+"'"
-                                        + ",'"+cep+"'"
+                                        + ", '"+cep+"','"+estado_civil+"', '"+uf_nat+"', '"+esc_f1+"', '"+esc_f2+"', '"+uf_atual+"', '" +transporte+"', '"+moradia+"', '"+renda+"'"
+                                        + ", '"+interprete_libras+"', '"+atendente+"', '"+prof_espec_permanente+"', '"+atend_edc_espc+"', '"+propria_escola+"', '"+centro_atd_edc_espc+"'"
+                                        + ", '"+cadeira_rodas+"', '"+muletas_bengalas+"', '"+livros_ampliados+"', '"+reglete_soroba+"', '"+carteiras_adpts+"', '"+compt_adpts+"'"
+                                        + ", '"+sexo+"', '"+mat_comn_alt+"', '"+outra_escola+"', '"+bolsa_familia+"', '"+bpc+"', '"+pessoas_moram_casa+"'"
                                         + ")" ; 
 
         
@@ -1212,7 +1436,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         Confirmação tela07 = new Confirmação(insert);
         tela07.setVisible(true);
         
-        desabilitaCampos();
+        //desabilitaCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void fldDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldDataNascimentoActionPerformed

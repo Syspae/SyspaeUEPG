@@ -104,7 +104,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtAtendimentosOdonto);
 
         lblEncaminhamentos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblEncaminhamentos.setText("Escaminhamentos para a rede");
+        lblEncaminhamentos.setText("Encaminhamentos para a rede");
 
         txtEncaminhamentos.setColumns(20);
         txtEncaminhamentos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -174,7 +174,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         chckbxAutismo.setText("Autismo");
 
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnCancelar.setText("Carncelar");
+        btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
