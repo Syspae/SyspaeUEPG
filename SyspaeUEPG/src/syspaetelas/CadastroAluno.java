@@ -39,7 +39,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         jTextFieldKeyTyped(evt);}});
     }
 
-        private void jTextFieldKeyTyped(KeyEvent evt) {
+    private void jTextFieldKeyTyped(KeyEvent evt) {
 
     String caracteres="0987654321";// lista de caracters que não devem ser aceitos
     if(caracteres.contains(evt.getKeyChar()+"")){// se o character que gerou o evento estiver na lista
@@ -55,8 +55,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//fim do if do tamanho sa string do campo
 
  }
-        
-
+    
     public int getMaximoCaracteres() {
         return maximoCaracteres;
     }
@@ -65,6 +64,54 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
 }
     
+    
+    //Somente letras nos TextFields
+    public final class JtextFieldSomenteNumeros extends JTextField {
+    private int maximoCaracteres=-1;// definição de -1
+    // como  valor normal de um textfield sem limite de caracters
+    public JtextFieldSomenteNumeros() {
+        super();
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+    public void keyTyped(java.awt.event.KeyEvent evt) {
+        jTextFieldKeyTyped(evt);}});
+    }
+
+    public JtextFieldSomenteNumeros(int maximo) {
+    super();
+    setMaximoCaracteres(maximo);// define o tamanho máximo
+    //que deve ser aceito no jtextfield que foi recebido no  construtor
+
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+    public void keyTyped(java.awt.event.KeyEvent evt) {
+        jTextFieldKeyTyped(evt);}});
+    }
+
+    private void jTextFieldKeyTyped(KeyEvent evt) {
+
+    String caracteres="abcdefghijklmnopqrstuvwxyzABCDEFGHUIJKLMNOPQRSTUVWXYZ";// lista de caracters que não devem ser aceitos
+    if(caracteres.contains(evt.getKeyChar()+"")){// se o character que gerou o evento estiver na lista
+    evt.consume();//aciona esse propriedade para eliminar a ação do evento
+    }
+    if((getText().length()>=getMaximoCaracteres())&&(getMaximoCaracteres()!=-1)){
+    //if para saber se precisa verificar também o tamanho da string do campo
+    // maior ou igual ao tamanho máximo, cancela e nao deixa inserir mais
+    evt.consume();
+    setText(getText().substring(0,getMaximoCaracteres()));
+    // esta linha acima é para remover os caracters inválidos caso o usuário tenha copiado o
+    //conteúdo de algum lugar ou seja com tamanho maior que o definido
+    }//fim do if do tamanho sa string do campo
+
+ }
+    
+    public int getMaximoCaracteres() {
+        return maximoCaracteres;
+    }
+    public void setMaximoCaracteres(int maximoCaracteres) {
+        this.maximoCaracteres = maximoCaracteres;
+    }
+}
     
     /**
      * Creates new form TelaCadastroAluno
@@ -137,6 +184,8 @@ public class CadastroAluno extends javax.swing.JFrame {
             txtfldRG.setEnabled(false);
             txtfldRNE.setEnabled(false);
             txtfldResponsavel.setEnabled(false);
+            txtfldNome.setEnabled(false);
+            cmbbxCorRaca.setEnabled(false);
 
             //Desativar botão de Salvar
             btnSalvar.setEnabled(false);
@@ -465,16 +514,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         spnPessoasNaCasa = new javax.swing.JSpinner();
         lblRendaFamiliar = new javax.swing.JLabel();
         cmbbxRendaFamiliar = new javax.swing.JComboBox<>();
-        txtfldCGM = new javax.swing.JFormattedTextField();
-        txtfldRG = new javax.swing.JFormattedTextField();
-        txtfldRNE = new javax.swing.JFormattedTextField();
-        txtfldNascimentoCasamento = new javax.swing.JFormattedTextField();
-        txtfldLivroFolhas = new javax.swing.JFormattedTextField();
-        txtfldNDocumentoResponsavel = new javax.swing.JFormattedTextField();
         txtfldEmail = new javax.swing.JTextField();
-        txtfldNDocumentoFiliacao1 = new javax.swing.JFormattedTextField();
-        txtfldNDocumentoFiliacao2 = new javax.swing.JFormattedTextField();
-        txtfldNdaCasa = new javax.swing.JFormattedTextField();
         lblCorRaca = new javax.swing.JLabel();
         cmbbxCorRaca = new javax.swing.JComboBox<>();
         lblCampos = new javax.swing.JLabel();
@@ -487,6 +527,15 @@ public class CadastroAluno extends javax.swing.JFrame {
         txtfldFiliacao1 = new JtextFieldSomenteLetras(100);
         txtfldFiliacao2 = new JtextFieldSomenteLetras(100);
         txtfldCidade = new JtextFieldSomenteLetras(50);
+        txtfldCGM = new JtextFieldSomenteNumeros(20);
+        txtfldRG = new JtextFieldSomenteNumeros(10);
+        txtfldRNE = new JtextFieldSomenteNumeros(15);
+        txtfldNascimentoCasamento = new JtextFieldSomenteNumeros(30);
+        txtfldNDocumentoResponsavel = new JtextFieldSomenteNumeros(30);
+        txtfldNDocumentoFiliacao1 = new JtextFieldSomenteNumeros(30);
+        txtfldNDocumentoFiliacao2 = new JtextFieldSomenteNumeros(30);
+        txtfldNdaCasa = new JtextFieldSomenteNumeros(6);
+        txtfldLivroFolhas = new JtextFieldSomenteNumeros(9);
 
         setTitle("Cadastrar Aluno");
 
@@ -830,70 +879,7 @@ public class CadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        try {
-            txtfldCGM.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####################")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldCGM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        try {
-            txtfldRG.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldRG.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        try {
-            txtfldRNE.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###############")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldRNE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        try {
-            txtfldNascimentoCasamento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("################################")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        try {
-            txtfldLivroFolhas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldLivroFolhas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        try {
-            txtfldNDocumentoResponsavel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##############################")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldNDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
         txtfldEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        try {
-            txtfldNDocumentoFiliacao1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##############################")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldNDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        try {
-            txtfldNDocumentoFiliacao2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##############################")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldNDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        try {
-            txtfldNdaCasa.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("######")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldNdaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblCorRaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblCorRaca.setText("Cor/Raça*");
@@ -927,6 +913,24 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         txtfldCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
+        txtfldCGM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldRG.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldRNE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldNDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldNDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldNDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldNdaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldLivroFolhas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -935,15 +939,15 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtfldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtfldNdaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(237, 237, 237)
+                                        .addComponent(txtfldNdaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(239, 239, 239)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtfldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblBairro))
@@ -1013,6 +1017,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                                     .addComponent(chckbxUsoCadeiraRodas))
                                                 .addGap(585, 585, 585))))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtfldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblMatricula))
@@ -1044,65 +1049,13 @@ public class CadastroAluno extends javax.swing.JFrame {
                                     .addComponent(cmbbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFiliacao1)
-                                    .addComponent(txtfldFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbbxDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblDocumentoFiliacao1))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtfldNDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblNDocumentoFiliacao1))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFiliacao2)
-                                    .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblDocumentoFiliacao2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtfldNDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNDocumentoFiliacao2)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEndereco)
-                                .addGap(267, 267, 267)
-                                .addComponent(lblNdaCasa)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtfldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblComplemento)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblCPF)
-                                    .addComponent(txtfldCPF)
+                                    .addComponent(txtfldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblRNE)
-                                    .addComponent(txtfldRNE, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtfldRNE, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblNascimentoCasamento)
-                                                .addGap(72, 72, 72))
-                                            .addComponent(txtfldNascimentoCasamento, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblLivroFolhas)
-                                            .addComponent(txtfldLivroFolhas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblDataEmissao)
-                                            .addComponent(txtfldDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblNomeCartorio)
-                                            .addComponent(txtfldNomeCartorio)))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(lblRG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(txtfldRG))
@@ -1125,7 +1078,27 @@ public class CadastroAluno extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblCEP)
-                                            .addComponent(txtfldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtfldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(lblNascimentoCasamento))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtfldNascimentoCasamento, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblLivroFolhas)
+                                            .addComponent(txtfldLivroFolhas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblDataEmissao)
+                                            .addComponent(txtfldDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblNomeCartorio)
+                                            .addComponent(txtfldNomeCartorio)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblResponsavel)
@@ -1141,7 +1114,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lblGrauParentesco))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtfldNDocumentoResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtfldNDocumentoResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(cmbbxGrauParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
@@ -1153,11 +1126,44 @@ public class CadastroAluno extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblNumeroContato, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                    .addComponent(txtfldNumeroContato)))))
+                                    .addComponent(txtfldNumeroContato)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblEndereco)
+                                .addGap(267, 267, 267)
+                                .addComponent(lblNdaCasa)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtfldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblComplemento))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFiliacao1)
+                                    .addComponent(txtfldFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbbxDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblDocumentoFiliacao1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNDocumentoFiliacao1)
+                                    .addComponent(txtfldNDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFiliacao2)
+                                    .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblDocumentoFiliacao2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNDocumentoFiliacao2)
+                                    .addComponent(txtfldNDocumentoFiliacao2)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(212, 212, 212)
                         .addComponent(lblNEE)))
-                .addGap(55, 58, Short.MAX_VALUE))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1179,8 +1185,8 @@ public class CadastroAluno extends javax.swing.JFrame {
                                 .addComponent(lblCGM))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtfldCGM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbbxCorRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cmbbxCorRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtfldCGM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1204,9 +1210,9 @@ public class CadastroAluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtfldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtfldOrgaoEmissor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtfldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtfldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1228,11 +1234,11 @@ public class CadastroAluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtfldRNE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfldNascimentoCasamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtfldNascimentoCasamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtfldLivroFolhas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblLivroFolhas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtfldLivroFolhas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDataEmissao)
@@ -1256,8 +1262,8 @@ public class CadastroAluno extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmbbxDocumentoResposavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmbbxGrauParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtfldNDocumentoResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtfldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtfldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtfldNDocumentoResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtfldResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblNumeroContato)
@@ -1276,10 +1282,10 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cmbbxDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtfldNDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtfldNDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtfldNDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtfldNDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtfldFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1292,11 +1298,11 @@ public class CadastroAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfldNdaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtfldNdaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addComponent(lblNEE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1633,7 +1639,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     private javax.swing.JSpinner spnPessoasNaCasa;
     private javax.swing.JTextField txtfldBairro;
     private javax.swing.JFormattedTextField txtfldCEP;
-    private javax.swing.JFormattedTextField txtfldCGM;
+    private javax.swing.JTextField txtfldCGM;
     private javax.swing.JFormattedTextField txtfldCPF;
     private javax.swing.JTextField txtfldCidade;
     private javax.swing.JTextField txtfldComplemento;
@@ -1642,21 +1648,21 @@ public class CadastroAluno extends javax.swing.JFrame {
     private javax.swing.JTextField txtfldEndereco;
     private javax.swing.JTextField txtfldFiliacao1;
     private javax.swing.JTextField txtfldFiliacao2;
-    private javax.swing.JFormattedTextField txtfldLivroFolhas;
+    private javax.swing.JTextField txtfldLivroFolhas;
     private javax.swing.JTextField txtfldMatricula;
     private javax.swing.JTextField txtfldMunicipio;
-    private javax.swing.JFormattedTextField txtfldNDocumentoFiliacao1;
-    private javax.swing.JFormattedTextField txtfldNDocumentoFiliacao2;
-    private javax.swing.JFormattedTextField txtfldNDocumentoResponsavel;
-    private javax.swing.JFormattedTextField txtfldNascimentoCasamento;
-    private javax.swing.JFormattedTextField txtfldNdaCasa;
+    private javax.swing.JTextField txtfldNDocumentoFiliacao1;
+    private javax.swing.JTextField txtfldNDocumentoFiliacao2;
+    private javax.swing.JTextField txtfldNDocumentoResponsavel;
+    private javax.swing.JTextField txtfldNascimentoCasamento;
+    private javax.swing.JTextField txtfldNdaCasa;
     private javax.swing.JTextField txtfldNome;
     private javax.swing.JTextField txtfldNomeCartorio;
     private javax.swing.JFormattedTextField txtfldNumeroContato;
     private javax.swing.JTextField txtfldOrgaoEmissor;
     private javax.swing.JTextField txtfldPaisNatural;
-    private javax.swing.JFormattedTextField txtfldRG;
-    private javax.swing.JFormattedTextField txtfldRNE;
+    private javax.swing.JTextField txtfldRG;
+    private javax.swing.JTextField txtfldRNE;
     private javax.swing.JTextField txtfldResponsavel;
     // End of variables declaration//GEN-END:variables
 }
