@@ -24,342 +24,302 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="1066" max="-2" attributes="0"/>
-                      <Component id="lblNDocumentoFiliacao2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="chckbxCentroAtendimentoEspecializado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxOutraEscola" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxNaPropriaEscola" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxAtendimentoEspecializado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxProfessorEspecializado" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="chckbxComputadoresAdaptados" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxLivrosAmpliados" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxComunicacaoAlternativa" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="chckbxRegleteSoroba" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chckbxCarteirasAdaptadas" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                              <Component id="spnPessoasNaCasa" min="-2" pref="85" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="lblPessoasNaCasa" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="chckbxAtendente" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxInterpreteLibras" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="chckbxMuletasBengalas" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxUsoCadeiraRodas" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblEndereco" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtfldEndereco" min="-2" pref="314" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblNdaCasa" max="32767" attributes="0"/>
-                                          <Component id="txtfldNdaCasa" min="-2" pref="103" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblComplemento" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtfldComplemento" min="-2" pref="130" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                                      <Component id="lblNEE" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblBairro" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtfldBairro" min="-2" pref="103" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblEscolaridadeFiliacao1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="lblTipoTransporte" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="cmbbxEscolariedadeFiliacao1" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                                                  <Component id="cmbbxEscolariedadeFiliacao2" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
-                                                  <Component id="lbllEscolariedadeFiliacao2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblTipoMoradia" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="cmbbxTipoMoradia" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="cmbbxTipoTransporte" min="-2" pref="145" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <Component id="lblEndereco" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
+                              <Component id="lblNdaCasa" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblComplemento" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtfldFiliacao1" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
+                                  <Component id="lblFiliacao1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cmbbxDocumentoFiliacao1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDocumentoFiliacao1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtfldNDocumentoFiliacao1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNDocumentoFiliacao1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtfldFiliacao2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFiliacao2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cmbbxDocumentoFiliacao2" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <Component id="lblDocumentoFiliacao2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblNDocumentoFiliacao2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldNDocumentoFiliacao2" min="-2" pref="86" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtfldResponsavel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblResponsavel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cmbbxDocumentoResposavel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDocumentoResponsavel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblNDocumentoResponsavel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="lblGrauParentesco" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtfldNDocumentoResponsavel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="cmbbxGrauParentesco" min="-2" pref="128" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtfldEmail" min="-2" pref="195" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtfldNumeroContato" min="-2" pref="143" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="lblNumeroContato" min="-2" pref="143" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtfldRNE" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRNE" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtfldNascimentoCasamento" alignment="0" min="-2" pref="299" max="-2" attributes="0"/>
+                                  <Component id="lblNascimentoCasamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblLivroFolhas" max="32767" attributes="0"/>
+                                  <Component id="txtfldLivroFolhas" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblCidade" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblRecebeBolsaFamilia" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cmbbxRecebeBolsaFamilia" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                          <Component id="cmbbxRecebeBPC" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                          <Component id="lblRecebeBPC" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblDataEmissao" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblRendaFamiliar" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cmbbxRendaFamiliar" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="lblNomeCartorio" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtfldDataEmissao" min="-2" pref="107" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtfldNomeCartorio" min="-2" pref="372" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="527" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnSalvar" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnSair" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="431" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblRNE" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtfldRNE" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldMatricula" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="lblMatricula" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                              <Component id="txtfldNascimentoCasamento" min="-2" pref="299" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="lblLivroFolhas" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblNome" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldNome" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cmbbxCorRaca" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                                  <Component id="lblCorRaca" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblCGM" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldCGM" min="-2" pref="120" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtfldFiliacao1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblFiliacao1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtfldResponsavel" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                                      <Component id="lblNascimento" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="fldDataNascimento" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cmbbxDocumentoResposavel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblDocumentoResponsavel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblDocumentoFiliacao1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblNDocumentoFiliacao1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblNDocumentoResponsavel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtfldNDocumentoResponsavel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cmbbxDocumentoFiliacao1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtfldNDocumentoFiliacao1" min="-2" pref="166" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="cmbbxSexo" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                                  <Component id="lblSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbbxEstadoCivil" min="-2" pref="137" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="lblResponsavel" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblCPF" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtfldCPF" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblRG" max="32767" attributes="0"/>
+                                  <Component id="txtfldRG" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblNascimentoCasamento" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="327" max="-2" attributes="0"/>
-                                      <Component id="txtfldLivroFolhas" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblRG" max="32767" attributes="0"/>
-                                          <Component id="txtfldRG" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblOrgaoEmissor" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtfldOrgaoEmissor" min="-2" pref="202" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="txtfldOrgaoEmissor" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
+                                  <Component id="lblOrgaoEmissor" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtfldMunicipio" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <Component id="lblMunicipio" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblUF" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbbxUF" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblPaisNatual" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldPaisNatural" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtfldCEP" min="-2" pref="87" max="-2" attributes="0"/>
+                                  <Component id="lblCEP" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                  <Component id="lblCGM" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="fldDataNascimento" min="-2" pref="134" max="-2" attributes="0"/>
-                                      <Component id="lblNascimento" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cmbbxSexo" min="-2" pref="133" max="-2" attributes="0"/>
-                                      <Component id="lblSexo" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cmbbxEstadoCivil" min="-2" pref="137" max="-2" attributes="0"/>
-                                      <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="-2" pref="261" max="-2" attributes="0"/>
-                                          <Component id="lblDocumentoFiliacao2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="txtfldNumeroContato" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtfldEndereco" min="-2" pref="314" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtfldNdaCasa" min="-2" pref="109" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="txtfldComplemento" min="-2" pref="130" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="lblCampos" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="lblNumeroContato" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="txtfldCGM" min="-2" pref="144" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="474" max="-2" attributes="0"/>
+                                              <Component id="btnSalvar" min="-2" pref="101" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnSair" min="-2" pref="101" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtfldBairro" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                                  <Component id="lblBairro" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="txtfldMunicipio" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                                                      <Component id="lblMunicipio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                                              <Component id="spnPessoasNaCasa" min="-2" pref="85" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="lblPessoasNaCasa" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="lblRendaFamiliar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="cmbbxRendaFamiliar" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                                      </Group>
                                                   </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="txtfldCidade" alignment="0" min="-2" pref="256" max="-2" attributes="0"/>
+                                                          <Component id="lblCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="cmbbxEstado" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="lblEscolaridadeFiliacao1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="cmbbxEscolariedadeFiliacao1" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                                                          <Component id="cmbbxEscolariedadeFiliacao2" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                                                          <Component id="lbllEscolariedadeFiliacao2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="lblTipoTransporte" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                              <Component id="lblTipoMoradia" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="cmbbxTipoTransporte" max="32767" attributes="0"/>
+                                                              <Component id="cmbbxTipoMoradia" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="lblRecebeBolsaFamilia" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="cmbbxRecebeBolsaFamilia" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                                          <Component id="cmbbxRecebeBPC" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                                                          <Component id="lblRecebeBPC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
                                               </Group>
                                           </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cmbbxUF" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblUF" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblPaisNatual" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtfldPaisNatural" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblCEP" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtfldCEP" min="-2" pref="87" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblFiliacao2" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtfldFiliacao2" min="-2" pref="290" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cmbbxDocumentoFiliacao2" min="-2" pref="141" max="-2" attributes="0"/>
-                                              <Component id="txtfldCidade" min="-2" pref="278" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtfldNDocumentoFiliacao2" min="-2" pref="166" max="-2" attributes="0"/>
-                                              <Component id="cmbbxEstado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cmbbxGrauParentesco" min="-2" pref="128" max="-2" attributes="0"/>
-                                          <Component id="lblGrauParentesco" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtfldEmail" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtfldDataEmissao" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                                          <Component id="lblDataEmissao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxCentroAtendimentoEspecializado" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxOutraEscola" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxNaPropriaEscola" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxAtendimentoEspecializado" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxProfessorEspecializado" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxAtendente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxInterpreteLibras" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtfldNomeCartorio" min="-2" pref="372" max="-2" attributes="0"/>
-                                          <Component id="lblNomeCartorio" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxComputadoresAdaptados" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxLivrosAmpliados" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxComunicacaoAlternativa" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxRegleteSoroba" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxCarteirasAdaptadas" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxMuletasBengalas" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chckbxUsoCadeiraRodas" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblMatricula" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldMatricula" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldNome" min="-2" pref="483" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                      <Component id="lblNEE" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="36" pref="780" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -367,290 +327,252 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtfldMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldCGM" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="lblSexo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCGM" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtfldMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtfldNome" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmbbxSexo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbbxEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="fldDataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblCorRaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCGM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtfldCGM" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbbxCorRaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSexo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="fldDataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbbxSexo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cmbbxEstadoCivil" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblMunicipio" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblUF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="lblRG" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblOrgaoEmissor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblUF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldRG" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldOrgaoEmissor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtfldMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbbxUF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblPaisNatual" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCEP" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cmbbxUF" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtfldCEP" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtfldPaisNatural" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="txtfldMunicipio" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="lblNomeCartorio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="txtfldNomeCartorio" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="lblRG" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblOrgaoEmissor" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtfldCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtfldRG" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtfldOrgaoEmissor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblNascimentoCasamento" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblRNE" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDataEmissao" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtfldDataEmissao" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtfldRNE" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtfldNascimentoCasamento" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtfldLivroFolhas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="lblLivroFolhas" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDocumentoResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNDocumentoResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblGrauParentesco" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmbbxDocumentoResposavel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbbxGrauParentesco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldNDocumentoResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="lblFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="lblRNE" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNascimentoCasamento" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLivroFolhas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDataEmissao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNomeCartorio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtfldFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbbxDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldNDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbbxDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldNDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfldDataEmissao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfldRNE" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfldNascimentoCasamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfldLivroFolhas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfldNomeCartorio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblNumeroContato" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtfldNumeroContato" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblNDocumentoFiliacao2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDocumentoResponsavel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblGrauParentesco" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNDocumentoResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNumeroContato" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cmbbxDocumentoResposavel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbbxGrauParentesco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldNDocumentoResponsavel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldNumeroContato" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtfldFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbbxDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldNDocumentoFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbbxDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldNDocumentoFiliacao2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNdaCasa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtfldEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldNdaCasa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfldCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbbxEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lblEstado" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lblNEE" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="chckbxUsoCadeiraRodas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxMuletasBengalas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="chckbxLivrosAmpliados" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxRegleteSoroba" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxCarteirasAdaptadas" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxComputadoresAdaptados" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxComunicacaoAlternativa" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtfldBairro" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="cmbbxEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtfldCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="chckbxInterpreteLibras" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxAtendente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="chckbxProfessorEspecializado" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxAtendimentoEspecializado" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxNaPropriaEscola" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxOutraEscola" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chckbxCentroAtendimentoEspecializado" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="lblEndereco" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtfldEndereco" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="lblCampos" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblNdaCasa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtfldNdaCasa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtfldComplemento" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblTipoTransporte" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblEscolaridadeFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTipoTransporte" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cmbbxEscolariedadeFiliacao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbbxTipoTransporte" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="cmbbxTipoTransporte" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lbllEscolariedadeFiliacao2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cmbbxEscolariedadeFiliacao2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblTipoMoradia" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cmbbxTipoMoradia" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="lblTipoMoradia" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmbbxTipoMoradia" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblEscolaridadeFiliacao1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="cmbbxEscolariedadeFiliacao1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lbllEscolariedadeFiliacao2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmbbxEscolariedadeFiliacao2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="lblRecebeBolsaFamilia" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cmbbxRecebeBolsaFamilia" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblRecebeBPC" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cmbbxRecebeBPC" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblPessoasNaCasa" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="spnPessoasNaCasa" max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="lblRendaFamiliar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cmbbxRendaFamiliar" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="lblPessoasNaCasa" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="spnPessoasNaCasa" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSair" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="lblNEE" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chckbxInterpreteLibras" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chckbxUsoCadeiraRodas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chckbxAtendente" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chckbxMuletasBengalas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chckbxProfessorEspecializado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chckbxLivrosAmpliados" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chckbxAtendimentoEspecializado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chckbxRegleteSoroba" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chckbxNaPropriaEscola" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chckbxCarteirasAdaptadas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chckbxOutraEscola" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chckbxComputadoresAdaptados" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chckbxCentroAtendimentoEspecializado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chckbxComunicacaoAlternativa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
               </Group>
-              <EmptySpace pref="131" max="32767" attributes="0"/>
+              <EmptySpace pref="81" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -680,7 +602,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Matr&#xed;cula*"/>
+        <Property name="text" type="java.lang.String" value="Matr&#xed;cula"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtfldMatricula">
@@ -799,7 +721,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Naturalidade/Munic&#xed;pio"/>
+        <Property name="text" type="java.lang.String" value="Naturalidade/Munic&#xed;pio*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblUF">
@@ -807,7 +729,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="UF"/>
+        <Property name="text" type="java.lang.String" value="UF*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbbxUF">
@@ -876,7 +798,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pa&#xed;s Natural"/>
+        <Property name="text" type="java.lang.String" value="Pa&#xed;s Natural*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtfldCEP">
@@ -894,7 +816,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="CEP"/>
+        <Property name="text" type="java.lang.String" value="CEP*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRNE">
@@ -919,13 +841,6 @@
           <Font name="Arial" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Filia&#xe7;&#xe3;o 1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtfldFiliacao1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEndereco">
@@ -1208,7 +1123,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Telefone para Contato"/>
+        <Property name="text" type="java.lang.String" value="Telefone para Contato*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbbxDocumentoFiliacao1">
@@ -1238,16 +1153,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Documento"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtfldNDocumentoFiliacao1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfldNDocumentoFiliacao1ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNDocumentoFiliacao1">
       <Properties>
@@ -1293,13 +1198,6 @@
         <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtfldNdaCasa">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtfldComplemento">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1316,13 +1214,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfldBairroActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtfldCidade">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbbxEstado">
       <Properties>
@@ -1371,7 +1262,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="N&#xfa;mero da casa"/>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero da casa*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblComplemento">
@@ -1387,7 +1278,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Bairro"/>
+        <Property name="text" type="java.lang.String" value="Bairro*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCidade">
@@ -1395,7 +1286,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cidade"/>
+        <Property name="text" type="java.lang.String" value="Cidade*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEstado">
@@ -1403,7 +1294,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Estado"/>
+        <Property name="text" type="java.lang.String" value="Estado*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtfldDataEmissao">
@@ -1416,16 +1307,6 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtfldFiliacao2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfldFiliacao2ActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblFiliacao2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1433,16 +1314,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Filia&#xe7;&#xe3;o 2"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtfldNDocumentoFiliacao2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfldNDocumentoFiliacao2ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEscolaridadeFiliacao1">
       <Properties>
@@ -1484,7 +1355,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Tipo de Transporte"/>
+        <Property name="text" type="java.lang.String" value="Tipo de Transporte*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbbxTipoTransporte">
@@ -1493,10 +1364,11 @@
           <Font name="Arial" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Pr&#xf3;prio"/>
-            <StringItem index="1" value="Escolar Rural"/>
-            <StringItem index="2" value="Escolar Urbano"/>
+          <StringArray count="4">
+            <StringItem index="0" value="--Selecione--"/>
+            <StringItem index="1" value="Pr&#xf3;prio"/>
+            <StringItem index="2" value="Escolar Rural"/>
+            <StringItem index="3" value="Escolar Urbano"/>
           </StringArray>
         </Property>
       </Properties>
@@ -1547,7 +1419,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Tipo de Moradia"/>
+        <Property name="text" type="java.lang.String" value="Tipo de Moradia*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbbxTipoMoradia">
@@ -1556,10 +1428,11 @@
           <Font name="Arial" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Pr&#xf3;pria"/>
-            <StringItem index="1" value="Alugada"/>
-            <StringItem index="2" value="Cedida"/>
+          <StringArray count="4">
+            <StringItem index="0" value="--Selecione--"/>
+            <StringItem index="1" value="Pr&#xf3;pria"/>
+            <StringItem index="2" value="Alugada"/>
+            <StringItem index="3" value="Cedida"/>
           </StringArray>
         </Property>
       </Properties>
@@ -1623,7 +1496,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Quantas pessoas moram na casa?"/>
+        <Property name="text" type="java.lang.String" value="Quantas pessoas moram na casa?*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="spnPessoasNaCasa">
@@ -1641,7 +1514,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Renda Familiar"/>
+        <Property name="text" type="java.lang.String" value="Renda Familiar*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbbxRendaFamiliar">
@@ -1650,12 +1523,13 @@
           <Font name="Arial" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="Sem renda"/>
-            <StringItem index="1" value="At&#xe9; 1 s&#xe1;lario m&#xed;nimo"/>
-            <StringItem index="2" value="Entre 1 e 3 s&#xe1;larios m&#xed;nimos"/>
-            <StringItem index="3" value="Entre 3 e 5 s&#xe1;larios m&#xed;nimos"/>
-            <StringItem index="4" value="Mais de 5 s&#xe1;larios m&#xed;nimos"/>
+          <StringArray count="6">
+            <StringItem index="0" value="--Selecione--"/>
+            <StringItem index="1" value="Sem renda"/>
+            <StringItem index="2" value="At&#xe9; 1 s&#xe1;lario m&#xed;nimo"/>
+            <StringItem index="3" value="Entre 1 e 3 s&#xe1;larios m&#xed;nimos"/>
+            <StringItem index="4" value="Entre 3 e 5 s&#xe1;larios m&#xed;nimos"/>
+            <StringItem index="5" value="Mais de 5 s&#xe1;larios m&#xed;nimos"/>
           </StringArray>
         </Property>
       </Properties>
@@ -1783,11 +1657,104 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtfldEmail">
+    <Component class="javax.swing.JTextField" name="txtfldEmail">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtfldFiliacao1">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" subtype="-1" type="5"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtfldNDocumentoFiliacao1">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##############################" subtype="-1" type="5"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtfldFiliacao2">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtfldNDocumentoFiliacao2">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="##############################" subtype="-1" type="5"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtfldNdaCasa">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="######" subtype="-1" type="5"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtfldCidade">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format="UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" subtype="-1" type="5"/>
         </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCorRaca">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Cor/Ra&#xe7;a*"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbbxCorRaca">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="6">
+            <StringItem index="0" value="--Selecione--"/>
+            <StringItem index="1" value="Branca"/>
+            <StringItem index="2" value="Parda"/>
+            <StringItem index="3" value="Preta"/>
+            <StringItem index="4" value="Amarela"/>
+            <StringItem index="5" value="Ind&#xed;gena"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCampos">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Campos com (*) s&#xe3;o obrigat&#xf3;rios"/>
       </Properties>
     </Component>
   </SubComponents>
