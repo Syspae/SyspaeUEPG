@@ -150,7 +150,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         String especialidade = cmbbxEspecialidade.getSelectedItem().toString();
         String crm = txtfldCRM.getText();
         
-        String SQL = "INSERT into profissional (nome) values ('"+nome+"')";
+        String SQL = "INSERT into profissional (nome, crm) values ('"+nome+"', '"+crm+"')";
         
         Conexao con = new Conexao();
         

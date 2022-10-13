@@ -502,12 +502,12 @@ public class CadastroAluno extends javax.swing.JFrame {
         char bpc = bpc();
         char cor_raca = cor_raca();
         
-        if(doc_f1.equals("--Selecione--")) doc_f1 = null;
-        //if(doc_f2.equals("--Selecione--")) doc_f2 = "NaN";
-        //if(doc_resp.equals("--Selecione--")) doc_f1 = "NaN";
-        //if(grau_parentesco.equals("--Selecione--")) grau_parentesco = "NaN";
-        //if(esc_f1.equals("--Selecione--")) esc_f1 = "NaN";
-        //if(esc_f2.equals("--Selecione--")) esc_f2 = "NaN";
+        if(doc_f1.equals("--Selecione--")) doc_f1 = "NaN";
+        if(doc_f2.equals("--Selecione--")) doc_f2 = "NaN";
+        if(doc_resp.equals("--Selecione--")) doc_f1 = "NaN";
+        if(grau_parentesco.equals("--Selecione--")) grau_parentesco = "NaN";
+        if(esc_f1.equals("--Selecione--")) esc_f1 = "NaN";
+        if(esc_f2.equals("--Selecione--")) esc_f2 = "NaN";
         if(data_emissao.equals("  /  /    ")) data_emissao = "11/11/1111";
         
         
