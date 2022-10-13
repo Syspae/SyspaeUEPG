@@ -390,10 +390,8 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblPaisNatual" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCEP" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblPaisNatual" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCEP" min="-2" max="-2" attributes="0"/>
                           <Component id="lblUF" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -435,7 +433,6 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">

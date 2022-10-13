@@ -424,6 +424,24 @@ public class CadastroAluno extends javax.swing.JFrame {
         return 0;
     }
     
+    private char cor_raca(){
+        String getCor = cmbbxCorRaca.getSelectedItem().toString();
+        switch (getCor) {
+            case "Branca":
+                return 'B';
+            case "Preta":
+                return 'P';
+            case "Parda":
+                return 'R';
+            case "Amarela":
+                return 'A';
+            case "Indígena":
+                return 'I';
+            default:
+                throw new AssertionError();
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1215,9 +1233,8 @@ public class CadastroAluno extends javax.swing.JFrame {
                             .addComponent(txtfldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblPaisNatual)
-                                .addComponent(lblCEP))
+                            .addComponent(lblPaisNatual)
+                            .addComponent(lblCEP)
                             .addComponent(lblUF))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1247,7 +1264,6 @@ public class CadastroAluno extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtfldDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtfldNomeCartorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1462,21 +1478,21 @@ public class CadastroAluno extends javax.swing.JFrame {
         String complemento = txtfldComplemento.getText();
         String bairro = txtfldBairro.getText();
         String cidade = txtfldCidade.getText();
-        Boolean interprete_libras = chckbxInterpreteLibras.isEnabled();
-        Boolean atendente = chckbxAtendente.isEnabled();
-        Boolean prof_espec_permanente = chckbxProfessorEspecializado.isEnabled();
-        Boolean atend_edc_espc = chckbxAtendimentoEspecializado.isEnabled();
-        Boolean propria_escola = chckbxNaPropriaEscola.isEnabled();
-        Boolean outra_escola = chckbxOutraEscola.isEnabled();
-        Boolean centro_atd_edc_espc = chckbxCentroAtendimentoEspecializado.isEnabled();
-        Boolean cadeira_rodas = chckbxUsoCadeiraRodas.isEnabled();
-        Boolean muletas_bengalas = chckbxMuletasBengalas.isEnabled();
-        Boolean livros_ampliados = chckbxLivrosAmpliados.isEnabled();
-        Boolean reglete_soroba = chckbxRegleteSoroba.isEnabled();
-        Boolean carteiras_adpts = chckbxCarteirasAdaptadas.isEnabled();
-        Boolean compt_adpts = chckbxComputadoresAdaptados.isEnabled();
-        Boolean mat_comn_alt = chckbxComunicacaoAlternativa.isEnabled();        
-        int pessoas_moram_casa = spnPessoasNaCasa.getComponentCount();
+        Boolean interprete_libras = chckbxInterpreteLibras.isSelected();
+        Boolean atendente = chckbxAtendente.isSelected();
+        Boolean prof_espec_permanente = chckbxProfessorEspecializado.isSelected();
+        Boolean atend_edc_espc = chckbxAtendimentoEspecializado.isSelected();
+        Boolean propria_escola = chckbxNaPropriaEscola.isSelected();
+        Boolean outra_escola = chckbxOutraEscola.isSelected();
+        Boolean centro_atd_edc_espc = chckbxCentroAtendimentoEspecializado.isSelected();
+        Boolean cadeira_rodas = chckbxUsoCadeiraRodas.isSelected();
+        Boolean muletas_bengalas = chckbxMuletasBengalas.isSelected();
+        Boolean livros_ampliados = chckbxLivrosAmpliados.isSelected();
+        Boolean reglete_soroba = chckbxRegleteSoroba.isSelected();
+        Boolean carteiras_adpts = chckbxCarteirasAdaptadas.isSelected();
+        Boolean compt_adpts = chckbxComputadoresAdaptados.isSelected();
+        Boolean mat_comn_alt = chckbxComunicacaoAlternativa.isSelected();    
+        int pessoas_moram_casa = (int) spnPessoasNaCasa.getValue();
 
         
         char estado_civil = estado_civil();
@@ -1488,6 +1504,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         char sexo = sexo();
         boolean bolsa_familia = bolsa_familia();
         char bpc = bpc();
+        char cor_raca = cor_raca();
          
         Conexao con = new Conexao();
         String SQL = "INSERT into aluno (nome, cgm, municipio_nat, data_nascimento,"
@@ -1500,7 +1517,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                         + " atendimento_educacional_especializado, na_propria_escola, centro_de_atendimento_educacional_especializado,"
                                         + " uso_de_cadeira_de_rodas, uso_de_muletas_bengalas, livros_ampliados, reglete_soroba_braile,"
                                         + " carteiras_adaptadas, computadores_adaptados, sexo, materiais_de_comunicacao_alternativa, outra_escola,"
-                                        + " bolsa_familia, bpc, pessoas_na_casa)"
+                                        + " bolsa_familia, bpc, pessoas_na_casa, cor_raca)"
                                         + "values ('"+nome+"', '"+cgm+"', '"+naturalidade_municipio+"', '"+data_nascimento+"'"
                                         + ", '"+pais_natural+"', '"+rg+"', '"+orgao_emissor+"', '"+cpf+"', '"+rne+"', '"+certidao+"', '"+livro_folhas+"'"
                                         + ", '"+nome_cartorio+"', '"+data_emissao+"', '"+nome_responsavel+"', '"+doc_resp+"', '"+num_doc_resp+"', '"+grau_parentesco+"'"                       
@@ -1509,7 +1526,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                         + ", '"+cep+"','"+estado_civil+"', '"+uf_nat+"', '"+esc_f1+"', '"+esc_f2+"', '"+uf_atual+"', '" +transporte+"', '"+moradia+"', '"+renda+"'"
                                         + ", '"+interprete_libras+"', '"+atendente+"', '"+prof_espec_permanente+"', '"+atend_edc_espc+"', '"+propria_escola+"', '"+centro_atd_edc_espc+"'"
                                         + ", '"+cadeira_rodas+"', '"+muletas_bengalas+"', '"+livros_ampliados+"', '"+reglete_soroba+"', '"+carteiras_adpts+"', '"+compt_adpts+"'"
-                                        + ", '"+sexo+"', '"+mat_comn_alt+"', '"+outra_escola+"', '"+bolsa_familia+"', '"+bpc+"', '"+pessoas_moram_casa+"'"
+                                        + ", '"+sexo+"', '"+mat_comn_alt+"', '"+outra_escola+"', '"+bolsa_familia+"', '"+bpc+"', '"+pessoas_moram_casa+"', '"+cor_raca+"'"
                                         + ")" ; 
 
         
@@ -1518,13 +1535,16 @@ public class CadastroAluno extends javax.swing.JFrame {
         //Colocar ID na tela
         String sqlbusca = "SELECT *from aluno where nome like '" + nome + "%'";
         ResultSet rs = con.executaBusca(sqlbusca);
-        try {                               
+        try {    
+                while(rs.next()){
                 id = rs.getInt("idaluno");
+                txtfldMatricula.setText(Integer.toString(id));
+                }
                 //txtTeste.setText(nome);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        txtfldMatricula.setText(Integer.toString(id));
+        
         
         //Abertura da tela de sucesso ou não da operação
         Confirmação tela07 = new Confirmação(insert);
