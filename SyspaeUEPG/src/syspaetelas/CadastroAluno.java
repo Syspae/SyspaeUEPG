@@ -1572,7 +1572,9 @@ public class CadastroAluno extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-        CadastroAluno.this.dispose();
+        DesejaSair telads = new DesejaSair();
+        
+        //CadastroAluno.this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtfldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldMatriculaActionPerformed
