@@ -4,6 +4,9 @@
  */
 package syspaetelas;
 
+import controleConexao.Conexao;
+import java.sql.*;
+
 /**
  *
  * @author carlo
@@ -19,6 +22,40 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    
+    private int idAluno(){
+        String busca = "Select * from aluno where nome like 'Lucas%'";
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(busca);
+        int id = 0;
+        try {
+            while(rs.next()){
+                id = rs.getInt("idaluno");
+            }
+        } catch (Exception e) {
+        }
+        return id;
+    }
+    
+    private int idProfissional(){
+        String busca = "Select * from profissional where nome like 'Lucas%'";
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(busca);
+        int id = 0;
+        try {
+            while(rs.next()){
+                id = rs.getInt("idprofissional");
+            }
+        } catch (Exception e) {
+        }
+        return id;
+    }
+    
+    private String preparaSQL(){        
+        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, especialidade,fk_aluno_idaluno, fk_profissional_idprofissional) "
+                    + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"', '"+cmbbxEspecialidade.getSelectedItem().toString()+"', '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"')";
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -218,6 +255,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        Conexao con = new Conexao();
+        int insert = con.executaInsert(preparaSQL());
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

@@ -7,6 +7,7 @@ package syspaetelas;
 import static java.lang.System.exit;
 import static java.time.Clock.system;
 import controleConexao.Conexao;
+import java.sql.*;
 
 /**
  *
@@ -75,6 +76,11 @@ public class CadastroEspecialista extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setText("Salvar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         lblCamposObrigatorios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblCamposObrigatorios.setText("Campos com (*) são obrigatórios");
@@ -146,16 +152,31 @@ public class CadastroEspecialista extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         CadastroEspecialista.this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:        
         String nome = txtfldNomeEspecialista.getText();
         String especialidade = cmbbxEspecialidade.getSelectedItem().toString();
         String crm = txtfldCRM.getText();
+        int id = 0;
         
-        String SQL = "INSERT into profissional (nome, crm) values ('"+nome+"', '"+crm+"')";
+        String busca = "Select idespecialidade from especialidade where nome like '"+especialidade+"'";     
         
+               
         Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(busca);
+        try {
+            while(rs.next()){
+                id = rs.getInt("idespecialidade");
+            }
+        } catch (Exception e) {
+        }
+        
+        String SQL = "INSERT into profissional (nome, crm, fk_especialidade_idespecialidade) values ('"+nome+"', '"+crm+"', '"+id+"')";
         
         con.executaInsert(SQL);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -123,8 +123,55 @@ public class CadastroAluno extends javax.swing.JFrame {
         
         if(!cadastro){
             desabilitaCampos();
+            mostraAluno();
         }        
     }
+    
+    private void mostraAluno(){
+        String SQL = "select * from aluno where nome like 'Carol%'";
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(SQL);        
+        try {            
+            while(rs.next()){
+                txtfldMatricula.setText(rs.getString("idaluno"));
+                txtfldNome.setText(rs.getString("nome"));
+                txtfldCGM.setText(rs.getString("cgm"));
+                txtfldCPF.setText(rs.getString("cpf"));
+                txtfldRG.setText(rs.getString("rg"));
+                txtfldOrgaoEmissor.setText(rs.getString("orgao_rg"));
+                txtfldMunicipio.setText(rs.getString("municipio_nat"));
+                txtfldPaisNatural.setText(rs.getString("pais_nat"));
+                txtfldCEP.setText(rs.getString("cep"));
+                txtfldRNE.setText(rs.getString("rne"));
+                txtfldNascimentoCasamento.setText(rs.getString("certidao_nascimento"));
+                txtfldLivroFolhas.setText(rs.getString("livro_folhas"));
+                txtfldNomeCartorio.setText("nome_cartorio");
+                txtfldResponsavel.setText("responsavel");
+                txtfldNDocumentoResponsavel.setText(rs.getString("numero_doc_resp"));
+                txtfldEmail.setText(rs.getString("email"));
+                txtfldNumeroContato.setText(rs.getString("telefone_contato"));
+                txtfldFiliacao1.setText(rs.getString("filiacao_1"));
+                txtfldNDocumentoFiliacao1.setText(rs.getString("doc_f1"));
+                txtfldFiliacao2.setText(rs.getString("filiacao_2"));
+                txtfldNDocumentoFiliacao2.setText(rs.getString("doc_f2"));
+                txtfldEndereco.setText(rs.getString("endereco"));
+                txtfldNdaCasa.setText(rs.getString("num_casa"));
+                txtfldComplemento.setText(rs.getString("complemento"));
+                txtfldBairro.setText(rs.getString("bairro"));
+                txtfldCidade.setText(rs.getString("cidade"));                
+            }
+        } catch (Exception e) {
+        }
+    }
+    
+    /*private String cor_raca_2(char cor_raca){
+        switch (cor_raca) {
+            case 'B':
+                return "Branca";
+            default:
+                throw new AssertionError();
+        }
+    }*/
     
     private boolean desabilitaCampos(){
             chckbxAtendente.setEnabled(false);
@@ -186,6 +233,7 @@ public class CadastroAluno extends javax.swing.JFrame {
             txtfldResponsavel.setEnabled(false);
             txtfldNome.setEnabled(false);
             cmbbxCorRaca.setEnabled(false);
+            txtfldEmail.setEnabled(false);
 
             //Desativar botão de Salvar
             btnSalvar.setEnabled(false);
@@ -1564,9 +1612,8 @@ public class CadastroAluno extends javax.swing.JFrame {
         
         int valida = validaObrigatorios();
         if(valida==1){
-            String SQL = preparaSQL();
             Conexao con = new Conexao();        
-            int insert = con.executaInsert(SQL);      
+            int insert = con.executaInsert(preparaSQL());      
 
 
             //Colocar ID na tela

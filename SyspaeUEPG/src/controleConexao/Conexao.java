@@ -42,7 +42,7 @@ public class Conexao {
         try {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
-            con.close();
+            //con.close();
             return rs;
         } catch (Exception e) {
             e.printStackTrace();
