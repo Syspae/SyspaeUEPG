@@ -37,99 +37,123 @@ public class MenuInicial extends javax.swing.JFrame {
         btn01BuscaAnamnese = new javax.swing.JButton();
         btn01CadEspecialista = new javax.swing.JButton();
         btn01Sair = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setTitle("Syspae");
 
+        btn01CadAluno.setBackground(new java.awt.Color(242, 242, 242));
         btn01CadAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn01CadAluno.setText("Cadastrar Aluno");
+        btn01CadAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Cadastrar Aluno (3).png"))); // NOI18N
+        btn01CadAluno.setBorder(null);
         btn01CadAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn01CadAlunoActionPerformed(evt);
             }
         });
 
+        btn01buscarAluno.setBackground(new java.awt.Color(242, 242, 242));
         btn01buscarAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn01buscarAluno.setText("Buscar Aluno");
+        btn01buscarAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Buscar Aluno.png"))); // NOI18N
+        btn01buscarAluno.setBorder(null);
         btn01buscarAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn01buscarAlunoActionPerformed(evt);
             }
         });
 
+        btn01NovoAtend.setBackground(new java.awt.Color(242, 242, 242));
         btn01NovoAtend.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn01NovoAtend.setText("Novo Atendimento");
+        btn01NovoAtend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Novo Atendimento.png"))); // NOI18N
+        btn01NovoAtend.setBorder(null);
         btn01NovoAtend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn01NovoAtendActionPerformed(evt);
             }
         });
 
+        btn01HistAtend.setBackground(new java.awt.Color(242, 242, 242));
         btn01HistAtend.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn01HistAtend.setText("Histórico de Atendimento");
+        btn01HistAtend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Histórico Atendimento.png"))); // NOI18N
+        btn01HistAtend.setBorder(null);
         btn01HistAtend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn01HistAtendActionPerformed(evt);
             }
         });
 
+        btn01BuscaAnamnese.setBackground(new java.awt.Color(242, 242, 242));
         btn01BuscaAnamnese.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn01BuscaAnamnese.setText("Buscar Anamneses");
+        btn01BuscaAnamnese.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Buscar Anamnese.png"))); // NOI18N
+        btn01BuscaAnamnese.setBorder(null);
         btn01BuscaAnamnese.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn01BuscaAnamneseActionPerformed(evt);
             }
         });
 
+        btn01CadEspecialista.setBackground(new java.awt.Color(242, 242, 242));
         btn01CadEspecialista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn01CadEspecialista.setText("Cadastrar Especialistas");
+        btn01CadEspecialista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Cadastrar Especialista.png"))); // NOI18N
+        btn01CadEspecialista.setBorder(null);
         btn01CadEspecialista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn01CadEspecialistaActionPerformed(evt);
             }
         });
 
+        btn01Sair.setBackground(new java.awt.Color(242, 242, 242));
         btn01Sair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn01Sair.setText("Sair");
+        btn01Sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Sair.png"))); // NOI18N
+        btn01Sair.setBorder(null);
         btn01Sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn01SairActionPerformed(evt);
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tela de Fundo.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(btn01CadAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn01buscarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn01NovoAtend)
-                .addGap(18, 18, 18)
-                .addComponent(btn01HistAtend, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn01BuscaAnamnese)
-                .addGap(18, 18, 18)
-                .addComponent(btn01CadEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
-                .addComponent(btn01Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn01CadAluno)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn01buscarAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn01NovoAtend)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn01HistAtend, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn01BuscaAnamnese)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn01CadEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(287, 287, 287)
+                        .addComponent(btn01Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn01Sair, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                    .addComponent(btn01CadEspecialista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn01BuscaAnamnese, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn01CadAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn01buscarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn01NovoAtend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn01HistAtend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn01CadEspecialista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn01BuscaAnamnese, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn01buscarAluno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn01NovoAtend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn01HistAtend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn01CadAluno))
+                    .addComponent(btn01Sair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -183,5 +207,6 @@ public class MenuInicial extends javax.swing.JFrame {
     private javax.swing.JButton btn01NovoAtend;
     private javax.swing.JButton btn01Sair;
     private javax.swing.JButton btn01buscarAluno;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

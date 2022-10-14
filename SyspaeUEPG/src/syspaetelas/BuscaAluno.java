@@ -109,6 +109,7 @@ public class BuscaAluno extends javax.swing.JFrame {
 
         btnSelecionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnSelecionar.setText("Selecionar");
+        btnSelecionar.setMinimumSize(new java.awt.Dimension(188, 61));
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
@@ -1149,7 +1150,7 @@ public class BuscaAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSelecionar)
+                        .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar))
                     .addGroup(layout.createSequentialGroup()
@@ -1180,7 +1181,7 @@ public class BuscaAluno extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
-                    .addComponent(btnSelecionar))
+                    .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(204, Short.MAX_VALUE))
         );
 
