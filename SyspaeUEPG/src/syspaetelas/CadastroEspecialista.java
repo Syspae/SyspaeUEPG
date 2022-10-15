@@ -84,7 +84,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
             }
         });
 
-        lblCamposObrigatorios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblCamposObrigatorios.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCamposObrigatorios.setText("Campos com (*) são obrigatórios");
 
         lblCRM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
