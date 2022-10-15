@@ -4,6 +4,8 @@
  */
 package syspaetelas;
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author carlo
@@ -13,11 +15,13 @@ public class DesejaSair extends javax.swing.JFrame {
     /**
      * Creates new form DesejaSair
      */
-    public DesejaSair() {
+    public void DesejaSair() {
         initComponents();
         this.setVisible(true);
     }
 
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,12 +89,11 @@ public class DesejaSair extends javax.swing.JFrame {
 
     private void btnSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimActionPerformed
         // TODO add your handling code here:
-        
+        DesejaSair.this.dispose();
     }//GEN-LAST:event_btnSimActionPerformed
 
     private void btnNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNaoActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_btnNaoActionPerformed
 
     /**

@@ -111,13 +111,11 @@
           <Font name="Arial" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
+          <StringArray count="4">
             <StringItem index="0" value="Nome"/>
             <StringItem index="1" value="CPF"/>
             <StringItem index="2" value="Matr&#xed;cula"/>
-            <StringItem index="3" value="Telefone"/>
-            <StringItem index="4" value="Nome do Respons&#xe1;vel"/>
-            <StringItem index="5" value="Data de Nascimento"/>
+            <StringItem index="3" value="Nome do Respons&#xe1;vel"/>
           </StringArray>
         </Property>
       </Properties>

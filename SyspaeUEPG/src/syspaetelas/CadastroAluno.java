@@ -115,75 +115,17 @@ public class CadastroAluno extends javax.swing.JFrame {
     
     /**
      * Creates new form TelaCadastroAluno
+     * @param cadastro
      */
     public CadastroAluno(String cadastro) {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
-        this.setVisible(true);
-        
-        if(!cadastro.equals("cadastro")){
-            desabilitaCampos();
-            mostraAluno(cadastro);
-        }        
+        this.setVisible(true);        
+               
     }
     
-    private void mostraAluno(String cadastro){
-        String SQL = "select * from aluno where idaluno = "+cadastro+"";
-        Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(SQL);
-        try {            
-            while(rs.next()){
-                txtfldMatricula.setText(rs.getString("idaluno"));
-                txtfldNome.setText(rs.getString("nome"));
-                txtfldCGM.setText(rs.getString("cgm"));
-                txtfldCPF.setText(rs.getString("cpf"));
-                txtfldRG.setText(rs.getString("rg"));
-                txtfldOrgaoEmissor.setText(rs.getString("orgao_rg"));
-                txtfldMunicipio.setText(rs.getString("municipio_nat"));
-                txtfldPaisNatural.setText(rs.getString("pais_nat"));
-                txtfldCEP.setText(rs.getString("cep"));
-                txtfldRNE.setText(rs.getString("rne"));
-                txtfldNascimentoCasamento.setText(rs.getString("certidao_nascimento"));
-                txtfldLivroFolhas.setText(rs.getString("livro_folhas"));
-                txtfldNomeCartorio.setText(rs.getString("nome_cartorio"));
-                txtfldResponsavel.setText(rs.getString("responsavel"));
-                txtfldNDocumentoResponsavel.setText(rs.getString("numero_doc_resp"));
-                txtfldEmail.setText(rs.getString("email_resp"));
-                txtfldNumeroContato.setText(rs.getString("telefone_contato"));
-                txtfldFiliacao1.setText(rs.getString("filiacao_1"));
-                txtfldNDocumentoFiliacao1.setText(rs.getString("doc_f1"));
-                txtfldFiliacao2.setText(rs.getString("filiacao_2"));
-                txtfldNDocumentoFiliacao2.setText(rs.getString("doc_f2"));
-                txtfldEndereco.setText(rs.getString("endereco"));
-                txtfldNdaCasa.setText(rs.getString("num_casa"));
-                txtfldComplemento.setText(rs.getString("complemento"));
-                txtfldBairro.setText(rs.getString("bairro"));
-                txtfldCidade.setText(rs.getString("cidade"));
-                cmbbxCorRaca.setSelectedItem(cor_raca_reverso(rs.getArray("cor_raca").toString()));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     
-    private String cor_raca_reverso(String cor_raca){
-        switch (cor_raca) {
-            case "B":
-                return "Branca";
-            case "P":
-                return "Preta";
-            case "R":
-                return "Parda";
-            case "A":
-                return "Amarela";
-            case "I":
-                return "Indígena";
-            default:
-                throw new AssertionError();
-        }
-    }
-    
-    private boolean desabilitaCampos(){
+    private void desabilitaCampos(){
             chckbxAtendente.setEnabled(false);
             chckbxAtendimentoEspecializado.setEnabled(false);
             chckbxCarteirasAdaptadas.setEnabled(false);
@@ -247,10 +189,8 @@ public class CadastroAluno extends javax.swing.JFrame {
 
             //Desativar botão de Salvar
             btnSalvar.setEnabled(false);
-            
-            return true;
     }
-    
+        
     private char estado_civil(){
         String estado_civil = cmbbxEstadoCivil.getSelectedItem().toString();
         switch (estado_civil) {
@@ -313,6 +253,7 @@ public class CadastroAluno extends javax.swing.JFrame {
             case "Pernambuco":
                 return "PE";
             case "Piauí":
+                return "PI";
             case "Rio de Janeiro":
                 return "RJ";
             case "Rio Grande do Norte":
@@ -562,7 +503,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         
         if(doc_f1.equals("--Selecione--")) doc_f1 = "NaN";
         if(doc_f2.equals("--Selecione--")) doc_f2 = "NaN";
-        if(doc_resp.equals("--Selecione--")) doc_f1 = "NaN";
+        if(doc_resp.equals("--Selecione--")) doc_resp= "NaN";
         if(grau_parentesco.equals("--Selecione--")) grau_parentesco = "NaN";
         if(esc_f1.equals("--Selecione--")) esc_f1 = "NaN";
         if(esc_f2.equals("--Selecione--")) esc_f2 = "NaN";
@@ -1154,7 +1095,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                         .addComponent(lblSucesso)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblErro)
-                                        .addGap(174, 174, 174)
+                                        .addGap(336, 336, 336)
                                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))

@@ -255,7 +255,6 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     private void btnAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnamneseActionPerformed
         // TODO add your handling code here:
         CadastroAnamnese tela06 = new CadastroAnamnese();
-        tela06.setVisible(true);        
     }//GEN-LAST:event_btnAnamneseActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed

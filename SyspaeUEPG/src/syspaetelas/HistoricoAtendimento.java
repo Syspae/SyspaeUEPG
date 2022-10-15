@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package syspaetelas;
+import controleConexao.Conexao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +25,21 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    private String preparaSQL(){
+        switch ((String) cmbbxBusca.getSelectedItem()) {
+            case "Nome":
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where nome like '" + txtfldBusca.getText() + "%'";
+            case "CPF":
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + txtfldBusca.getText() + "%'";
+            case "Matrícula":
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where idaluno like '" + txtfldBusca.getText() + "%'";
+            case "Nome do Responsável":
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + txtfldBusca.getText() + "%'";
+            default:
+                throw new AssertionError();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +56,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         btn03Selecionar = new javax.swing.JButton();
         lblBusca = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblBuscaAluno = new javax.swing.JTable();
+        tblBuscaAtendimento = new javax.swing.JTable();
 
         setTitle("Histórico de Atendimentos");
 
@@ -46,6 +67,11 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
         btn03Buscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn03Buscar.setText("Buscar");
+        btn03Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn03BuscarActionPerformed(evt);
+            }
+        });
 
         btn03Cancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn03Cancelar.setText("Cancelar");
@@ -57,14 +83,19 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
         btn03Selecionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn03Selecionar.setText("Selecionar");
+        btn03Selecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn03SelecionarActionPerformed(evt);
+            }
+        });
 
         lblBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBusca.setText("Buscar por:");
 
-        tblBuscaAluno.setAutoCreateRowSorter(true);
-        tblBuscaAluno.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tblBuscaAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tblBuscaAluno.setModel(new javax.swing.table.DefaultTableModel(
+        tblBuscaAtendimento.setAutoCreateRowSorter(true);
+        tblBuscaAtendimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblBuscaAtendimento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tblBuscaAtendimento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -87,7 +118,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tblBuscaAluno);
+        jScrollPane3.setViewportView(tblBuscaAtendimento);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,6 +171,27 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         HistoricoAtendimento.this.dispose();
     }//GEN-LAST:event_btn03CancelarActionPerformed
 
+    private void btn03SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03SelecionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn03SelecionarActionPerformed
+
+    private void btn03BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03BuscarActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel table = (DefaultTableModel) tblBuscaAtendimento.getModel();
+        table.setRowCount(0);
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(preparaSQL());
+        try {
+            while(rs.next()){
+                Object[] row = new Object[5];
+                for(int i = 1; i<=5; i++) row[i-1] = rs.getObject(i);
+                ((DefaultTableModel) tblBuscaAtendimento.getModel()).insertRow(rs.getRow() - 1, row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }       
+    }//GEN-LAST:event_btn03BuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -152,7 +204,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbbxBusca;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblBusca;
-    private javax.swing.JTable tblBuscaAluno;
+    private javax.swing.JTable tblBuscaAtendimento;
     private javax.swing.JTextField txtfldBusca;
     // End of variables declaration//GEN-END:variables
 }

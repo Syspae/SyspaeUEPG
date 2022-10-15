@@ -32,15 +32,13 @@ public class BuscaAluno extends javax.swing.JFrame {
         String tipoBusca = cmbbxBusca.getSelectedItem().toString();
         switch (tipoBusca) {
             case "Nome":
-                return "select idaluno, nome, data_nascimento, cpf, responsavel  from aluno where nome like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where nome like '" + busca + "%'";
             case "CPF":
-                return "select idaluno, nome, data_nascimento, cpf, responsavel  from aluno where cpf like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + busca + "%'";
             case "Matrícula":
-                return "select idaluno, nome, data_nascimento, cpf, responsavel  from aluno where idaluno like '" + busca + "%'";
-            case "Data de Nascimento":
-                return "select idaluno, nome, data_nascimento, cpf, responsavel  from aluno where data_nascimento like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where idaluno like '" + busca + "%'";
             case "Nome do Responsável":
-                return "select idaluno, nome, data_nascimento, cpf, responsavel  from aluno where responsavel like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + busca + "%'";
             default:
                 throw new AssertionError();
         }
@@ -86,7 +84,7 @@ public class BuscaAluno extends javax.swing.JFrame {
         lblBusca.setText("Buscar por:");
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Telefone", "Nome do Responsável", "Data de Nascimento" }));
+        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Nome do Responsável" }));
         cmbbxBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxBuscaActionPerformed(evt);
@@ -223,7 +221,7 @@ public class BuscaAluno extends javax.swing.JFrame {
         
         String s = tblBuscaAluno.getModel().getValueAt(row, 0)+"";
         
-        CadastroAluno editar = new CadastroAluno(s);
+        EditarAluno editar = new EditarAluno(s);
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void txtfldBuscaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtfldBuscaInputMethodTextChanged
