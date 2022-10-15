@@ -46,6 +46,7 @@ public class BuscaAluno extends javax.swing.JFrame {
         }
     }
     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -217,8 +218,12 @@ public class BuscaAluno extends javax.swing.JFrame {
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
         // TODO add your handling code here:
+        int id = 0;
+        int row = tblBuscaAluno.getSelectedRow();
         
+        String s = tblBuscaAluno.getModel().getValueAt(row, 0)+"";
         
+        CadastroAluno editar = new CadastroAluno(s);
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void txtfldBuscaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtfldBuscaInputMethodTextChanged
@@ -240,6 +245,8 @@ public class BuscaAluno extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel table = (DefaultTableModel) tblBuscaAluno.getModel();
+        table.setRowCount(0);
         Conexao con = new Conexao();        
         ResultSet rs = con.executaBusca(preparaSQL());        
         try {

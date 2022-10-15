@@ -161,7 +161,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void btn01CadAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01CadAlunoActionPerformed
         // TODO add your handling code here:
-        CadastroAluno tela01 = new CadastroAluno(true);
+        CadastroAluno tela01 = new CadastroAluno("cadastro");
     }//GEN-LAST:event_btn01CadAlunoActionPerformed
 
     private void btn01buscarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01buscarAlunoActionPerformed

@@ -101,7 +101,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     setText(getText().substring(0,getMaximoCaracteres()));
     // esta linha acima é para remover os caracters inválidos caso o usuário tenha copiado o
     //conteúdo de algum lugar ou seja com tamanho maior que o definido
-    }//fim do if do tamanho sa string do campo
+    }//fim do if do tamanho da string do campo
 
  }
     
@@ -116,21 +116,22 @@ public class CadastroAluno extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastroAluno
      */
-    public CadastroAluno(boolean cadastro) {
+    public CadastroAluno(String cadastro) {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
         
-        if(!cadastro){
+        if(!cadastro.equals("cadastro")){
             desabilitaCampos();
-            mostraAluno();
+            mostraAluno(cadastro);
         }        
     }
     
-    private void mostraAluno(){
-        String SQL = "select * from aluno where nome like 'Carol%'";
+    private void mostraAluno(String cadastro){
+        String SQL = "select * from aluno where idaluno = "+cadastro+"";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(SQL);        
+        ResultSet rs = con.executaBusca(SQL);      
+        String cor_raca = null;
         try {            
             while(rs.next()){
                 txtfldMatricula.setText(rs.getString("idaluno"));
@@ -145,8 +146,8 @@ public class CadastroAluno extends javax.swing.JFrame {
                 txtfldRNE.setText(rs.getString("rne"));
                 txtfldNascimentoCasamento.setText(rs.getString("certidao_nascimento"));
                 txtfldLivroFolhas.setText(rs.getString("livro_folhas"));
-                txtfldNomeCartorio.setText("nome_cartorio");
-                txtfldResponsavel.setText("responsavel");
+                txtfldNomeCartorio.setText(rs.getString("nome_cartorio"));
+                txtfldResponsavel.setText(rs.getString("responsavel"));
                 txtfldNDocumentoResponsavel.setText(rs.getString("numero_doc_resp"));
                 txtfldEmail.setText(rs.getString("email"));
                 txtfldNumeroContato.setText(rs.getString("telefone_contato"));
@@ -158,20 +159,14 @@ public class CadastroAluno extends javax.swing.JFrame {
                 txtfldNdaCasa.setText(rs.getString("num_casa"));
                 txtfldComplemento.setText(rs.getString("complemento"));
                 txtfldBairro.setText(rs.getString("bairro"));
-                txtfldCidade.setText(rs.getString("cidade"));                
+                txtfldCidade.setText(rs.getString("cidade"));
+                cor_raca = rs.getString("cor_raca");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
+        System.out.println(cor_raca);
     }
-    
-    /*private String cor_raca_2(char cor_raca){
-        switch (cor_raca) {
-            case 'B':
-                return "Branca";
-            default:
-                throw new AssertionError();
-        }
-    }*/
     
     private boolean desabilitaCampos(){
             chckbxAtendente.setEnabled(false);
