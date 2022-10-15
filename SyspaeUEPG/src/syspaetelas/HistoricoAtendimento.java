@@ -34,6 +34,8 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         btn03Cancelar = new javax.swing.JButton();
         btn03Selecionar = new javax.swing.JButton();
         lblBusca = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblBuscaAluno = new javax.swing.JTable();
 
         setTitle("Histórico de Atendimentos");
 
@@ -59,6 +61,34 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         lblBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBusca.setText("Buscar por:");
 
+        tblBuscaAluno.setAutoCreateRowSorter(true);
+        tblBuscaAluno.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblBuscaAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tblBuscaAluno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Data do Atendimento", "Especialista"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tblBuscaAluno);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,19 +96,22 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(lblBusca)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtfldBusca)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn03Buscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn03Selecionar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn03Cancelar)))
+                        .addComponent(btn03Cancelar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblBusca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtfldBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn03Buscar)))))
                 .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
@@ -90,7 +123,9 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
                     .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn03Buscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn03Cancelar)
                     .addComponent(btn03Selecionar))
@@ -115,7 +150,9 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
     private javax.swing.JButton btn03Cancelar;
     private javax.swing.JButton btn03Selecionar;
     private javax.swing.JComboBox<String> cmbbxBusca;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblBusca;
+    private javax.swing.JTable tblBuscaAluno;
     private javax.swing.JTextField txtfldBusca;
     // End of variables declaration//GEN-END:variables
 }
