@@ -130,8 +130,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     private void mostraAluno(String cadastro){
         String SQL = "select * from aluno where idaluno = "+cadastro+"";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(SQL);      
-        String cor_raca = null;
+        ResultSet rs = con.executaBusca(SQL);
         try {            
             while(rs.next()){
                 txtfldMatricula.setText(rs.getString("idaluno"));
@@ -149,7 +148,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                 txtfldNomeCartorio.setText(rs.getString("nome_cartorio"));
                 txtfldResponsavel.setText(rs.getString("responsavel"));
                 txtfldNDocumentoResponsavel.setText(rs.getString("numero_doc_resp"));
-                txtfldEmail.setText(rs.getString("email"));
+                txtfldEmail.setText(rs.getString("email_resp"));
                 txtfldNumeroContato.setText(rs.getString("telefone_contato"));
                 txtfldFiliacao1.setText(rs.getString("filiacao_1"));
                 txtfldNDocumentoFiliacao1.setText(rs.getString("doc_f1"));
@@ -160,12 +159,28 @@ public class CadastroAluno extends javax.swing.JFrame {
                 txtfldComplemento.setText(rs.getString("complemento"));
                 txtfldBairro.setText(rs.getString("bairro"));
                 txtfldCidade.setText(rs.getString("cidade"));
-                cor_raca = rs.getString("cor_raca");
+                cmbbxCorRaca.setSelectedItem(cor_raca_reverso(rs.getArray("cor_raca").toString()));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(cor_raca);
+    }
+    
+    private String cor_raca_reverso(String cor_raca){
+        switch (cor_raca) {
+            case "B":
+                return "Branca";
+            case "P":
+                return "Preta";
+            case "R":
+                return "Parda";
+            case "A":
+                return "Amarela";
+            case "I":
+                return "Indígena";
+            default:
+                throw new AssertionError();
+        }
     }
     
     private boolean desabilitaCampos(){
@@ -503,7 +518,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         String doc_resp = cmbbxDocumentoResposavel.getSelectedItem().toString();
         String num_doc_resp = txtfldNDocumentoResponsavel.getText();
         String grau_parentesco = cmbbxGrauParentesco.getSelectedItem().toString();
-        String email = txtfldFiliacao1.getText();
+        String email = txtfldEmail.getText();
         String telefone_contato = txtfldNumeroContato.getText();
         String filiacao1 = txtfldFiliacao1.getText();
         String doc_f1 = cmbbxDocumentoFiliacao1.getSelectedItem().toString();
@@ -1628,7 +1643,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
             if(insert==1){
                 lblErro.setVisible(false);
-                lblSucesso.setText("Cadastro efetual com sucesso!");
+                lblSucesso.setText("Cadastro efetuado com sucesso!");
                 desabilitaCampos();
             }
         }
