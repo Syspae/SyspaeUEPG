@@ -59,6 +59,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         tblBuscaAtendimento = new javax.swing.JTable();
 
         setTitle("Histórico de Atendimentos");
+        setPreferredSize(new java.awt.Dimension(1200, 600));
         setResizable(false);
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -66,24 +67,30 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
+        btn03Buscar.setBackground(new java.awt.Color(242, 242, 242));
         btn03Buscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn03Buscar.setText("Buscar");
+        btn03Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Buscar.png"))); // NOI18N
+        btn03Buscar.setBorder(null);
         btn03Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn03BuscarActionPerformed(evt);
             }
         });
 
+        btn03Cancelar.setBackground(new java.awt.Color(242, 242, 242));
         btn03Cancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn03Cancelar.setText("Cancelar");
+        btn03Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Cancelar.png"))); // NOI18N
+        btn03Cancelar.setBorder(null);
         btn03Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn03CancelarActionPerformed(evt);
             }
         });
 
+        btn03Selecionar.setBackground(new java.awt.Color(242, 242, 242));
         btn03Selecionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btn03Selecionar.setText("Selecionar");
+        btn03Selecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Selecionar (1).png"))); // NOI18N
+        btn03Selecionar.setBorder(null);
         btn03Selecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn03SelecionarActionPerformed(evt);
@@ -101,7 +108,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Data do Atendimento", "Especialista", "Num do Atendimento"
+                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Nº Atendimento", "Data do Atendimento", "Especialista"
             }
         ) {
             Class[] types = new Class [] {
@@ -119,45 +126,54 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblBuscaAtendimento.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane3.setViewportView(tblBuscaAtendimento);
+        if (tblBuscaAtendimento.getColumnModel().getColumnCount() > 0) {
+            tblBuscaAtendimento.getColumnModel().getColumn(0).setPreferredWidth(70);
+            tblBuscaAtendimento.getColumnModel().getColumn(1).setPreferredWidth(285);
+            tblBuscaAtendimento.getColumnModel().getColumn(2).setPreferredWidth(150);
+            tblBuscaAtendimento.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tblBuscaAtendimento.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblBuscaAtendimento.getColumnModel().getColumn(5).setPreferredWidth(150);
+            tblBuscaAtendimento.getColumnModel().getColumn(6).setPreferredWidth(250);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn03Selecionar)
                         .addGap(18, 18, 18)
                         .addComponent(btn03Cancelar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblBusca)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtfldBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn03Buscar)))))
-                .addGap(23, 23, 23))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane3)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblBusca)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtfldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn03Buscar))))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBusca)
-                    .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblBusca)
+                        .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtfldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btn03Buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn03Cancelar)
                     .addComponent(btn03Selecionar))

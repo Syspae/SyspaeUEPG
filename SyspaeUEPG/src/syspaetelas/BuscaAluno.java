@@ -109,24 +109,30 @@ public class BuscaAluno extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setBackground(new java.awt.Color(242, 242, 242));
         btnBuscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnBuscar.setText("Buscar");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Buscar.png"))); // NOI18N
+        btnBuscar.setBorder(null);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(242, 242, 242));
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Cancelar.png"))); // NOI18N
+        btnCancelar.setBorder(null);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
 
+        btnSelecionar.setBackground(new java.awt.Color(242, 242, 242));
         btnSelecionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnSelecionar.setText("Selecionar");
+        btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Selecionar (1).png"))); // NOI18N
+        btnSelecionar.setBorder(null);
         btnSelecionar.setMinimumSize(new java.awt.Dimension(188, 61));
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +166,17 @@ public class BuscaAluno extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblBuscaAluno.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane3.setViewportView(tblBuscaAluno);
+        if (tblBuscaAluno.getColumnModel().getColumnCount() > 0) {
+            tblBuscaAluno.getColumnModel().getColumn(0).setMinWidth(80);
+            tblBuscaAluno.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tblBuscaAluno.getColumnModel().getColumn(1).setPreferredWidth(400);
+            tblBuscaAluno.getColumnModel().getColumn(2).setMinWidth(100);
+            tblBuscaAluno.getColumnModel().getColumn(2).setPreferredWidth(130);
+            tblBuscaAluno.getColumnModel().getColumn(3).setPreferredWidth(200);
+            tblBuscaAluno.getColumnModel().getColumn(4).setPreferredWidth(290);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,10 +197,10 @@ public class BuscaAluno extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtfldBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtfldBusca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBuscar))
-                            .addComponent(jScrollPane3))))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1103, Short.MAX_VALUE))))
                 .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
@@ -193,16 +209,16 @@ public class BuscaAluno extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBusca)
-                    .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbbxBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtfldBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addGap(40, 40, 40)
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         pack();
