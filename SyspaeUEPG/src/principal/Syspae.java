@@ -11,6 +11,5 @@ import syspaetelas.*;
 public class Syspae {
     public static void main(String[] args) {
         MenuInicial menu = new MenuInicial();
-        //CadastroAluno teste = new CadastroAluno(false);
     }
 }
