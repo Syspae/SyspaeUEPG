@@ -20,11 +20,69 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
+        buscaAlunos();
+        buscaProfissional();
     }
 
+    private void buscaAlunos(){
+        String busca = "Select nome from aluno";
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(busca);
+        try {
+            while(rs.next()){
+                cmbbxAluno.addItem(rs.getString("nome"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
-    private int idAluno(){
-        String busca = "Select * from aluno where nome like 'Lucas%'";
+    private void buscaProfissional(){
+        String busca = "Select nome from profissional";
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(busca);
+        try {
+            while(rs.next()){
+                cmbbProfissional.addItem(rs.getString("nome"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+ 
+   }
+    
+    private int buscaEspecialidadeID(){
+        String buscaId = "select fk_especialidade_idespecialidade from profissional where nome like '"+cmbbProfissional.getSelectedItem().toString()+"'";
+        int id = 0;
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(buscaId);
+        try {
+            while(rs.next()){
+                id = rs.getInt("fk_especialidade_idespecialidade");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+    
+    private void buscaEspecialidadeNome(){
+        cmbbxEspecialidade.removeAllItems();
+        int id = buscaEspecialidadeID();
+        String buscaNome = "Select nome from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'";
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(buscaNome);
+        try {
+            while(rs.next()){
+                cmbbxEspecialidade.addItem(rs.getString("nome"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private int idAluno(){        
+        String busca = "Select * from aluno where nome like '"+cmbbxAluno.getSelectedItem().toString()+"%'";
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(busca);
         int id = 0;
@@ -38,7 +96,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     }
     
     private int idProfissional(){
-        String busca = "Select * from profissional where nome like 'Lucas%'";
+        String busca = "Select * from profissional where nome like '"+cmbbProfissional.getSelectedItem().toString()+"%'";
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(busca);
         int id = 0;
@@ -52,8 +110,9 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     }
     
     private String preparaSQL(){        
-        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, especialidade,fk_aluno_idaluno, fk_profissional_idprofissional) "
-                    + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"', '"+cmbbxEspecialidade.getSelectedItem().toString()+"', '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"')";
+        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional) "
+                    + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"'"
+                    + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', '"+cmbbProfissional.getSelectedItem().toString()+"')";
     }
     
     /**
@@ -107,6 +166,21 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         cmbbxAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         cmbbProfissional.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbProfissional.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbbProfissionalItemStateChanged(evt);
+            }
+        });
+        cmbbProfissional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbProfissionalActionPerformed(evt);
+            }
+        });
+        cmbbProfissional.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cmbbProfissionalPropertyChange(evt);
+            }
+        });
 
         cmbbxEspecialidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -267,6 +341,19 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         // TODO add your handling code here:
         CadastroAtendimento.this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void cmbbProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbProfissionalActionPerformed
+        // TODO add your handling code here:
+        buscaEspecialidadeNome();
+    }//GEN-LAST:event_cmbbProfissionalActionPerformed
+
+    private void cmbbProfissionalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmbbProfissionalPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbProfissionalPropertyChange
+
+    private void cmbbProfissionalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbProfissionalItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbProfissionalItemStateChanged
 
     /**
      * @param args the command line arguments
