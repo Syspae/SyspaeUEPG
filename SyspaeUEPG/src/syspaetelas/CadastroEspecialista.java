@@ -121,6 +121,8 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         initComponents();
         //this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
+        setLocationRelativeTo(null);
+        
     }
     
     private String preparaSQL(){
@@ -307,7 +309,8 @@ public class CadastroEspecialista extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        CadastroEspecialista.this.dispose();
+        TelaConfirma sair = new TelaConfirma(this, true);
+        if(sair.getReturnStatus()==1) this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed

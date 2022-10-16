@@ -20,10 +20,8 @@ public class BuscaAluno extends javax.swing.JFrame {
      */
     public BuscaAluno() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
-        
-        
+        setLocationRelativeTo(null);       
         
     }
 
@@ -79,6 +77,7 @@ public class BuscaAluno extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setTitle("Buscar Aluno");
+        setResizable(false);
 
         lblBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBusca.setText("Buscar por:");
@@ -215,12 +214,8 @@ public class BuscaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        // TODO add your handling code here:
-        int id = 0;
-        int row = tblBuscaAluno.getSelectedRow();
-        
-        String s = tblBuscaAluno.getModel().getValueAt(row, 0)+"";
-        
+        // TODO add your handling code here:     
+        String s = tblBuscaAluno.getModel().getValueAt(tblBuscaAluno.getSelectedRow(), 0)+"";        
         EditarAluno editar = new EditarAluno(s);
     }//GEN-LAST:event_btnSelecionarActionPerformed
 

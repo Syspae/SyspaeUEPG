@@ -22,7 +22,7 @@ public class BuscaAnamnese extends javax.swing.JFrame {
      */
     public BuscaAnamnese() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
@@ -61,6 +61,7 @@ public class BuscaAnamnese extends javax.swing.JFrame {
         tblBuscaAnamnese = new javax.swing.JTable();
 
         setTitle("Buscar Anamnese");
+        setResizable(false);
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Nome do Responsável", "Data de Nascimento" }));

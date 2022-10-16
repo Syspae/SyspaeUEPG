@@ -19,6 +19,7 @@ public class MenuInicial extends javax.swing.JFrame {
         initComponents();
         //this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -190,8 +191,9 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btn01CadEspecialistaActionPerformed
 
     private void btn01SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01SairActionPerformed
-        // TODO add your handling code here:
-        exit(0);
+        // TODO add your handling code here:        
+        TelaConfirma sair = new TelaConfirma(this, true);
+        if(sair.getReturnStatus()==1) this.dispose();
     }//GEN-LAST:event_btn01SairActionPerformed
 
     /**

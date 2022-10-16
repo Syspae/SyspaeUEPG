@@ -21,7 +21,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
      */
     public HistoricoAtendimento() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
@@ -59,6 +59,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         tblBuscaAtendimento = new javax.swing.JTable();
 
         setTitle("Histórico de Atendimentos");
+        setResizable(false);
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Telefone", "Nome do Responsável", "Data de Nascimento" }));
@@ -168,11 +169,13 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
     private void btn03CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03CancelarActionPerformed
         // TODO add your handling code here:
-        HistoricoAtendimento.this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btn03CancelarActionPerformed
 
     private void btn03SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03SelecionarActionPerformed
         // TODO add your handling code here:
+        int id = (int) tblBuscaAtendimento.getModel().getValueAt(tblBuscaAtendimento.getSelectedRow(), 0);        
+        MostraAtendimento atendimento = new MostraAtendimento(id);
     }//GEN-LAST:event_btn03SelecionarActionPerformed
 
     private void btn03BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03BuscarActionPerformed

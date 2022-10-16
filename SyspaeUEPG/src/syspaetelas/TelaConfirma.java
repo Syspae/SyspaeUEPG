@@ -32,6 +32,7 @@ public class TelaConfirma extends javax.swing.JDialog {
      */
     public TelaConfirma(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setLocationRelativeTo(null);
         initComponents();
 
         // Close the dialog when Esc is pressed
@@ -67,6 +68,7 @@ public class TelaConfirma extends javax.swing.JDialog {
         cancelButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);

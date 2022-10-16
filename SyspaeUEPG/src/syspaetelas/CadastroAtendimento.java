@@ -18,10 +18,11 @@ public class CadastroAtendimento extends javax.swing.JFrame {
      */
     public CadastroAtendimento() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
         this.setVisible(true);
         buscaAlunos();
         buscaProfissional();
+        cmbbxEspecialidade.removeAllItems();
     }
 
     private void buscaAlunos(){
@@ -146,6 +147,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         txtTratamento = new javax.swing.JTextArea();
 
         setTitle("Cadastrar Atendimento");
+        setResizable(false);
 
         btnSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnSair.setText("Sair");
@@ -339,7 +341,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-        CadastroAtendimento.this.dispose();
+        TelaConfirma sair = new TelaConfirma(this, true);
+        if(sair.getReturnStatus()==1) this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void cmbbProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbProfissionalActionPerformed

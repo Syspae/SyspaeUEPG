@@ -122,6 +122,7 @@ public class EditarAluno extends javax.swing.JFrame {
      */
     public EditarAluno(String getid) {
         initComponents();
+        setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);       
         
@@ -147,7 +148,7 @@ public class EditarAluno extends javax.swing.JFrame {
                 txtfldRG.setText(rs.getString("rg"));
                 txtfldOrgaoEmissor.setText(rs.getString("orgao_rg"));
                 txtfldMunicipio.setText(rs.getString("municipio_nat"));
-                cmbbxUF.setSelectedItem(uf_reverso(rs.getString("uf_nat")));
+                cmbbxUF.setSelectedItem(uf_reverso(rs.getArray("uf_nat").toString()));
                 txtfldPaisNatural.setText(rs.getString("pais_nat"));
                 txtfldCEP.setText(rs.getString("cep"));
                 txtfldRNE.setText(rs.getString("rne"));
@@ -969,6 +970,7 @@ public class EditarAluno extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
 
         setTitle("Cadastrar Aluno");
+        setResizable(false);
 
         btnSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnSair.setText("Sair");
@@ -1849,9 +1851,8 @@ public class EditarAluno extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-        DesejaSair telads = new DesejaSair();
-        
-        //CadastroAluno.this.dispose();
+        TelaConfirma sair = new TelaConfirma(this, true);
+        if(sair.getReturnStatus()==1) this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtfldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldMatriculaActionPerformed

@@ -119,6 +119,7 @@ public class CadastroAluno extends javax.swing.JFrame {
      */
     public CadastroAluno(String cadastro) {
         initComponents();
+        setLocationRelativeTo(null);
         //this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);        
                
@@ -354,24 +355,20 @@ public class CadastroAluno extends javax.swing.JFrame {
             case "Sim":
                 return true;
             default:
-                //throw new AssertionError();
-                System.out.println("Erro na bolsa");
+                throw new AssertionError();
         }
-        return false;
     }
     
-    private char bpc(){
+    private boolean bpc(){
         String getbpc = cmbbxRecebeBPC.getSelectedItem().toString();
         switch (getbpc) {
             case "Não":
-                return 'N';
+                return false;
             case "Sim":
-                return 'S';
+                return true;
             default:
-                //throw new AssertionError();
-                System.out.println("Erro no bpc");
+                throw new AssertionError();
         }
-        return 0;
     }
     
     private char cor_raca(){
@@ -501,7 +498,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         String renda = renda();
         char sexo = sexo();
         boolean bolsa_familia = bolsa_familia();
-        char bpc = bpc();
+        boolean bpc = bpc();
         char cor_raca = cor_raca();
         
         if(doc_f1.equals("--Selecione--")) doc_f1 = "NaN";
@@ -1525,8 +1522,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         TelaConfirma sair = new TelaConfirma(this, true);
-        if(sair.getReturnStatus()==1) this.dispose();        
-        //CadastroAluno.this.dispose();
+        if(sair.getReturnStatus()==1) this.dispose(); 
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtfldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldMatriculaActionPerformed
