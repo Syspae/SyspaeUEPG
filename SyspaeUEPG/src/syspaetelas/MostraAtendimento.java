@@ -31,7 +31,18 @@ public class MostraAtendimento extends javax.swing.JFrame {
         return "select * from atendimento where idatendimento = '"+idAtendimento+"'";        
     }
     
+    private void desabilitaCampos(){
+        cmbbxAluno.setEnabled(false);
+        txtfldDataAtendimento.setEditable(false);
+        cmbbxProfissional.setEnabled(false);
+        cmbbxEspecialidade.setEnabled(false);
+        txtMotivoAtendimento.setEditable(false);
+        txtDiagnostico.setEditable(false);
+        txtTratamento.setEditable(false);
+    }
+    
     private void mostraItens(){
+        desabilitaCampos();
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(preparaSQL());
         try {
@@ -45,6 +56,7 @@ public class MostraAtendimento extends javax.swing.JFrame {
                 txtTratamento.setText(rs.getString("tratamento"));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     

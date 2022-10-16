@@ -192,7 +192,7 @@ public class EditarAluno extends javax.swing.JFrame {
                 cmbbxEscolariedadeFiliacao1.setSelectedItem(rs.getString("escolaridade_f1"));
                 cmbbxEscolariedadeFiliacao2.setSelectedItem(rs.getString("escolaridade_f2"));
                 cmbbxRecebeBolsaFamilia.setSelectedItem(bolsa_familia(rs.getBoolean("bolsa_familia")));
-                cmbbxRecebeBPC.setSelectedItem(bpc(rs.getArray("bpc").toString()));
+                cmbbxRecebeBPC.setSelectedItem(bpc(rs.getBoolean("bpc")));
                 spnPessoasNaCasa.setValue(rs.getInt("pessoas_na_casa"));
                 cmbbxRendaFamiliar.setSelectedItem(renda_familiar(rs.getString("renda_familiar")));
                 fldDataNascimento.setText(inverteData(rs.getDate("data_nascimento").toString()));
@@ -343,15 +343,9 @@ public class EditarAluno extends javax.swing.JFrame {
         else return "Não";
     }
     
-    private String bpc(String bpc){
-        switch (bpc) {
-            case "S":
-                return "Sim";
-            case "N":
-                return "Não";
-            default:
-                throw new AssertionError();
-        }
+    private String bpc(boolean bpc){
+        if(bpc) return "Sim";
+        else return "Não";
     }
     
     private String renda_familiar(String renda){
@@ -374,6 +368,7 @@ public class EditarAluno extends javax.swing.JFrame {
     private String inverteData(String data){
         Date novaData = Date.valueOf(data);
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println(formatador.format(novaData));
         return formatador.format(novaData);        
     }
     
@@ -464,6 +459,8 @@ public class EditarAluno extends javax.swing.JFrame {
             chckbxProfessorEspecializado.setEnabled(true);
             chckbxRegleteSoroba.setEnabled(true);
             chckbxUsoCadeiraRodas.setEnabled(true);
+            chckbxCarteirasAdaptadas.setEnabled(true);
+            //cmbbxs
             cmbbxEscolariedadeFiliacao1.setEnabled(true);
             cmbbxDocumentoFiliacao1.setEnabled(true);
             cmbbxDocumentoResposavel.setEnabled(true);
@@ -679,24 +676,20 @@ public class EditarAluno extends javax.swing.JFrame {
             case "Sim":
                 return true;
             default:
-                //throw new AssertionError();
-                System.out.println("Erro na bolsa");
+                throw new AssertionError();
         }
-        return false;
     }
     
-    private char bpc(){
+    private boolean bpc(){
         String getbpc = cmbbxRecebeBPC.getSelectedItem().toString();
         switch (getbpc) {
             case "Não":
-                return 'N';
+                return false;
             case "Sim":
-                return 'S';
+                return true;
             default:
-                //throw new AssertionError();
-                System.out.println("Erro no bpc");
+                throw new AssertionError();
         }
-        return 0;
     }
     
     private char cor_raca(){
@@ -769,66 +762,13 @@ public class EditarAluno extends javax.swing.JFrame {
 }
     
     private String preparaSQL(){
-        String nome = txtfldNome.getText();
-        String cgm = txtfldCGM.getText();
-        String data_nascimento = fldDataNascimento.getText();       
-        String cpf = txtfldCPF.getText();
-        String rg = txtfldRG.getText();
-        String orgao_emissor = txtfldOrgaoEmissor.getText();
-        String naturalidade_municipio = txtfldMunicipio.getText();
-        String pais_natural = txtfldPaisNatural.getText();
-        String cep = txtfldCEP.getText();
-        String rne = txtfldRNE.getText();
-        String certidao = txtfldNascimentoCasamento.getText();
-        String livro_folhas = txtfldLivroFolhas.getText();
-        String data_emissao = txtfldDataEmissao.getText();
-        String nome_cartorio = txtfldNomeCartorio.getText();
-        String nome_responsavel = txtfldResponsavel.getText();
-        String doc_resp = cmbbxDocumentoResposavel.getSelectedItem().toString();
-        String num_doc_resp = txtfldNDocumentoResponsavel.getText();
-        String grau_parentesco = cmbbxGrauParentesco.getSelectedItem().toString();
-        String email = txtfldEmail.getText();
-        String telefone_contato = txtfldNumeroContato.getText();
-        String filiacao1 = txtfldFiliacao1.getText();
         String doc_f1 = cmbbxDocumentoFiliacao1.getSelectedItem().toString();
-        String num_doc_f1 = txtfldNDocumentoFiliacao1.getText();
-        String esc_f1 = cmbbxEscolariedadeFiliacao1.getSelectedItem().toString();
-        String filiacao2 = txtfldFiliacao2.getText();
         String doc_f2 = cmbbxDocumentoFiliacao2.getSelectedItem().toString();
-        String num_doc_f2 = txtfldNDocumentoFiliacao1.getText();
+        String doc_resp = cmbbxDocumentoResposavel.getSelectedItem().toString();
+        String grau_parentesco = cmbbxGrauParentesco.getSelectedItem().toString();
+        String esc_f1 = cmbbxEscolariedadeFiliacao1.getSelectedItem().toString();
         String esc_f2 = cmbbxEscolariedadeFiliacao2.getSelectedItem().toString();
-        String endereco = txtfldEndereco.getText();
-        String num_casa = txtfldNdaCasa.getText();
-        String complemento = txtfldComplemento.getText();
-        String bairro = txtfldBairro.getText();
-        String cidade = txtfldCidade.getText();
-        Boolean interprete_libras = chckbxInterpreteLibras.isSelected();
-        Boolean atendente = chckbxAtendente.isSelected();
-        Boolean prof_espec_permanente = chckbxProfessorEspecializado.isSelected();
-        Boolean atend_edc_espc = chckbxAtendimentoEspecializado.isSelected();
-        Boolean propria_escola = chckbxNaPropriaEscola.isSelected();
-        Boolean outra_escola = chckbxOutraEscola.isSelected();
-        Boolean centro_atd_edc_espc = chckbxCentroAtendimentoEspecializado.isSelected();
-        Boolean cadeira_rodas = chckbxUsoCadeiraRodas.isSelected();
-        Boolean muletas_bengalas = chckbxMuletasBengalas.isSelected();
-        Boolean livros_ampliados = chckbxLivrosAmpliados.isSelected();
-        Boolean reglete_soroba = chckbxRegleteSoroba.isSelected();
-        Boolean carteiras_adpts = chckbxCarteirasAdaptadas.isSelected();
-        Boolean compt_adpts = chckbxComputadoresAdaptados.isSelected();
-        Boolean mat_comn_alt = chckbxComunicacaoAlternativa.isSelected();    
-        int pessoas_moram_casa = (int) spnPessoasNaCasa.getValue();        
-        
-        char estado_civil = estado_civil();
-        String uf_nat = uf("nat");
-        String uf_atual = uf("atual");
-        char transporte = transporte();
-        char moradia = moradia();
-        String renda = renda();
-        char sexo = sexo();
-        boolean bolsa_familia = bolsa_familia();
-        char bpc = bpc();
-        char cor_raca = cor_raca();
-        
+        String data_emissao = txtfldDataEmissao.getText();
         if(doc_f1.equals("--Selecione--")) doc_f1 = "NaN";
         if(doc_f2.equals("--Selecione--")) doc_f2 = "NaN";
         if(doc_resp.equals("--Selecione--")) doc_resp= "NaN";
@@ -842,16 +782,16 @@ public class EditarAluno extends javax.swing.JFrame {
                 + ", data_nascimento = '"+fldDataNascimento.getText()+"', pais_nat = '"+txtfldPaisNatural.getText()+"', rg = '"+txtfldRG.getText()+"'"
                 + ", orgao_rg = '"+txtfldOrgaoEmissor.getText()+"', cpf = '"+txtfldCPF.getText()+"', rne = '"+txtfldRNE.getText()+"'"
                 + ", certidao_nascimento = '"+txtfldNascimentoCasamento.getText()+"', livro_folhas = '"+txtfldLivroFolhas.getText()+"'"
-                + ", nome_cartorio = '"+txtfldNomeCartorio.getText()+"', data_emissao = '"+txtfldDataEmissao.getText()+"', responsavel = '"+txtfldResponsavel.getText()+"'"
-                + ", doc_resp = '"+cmbbxDocumentoResposavel.getSelectedItem().toString()+"', numero_doc_resp = '"+txtfldNDocumentoResponsavel.getText()+"'"
-                + ", grau_parentesco = '"+cmbbxGrauParentesco.getSelectedItem().toString()+"', email_resp = '"+txtfldEmail.getText()+"'"
+                + ", nome_cartorio = '"+txtfldNomeCartorio.getText()+"', data_emissao = '"+data_emissao+"', responsavel = '"+txtfldResponsavel.getText()+"'"
+                + ", doc_resp = '"+doc_resp+"', numero_doc_resp = '"+txtfldNDocumentoResponsavel.getText()+"'"
+                + ", grau_parentesco = '"+grau_parentesco+"', email_resp = '"+txtfldEmail.getText()+"'"
                 + ", telefone_contato = '"+txtfldNumeroContato.getText()+"', filiacao_1 = '"+txtfldFiliacao1.getText()+"'"
-                + ", doc_f1 = '"+cmbbxDocumentoFiliacao1.getSelectedItem().toString()+"', num_doc_f1 = '"+txtfldNDocumentoFiliacao1.getText()+"'"
-                + ", filiacao_2 = '"+txtfldFiliacao2.getText()+"', doc_f2 = '"+cmbbxDocumentoFiliacao2.getSelectedItem().toString()+"'"
+                + ", doc_f1 = '"+doc_f1+"', num_doc_f1 = '"+txtfldNDocumentoFiliacao1.getText()+"'"
+                + ", filiacao_2 = '"+txtfldFiliacao2.getText()+"', doc_f2 = '"+doc_f2+"'"
                 + ", num_doc_f2 = '"+txtfldNDocumentoFiliacao1.getText()+"', endereco = '"+txtfldEndereco.getText()+"', num_casa = '"+txtfldNdaCasa.getText()+"'"
                 + ", complemento = '"+txtfldComplemento.getText()+"', bairro = '"+txtfldBairro.getText()+"', cidade = '"+txtfldCidade.getText()+"', cep = '"+txtfldCEP.getText()+"'"
-                + ", estado_civil = '"+estado_civil()+"', uf_nat = '"+uf("nat")+"', escolaridade_f1 = '"+cmbbxEscolariedadeFiliacao1.getSelectedItem().toString()+"'"
-                + ", escolaridade_f2 = '"+cmbbxEscolariedadeFiliacao2.getSelectedItem().toString()+"', uf_atual = '"+uf("atual")+"'"
+                + ", estado_civil = '"+estado_civil()+"', uf_nat = '"+uf("nat")+"', escolaridade_f1 = '"+esc_f1+"'"
+                + ", escolaridade_f2 = '"+esc_f2+"', uf_atual = '"+uf("atual")+"'"
                 + ", tipo_transporte = '"+transporte()+"', tipo_moradia = '"+moradia()+"', renda_familiar = '"+renda()+"', interprete_libras = '"+chckbxInterpreteLibras.isSelected()+"'"
                 + ", atendente = '"+chckbxAtendente.isSelected()+"', professor_especializado_permanente = '"+chckbxProfessorEspecializado.isSelected()+"',"
                 + " atendimento_educacional_especializado = '"+chckbxAtendimentoEspecializado.isSelected()+"', na_propria_escola = '"+chckbxNaPropriaEscola.isSelected()+"'"
@@ -1866,21 +1806,7 @@ public class EditarAluno extends javax.swing.JFrame {
         int valida = validaObrigatorios();
         if(valida==1){
             Conexao con = new Conexao();        
-            int insert = con.executaInsert(preparaSQL());      
-
-
-            //Colocar ID na tela
-            String id = null; 
-            String sqlbusca = "SELECT currval(pg_get_serial_sequence('aluno','idaluno'))";
-            ResultSet rs = con.executaBusca(sqlbusca);
-            try {
-                while(rs.next()){
-                    id = rs.getString(1);
-                }
-            } catch (Exception e) {
-            }
-            txtfldMatricula.setText(id);      
-
+            int insert = con.executaInsert(preparaSQL());
 
             if(insert==1){
                 lblErro.setVisible(false);

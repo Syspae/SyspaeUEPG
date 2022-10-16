@@ -198,7 +198,7 @@ public class BuscaAnamnese extends javax.swing.JFrame {
 
     private void btn03SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03SelecionarActionPerformed
         // TODO add your handling code here:   
-        int id = (int) tblBuscaAnamnese.getModel().getValueAt(tblBuscaAnamnese.getSelectedRow(), 5);
+        int id = (int) tblBuscaAnamnese.getModel().getValueAt(tblBuscaAnamnese.getSelectedRow(), 0);
         MostraAnamnese mostraAnamnese = new MostraAnamnese(id);
     }//GEN-LAST:event_btn03SelecionarActionPerformed
 

@@ -28,7 +28,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
     }
 
     private String preparaSQL(){
-        return "select * from anamnese, aluno where fk_atendimento_idatendimento = '"+idAnamnese+"'";
+        return "select aluno.data_nascimento, * from anamnese, aluno where idaluno  = '"+idAnamnese+"'";
     }
     
     private String inverteData(String data){
@@ -37,12 +37,35 @@ public class MostraAnamnese extends javax.swing.JFrame {
         return formatador.format(novaData); 
     }
     
+    private void desabilitaCampos(){
+        cmbbxNome.setEnabled(false);
+        txtAtendimentosOdonto.setEditable(false);
+        txtDoencaFamilia.setEditable(false);
+        txtEncaminhamentos.setEditable(false);
+        chckbxSurdezLeveModerada.setEnabled(false);
+        chckbxSurdezSeveraProfunda.setEnabled(false);
+        chckbxBaixaVisao.setEnabled(false);
+        chckbxCegueira.setEnabled(false);
+        chckbxDeficienciaFisica.setEnabled(false);
+        chckbxSurdocegueira.setEnabled(false);
+        chckbxIngestaoAlcool.setEnabled(false);
+        chckbxHabitoFumar.setEnabled(false);
+        chckbxSindromeDown.setEnabled(false);
+        chckbxCondutasTipicas.setEnabled(false);
+        chckbxAltasHabilidadesSuperdotado.setEnabled(false);
+        chckbxDeficienciaMental.setEnabled(false);
+        chckbxDeficienciaMultipla.setEnabled(false);
+        chckbxAutismo.setEnabled(false);
+    }
+    
     private void mostraItens(){
+        desabilitaCampos();
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(preparaSQL());
         try {
             while(rs.next()){
                 cmbbxNome.addItem(rs.getString("nome"));
+                txtfldDataNascimento.setText(inverteData(rs.getString("data_nascimento")));
                 txtfldDataAnamnese.setText(inverteData(rs.getString("data_anamnese")));
                 txtDoencaFamilia.setText(rs.getString("doencas_familia"));
                 txtAtendimentosOdonto.setText(rs.getString("atendimentos_odontologicos"));
@@ -53,10 +76,10 @@ public class MostraAnamnese extends javax.swing.JFrame {
                 chckbxCegueira.setSelected(rs.getBoolean("cegueira"));
                 chckbxDeficienciaFisica.setSelected(rs.getBoolean("deficiencia_fisica"));
                 chckbxSurdocegueira.setSelected(rs.getBoolean("surdocegueira"));
-                chckbxIngestaoAlcool.setSelected(rs.getBoolean("intestao_de_alcool"));
+                chckbxIngestaoAlcool.setSelected(rs.getBoolean("ingestao_de_alcool"));
                 chckbxHabitoFumar.setSelected(rs.getBoolean("habito_de_fumar"));
                 chckbxSindromeDown.setSelected(rs.getBoolean("sindrome_de_down"));
-                chckbxCondutasTipicas.setSelected(rs.getBoolean("condutas_tipiocas"));
+                chckbxCondutasTipicas.setSelected(rs.getBoolean("condutas_tipicas"));
                 chckbxAltasHabilidadesSuperdotado.setSelected(rs.getBoolean("altas_habilidades_superdotado"));
                 chckbxDeficienciaMental.setSelected(rs.getBoolean("deficiencia_mental"));
                 chckbxDeficienciaMultipla.setSelected(rs.getBoolean("deficiencia_multipla"));

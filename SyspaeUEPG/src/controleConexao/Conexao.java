@@ -21,7 +21,6 @@ public class Conexao {
         
         try {
             con = DriverManager.getConnection(url, user, password);
-            System.out.println("Conexão realizada com sucesso");
         } catch (Exception e) {
             e.printStackTrace();
         }
