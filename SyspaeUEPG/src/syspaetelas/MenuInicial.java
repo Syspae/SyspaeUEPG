@@ -40,6 +40,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setTitle("Syspae");
+        setResizable(false);
 
         btn01CadAluno.setBackground(new java.awt.Color(242, 242, 242));
         btn01CadAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
