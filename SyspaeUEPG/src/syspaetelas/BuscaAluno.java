@@ -36,7 +36,7 @@ public class BuscaAluno extends javax.swing.JFrame {
             case "CPF":
                 return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + busca + "%'";
             case "Matrícula":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where idaluno like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where CAST(idaluno AS TEXT) like '" + busca + "%'";
             case "Nome do Responsável":
                 return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + busca + "%'";
             default:

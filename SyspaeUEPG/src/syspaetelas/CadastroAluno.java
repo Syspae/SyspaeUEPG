@@ -126,6 +126,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     
     
     private void desabilitaCampos(){
+            //Checkboxs
             chckbxAtendente.setEnabled(false);
             chckbxAtendimentoEspecializado.setEnabled(false);
             chckbxCarteirasAdaptadas.setEnabled(false);
@@ -153,40 +154,42 @@ public class CadastroAluno extends javax.swing.JFrame {
             cmbbxSexo.setEnabled(false);
             cmbbxTipoMoradia.setEnabled(false);
             cmbbxTipoTransporte.setEnabled(false);
-            cmbbxUF.setEnabled(false);
-            fldDataNascimento.setEnabled(false);
-            spnPessoasNaCasa.setEnabled(false);
-            txtfldBairro.setEnabled(false);
-            txtfldCEP.setEnabled(false);
-            txtfldCGM.setEnabled(false);
-            txtfldCPF.setEnabled(false);
-            txtfldCidade.setEnabled(false);
-            txtfldComplemento.setEnabled(false);
-            txtfldDataEmissao.setEnabled(false);
+            cmbbxUF.setEnabled(false);            
+            //txtflds
+            fldDataNascimento.setEditable(false);            
+            txtfldBairro.setEditable(false);
+            txtfldCEP.setEditable(false);
+            txtfldCGM.setEditable(false);
+            txtfldCPF.setEditable(false);
+            txtfldCidade.setEditable(false);
+            txtfldComplemento.setEditable(false);
+            txtfldDataEmissao.setEditable(false);
+            txtfldFiliacao1.setEditable(false);
+            txtfldEndereco.setEditable(false);
+            txtfldFiliacao1.setEditable(false);
+            txtfldFiliacao2.setEditable(false);
+            txtfldLivroFolhas.setEditable(false);
+            txtfldMatricula.setEditable(false);
+            txtfldMunicipio.setEditable(false);
+            txtfldNDocumentoFiliacao1.setEditable(false);
+            txtfldNDocumentoFiliacao2.setEditable(false);
+            txtfldNDocumentoResponsavel.setEditable(false);
+            txtfldNascimentoCasamento.setEditable(false);
+            txtfldNdaCasa.setEditable(false);
+            txtfldNomeCartorio.setEditable(false);
+            txtfldNumeroContato.setEditable(false);
+            txtfldOrgaoEmissor.setEditable(false);
+            txtfldPaisNatural.setEditable(false);
+            txtfldRG.setEditable(false);
+            txtfldRNE.setEditable(false);
+            txtfldResponsavel.setEditable(false);
+            txtfldNome.setEditable(false);
+            txtfldEmail.setEditable(false);
+            //cmbbxs
             cmbbxDocumentoFiliacao2.setEnabled(false);
-            txtfldFiliacao1.setEnabled(false);
-            txtfldEndereco.setEnabled(false);
-            txtfldFiliacao1.setEnabled(false);
-            txtfldFiliacao2.setEnabled(false);
-            txtfldLivroFolhas.setEnabled(false);
-            txtfldMatricula.setEnabled(false);
-            txtfldMunicipio.setEnabled(false);
-            txtfldNDocumentoFiliacao1.setEnabled(false);
-            txtfldNDocumentoFiliacao2.setEnabled(false);
-            txtfldNDocumentoResponsavel.setEnabled(false);
-            txtfldNascimentoCasamento.setEnabled(false);
-            txtfldNdaCasa.setEnabled(false);
-            txtfldNomeCartorio.setEnabled(false);
-            txtfldNumeroContato.setEnabled(false);
-            txtfldOrgaoEmissor.setEnabled(false);
-            txtfldPaisNatural.setEnabled(false);
-            txtfldRG.setEnabled(false);
-            txtfldRNE.setEnabled(false);
-            txtfldResponsavel.setEnabled(false);
-            txtfldNome.setEnabled(false);
-            cmbbxCorRaca.setEnabled(false);
-            txtfldEmail.setEnabled(false);
-
+            cmbbxCorRaca.setEnabled(false);    
+            //spnrs
+            spnPessoasNaCasa.setEnabled(false);
             //Desativar botão de Salvar
             btnSalvar.setEnabled(false);
     }

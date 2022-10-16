@@ -32,7 +32,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
             case "CPF":
                 return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + txtfldBusca.getText() + "%'";
             case "Matrícula":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where idaluno like '" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where CAST(idaluno AS TEXT) like '" + txtfldBusca.getText() + "%'";
             case "Nome do Responsável":
                 return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + txtfldBusca.getText() + "%'";
             default:

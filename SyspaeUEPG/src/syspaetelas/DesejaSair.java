@@ -94,6 +94,7 @@ public class DesejaSair extends javax.swing.JFrame {
 
     private void btnNaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNaoActionPerformed
         // TODO add your handling code here:
+        DesejaSair.this.dispose();
     }//GEN-LAST:event_btnNaoActionPerformed
 
     /**

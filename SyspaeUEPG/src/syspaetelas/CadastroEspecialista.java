@@ -23,6 +23,29 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         //this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
     }
+    
+    private String preparaSQL(){
+        int id = 0;        
+        String busca = "Select idespecialidade from especialidade where nome like '"+cmbbxEspecialidade.getSelectedItem().toString()+"'";            
+               
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(busca);
+        try {
+            while(rs.next()){
+                id = rs.getInt("idespecialidade");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+        return "INSERT into profissional (nome, crm, fk_especialidade_idespecialidade) values ('"+txtfldNomeEspecialista.getText()+"', '"+txtfldCRM.getText()+"', '"+id+"')";
+    }
+    
+    private void desabilitaCampos(){
+        txtfldNomeEspecialista.setEditable(false);
+        cmbbxEspecialidade.setEnabled(false);
+        txtfldCRM.setEditable(false);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,19 +56,24 @@ public class CadastroEspecialista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblSucesso = new javax.swing.JLabel();
         lblNomeEspecialista = new javax.swing.JLabel();
         lblEspecialidade = new javax.swing.JLabel();
         txtfldNomeEspecialista = new javax.swing.JTextField();
         cmbbxEspecialidade = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         lblCamposObrigatorios = new javax.swing.JLabel();
         lblCRM = new javax.swing.JLabel();
         txtfldCRM = new javax.swing.JTextField();
+        lblErro = new javax.swing.JLabel();
 
         setTitle("Cadastrar Especialista");
         setLocation(new java.awt.Point(500, 200));
         setResizable(false);
+
+        lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
 
         lblNomeEspecialista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblNomeEspecialista.setText("Nome*");
@@ -68,19 +96,19 @@ public class CadastroEspecialista extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton2.setText("Salvar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -92,6 +120,10 @@ public class CadastroEspecialista extends javax.swing.JFrame {
 
         txtfldCRM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
+        lblErro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblErro.setForeground(new java.awt.Color(204, 0, 0));
+        lblErro.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,21 +132,29 @@ public class CadastroEspecialista extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCamposObrigatorios)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCamposObrigatorios)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalvar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancelar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblCRM)
+                                    .addComponent(lblEspecialidade)
+                                    .addComponent(lblNomeEspecialista)
+                                    .addComponent(txtfldNomeEspecialista, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                                    .addComponent(cmbbxEspecialidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblCRM)
-                            .addComponent(lblEspecialidade)
-                            .addComponent(lblNomeEspecialista)
-                            .addComponent(txtfldNomeEspecialista, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-                            .addComponent(txtfldCRM, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbbxEspecialidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(txtfldCRM, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,13 +170,16 @@ public class CadastroEspecialista extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblCRM)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtfldCRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtfldCRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar)
                     .addComponent(lblCamposObrigatorios))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -150,47 +193,36 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbbxEspecialidadeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         CadastroEspecialista.this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:        
-        String nome = txtfldNomeEspecialista.getText();
-        String especialidade = cmbbxEspecialidade.getSelectedItem().toString();
-        String crm = txtfldCRM.getText();
-        int id = 0;
-        
-        String busca = "Select idespecialidade from especialidade where nome like '"+especialidade+"'";     
-        
-               
-        Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
-        try {
-            while(rs.next()){
-                id = rs.getInt("idespecialidade");
+        Conexao con = new Conexao();        
+        int insert = con.executaInsert(preparaSQL());
+        if(insert==1){
+                lblErro.setVisible(false);
+                lblSucesso.setText("Cadastro efetuado com sucesso!");
+                desabilitaCampos();
             }
-        } catch (Exception e) {
-        }
-        
-        String SQL = "INSERT into profissional (nome, crm, fk_especialidade_idespecialidade) values ('"+nome+"', '"+crm+"', '"+id+"')";
-        
-        con.executaInsert(SQL);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbbxEspecialidade;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblCRM;
     private javax.swing.JLabel lblCamposObrigatorios;
+    private javax.swing.JLabel lblErro;
     private javax.swing.JLabel lblEspecialidade;
     private javax.swing.JLabel lblNomeEspecialista;
+    private javax.swing.JLabel lblSucesso;
     private javax.swing.JTextField txtfldCRM;
     private javax.swing.JTextField txtfldNomeEspecialista;
     // End of variables declaration//GEN-END:variables

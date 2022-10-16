@@ -4,11 +4,12 @@
  */
 package syspaetelas;
 
-import static java.lang.System.exit;
 import controleConexao.Conexao;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.JTextField;
+import java.text.SimpleDateFormat;
+
 
 /**
  *
@@ -193,8 +194,8 @@ public class EditarAluno extends javax.swing.JFrame {
                 cmbbxRecebeBPC.setSelectedItem(bpc(rs.getArray("bpc").toString()));
                 spnPessoasNaCasa.setValue(rs.getInt("pessoas_na_casa"));
                 cmbbxRendaFamiliar.setSelectedItem(renda_familiar(rs.getString("renda_familiar")));
-                fldDataNascimento.setText(inverteData(rs.getDate("data_nascimento")));
-                txtfldDataEmissao.setText(inverteData(rs.getDate("data_emissao")));
+                fldDataNascimento.setText(inverteData(rs.getDate("data_nascimento").toString()));
+                txtfldDataEmissao.setText(inverteData(rs.getDate("data_emissao").toString()));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -369,8 +370,10 @@ public class EditarAluno extends javax.swing.JFrame {
         }
     }
     
-    private String inverteData(java.sql.Date data){
-        return data.getDate()+"/"+(data.getMonth()+1)+"/"+(data.getYear()+1900);        
+    private String inverteData(String data){
+        Date novaData = Date.valueOf(data);
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        return formatador.format(novaData);        
     }
     
     private void desabilitaCampos(){
