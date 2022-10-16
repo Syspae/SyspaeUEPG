@@ -111,9 +111,9 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     }
     
     private String preparaSQL(){        
-        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional) "
+        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade) "
                     + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"'"
-                    + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', '"+cmbbProfissional.getSelectedItem().toString()+"')";
+                    + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', '"+cmbbProfissional.getSelectedItem().toString()+"', '"+cmbbxEspecialidade.getSelectedItem().toString()+"')";
     }
     
     /**

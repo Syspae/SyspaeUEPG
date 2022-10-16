@@ -28,13 +28,13 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where nome like '" + txtfldBusca.getText() + "%'";
+                return "SELECT idaluno,	nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel,	especialidade, idatendimento FROM aluno, atendimento WHERE nome like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
             case "CPF":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + txtfldBusca.getText() + "%'";
+                return "SELECT idaluno,	nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel,	especialidade, idatendimento FROM aluno, atendimento WHERE cpf like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
             case "Matrícula":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where CAST(idaluno AS TEXT) like '" + txtfldBusca.getText() + "%'";
+                return "SELECT idaluno,	nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel,	especialidade, idatendimento FROM aluno, atendimento WHERE idaluno like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
             case "Nome do Responsável":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + txtfldBusca.getText() + "%'";
+                return "SELECT idaluno,	nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel,	especialidade, idatendimento FROM aluno, atendimento WHERE responsavel like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
             default:
                 throw new AssertionError();
         }
@@ -101,14 +101,14 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Data do Atendimento", "Especialista"
+                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Data do Atendimento", "Especialista", "Num do Atendimento"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -174,7 +174,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
     private void btn03SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03SelecionarActionPerformed
         // TODO add your handling code here:
-        int id = (int) tblBuscaAtendimento.getModel().getValueAt(tblBuscaAtendimento.getSelectedRow(), 0);        
+        int id = (int) tblBuscaAtendimento.getModel().getValueAt(tblBuscaAtendimento.getSelectedRow(), 6);        
         MostraAtendimento atendimento = new MostraAtendimento(id);
     }//GEN-LAST:event_btn03SelecionarActionPerformed
 
@@ -186,8 +186,8 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         ResultSet rs = con.executaBusca(preparaSQL());
         try {
             while(rs.next()){
-                Object[] row = new Object[5];
-                for(int i = 1; i<=5; i++) row[i-1] = rs.getObject(i);
+                Object[] row = new Object[7];
+                for(int i = 1; i<=7; i++) row[i-1] = rs.getObject(i);
                 ((DefaultTableModel) tblBuscaAtendimento.getModel()).insertRow(rs.getRow() - 1, row);
             }
         } catch (Exception e) {

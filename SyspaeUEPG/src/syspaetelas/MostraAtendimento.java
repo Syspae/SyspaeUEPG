@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
  */
 public class MostraAtendimento extends javax.swing.JFrame {
 
-    private int idAluno;
+    private int idAtendimento;
     
     /**
      * Creates new form TelaCadastroAtendimento
@@ -23,13 +23,12 @@ public class MostraAtendimento extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setVisible(true);
-        idAluno = id;
+        idAtendimento = id;
         mostraItens();
-        System.out.println(idAluno);
     }
     
     private String preparaSQL(){
-        return "select * from atendimento where CAST(idconsulta AS TEXT) like '"+idAluno+"'";        
+        return "select * from atendimento where idatendimento = '"+idAtendimento+"'";        
     }
     
     private void mostraItens(){
@@ -248,7 +247,7 @@ public class MostraAtendimento extends javax.swing.JFrame {
 
     private void btnAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnamneseActionPerformed
         // TODO add your handling code here:
-        MostraAnamnese tela06 = new MostraAnamnese();
+        MostraAnamnese tela06 = new MostraAnamnese(idAtendimento);
     }//GEN-LAST:event_btnAnamneseActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

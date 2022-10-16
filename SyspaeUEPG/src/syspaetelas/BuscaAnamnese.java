@@ -29,13 +29,13 @@ public class BuscaAnamnese extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where nome like '" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where nome like '" + txtfldBusca.getText() + "%'";
             case "CPF":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where cpf like'" + txtfldBusca.getText() + "%'";
             case "Matrícula":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where CAST(idaluno AS TEXT) like '" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where CAST(idaluno AS TEXT) like'" + txtfldBusca.getText() + "%'";
             case "Nome do Responsável":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where responsavel like'" + txtfldBusca.getText() + "%'";
             default:
                 throw new AssertionError();
         }
@@ -103,14 +103,14 @@ public class BuscaAnamnese extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Data da Anamnese"
+                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Data da Anamnese", "Num da Anamnese"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -180,8 +180,8 @@ public class BuscaAnamnese extends javax.swing.JFrame {
         ResultSet rs = con.executaBusca(preparaSQL());
         try {
             while(rs.next()){
-                Object[] row = new Object [5];
-                for(int i = 1; i<= 5; i++) row [i-1] = rs.getObject(i);
+                Object[] row = new Object [6];
+                for(int i = 1; i<= 6; i++) row [i-1] = rs.getObject(i);
                 ((DefaultTableModel) tblBuscaAnamnese.getModel()).insertRow(rs.getRow() - 1, row);
             }
         } catch (Exception e) {
@@ -190,11 +190,9 @@ public class BuscaAnamnese extends javax.swing.JFrame {
     }//GEN-LAST:event_btn03BuscarActionPerformed
 
     private void btn03SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03SelecionarActionPerformed
-        // TODO add your handling code here:
-        int id = 0;
-        int row = tblBuscaAnamnese.getSelectedRow();
-        
-        String s = tblBuscaAnamnese.getModel().getValueAt(row, 0)+"";
+        // TODO add your handling code here:   
+        int id = (int) tblBuscaAnamnese.getModel().getValueAt(tblBuscaAnamnese.getSelectedRow(), 5);
+        MostraAnamnese mostraAnamnese = new MostraAnamnese(id);
     }//GEN-LAST:event_btn03SelecionarActionPerformed
 
     /**
