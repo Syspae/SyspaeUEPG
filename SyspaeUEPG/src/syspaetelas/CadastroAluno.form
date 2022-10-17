@@ -1686,7 +1686,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JtextFieldSomenteNumeros(10)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JtextFieldSomenteNumeros(12)"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtfldRNE">

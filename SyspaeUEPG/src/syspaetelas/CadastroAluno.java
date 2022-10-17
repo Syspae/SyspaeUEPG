@@ -641,7 +641,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         txtfldFiliacao2 = new JtextFieldSomenteLetras(100);
         txtfldCidade = new JtextFieldSomenteLetras(50);
         txtfldCGM = new JtextFieldSomenteNumeros(20);
-        txtfldRG = new JtextFieldSomenteNumeros(10);
+        txtfldRG = new JtextFieldSomenteNumeros(12);
         txtfldRNE = new JtextFieldSomenteNumeros(15);
         txtfldNascimentoCasamento = new JtextFieldSomenteNumeros(30);
         txtfldNDocumentoResponsavel = new JtextFieldSomenteNumeros(30);
