@@ -28,13 +28,13 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "SELECT idaluno,	nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel,	especialidade, idatendimento FROM aluno, atendimento WHERE nome like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE aluno.nome like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
             case "CPF":
-                return "SELECT idaluno,	nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel,	especialidade, idatendimento FROM aluno, atendimento WHERE cpf like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE cpf like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
             case "Matrícula":
-                return "SELECT idaluno,	nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel,	especialidade, idatendimento FROM aluno, atendimento WHERE idaluno like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE CAST(idaluno AS TEXT) like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
             case "Nome do Responsável":
-                return "SELECT idaluno,	nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel,	especialidade, idatendimento FROM aluno, atendimento WHERE responsavel like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE responsavel like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
             default:
                 throw new AssertionError();
         }
