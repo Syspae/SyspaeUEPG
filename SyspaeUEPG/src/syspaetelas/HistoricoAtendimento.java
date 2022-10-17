@@ -190,7 +190,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
     private void btn03SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03SelecionarActionPerformed
         // TODO add your handling code here:
-        int id = (int) tblBuscaAtendimento.getModel().getValueAt(tblBuscaAtendimento.getSelectedRow(), 6);        
+        int id = (int) tblBuscaAtendimento.getModel().getValueAt(tblBuscaAtendimento.getSelectedRow(), 4);        
         MostraAtendimento atendimento = new MostraAtendimento(id);
     }//GEN-LAST:event_btn03SelecionarActionPerformed
 
