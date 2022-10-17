@@ -109,7 +109,7 @@ public class BuscaAnamnese extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Data da Anamnese", "Num da Anamnese"
+                "Matrícula", "Nome", "Data de Nascimento", "CPF", "Data da Anamnese", "Nº Anamnese"
             }
         ) {
             Class[] types = new Class [] {
@@ -128,6 +128,14 @@ public class BuscaAnamnese extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(tblBuscaAnamnese);
+        if (tblBuscaAnamnese.getColumnModel().getColumnCount() > 0) {
+            tblBuscaAnamnese.getColumnModel().getColumn(0).setPreferredWidth(15);
+            tblBuscaAnamnese.getColumnModel().getColumn(1).setPreferredWidth(140);
+            tblBuscaAnamnese.getColumnModel().getColumn(2).setPreferredWidth(70);
+            tblBuscaAnamnese.getColumnModel().getColumn(3).setPreferredWidth(55);
+            tblBuscaAnamnese.getColumnModel().getColumn(4).setPreferredWidth(70);
+            tblBuscaAnamnese.getColumnModel().getColumn(5).setPreferredWidth(45);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

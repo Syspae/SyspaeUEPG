@@ -90,11 +90,13 @@ public class MostraAtendimento extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtTratamento = new javax.swing.JTextArea();
 
-        setTitle("Cadastrar Atendimento");
+        setTitle("Atendimento");
         setResizable(false);
 
+        btnSair.setBackground(new java.awt.Color(242, 242, 242));
         btnSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnSair.setText("Sair");
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Sair (1).png"))); // NOI18N
+        btnSair.setBorder(null);
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -141,8 +143,10 @@ public class MostraAtendimento extends javax.swing.JFrame {
         lblProfissional.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblProfissional.setText("Profissional");
 
+        btnAnamnese.setBackground(new java.awt.Color(242, 242, 242));
         btnAnamnese.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnAnamnese.setText("Anamnese");
+        btnAnamnese.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Anamnese.png"))); // NOI18N
+        btnAnamnese.setBorder(null);
         btnAnamnese.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnamneseActionPerformed(evt);
@@ -183,30 +187,32 @@ public class MostraAtendimento extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTratamento)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnSair))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblAluno)
                                             .addComponent(lblProfissional))
-                                        .addGap(0, 217, Short.MAX_VALUE))
+                                        .addGap(0, 361, Short.MAX_VALUE))
                                     .addComponent(cmbbxAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbbxProfissional, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cmbbxProfissional, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblEspecialidade, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblDataAtendimento)
-                                        .addGap(135, 135, 135))
-                                    .addComponent(cmbbxEspecialidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtfldDataAtendimento)
-                                        .addGap(38, 38, 38)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnAnamnese)
-                                            .addComponent(btnSair)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(lblDataAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtfldDataAtendimento))
+                                        .addGap(32, 32, 32)
+                                        .addComponent(btnAnamnese))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblEspecialidade)
+                                        .addGap(178, 178, 178))
+                                    .addComponent(cmbbxEspecialidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane2)
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -249,9 +255,9 @@ public class MostraAtendimento extends javax.swing.JFrame {
                 .addComponent(lblTratamento)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSair)
-                .addGap(17, 17, 17))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();

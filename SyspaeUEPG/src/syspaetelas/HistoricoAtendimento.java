@@ -129,10 +129,10 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         tblBuscaAtendimento.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane3.setViewportView(tblBuscaAtendimento);
         if (tblBuscaAtendimento.getColumnModel().getColumnCount() > 0) {
-            tblBuscaAtendimento.getColumnModel().getColumn(0).setPreferredWidth(70);
+            tblBuscaAtendimento.getColumnModel().getColumn(0).setPreferredWidth(60);
             tblBuscaAtendimento.getColumnModel().getColumn(1).setPreferredWidth(285);
-            tblBuscaAtendimento.getColumnModel().getColumn(2).setPreferredWidth(150);
-            tblBuscaAtendimento.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tblBuscaAtendimento.getColumnModel().getColumn(2).setPreferredWidth(140);
+            tblBuscaAtendimento.getColumnModel().getColumn(3).setPreferredWidth(120);
             tblBuscaAtendimento.getColumnModel().getColumn(4).setPreferredWidth(100);
             tblBuscaAtendimento.getColumnModel().getColumn(5).setPreferredWidth(150);
             tblBuscaAtendimento.getColumnModel().getColumn(6).setPreferredWidth(250);

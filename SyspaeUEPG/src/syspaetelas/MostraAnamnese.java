@@ -38,6 +38,8 @@ public class MostraAnamnese extends javax.swing.JFrame {
     }
     
     private void desabilitaCampos(){
+        txtfldDataNascimento.setEditable(false);
+        txtfldDataAnamnese.setEditable(false);
         cmbbxNome.setEnabled(false);
         txtAtendimentosOdonto.setEditable(false);
         txtDoencaFamilia.setEditable(false);
@@ -127,7 +129,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         lblSucesso = new javax.swing.JLabel();
 
-        setTitle("Cadastrar Anamnese");
+        setTitle("Anamnese");
         setResizable(false);
 
         lblNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -246,8 +248,10 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxAutismo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chckbxAutismo.setText("Autismo");
 
+        btnCancelar.setBackground(new java.awt.Color(242, 242, 242));
         btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Cancelar.png"))); // NOI18N
+        btnCancelar.setBorder(null);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -372,11 +376,11 @@ public class MostraAnamnese extends javax.swing.JFrame {
                         .addComponent(chckbxDeficienciaMultipla)
                         .addGap(8, 8, 8)
                         .addComponent(chckbxAutismo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCancelar)
-                            .addComponent(lblSucesso))
-                        .addGap(45, 45, 45))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSucesso)
+                        .addGap(21, 21, 21)
+                        .addComponent(btnCancelar)
+                        .addGap(24, 24, 24))))
         );
 
         pack();
