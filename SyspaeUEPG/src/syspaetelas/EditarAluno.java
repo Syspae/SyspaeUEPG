@@ -371,7 +371,7 @@ public class EditarAluno extends javax.swing.JFrame {
     private String formataData(String data){
         Date novaData = Date.valueOf(data);
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println(formatador.format(novaData));
+        if (formatador.format(novaData).equals("11/11/1111")) return " ";
         return formatador.format(novaData);        
     }
     
