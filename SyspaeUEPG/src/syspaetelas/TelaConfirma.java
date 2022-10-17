@@ -119,7 +119,7 @@ public class TelaConfirma extends javax.swing.JDialog {
                 .addContainerGap(46, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
                 .addGap(43, 43, 43))

@@ -125,7 +125,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                
     }
     
-    
+    //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
             //Checkboxs
             chckbxAtendente.setEnabled(false);
@@ -194,7 +194,8 @@ public class CadastroAluno extends javax.swing.JFrame {
             //Desativar botão de Salvar
             btnSalvar.setEnabled(false);
     }
-        
+    
+    //Funções para tratamento de dados para mandar ao banco
     private char estado_civil(){
         String estado_civil = cmbbxEstadoCivil.getSelectedItem().toString();
         switch (estado_civil) {
@@ -391,6 +392,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         }
     }
     
+    //Função para validar os campos obrigatorios
     private int validaObrigatorios(){
         String nome = txtfldNome.getText();        
         String data_nascimento = fldDataNascimento.getText();
@@ -440,6 +442,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         return 1;
 }
     
+    //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){
         String nome = txtfldNome.getText();
         String cgm = txtfldCGM.getText();

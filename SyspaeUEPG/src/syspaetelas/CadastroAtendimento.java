@@ -25,6 +25,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         btnAnamnese.setEnabled(false);
     }
 
+    //Função para pegar os alunos cadastrados e colocar no combobox
     private void buscaAlunos(){
         String busca = "Select nome from aluno";
         Conexao con = new Conexao();
@@ -38,6 +39,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         }
     }
     
+    //Função para pegar os profissionais cadastrados e colocar no combobox
     private void buscaProfissional(){
         String busca = "Select nome from profissional";
         Conexao con = new Conexao();
@@ -52,6 +54,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
  
    }
     
+    //Função para pegar o ID da especialidade relacionada ao profissional
     private int buscaEspecialidadeID(){
         String buscaId = "select fk_especialidade_idespecialidade from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"'";
         int id = 0;
@@ -67,6 +70,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         return id;
     }
     
+    //Função para pegar o nome da especialidade baseado no ID
     private void buscaEspecialidadeNome(){
         cmbbxEspecialidade.removeAllItems();
         int id = buscaEspecialidadeID();
@@ -82,6 +86,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         }
     }
     
+    //Função para pegar o ID do aluno selecionado no combobox
     private int idAluno(){        
         String busca = "Select * from aluno where nome like '"+cmbbxAluno.getSelectedItem().toString()+"%'";
         Conexao con = new Conexao();
@@ -96,6 +101,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         return id;
     }
     
+    //Função para pegar o ID do profissional selecionado no combobox
     private int idProfissional(){
         String busca = "Select * from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"%'";
         Conexao con = new Conexao();
@@ -110,6 +116,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         return id;
     }
     
+    //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
         cmbbxAluno.setEnabled(false);
         txtfldDataAtendimento.setEditable(false);
@@ -120,6 +127,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         txtTratamento.setEditable(false);
     }
     
+    //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){        
         return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade) "
                     + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"'"

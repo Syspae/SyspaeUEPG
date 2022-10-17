@@ -27,16 +27,19 @@ public class MostraAnamnese extends javax.swing.JFrame {
         mostraItens();
     }
 
+    //Função que prepara a string passada como SQL
     private String preparaSQL(){
         return "select aluno.data_nascimento, * from anamnese, aluno where idaluno  = '"+idAnamnese+"'";
     }
     
-    private String inverteData(String data){
+    //Função que formata a data
+    private String formataData(String data){
         Date novaData = Date.valueOf(data);
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         return formatador.format(novaData); 
     }
     
+    //Função que desabilita os campos 
     private void desabilitaCampos(){
         txtfldDataNascimento.setEditable(false);
         txtfldDataAnamnese.setEditable(false);
@@ -60,6 +63,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxAutismo.setEnabled(false);
     }
     
+    //Função que pega as informações do banco e coloca nos campos
     private void mostraItens(){
         desabilitaCampos();
         Conexao con = new Conexao();
@@ -67,8 +71,8 @@ public class MostraAnamnese extends javax.swing.JFrame {
         try {
             while(rs.next()){
                 cmbbxNome.addItem(rs.getString("nome"));
-                txtfldDataNascimento.setText(inverteData(rs.getString("data_nascimento")));
-                txtfldDataAnamnese.setText(inverteData(rs.getString("data_anamnese")));
+                txtfldDataNascimento.setText(formataData(rs.getString("data_nascimento")));
+                txtfldDataAnamnese.setText(formataData(rs.getString("data_anamnese")));
                 txtDoencaFamilia.setText(rs.getString("doencas_familia"));
                 txtAtendimentosOdonto.setText(rs.getString("atendimentos_odontologicos"));
                 txtEncaminhamentos.setText(rs.getString("encaminhamentos_para_a_rede"));

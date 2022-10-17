@@ -27,10 +27,12 @@ public class MostraAtendimento extends javax.swing.JFrame {
         mostraItens();
     }
     
+    //Função que prepara a string SQL para a busca
     private String preparaSQL(){
         return "select * from atendimento where idatendimento = '"+idAtendimento+"'";        
     }
     
+    //Função que desativa os campos
     private void desabilitaCampos(){
         cmbbxAluno.setEnabled(false);
         txtfldDataAtendimento.setEditable(false);
@@ -41,6 +43,7 @@ public class MostraAtendimento extends javax.swing.JFrame {
         txtTratamento.setEditable(false);
     }
     
+    //Função que mostra os itens nos campos
     private void mostraItens(){
         desabilitaCampos();
         Conexao con = new Conexao();
@@ -48,7 +51,7 @@ public class MostraAtendimento extends javax.swing.JFrame {
         try {
             while(rs.next()){
                 cmbbxAluno.addItem(rs.getString("aluno"));
-                txtfldDataAtendimento.setText(inverteData(rs.getDate("data_do_atendimento").toString()));
+                txtfldDataAtendimento.setText(formataData(rs.getDate("data_do_atendimento").toString()));
                 cmbbxProfissional.addItem(rs.getString("profissional"));
                 cmbbxEspecialidade.addItem(rs.getString("especialidade"));
                 txtMotivoAtendimento.setText(rs.getString("motivo_do_atendimento"));
@@ -60,7 +63,8 @@ public class MostraAtendimento extends javax.swing.JFrame {
         }
     }
     
-    private String inverteData(String data){
+    //Função para formatar a data vinda do banco
+    private String formataData(String data){
         Date novaData = Date.valueOf(data);
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         return formatador.format(novaData); 

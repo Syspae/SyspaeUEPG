@@ -25,6 +25,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    //Função para buscar os atendimentos baseado no combobox de busca
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
@@ -59,11 +60,10 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         tblBuscaAtendimento = new javax.swing.JTable();
 
         setTitle("Histórico de Atendimentos");
-        setPreferredSize(new java.awt.Dimension(1200, 600));
         setResizable(false);
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Telefone", "Nome do Responsável", "Data de Nascimento" }));
+        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Data de Nascimento" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 

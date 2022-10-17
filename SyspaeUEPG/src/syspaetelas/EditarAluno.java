@@ -132,6 +132,7 @@ public class EditarAluno extends javax.swing.JFrame {
         mostraAluno(id);       
     }
     
+    //Função para colocar as informações do aluno nos campos
     private void mostraAluno(String cadastro){
         String SQL = "select * from aluno where idaluno = "+cadastro+"";
         Conexao con = new Conexao();
@@ -195,14 +196,15 @@ public class EditarAluno extends javax.swing.JFrame {
                 cmbbxRecebeBPC.setSelectedItem(bpc(rs.getBoolean("bpc")));
                 spnPessoasNaCasa.setValue(rs.getInt("pessoas_na_casa"));
                 cmbbxRendaFamiliar.setSelectedItem(renda_familiar(rs.getString("renda_familiar")));
-                fldDataNascimento.setText(inverteData(rs.getDate("data_nascimento").toString()));
-                txtfldDataEmissao.setText(inverteData(rs.getDate("data_emissao").toString()));
+                fldDataNascimento.setText(formataData(rs.getDate("data_nascimento").toString()));
+                txtfldDataEmissao.setText(formataData(rs.getDate("data_emissao").toString()));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
+    //Funções para o tratamento das informações obtidas do banco
     private String cor_raca(String cor_raca){
         switch (cor_raca) {
             case "B":
@@ -365,13 +367,15 @@ public class EditarAluno extends javax.swing.JFrame {
         }
     }
     
-    private String inverteData(String data){
+    //Função para formatar os campos de data
+    private String formataData(String data){
         Date novaData = Date.valueOf(data);
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println(formatador.format(novaData));
         return formatador.format(novaData);        
     }
     
+    //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
             //Checkboxs
             chckbxAtendente.setEnabled(false);
@@ -444,6 +448,7 @@ public class EditarAluno extends javax.swing.JFrame {
             btnSalvar.setVisible(false);
     }
     
+    //Função para habilitar os campos ao editar
     private void habilitaCampos(){
             //Checkboxs
             chckbxAtendente.setEnabled(true);
@@ -517,6 +522,7 @@ public class EditarAluno extends javax.swing.JFrame {
             btnSalvar.setVisible(true);
     }
     
+    //Funções para tratamento das informação para mandar para o banco
     private char estado_civil(){
         String estado_civil = cmbbxEstadoCivil.getSelectedItem().toString();
         switch (estado_civil) {
@@ -713,6 +719,7 @@ public class EditarAluno extends javax.swing.JFrame {
         }
     }
     
+    //Função para validar os campos obrigatorios
     private int validaObrigatorios(){
         String nome = txtfldNome.getText();        
         String data_nascimento = fldDataNascimento.getText();
@@ -762,6 +769,7 @@ public class EditarAluno extends javax.swing.JFrame {
         return 1;
 }
     
+    //Função para pegar os campos preenchidos e transformar na SQL pra atualização
     private String preparaSQL(){
         String doc_f1 = cmbbxDocumentoFiliacao1.getSelectedItem().toString();
         String doc_f2 = cmbbxDocumentoFiliacao2.getSelectedItem().toString();

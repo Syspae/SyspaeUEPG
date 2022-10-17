@@ -24,7 +24,8 @@ public class BuscaAluno extends javax.swing.JFrame {
         setLocationRelativeTo(null);       
         
     }
-
+    
+    //Função para buscar alunos cadastrados baseado no combobox de busca
     private String preparaSQL(){
         String busca = txtfldBusca.getText();
         String tipoBusca = cmbbxBusca.getSelectedItem().toString();

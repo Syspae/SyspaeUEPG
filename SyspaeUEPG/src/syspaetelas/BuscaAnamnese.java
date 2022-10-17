@@ -26,6 +26,7 @@ public class BuscaAnamnese extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    //Função para buscar a anamnese baseado no combobox de busca
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":

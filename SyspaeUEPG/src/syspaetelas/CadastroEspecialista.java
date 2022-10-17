@@ -125,6 +125,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         
     }
     
+    //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){
         int id = 0;        
         String busca = "Select idespecialidade from especialidade where nome like '"+cmbbxEspecialidade.getSelectedItem().toString()+"'";            
@@ -141,6 +142,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         return "INSERT into profissional (nome, crm, fk_especialidade_idespecialidade) values ('"+txtfldNomeEspecialista.getText()+"', '"+txtfldCRM.getText()+"', '"+id+"')";
     }
     
+    //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
         txtfldNomeEspecialista.setEditable(false);
         cmbbxEspecialidade.setEnabled(false);
