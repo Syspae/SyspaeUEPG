@@ -1596,6 +1596,9 @@ public class CadastroAluno extends javax.swing.JFrame {
                 lblErro.setVisible(false);
                 lblSucesso.setText("Cadastro efetuado com sucesso!");
                 desabilitaCampos();
+                dispose();                
+                CadastroAluno tela02 = new CadastroAluno("cadastro");
+                
             }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
