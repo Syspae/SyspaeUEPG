@@ -5,7 +5,11 @@
 package syspaetelas;
 
 import controleConexao.Conexao;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -23,11 +27,19 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         buscaAlunos();
         buscaProfissional();
         btnAnamnese.setEnabled(false);
+        data();
     }
 
+    private void data(){
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime dataAtual = LocalDateTime.now();
+        txtfldDataAtendimento.setText(formatador.format(dataAtual));
+    }
+    
     //Função para pegar os alunos cadastrados e colocar no combobox
     private void buscaAlunos(){
-        String busca = "Select nome from aluno";
+        cmbbxAluno.addItem("");
+        String busca = "Select nome from aluno order by nome ASC";
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(busca);
         try {
@@ -41,7 +53,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     
     //Função para pegar os profissionais cadastrados e colocar no combobox
     private void buscaProfissional(){
-        String busca = "Select nome from profissional";
+        cmbbxProfissional.addItem("");
+        String busca = "Select nome from profissional order by nome ASC";
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(busca);
         try {

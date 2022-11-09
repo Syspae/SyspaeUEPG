@@ -29,13 +29,13 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE aluno.nome like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE aluno.nome like '" + txtfldBusca.getText() + "%'and fk_aluno_idaluno = idaluno order by aluno.nome ASC";
             case "CPF":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE cpf like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE cpf like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno order by aluno.nome ASC";
             case "Matrícula":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE CAST(idaluno AS TEXT) like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE CAST(idaluno AS TEXT) like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno order by aluno.nome ASC";
             case "Nome do Responsável":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE responsavel like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE responsavel like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno order by aluno.nome ASC";
             default:
                 throw new AssertionError();
         }
@@ -196,19 +196,21 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
 
     private void btn03BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03BuscarActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel table = (DefaultTableModel) tblBuscaAtendimento.getModel();
-        table.setRowCount(0);
-        Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(preparaSQL());
-        try {
-            while(rs.next()){
-                Object[] row = new Object[7];
-                for(int i = 1; i<=7; i++) row[i-1] = rs.getObject(i);
-                ((DefaultTableModel) tblBuscaAtendimento.getModel()).insertRow(rs.getRow() - 1, row);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }       
+        if(txtfldBusca.getText().length() >= 3){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAtendimento.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaSQL());
+            try {
+                while(rs.next()){
+                    Object[] row = new Object[7];
+                    for(int i = 1; i<=7; i++) row[i-1] = rs.getObject(i);
+                    ((DefaultTableModel) tblBuscaAtendimento.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }       
+        }
     }//GEN-LAST:event_btn03BuscarActionPerformed
 
     /**

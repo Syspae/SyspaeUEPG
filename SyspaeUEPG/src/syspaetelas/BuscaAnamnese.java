@@ -30,13 +30,13 @@ public class BuscaAnamnese extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where nome like '" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where nome like '" + txtfldBusca.getText() + "%'order by nome ASC";
             case "CPF":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where cpf like'" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where cpf like'" + txtfldBusca.getText() + "%'order by nome ASC";
             case "Matrícula":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where CAST(idaluno AS TEXT) like'" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where CAST(idaluno AS TEXT) like'" + txtfldBusca.getText() + "%'order by nome ASC";
             case "Nome do Responsável":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where responsavel like'" + txtfldBusca.getText() + "%'";
+                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where responsavel like'" + txtfldBusca.getText() + "%'order by nome ASC";
             default:
                 throw new AssertionError();
         }
@@ -190,18 +190,20 @@ public class BuscaAnamnese extends javax.swing.JFrame {
 
     private void btn03BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03BuscarActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel table = (DefaultTableModel) tblBuscaAnamnese.getModel();
-        table.setRowCount(0);
-        Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(preparaSQL());
-        try {
-            while(rs.next()){
-                Object[] row = new Object [6];
-                for(int i = 1; i<= 6; i++) row [i-1] = rs.getObject(i);
-                ((DefaultTableModel) tblBuscaAnamnese.getModel()).insertRow(rs.getRow() - 1, row);
+        if(txtfldBusca.getText().length() >= 3){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAnamnese.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaSQL());
+            try {
+                while(rs.next()){
+                    Object[] row = new Object [6];
+                    for(int i = 1; i<= 6; i++) row [i-1] = rs.getObject(i);
+                    ((DefaultTableModel) tblBuscaAnamnese.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_btn03BuscarActionPerformed
 

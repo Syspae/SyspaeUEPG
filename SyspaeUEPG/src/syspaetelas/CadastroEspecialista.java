@@ -192,7 +192,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         });
 
         cmbbxEspecialidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Fonoaudiologia", "Fisioterapia", "Psicologia", "Terapia Ocupacional", "Neurologia", "Odontologia", "Nutrição" }));
+        cmbbxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Fisioterapia", "Fonoaudiologia", "Neurologia", "Nutrição", "Odontologia", "Psicologia", "Terapia Ocupacional" }));
         cmbbxEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxEspecialidadeActionPerformed(evt);
@@ -223,7 +223,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         lblCamposObrigatorios.setText("Campos com (*) são obrigatórios");
 
         lblCRM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblCRM.setText("CRM*");
+        lblCRM.setText("Carteira do Conselho**");
 
         txtfldCRM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 

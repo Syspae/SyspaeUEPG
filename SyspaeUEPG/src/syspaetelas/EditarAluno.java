@@ -980,10 +980,10 @@ public class EditarAluno extends javax.swing.JFrame {
         });
 
         cmbbxSexo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Masculino", "Feminino" }));
+        cmbbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Feminino", "Masculino" }));
 
         cmbbxEstadoCivil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Solteiro(a)", "Casado(a)", "Divorciado(a)", "Separado(a)", "Viúvo(a)" }));
+        cmbbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Casado(a)", "Divorciado(a)", "Separado(a)", "Solteiro(a)", "Viúvo(a)" }));
 
         lblCPF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblCPF.setText("CPF*");
@@ -1125,7 +1125,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblNomeCartorio.setText("Nome do Cartório/UF");
 
         cmbbxDocumentoResposavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoResposavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CPF", "CNH", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoResposavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
 
         lblDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoResponsavel.setText("Documento");
@@ -1153,7 +1153,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblNumeroContato.setText("Telefone para Contato*");
 
         cmbbxDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CPF", "CNH", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
         cmbbxDocumentoFiliacao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxDocumentoFiliacao1ActionPerformed(evt);
@@ -1167,7 +1167,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblNDocumentoFiliacao1.setText("Número");
 
         cmbbxDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CPF", "CNH", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
 
         lblDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoFiliacao2.setText("Documento");
@@ -1222,7 +1222,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblTipoTransporte.setText("Tipo de Transporte*");
 
         cmbbxTipoTransporte.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Próprio", "Escolar Rural", "Escolar Urbano" }));
+        cmbbxTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Escolar Urbano", "Escolar Rural", "Próprio" }));
 
         lbllEscolariedadeFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbllEscolariedadeFiliacao2.setText("Escolariedade Filiação 2");
@@ -1239,7 +1239,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblTipoMoradia.setText("Tipo de Moradia*");
 
         cmbbxTipoMoradia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxTipoMoradia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Própria", "Alugada", "Cedida" }));
+        cmbbxTipoMoradia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Alugada", "Cedida", "Própria" }));
 
         lblRecebeBPC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblRecebeBPC.setText("Recebe BPC?");
@@ -1286,7 +1286,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblCorRaca.setText("Cor/Raça*");
 
         cmbbxCorRaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxCorRaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Branca", "Parda", "Preta", "Amarela", "Indígena" }));
+        cmbbxCorRaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Amarela", "Branca", "Indígena", "Parda", "Preta" }));
 
         lblCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCampos.setText("Campos com (*) são obrigatórios");
@@ -1781,7 +1781,10 @@ public class EditarAluno extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         TelaConfirma sair = new TelaConfirma(this, true);
-        if(sair.getReturnStatus()==1) this.dispose();
+        if(sair.getReturnStatus()==1){
+            BuscaAluno novatela = new BuscaAluno();
+            this.dispose();
+        }
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtfldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldMatriculaActionPerformed
@@ -1860,6 +1863,8 @@ public class EditarAluno extends javax.swing.JFrame {
 
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_btnSair1ActionPerformed
 
     /**

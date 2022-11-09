@@ -31,13 +31,13 @@ public class BuscaAluno extends javax.swing.JFrame {
         String tipoBusca = cmbbxBusca.getSelectedItem().toString();
         switch (tipoBusca) {
             case "Nome":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where nome like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where nome like '" + busca + "%'order by nome ASC";
             case "CPF":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + busca + "%'order by nome ASC";
             case "Matrícula":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where CAST(idaluno AS TEXT) like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where CAST(idaluno AS TEXT) like '" + busca + "%'order by nome ASC";
             case "Nome do Responsável":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + busca + "%'";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + busca + "%'order by nome ASC";
             default:
                 throw new AssertionError();
         }
@@ -234,6 +234,7 @@ public class BuscaAluno extends javax.swing.JFrame {
         // TODO add your handling code here:     
         String s = tblBuscaAluno.getModel().getValueAt(tblBuscaAluno.getSelectedRow(), 0)+"";        
         EditarAluno editar = new EditarAluno(s);
+        this.dispose();
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void txtfldBuscaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtfldBuscaInputMethodTextChanged
@@ -255,20 +256,22 @@ public class BuscaAluno extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel table = (DefaultTableModel) tblBuscaAluno.getModel();
-        table.setRowCount(0);
-        Conexao con = new Conexao();        
-        ResultSet rs = con.executaBusca(preparaSQL());        
-        try {
-            while(rs.next()){
-                Object[] row = new Object [5];
-                for(int i = 1; i <= 5; i++){
-                    row[i-1] = rs.getObject(i);
+        if(txtfldBusca.getText().length() >= 3){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAluno.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();        
+            ResultSet rs = con.executaBusca(preparaSQL());        
+            try {
+                while(rs.next()){
+                    Object[] row = new Object [5];
+                    for(int i = 1; i <= 5; i++){
+                        row[i-1] = rs.getObject(i);
+                    }
+                    ((DefaultTableModel) tblBuscaAluno.getModel()).insertRow(rs.getRow() - 1, row);
                 }
-                ((DefaultTableModel) tblBuscaAluno.getModel()).insertRow(rs.getRow() - 1, row);
+            } catch (SQLException ex) {
+                Logger.getLogger(BuscaAluno.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(BuscaAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 

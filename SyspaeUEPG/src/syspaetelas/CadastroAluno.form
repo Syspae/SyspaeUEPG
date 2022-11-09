@@ -633,8 +633,8 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="Masculino"/>
-            <StringItem index="2" value="Feminino"/>
+            <StringItem index="1" value="Feminino"/>
+            <StringItem index="2" value="Masculino"/>
           </StringArray>
         </Property>
       </Properties>
@@ -653,10 +653,10 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="Solteiro(a)"/>
-            <StringItem index="2" value="Casado(a)"/>
-            <StringItem index="3" value="Divorciado(a)"/>
-            <StringItem index="4" value="Separado(a)"/>
+            <StringItem index="1" value="Casado(a)"/>
+            <StringItem index="2" value="Divorciado(a)"/>
+            <StringItem index="3" value="Separado(a)"/>
+            <StringItem index="4" value="Solteiro(a)"/>
             <StringItem index="5" value="Vi&#xfa;vo(a)"/>
           </StringArray>
         </Property>
@@ -676,7 +676,7 @@
     <Component class="javax.swing.JFormattedTextField" name="txtfldCPF">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-          <Format format="###.###.###-##" subtype="-1" type="5"/>
+          <Format format="###########" subtype="-1" type="5"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
@@ -1013,8 +1013,8 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="CPF"/>
-            <StringItem index="2" value="CNH"/>
+            <StringItem index="1" value="CNH"/>
+            <StringItem index="2" value="CPF"/>
             <StringItem index="3" value="RG"/>
             <StringItem index="4" value="RNE"/>
             <StringItem index="5" value="Outro"/>
@@ -1049,16 +1049,16 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="12">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="Pai"/>
-            <StringItem index="2" value="M&#xe3;e"/>
-            <StringItem index="3" value="Av&#xf4;(&#xf3;)"/>
-            <StringItem index="4" value="Bisav&#xf4;(&#xf3;)"/>
-            <StringItem index="5" value="Filho(a)"/>
-            <StringItem index="6" value="Neto(a)"/>
-            <StringItem index="7" value="Bisneto(a)"/>
-            <StringItem index="8" value="Irm&#xe3;o(&#xe3;)"/>
-            <StringItem index="9" value="Tio(a)"/>
-            <StringItem index="10" value="Sobrinho(a)"/>
+            <StringItem index="1" value="Av&#xf4;(&#xf3;)"/>
+            <StringItem index="2" value="Bisav&#xf4;(&#xf3;)"/>
+            <StringItem index="3" value="Bisneto(a)"/>
+            <StringItem index="4" value="Filho(a)"/>
+            <StringItem index="5" value="Irm&#xe3;o(&#xe3;)"/>
+            <StringItem index="6" value="M&#xe3;e"/>
+            <StringItem index="7" value="Neto(a)"/>
+            <StringItem index="8" value="Pai"/>
+            <StringItem index="9" value="Sobrinho(a)"/>
+            <StringItem index="10" value="Tio(a)"/>
             <StringItem index="11" value="Outro"/>
           </StringArray>
         </Property>
@@ -1112,8 +1112,8 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="CPF"/>
-            <StringItem index="2" value="CNH"/>
+            <StringItem index="1" value="CNH"/>
+            <StringItem index="2" value="CPF"/>
             <StringItem index="3" value="RG"/>
             <StringItem index="4" value="RNE"/>
             <StringItem index="5" value="Outro"/>
@@ -1151,8 +1151,8 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="CPF"/>
-            <StringItem index="2" value="CNH"/>
+            <StringItem index="1" value="CNH"/>
+            <StringItem index="2" value="CPF"/>
             <StringItem index="3" value="RG"/>
             <StringItem index="4" value="RNE"/>
             <StringItem index="5" value="Outro"/>
@@ -1350,9 +1350,9 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="Pr&#xf3;prio"/>
+            <StringItem index="1" value="Escolar Urbano"/>
             <StringItem index="2" value="Escolar Rural"/>
-            <StringItem index="3" value="Escolar Urbano"/>
+            <StringItem index="3" value="Pr&#xf3;prio"/>
           </StringArray>
         </Property>
       </Properties>
@@ -1414,9 +1414,9 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="Pr&#xf3;pria"/>
-            <StringItem index="2" value="Alugada"/>
-            <StringItem index="3" value="Cedida"/>
+            <StringItem index="1" value="Alugada"/>
+            <StringItem index="2" value="Cedida"/>
+            <StringItem index="3" value="Pr&#xf3;pria"/>
           </StringArray>
         </Property>
       </Properties>
@@ -1553,11 +1553,11 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
             <StringItem index="0" value="--Selecione--"/>
-            <StringItem index="1" value="Branca"/>
-            <StringItem index="2" value="Parda"/>
-            <StringItem index="3" value="Preta"/>
-            <StringItem index="4" value="Amarela"/>
-            <StringItem index="5" value="Ind&#xed;gena"/>
+            <StringItem index="1" value="Amarela"/>
+            <StringItem index="2" value="Branca"/>
+            <StringItem index="3" value="Ind&#xed;gena"/>
+            <StringItem index="4" value="Parda"/>
+            <StringItem index="5" value="Preta"/>
           </StringArray>
         </Property>
       </Properties>

@@ -8,6 +8,7 @@ import static java.lang.System.exit;
 import controleConexao.Conexao;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.util.InputMismatchException;
 import javax.swing.JTextField;
 
 /**
@@ -15,6 +16,7 @@ import javax.swing.JTextField;
  * @author carlo
  */
 public class CadastroAluno extends javax.swing.JFrame {
+
 
     //Somente letras nos TextFields
     public final class JtextFieldSomenteLetras extends JTextField {
@@ -121,7 +123,8 @@ public class CadastroAluno extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         //this.setExtendedState(MAXIMIZED_BOTH);
-        this.setVisible(true);        
+        this.setVisible(true);
+        txtfldPaisNatural.setText("Brasil");
                
     }
     
@@ -392,11 +395,63 @@ public class CadastroAluno extends javax.swing.JFrame {
         }
     }
     
+    private boolean validaCpf(String cpf){        
+        if (cpf.equals("00000000000") ||
+            cpf.equals("11111111111") ||
+            cpf.equals("22222222222") || cpf.equals("33333333333") ||
+            cpf.equals("44444444444") || cpf.equals("55555555555") ||
+            cpf.equals("66666666666") || cpf.equals("77777777777") ||
+            cpf.equals("88888888888") || cpf.equals("99999999999") ||
+            (cpf.length() != 11))
+            return(false);
+        
+        char dig10, dig11;
+        int sm, i, r, num, peso;
+        try {
+        // Calculo do 1o. Digito Verificador
+            sm = 0;
+            peso = 10;
+            for (i=0; i<9; i++) {
+        // converte o i-esimo caractere do CPF em um numero:
+        // por exemplo, transforma o caractere '0' no inteiro 0
+        // (48 eh a posicao de '0' na tabela ASCII)
+            num = (int)(cpf.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso - 1;
+            }
+
+            r = 11 - (sm % 11);
+            if ((r == 10) || (r == 11))
+                dig10 = '0';
+            else dig10 = (char)(r + 48); // converte no respectivo caractere numerico
+
+        // Calculo do 2o. Digito Verificador
+            sm = 0;
+            peso = 11;
+            for(i=0; i<10; i++) {
+            num = (int)(cpf.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso - 1;
+            }
+
+            r = 11 - (sm % 11);
+            if ((r == 10) || (r == 11))
+                 dig11 = '0';
+            else dig11 = (char)(r + 48);
+
+        // Verifica se os digitos calculados conferem com os digitos informados.
+            if ((dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10)))
+                 return(true);
+            else return(false);
+                } catch (InputMismatchException erro) {
+                return(false);
+            }
+    }
+    
     //Função para validar os campos obrigatorios
     private int validaObrigatorios(){
         String nome = txtfldNome.getText();        
         String data_nascimento = fldDataNascimento.getText();
-        String cpf = txtfldCPF.getText();
         String naturalidade_municipio = txtfldMunicipio.getText();
         String pais_natural = txtfldPaisNatural.getText();
         String cep = txtfldCEP.getText();
@@ -414,7 +469,9 @@ public class CadastroAluno extends javax.swing.JFrame {
         char moradia = moradia();
         String renda = renda();
         char sexo = sexo();
-        char cor_raca = cor_raca();       
+        char cor_raca = cor_raca();
+        
+        boolean cpf = validaCpf(txtfldCPF.getText());
 
         
         if(nome.isBlank()){lblErro.setText("Campo obrigatorio Nome não preenchido!"); return 0;}        
@@ -422,7 +479,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         if(data_nascimento.equals("  /  /    ")){lblErro.setText("Campo obrigatorio Data de Nascimento não preenchido!"); return 0;}
         if(sexo == ' '){lblErro.setText("Campo obrigatorio Sexo não preenchido!"); return 0;}
         if(estado_civil == ' '){lblErro.setText("Campo obrigatorio Estado Civil não preenchido!"); return 0;}
-        if(cpf.equals("   .   .   -  ")){lblErro.setText("Campo obrigatorio CPF não preenchido!"); return 0;}
+        if(!cpf){lblErro.setText("CPF invalido!"); return 0;}
         if(naturalidade_municipio.isBlank()){lblErro.setText("Campo obrigatorio Naturalidade/Municipio não preenchido!"); return 0;}
         if(uf_nat.equals("  ")){lblErro.setText("Campo obrigatorio UF não preenchido!"); return 0;}
         if(pais_natural.isBlank()){lblErro.setText("Campo obrigatorio Pais natural não preenchido!"); return 0;}
@@ -656,7 +713,6 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblSucesso = new javax.swing.JLabel();
 
         setTitle("Cadastrar Aluno");
-        setPreferredSize(new java.awt.Dimension(1360, 684));
         setResizable(false);
 
         btnSair.setBackground(new java.awt.Color(242, 242, 242));
@@ -708,7 +764,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         });
 
         cmbbxSexo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Masculino", "Feminino" }));
+        cmbbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Feminino", "Masculino" }));
         cmbbxSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxSexoActionPerformed(evt);
@@ -716,13 +772,13 @@ public class CadastroAluno extends javax.swing.JFrame {
         });
 
         cmbbxEstadoCivil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Solteiro(a)", "Casado(a)", "Divorciado(a)", "Separado(a)", "Viúvo(a)" }));
+        cmbbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Casado(a)", "Divorciado(a)", "Separado(a)", "Solteiro(a)", "Viúvo(a)" }));
 
         lblCPF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblCPF.setText("CPF*");
 
         try {
-            txtfldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtfldCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -858,7 +914,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblNomeCartorio.setText("Nome do Cartório/UF");
 
         cmbbxDocumentoResposavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoResposavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CPF", "CNH", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoResposavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
 
         lblDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoResponsavel.setText("Documento");
@@ -867,7 +923,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblNDocumentoResponsavel.setText("Número");
 
         cmbbxGrauParentesco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxGrauParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Pai", "Mãe", "Avô(ó)", "Bisavô(ó)", "Filho(a)", "Neto(a)", "Bisneto(a)", "Irmão(ã)", "Tio(a)", "Sobrinho(a)", "Outro" }));
+        cmbbxGrauParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Avô(ó)", "Bisavô(ó)", "Bisneto(a)", "Filho(a)", "Irmão(ã)", "Mãe", "Neto(a)", "Pai", "Sobrinho(a)", "Tio(a)", "Outro" }));
 
         lblGrauParentesco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblGrauParentesco.setText("Grau de Parentesco");
@@ -891,7 +947,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblNumeroContato.setText("Telefone para Contato*");
 
         cmbbxDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CPF", "CNH", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
         cmbbxDocumentoFiliacao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxDocumentoFiliacao1ActionPerformed(evt);
@@ -905,7 +961,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblNDocumentoFiliacao1.setText("Número");
 
         cmbbxDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CPF", "CNH", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
 
         lblDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoFiliacao2.setText("Documento");
@@ -965,7 +1021,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblTipoTransporte.setText("Tipo de Transporte*");
 
         cmbbxTipoTransporte.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Próprio", "Escolar Rural", "Escolar Urbano" }));
+        cmbbxTipoTransporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Escolar Urbano", "Escolar Rural", "Próprio" }));
 
         lbllEscolariedadeFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbllEscolariedadeFiliacao2.setText("Escolariedade Filiação 2");
@@ -982,7 +1038,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblTipoMoradia.setText("Tipo de Moradia*");
 
         cmbbxTipoMoradia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxTipoMoradia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Própria", "Alugada", "Cedida" }));
+        cmbbxTipoMoradia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Alugada", "Cedida", "Própria" }));
 
         lblRecebeBPC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblRecebeBPC.setText("Recebe BPC?");
@@ -1034,7 +1090,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblCorRaca.setText("Cor/Raça*");
 
         cmbbxCorRaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxCorRaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Branca", "Parda", "Preta", "Amarela", "Indígena" }));
+        cmbbxCorRaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Amarela", "Branca", "Indígena", "Parda", "Preta" }));
 
         lblCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCampos.setText("Campos com (*) são obrigatórios");
