@@ -8,6 +8,10 @@ import static java.lang.System.exit;
 import controleConexao.Conexao;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import javax.swing.JTextField;
 
@@ -447,7 +451,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                 return(false);
             }
     }
-    
+   
     //Função para validar os campos obrigatorios
     private int validaObrigatorios(){
         String nome = txtfldNome.getText();        
@@ -472,11 +476,12 @@ public class CadastroAluno extends javax.swing.JFrame {
         char cor_raca = cor_raca();
         
         boolean cpf = validaCpf(txtfldCPF.getText());
+        boolean data = validaData(fldDataNascimento.getText());
 
         
         if(nome.isBlank()){lblErro.setText("Campo obrigatorio Nome não preenchido!"); return 0;}        
         if(cor_raca == ' '){lblErro.setText("Campo obrigatorio Cor/Raça não preenchido!"); return 0;}
-        if(data_nascimento.equals("  /  /    ")){lblErro.setText("Campo obrigatorio Data de Nascimento não preenchido!"); return 0;}
+        if(!data){lblErro.setText("Data Invalida!"); return 0;}
         if(sexo == ' '){lblErro.setText("Campo obrigatorio Sexo não preenchido!"); return 0;}
         if(estado_civil == ' '){lblErro.setText("Campo obrigatorio Estado Civil não preenchido!"); return 0;}
         if(!cpf){lblErro.setText("CPF invalido!"); return 0;}
@@ -498,6 +503,15 @@ public class CadastroAluno extends javax.swing.JFrame {
         
         return 1;
 }
+    
+    private boolean validaData(String data){
+        LocalDate atual = LocalDate.now();
+        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate nascimento = LocalDate.parse(data, formatador);
+        
+        return !nascimento.isAfter(atual);
+    }
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){

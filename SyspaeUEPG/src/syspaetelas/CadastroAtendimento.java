@@ -8,6 +8,7 @@ import controleConexao.Conexao;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -138,6 +139,15 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         txtMotivoAtendimento.setEditable(false);
         txtDiagnostico.setEditable(false);
         txtTratamento.setEditable(false);
+    }
+    
+    private boolean validaData(String data){
+        LocalDate atual = LocalDate.now();
+        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate nascimento = LocalDate.parse(data, formatador);
+        
+        return !nascimento.isAfter(atual);
     }
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
@@ -398,13 +408,15 @@ public class CadastroAtendimento extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        Conexao con = new Conexao();
-        int insert = con.executaInsert(preparaSQL());
-        if(insert == 1){
-            lblSucesso.setText("Atendimento efetuado com sucesso!");
-            btnAnamnese.setEnabled(true);
-            desabilitaCampos();
-        }else lblErro.setText("Erro ao cadastrar atendimento!");
+        if(validaData(txtfldDataAtendimento.getText())){
+            Conexao con = new Conexao();
+            int insert = con.executaInsert(preparaSQL());
+            if(insert == 1){
+                lblSucesso.setText("Atendimento efetuado com sucesso!");
+                btnAnamnese.setEnabled(true);
+                desabilitaCampos();
+            }else lblErro.setText("Erro ao cadastrar atendimento!");
+        }        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

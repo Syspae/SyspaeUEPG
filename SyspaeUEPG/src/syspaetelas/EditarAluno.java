@@ -9,6 +9,8 @@ import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.JTextField;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -718,6 +720,15 @@ public class EditarAluno extends javax.swing.JFrame {
         }
     }
     
+    private boolean validaData(String data){
+        LocalDate atual = LocalDate.now();
+        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate nascimento = LocalDate.parse(data, formatador);
+        
+        return !nascimento.isAfter(atual);
+    }
+    
     //Função para validar os campos obrigatorios
     private int validaObrigatorios(){
         String nome = txtfldNome.getText();        
@@ -740,13 +751,14 @@ public class EditarAluno extends javax.swing.JFrame {
         char moradia = moradia();
         String renda = renda();
         char sexo = sexo();
-        char cor_raca = cor_raca();       
+        char cor_raca = cor_raca();
+        
+        boolean data = validaData(fldDataNascimento.getText());
 
         
         if(nome.isBlank()){lblErro.setText("Campo obrigatorio Nome não preenchido!"); return 0;}        
         if(cor_raca == ' '){lblErro.setText("Campo obrigatorio Cor/Raça não preenchido!"); return 0;}
-        if(data_nascimento.equals("  /  /    ")){lblErro.setText("Campo obrigatorio Data de Nascimento não preenchido!"); return 0;}
-        if(sexo == ' '){lblErro.setText("Campo obrigatorio Sexo não preenchido!"); return 0;}
+        if(!data){lblErro.setText("Data Invalida!"); return 0;}if(sexo == ' '){lblErro.setText("Campo obrigatorio Sexo não preenchido!"); return 0;}
         if(estado_civil == ' '){lblErro.setText("Campo obrigatorio Estado Civil não preenchido!"); return 0;}
         if(cpf.equals("   .   .   -  ")){lblErro.setText("Campo obrigatorio CPF não preenchido!"); return 0;}
         if(naturalidade_municipio.isBlank()){lblErro.setText("Campo obrigatorio Naturalidade/Municipio não preenchido!"); return 0;}

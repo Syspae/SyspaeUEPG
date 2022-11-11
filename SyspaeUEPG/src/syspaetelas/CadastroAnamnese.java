@@ -7,6 +7,7 @@ package syspaetelas;
 import controleConexao.Conexao;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -38,11 +39,11 @@ public class CadastroAnamnese extends javax.swing.JFrame {
      */
     
     private void idade(){
-        LocalDate nascimento = LocalDate.parse(txtfldDataNascimento.getText(), DateTimeFormatter.BASIC_ISO_DATE);
-        LocalDate atual = LocalDate.parse(txtfldDataAnamnese.getText(), DateTimeFormatter.BASIC_ISO_DATE);
+        LocalDate atual = LocalDate.parse(txtfldDataAnamnese.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate nascimento = LocalDate.parse(txtfldDataNascimento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         
-        Period idade = Period.between(atual, nascimento);
-        lblIdade.setText(idade.toString());
+        Period idade = Period.between(nascimento, atual);
+        lblIdade.setText(Integer.toString(idade.getYears()));
     }
     
     private void data(){
@@ -84,6 +85,15 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         Date novaData = Date.valueOf(data);
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         return formatador.format(novaData);        
+    }
+    
+    private boolean validaData(String data){
+        LocalDate atual = LocalDate.now();
+        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate nascimento = LocalDate.parse(data, formatador);
+        
+        return !nascimento.isAfter(atual);
     }
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
@@ -436,12 +446,16 @@ public class CadastroAnamnese extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        String SQL = preparaSQL();
-        Conexao con = new Conexao();        
-        int insert = con.executaInsert(SQL);
-        if(insert == 1){
-            lblSucesso.setText("Anamnese salva com sucesso!");
-        }
+        if(validaData(txtfldDataAnamnese.getText())){
+            if(validaData(txtfldDataNascimento.getText())){
+                String SQL = preparaSQL();
+                Conexao con = new Conexao();        
+                int insert = con.executaInsert(SQL);
+                if(insert == 1){
+                    lblSucesso.setText("Anamnese salva com sucesso!");
+                }
+            }
+        }        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cmbbxNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxNomeActionPerformed
