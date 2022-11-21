@@ -476,11 +476,13 @@ public class CadastroAluno extends javax.swing.JFrame {
         char cor_raca = cor_raca();
         
         boolean cpf = validaCpf(txtfldCPF.getText());
-        boolean data = validaData(fldDataNascimento.getText());
+        
 
         
         if(nome.isBlank()){lblErro.setText("Campo obrigatorio Nome não preenchido!"); return 0;}        
         if(cor_raca == ' '){lblErro.setText("Campo obrigatorio Cor/Raça não preenchido!"); return 0;}
+        if(fldDataNascimento.getText().equals("  /  /    ")){lblErro.setText("Campo obrigatorio data de nascimento não preenchido!"); return 0;}
+        boolean data = validaData(fldDataNascimento.getText());
         if(!data){lblErro.setText("Data Invalida!"); return 0;}
         if(sexo == ' '){lblErro.setText("Campo obrigatorio Sexo não preenchido!"); return 0;}
         if(estado_civil == ' '){lblErro.setText("Campo obrigatorio Estado Civil não preenchido!"); return 0;}
