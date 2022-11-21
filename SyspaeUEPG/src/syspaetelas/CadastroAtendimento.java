@@ -27,7 +27,6 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         this.setVisible(true);
         buscaAlunos();
         buscaProfissional();
-        btnAnamnese.setEnabled(false);
         data();
     }
 
