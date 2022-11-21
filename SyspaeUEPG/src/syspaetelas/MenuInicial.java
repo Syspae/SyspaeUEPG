@@ -193,7 +193,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private void btn01SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01SairActionPerformed
         // TODO add your handling code here:        
         TelaConfirma sair = new TelaConfirma(this, true);
-        if(sair.getReturnStatus()==1) this.dispose();
+        if(sair.getReturnStatus()==1) exit(1);
     }//GEN-LAST:event_btn01SairActionPerformed
 
     /**
