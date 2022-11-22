@@ -8,6 +8,9 @@ import controleConexao.Conexao;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -24,6 +27,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setVisible(true);
         idAnamnese = id;
+        btnSalvar.setVisible(false);
         mostraItens();
     }
 
@@ -63,6 +67,29 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxAutismo.setEnabled(false);
     }
     
+    private void habilitaCampos(){
+        txtfldDataNascimento.setEditable(true);
+        txtfldDataAnamnese.setEditable(true);
+        cmbbxNome.setEnabled(true);
+        txtAtendimentosOdonto.setEditable(true);
+        txtDoencaFamilia.setEditable(true);
+        txtEncaminhamentos.setEditable(true);
+        chckbxSurdezLeveModerada.setEnabled(true);
+        chckbxSurdezSeveraProfunda.setEnabled(true);
+        chckbxBaixaVisao.setEnabled(true);
+        chckbxCegueira.setEnabled(true);
+        chckbxDeficienciaFisica.setEnabled(true);
+        chckbxSurdocegueira.setEnabled(true);
+        chckbxIngestaoAlcool.setEnabled(true);
+        chckbxHabitoFumar.setEnabled(true);
+        chckbxSindromeDown.setEnabled(true);
+        chckbxCondutasTipicas.setEnabled(true);
+        chckbxAltasHabilidadesSuperdotado.setEnabled(true);
+        chckbxDeficienciaMental.setEnabled(true);
+        chckbxDeficienciaMultipla.setEnabled(true);
+        chckbxAutismo.setEnabled(true);
+    }
+    
     //Função que pega as informações do banco e coloca nos campos
     private void mostraItens(){
         desabilitaCampos();
@@ -90,11 +117,38 @@ public class MostraAnamnese extends javax.swing.JFrame {
                 chckbxDeficienciaMental.setSelected(rs.getBoolean("deficiencia_mental"));
                 chckbxDeficienciaMultipla.setSelected(rs.getBoolean("deficiencia_multipla"));
                 chckbxAutismo.setSelected(rs.getBoolean("autismo"));
+                updatePossivel(rs.getString("datamodificacao"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     
+    }
+    
+    private boolean validaData(String data){
+        LocalDate atual = LocalDate.now();
+        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate nascimento = LocalDate.parse(data, formatador);
+        
+        return !nascimento.isAfter(atual);
+    }
+    
+    private void updatePossivel(String dataModificacao){
+        LocalDate atual = LocalDate.now();
+        Date dataCriacao = Date.valueOf(dataModificacao);
+        System.out.println(dataCriacao);
+        System.out.println(atual);
+        Period tempo = Period.between(atual, dataCriacao.toLocalDate());
+        if(tempo.getDays() < 3) {
+            habilitaCampos();
+            btnSalvar.setVisible(true);
+        }
+        System.out.println(tempo.getDays());
+    }
+    
+    private String preparaUpdate(){
+        return "";
     }
         
     @SuppressWarnings("unchecked")
@@ -132,6 +186,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxAutismo = new javax.swing.JCheckBox();
         btnCancelar = new javax.swing.JButton();
         lblSucesso = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
 
         setTitle("Anamnese");
         setResizable(false);
@@ -265,6 +320,16 @@ public class MostraAnamnese extends javax.swing.JFrame {
         lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
 
+        btnSalvar.setBackground(new java.awt.Color(242, 242, 242));
+        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Salvar.png"))); // NOI18N
+        btnSalvar.setBorder(null);
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -276,6 +341,8 @@ public class MostraAnamnese extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,9 +448,12 @@ public class MostraAnamnese extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(chckbxAutismo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblSucesso)
-                        .addGap(21, 21, 21)
-                        .addComponent(btnCancelar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblSucesso)
+                                .addGap(21, 21, 21)
+                                .addComponent(btnCancelar))
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(24, 24, 24))))
         );
 
@@ -415,11 +485,27 @@ public class MostraAnamnese extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbbxNomeActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        if(validaData(txtfldDataAnamnese.getText())){
+            if(validaData(txtfldDataNascimento.getText())){
+                String SQL = preparaUpdate();
+                Conexao con = new Conexao();        
+                int insert = con.executaInsert(SQL);
+                if(insert == 1){
+                    lblSucesso.setText("Anamnese salva com sucesso!");
+                    desabilitaCampos();
+                }
+            }
+        }  
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox chckbxAltasHabilidadesSuperdotado;
     private javax.swing.JCheckBox chckbxAutismo;
     private javax.swing.JCheckBox chckbxBaixaVisao;

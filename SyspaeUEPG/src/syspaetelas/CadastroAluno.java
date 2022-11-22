@@ -454,8 +454,7 @@ public class CadastroAluno extends javax.swing.JFrame {
    
     //Função para validar os campos obrigatorios
     private int validaObrigatorios(){
-        String nome = txtfldNome.getText();        
-        String data_nascimento = fldDataNascimento.getText();
+        String nome = txtfldNome.getText();
         String naturalidade_municipio = txtfldMunicipio.getText();
         String pais_natural = txtfldPaisNatural.getText();
         String cep = txtfldCEP.getText();
@@ -513,6 +512,12 @@ public class CadastroAluno extends javax.swing.JFrame {
         LocalDate nascimento = LocalDate.parse(data, formatador);
         
         return !nascimento.isAfter(atual);
+    }
+    
+    private String dataModificacao(){
+        LocalDate atual = LocalDate.now();        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return formatador.format(atual);
     }
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
@@ -576,7 +581,8 @@ public class CadastroAluno extends javax.swing.JFrame {
         boolean bolsa_familia = bolsa_familia();
         boolean bpc = bpc();
         char cor_raca = cor_raca();
-        
+        String dataModificacao = dataModificacao();
+               
         if(doc_f1.equals("--Selecione--")) doc_f1 = "NaN";
         if(doc_f2.equals("--Selecione--")) doc_f2 = "NaN";
         if(doc_resp.equals("--Selecione--")) doc_resp= "NaN";
@@ -598,7 +604,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                         + " atendimento_educacional_especializado, na_propria_escola, centro_de_atendimento_educacional_especializado,"
                                         + " uso_de_cadeira_de_rodas, uso_de_muletas_bengalas, livros_ampliados, reglete_soroba_braile,"
                                         + " carteiras_adaptadas, computadores_adaptados, sexo, materiais_de_comunicacao_alternativa, outra_escola,"
-                                        + " bolsa_familia, bpc, pessoas_na_casa, cor_raca)"
+                                        + " bolsa_familia, bpc, pessoas_na_casa, cor_raca, datamodificacao)"
                                         + "values ('"+nome+"', '"+cgm+"', '"+naturalidade_municipio+"', '"+data_nascimento+"'"
                                         + ", '"+pais_natural+"', '"+rg+"', '"+orgao_emissor+"', '"+cpf+"', '"+rne+"', '"+certidao+"', '"+livro_folhas+"'"
                                         + ", '"+nome_cartorio+"', '"+data_emissao+"', '"+nome_responsavel+"', '"+doc_resp+"', '"+num_doc_resp+"', '"+grau_parentesco+"'"                       
@@ -607,7 +613,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                                         + ", '"+cep+"','"+estado_civil+"', '"+uf_nat+"', '"+esc_f1+"', '"+esc_f2+"', '"+uf_atual+"', '" +transporte+"', '"+moradia+"', '"+renda+"'"
                                         + ", '"+interprete_libras+"', '"+atendente+"', '"+prof_espec_permanente+"', '"+atend_edc_espc+"', '"+propria_escola+"', '"+centro_atd_edc_espc+"'"
                                         + ", '"+cadeira_rodas+"', '"+muletas_bengalas+"', '"+livros_ampliados+"', '"+reglete_soroba+"', '"+carteiras_adpts+"', '"+compt_adpts+"'"
-                                        + ", '"+sexo+"', '"+mat_comn_alt+"', '"+outra_escola+"', '"+bolsa_familia+"', '"+bpc+"', '"+pessoas_moram_casa+"', '"+cor_raca+"'"
+                                        + ", '"+sexo+"', '"+mat_comn_alt+"', '"+outra_escola+"', '"+bolsa_familia+"', '"+bpc+"', '"+pessoas_moram_casa+"', '"+cor_raca+"', '"+dataModificacao+"', "
                                         + ")" ;
         
         return SQL;

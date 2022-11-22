@@ -29,13 +29,33 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE aluno.nome like '" + txtfldBusca.getText() + "%'and fk_aluno_idaluno = idaluno order by aluno.nome ASC";
+                return """
+                       SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
+                       FROM aluno as aluno
+                       inner join atendimento as atendimento
+                       ON aluno.idaluno = atendimento.fk_aluno_idaluno
+                       WHERE aluno.nome like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
             case "CPF":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE cpf like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno order by aluno.nome ASC";
+                return """
+                       SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
+                       FROM aluno as aluno
+                       inner join atendimento as atendimento
+                       ON aluno.idaluno = atendimento.fk_aluno_idaluno
+                       WHERE cpf like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
             case "Matrícula":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE CAST(idaluno AS TEXT) like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno order by aluno.nome ASC";
+                return """
+                       SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
+                       FROM aluno as aluno
+                       inner join atendimento as atendimento
+                       ON aluno.idaluno = atendimento.fk_aluno_idaluno
+                       WHERE idaluno like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
             case "Nome do Responsável":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE responsavel like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno order by aluno.nome ASC";
+                return """
+                       SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
+                       FROM aluno as aluno
+                       inner join atendimento as atendimento
+                       ON aluno.idaluno = atendimento.fk_aluno_idaluno
+                       WHERE responsavel like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
             default:
                 throw new AssertionError();
         }

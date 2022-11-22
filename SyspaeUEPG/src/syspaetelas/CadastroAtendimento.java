@@ -28,6 +28,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         buscaAlunos();
         buscaProfissional();
         data();
+        cmbbxEspecialidade.setEnabled(false);
     }
 
     private void data(){
@@ -149,11 +150,18 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         return !nascimento.isAfter(atual);
     }
     
+    private String dataModificacao(){
+        LocalDate atual = LocalDate.now();        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return formatador.format(atual);
+    }
+    
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
-    private String preparaSQL(){        
-        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade) "
+    private String preparaSQL(){
+        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade, datamodificacao) "
                     + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"'"
-                    + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', '"+cmbbxProfissional.getSelectedItem().toString()+"', '"+cmbbxEspecialidade.getSelectedItem().toString()+"')";
+                    + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', "
+                    + "'"+cmbbxProfissional.getSelectedItem().toString()+"', '"+cmbbxEspecialidade.getSelectedItem().toString()+"', '"+dataModificacao()+"')";
     }
     
     /**
