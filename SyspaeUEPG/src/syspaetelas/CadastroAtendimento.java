@@ -86,14 +86,13 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     
     //Função para pegar o nome da especialidade baseado no ID
     private void buscaEspecialidadeNome(){
-        cmbbxEspecialidade.removeAllItems();
         int id = buscaEspecialidadeID();
         String buscaNome = "Select nome from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'";
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(buscaNome);
         try {
             while(rs.next()){
-                cmbbxEspecialidade.addItem(rs.getString("nome"));
+                cmbbxEspecialidade.setText(rs.getString("nome"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -161,7 +160,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade, datamodificacao) "
                     + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"'"
                     + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', "
-                    + "'"+cmbbxProfissional.getSelectedItem().toString()+"', '"+cmbbxEspecialidade.getSelectedItem().toString()+"', '"+dataModificacao()+"')";
+                    + "'"+cmbbxProfissional.getSelectedItem().toString()+"', '"+cmbbxEspecialidade.getText().toString()+"', '"+dataModificacao()+"')";
     }
     
     /**
@@ -177,7 +176,6 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         cmbbxAluno = new javax.swing.JComboBox<>();
         cmbbxProfissional = new javax.swing.JComboBox<>();
-        cmbbxEspecialidade = new javax.swing.JComboBox<>();
         txtfldDataAtendimento = new javax.swing.JFormattedTextField();
         lblDataAtendimento = new javax.swing.JLabel();
         lblEspecialidade = new javax.swing.JLabel();
@@ -195,6 +193,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         txtTratamento = new javax.swing.JTextArea();
         lblErro = new javax.swing.JLabel();
         lblSucesso = new javax.swing.JLabel();
+        cmbbxEspecialidade = new javax.swing.JTextField();
 
         setTitle("Cadastrar Atendimento");
         setResizable(false);
@@ -237,8 +236,6 @@ public class CadastroAtendimento extends javax.swing.JFrame {
                 cmbbxProfissionalPropertyChange(evt);
             }
         });
-
-        cmbbxEspecialidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         try {
             txtfldDataAtendimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -300,6 +297,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
 
+        cmbbxEspecialidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -329,8 +328,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbbxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblEspecialidade)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -343,7 +341,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
                                                 .addComponent(btnAnamnese))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btnSair))))))
+                                                .addComponent(btnSair))))
+                                    .addComponent(cmbbxEspecialidade)))
                             .addComponent(jScrollPane2)
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -454,7 +453,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbbxAluno;
-    private javax.swing.JComboBox<String> cmbbxEspecialidade;
+    private javax.swing.JTextField cmbbxEspecialidade;
     private javax.swing.JComboBox<String> cmbbxProfissional;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -28,9 +28,9 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setVisible(true);
         buscaAlunos(id);
+        cmbbxNome.setEnabled(false);
         data();
         idade();
-        cmbbxNome.setEnabled(false);
     }
 
     /**
@@ -84,7 +84,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         ResultSet rs = con.executaBusca(busca);
         try {
             while(rs.next()){
-                cmbbxNome.addItem(rs.getString("nome"));
+                cmbbxNome.setText(rs.getString("nome"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +93,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
     
     //Função que coloca a data de nascimento do aluno selecionado pelo combobox
     private void buscaNascimento(){   
-        String buscaNome = "Select data_nascimento from aluno where nome like '"+cmbbxNome.getSelectedItem()+"'";
+        String buscaNome = "Select data_nascimento from aluno where nome like '"+cmbbxNome.getText()+"'";
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(buscaNome);
         try {
@@ -148,7 +148,6 @@ public class CadastroAnamnese extends javax.swing.JFrame {
     private void initComponents() {
 
         lblNome = new javax.swing.JLabel();
-        cmbbxNome = new javax.swing.JComboBox<>();
         lblDoencaFamilia = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDoencaFamilia = new javax.swing.JTextArea();
@@ -180,19 +179,13 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         lblSucesso = new javax.swing.JLabel();
         lblIdade = new javax.swing.JLabel();
+        cmbbxNome = new javax.swing.JTextField();
 
         setTitle("Cadastrar Anamnese");
         setResizable(false);
 
         lblNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblNome.setText("Nome");
-
-        cmbbxNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbbxNomeActionPerformed(evt);
-            }
-        });
 
         lblDoencaFamilia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDoencaFamilia.setText("Doenças na família");
@@ -323,6 +316,8 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
 
+        cmbbxNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -391,10 +386,11 @@ public class CadastroAnamnese extends javax.swing.JFrame {
                     .addComponent(lblDataNascimento)
                     .addComponent(lblDataAnamnese))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbbxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfldDataAnamnese, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtfldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtfldDataAnamnese, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbbxNome))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -494,11 +490,6 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void cmbbxNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxNomeActionPerformed
-        // TODO add your handling code here:
-        buscaNascimento();
-    }//GEN-LAST:event_cmbbxNomeActionPerformed
-
 
 
 
@@ -519,7 +510,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
     private javax.swing.JCheckBox chckbxSurdezLeveModerada;
     private javax.swing.JCheckBox chckbxSurdezSeveraProfunda;
     private javax.swing.JCheckBox chckbxSurdocegueira;
-    private javax.swing.JComboBox<String> cmbbxNome;
+    private javax.swing.JTextField cmbbxNome;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
