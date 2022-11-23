@@ -137,8 +137,6 @@ public class MostraAnamnese extends javax.swing.JFrame {
     private void updatePossivel(String dataModificacao){
         LocalDate atual = LocalDate.now();
         Date dataCriacao = Date.valueOf(dataModificacao);
-        System.out.println(dataCriacao);
-        System.out.println(atual);
         Period tempo = Period.between(atual, dataCriacao.toLocalDate());
         if(tempo.getDays() < 3) {
             habilitaCampos();

@@ -18,6 +18,7 @@ public class MostraAtendimento extends javax.swing.JFrame {
     
     /**
      * Creates new form TelaCadastroAtendimento
+     * @param id
      */
     public MostraAtendimento(int id) {
         initComponents();

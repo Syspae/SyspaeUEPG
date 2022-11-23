@@ -7,7 +7,7 @@ package syspaetelas;
 import controleConexao.Conexao;
 import java.sql.Date;
 import java.sql.ResultSet;
-import java.text.ParseException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,6 +22,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
     
     /**
      * Creates new form TelaCadastroAnamnese
+     * @param id
      */
     public CadastroAnamnese(int id) {
         initComponents();
@@ -29,6 +30,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         this.setVisible(true);
         buscaAlunos(id);
         cmbbxNome.setEnabled(false);
+        buscaNascimento();
         data();
         idade();
     }
@@ -86,8 +88,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
             while(rs.next()){
                 cmbbxNome.setText(rs.getString("nome"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
         }
     }
     
@@ -100,8 +101,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
             while(rs.next()){
                 txtfldDataNascimento.setText(formataData(rs.getString("data_nascimento")));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
         }
     }
     

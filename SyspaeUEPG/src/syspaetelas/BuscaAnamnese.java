@@ -30,13 +30,37 @@ public class BuscaAnamnese extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where nome like '" + txtfldBusca.getText() + "%'order by nome ASC";
+                return """
+                       SELECT idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, 
+                       data_anamnese, idanamnese  
+                       from aluno as aluno
+                       inner join anamnese as anamnese
+                       on aluno.idaluno = anamnese.fk_aluno_idaluno
+                       where nome like '"""+txtfldBusca.getText()+"%'order by nome ASC";
             case "CPF":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where cpf like'" + txtfldBusca.getText() + "%'order by nome ASC";
+                return """
+                       SELECT idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, 
+                       data_anamnese, idanamnese  
+                       from aluno as aluno
+                       inner join anamnese as anamnese
+                       on aluno.idaluno = anamnese.fk_aluno_idaluno
+                       where cpf like '"""+txtfldBusca.getText()+"%'order by nome ASC";
             case "Matrícula":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where CAST(idaluno AS TEXT) like'" + txtfldBusca.getText() + "%'order by nome ASC";
+                return """
+                       SELECT idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, 
+                       data_anamnese, idanamnese  
+                       from aluno as aluno
+                       inner join anamnese as anamnese
+                       on aluno.idaluno = anamnese.fk_aluno_idaluno
+                       where idaluno like '"""+txtfldBusca.getText()+"%'order by nome ASC";
             case "Nome do Responsável":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where responsavel like'" + txtfldBusca.getText() + "%'order by nome ASC";
+                return """
+                       SELECT idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, 
+                       data_anamnese, idanamnese  
+                       from aluno as aluno
+                       inner join anamnese as anamnese
+                       on aluno.idaluno = anamnese.fk_aluno_idaluno
+                       where responsavel like '"""+txtfldBusca.getText()+"%'order by nome ASC";
             default:
                 throw new AssertionError();
         }
@@ -65,7 +89,7 @@ public class BuscaAnamnese extends javax.swing.JFrame {
         setResizable(false);
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Nome do Responsável", "Data de Nascimento" }));
+        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Nome do Responsável" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
