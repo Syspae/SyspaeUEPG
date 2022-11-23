@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 
 
 /**
@@ -117,6 +118,59 @@ public class EditarAluno extends javax.swing.JFrame {
         this.maximoCaracteres = maximoCaracteres;
     }
 }
+    
+    private boolean validaCpf(String cpf){        
+        if (cpf.equals("00000000000") ||
+            cpf.equals("11111111111") ||
+            cpf.equals("22222222222") || cpf.equals("33333333333") ||
+            cpf.equals("44444444444") || cpf.equals("55555555555") ||
+            cpf.equals("66666666666") || cpf.equals("77777777777") ||
+            cpf.equals("88888888888") || cpf.equals("99999999999") ||
+            (cpf.length() != 11))
+            return(false);
+        
+        char dig10, dig11;
+        int sm, i, r, num, peso;
+        try {
+        // Calculo do 1o. Digito Verificador
+            sm = 0;
+            peso = 10;
+            for (i=0; i<9; i++) {
+        // converte o i-esimo caractere do CPF em um numero:
+        // por exemplo, transforma o caractere '0' no inteiro 0
+        // (48 eh a posicao de '0' na tabela ASCII)
+            num = (int)(cpf.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso - 1;
+            }
+
+            r = 11 - (sm % 11);
+            if ((r == 10) || (r == 11))
+                dig10 = '0';
+            else dig10 = (char)(r + 48); // converte no respectivo caractere numerico
+
+        // Calculo do 2o. Digito Verificador
+            sm = 0;
+            peso = 11;
+            for(i=0; i<10; i++) {
+            num = (int)(cpf.charAt(i) - 48);
+            sm = sm + (num * peso);
+            peso = peso - 1;
+            }
+
+            r = 11 - (sm % 11);
+            if ((r == 10) || (r == 11))
+                 dig11 = '0';
+            else dig11 = (char)(r + 48);
+
+        // Verifica se os digitos calculados conferem com os digitos informados.
+            if ((dig10 == cpf.charAt(9)) && (dig11 == cpf.charAt(10)))
+                 return(true);
+            else return(false);
+                } catch (InputMismatchException erro) {
+                return(false);
+            }
+    }
     
     /**
      * Creates new form TelaCadastroAluno
@@ -733,7 +787,6 @@ public class EditarAluno extends javax.swing.JFrame {
     private int validaObrigatorios(){
         String nome = txtfldNome.getText();        
         String data_nascimento = fldDataNascimento.getText();
-        String cpf = txtfldCPF.getText();
         String naturalidade_municipio = txtfldMunicipio.getText();
         String pais_natural = txtfldPaisNatural.getText();
         String cep = txtfldCEP.getText();
@@ -753,14 +806,15 @@ public class EditarAluno extends javax.swing.JFrame {
         char sexo = sexo();
         char cor_raca = cor_raca();
         
+        boolean cpf = validaCpf(txtfldCPF.getText());
+        
         boolean data = validaData(fldDataNascimento.getText());
 
-        
+        if(!cpf){lblErro.setText("CPF invalido!"); return 0;}
         if(nome.isBlank()){lblErro.setText("Campo obrigatorio Nome não preenchido!"); return 0;}        
         if(cor_raca == ' '){lblErro.setText("Campo obrigatorio Cor/Raça não preenchido!"); return 0;}
         if(!data){lblErro.setText("Data Invalida!"); return 0;}if(sexo == ' '){lblErro.setText("Campo obrigatorio Sexo não preenchido!"); return 0;}
         if(estado_civil == ' '){lblErro.setText("Campo obrigatorio Estado Civil não preenchido!"); return 0;}
-        if(cpf.equals("   .   .   -  ")){lblErro.setText("Campo obrigatorio CPF não preenchido!"); return 0;}
         if(naturalidade_municipio.isBlank()){lblErro.setText("Campo obrigatorio Naturalidade/Municipio não preenchido!"); return 0;}
         if(uf_nat.equals("  ")){lblErro.setText("Campo obrigatorio UF não preenchido!"); return 0;}
         if(pais_natural.isBlank()){lblErro.setText("Campo obrigatorio Pais natural não preenchido!"); return 0;}
@@ -936,9 +990,9 @@ public class EditarAluno extends javax.swing.JFrame {
         txtfldNdaCasa = new JtextFieldSomenteNumeros(6);
         txtfldLivroFolhas = new JtextFieldSomenteNumeros(9);
         lblErro = new javax.swing.JLabel();
-        lblSucesso = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
         btnSair1 = new javax.swing.JButton();
+        lblSucesso = new javax.swing.JLabel();
 
         setTitle("Editar Aluno");
         setResizable(false);
@@ -1348,9 +1402,6 @@ public class EditarAluno extends javax.swing.JFrame {
         lblErro.setForeground(new java.awt.Color(204, 0, 0));
         lblErro.setToolTipText("");
 
-        lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
-
         btnEditar.setBackground(new java.awt.Color(242, 242, 242));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Editar.png"))); // NOI18N
         btnEditar.setBorder(null);
@@ -1374,7 +1425,6 @@ public class EditarAluno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblErro)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblMatricula)
@@ -1594,20 +1644,25 @@ public class EditarAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(lblCampos)
-                .addGap(778, 778, 778)
+                .addGap(261, 261, 261)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblErro)
-                .addGap(10, 10, 10)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMatricula)
                     .addComponent(lblNome)
@@ -1781,10 +1836,14 @@ public class EditarAluno extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(lblCampos))
-                    .addComponent(btnSalvar)
+                    .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnEditar)
-                    .addComponent(btnSair)
-                    .addComponent(btnSair1)))
+                    .addComponent(btnSalvar)
+                    .addComponent(btnSair1)
+                    .addComponent(btnSair)))
         );
 
         pack();
@@ -1875,6 +1934,8 @@ public class EditarAluno extends javax.swing.JFrame {
 
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
         // TODO add your handling code here:
+        TelaConfirma sair = new TelaConfirma(this, true);
+        if(sair.getReturnStatus()==1) this.dispose(); 
         
         
     }//GEN-LAST:event_btnSair1ActionPerformed
