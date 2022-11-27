@@ -1421,6 +1421,9 @@ public class EditarAluno extends javax.swing.JFrame {
             }
         });
 
+        lblSucesso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblSucesso.setForeground(new java.awt.Color(0, 204, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

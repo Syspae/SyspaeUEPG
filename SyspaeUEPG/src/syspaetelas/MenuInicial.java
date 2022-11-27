@@ -39,6 +39,7 @@ public class MenuInicial extends javax.swing.JFrame {
         btn01CadEspecialista = new javax.swing.JButton();
         btn01Sair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btn01BuscaEspecialista = new javax.swing.JButton();
 
         setTitle("Syspae");
         setResizable(false);
@@ -115,13 +116,23 @@ public class MenuInicial extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tela de Fundo.png"))); // NOI18N
 
+        btn01BuscaEspecialista.setBackground(new java.awt.Color(242, 242, 242));
+        btn01BuscaEspecialista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn01BuscaEspecialista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Buscar Especialista (1).png"))); // NOI18N
+        btn01BuscaEspecialista.setBorder(null);
+        btn01BuscaEspecialista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn01BuscaEspecialistaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn01CadAluno)
                         .addGap(18, 18, 18)
@@ -134,9 +145,11 @@ public class MenuInicial extends javax.swing.JFrame {
                         .addComponent(btn01BuscaAnamnese)
                         .addGap(18, 18, 18)
                         .addComponent(btn01CadEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn01BuscaEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(175, 175, 175)
                         .addComponent(btn01Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -151,7 +164,8 @@ public class MenuInicial extends javax.swing.JFrame {
                         .addComponent(btn01HistAtend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btn01CadAluno)
                     .addComponent(btn01CadEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn01Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn01Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn01BuscaEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -196,6 +210,11 @@ public class MenuInicial extends javax.swing.JFrame {
         if(sair.getReturnStatus()==1) exit(1);
     }//GEN-LAST:event_btn01SairActionPerformed
 
+    private void btn01BuscaEspecialistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01BuscaEspecialistaActionPerformed
+        // TODO add your handling code here:
+        BuscaEspecialista tela07 = new BuscaEspecialista();
+    }//GEN-LAST:event_btn01BuscaEspecialistaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,6 +222,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn01BuscaAnamnese;
+    private javax.swing.JButton btn01BuscaEspecialista;
     private javax.swing.JButton btn01CadAluno;
     private javax.swing.JButton btn01CadEspecialista;
     private javax.swing.JButton btn01HistAtend;
