@@ -87,11 +87,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblBusca" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbbxBusca" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="txtfldBusca" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnBuscar" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbbxBusca" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="txtfldBusca" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="jScrollPane3" min="-2" pref="516" max="-2" attributes="0"/>
