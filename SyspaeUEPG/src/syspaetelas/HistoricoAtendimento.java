@@ -86,6 +86,11 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Data de Nascimento" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfldBuscaKeyTyped(evt);
+            }
+        });
 
         btn03Buscar.setBackground(new java.awt.Color(242, 242, 242));
         btn03Buscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -232,6 +237,25 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
             }       
         }
     }//GEN-LAST:event_btn03BuscarActionPerformed
+
+    private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
+        // TODO add your handling code here:
+        if(txtfldBusca.getText().length() >= 2){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAtendimento.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaSQL());
+            try {
+                while(rs.next()){
+                    Object[] row = new Object[7];
+                    for(int i = 1; i<=7; i++) row[i-1] = rs.getObject(i);
+                    ((DefaultTableModel) tblBuscaAtendimento.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }       
+        }
+    }//GEN-LAST:event_txtfldBuscaKeyTyped
 
     /**
      * @param args the command line arguments

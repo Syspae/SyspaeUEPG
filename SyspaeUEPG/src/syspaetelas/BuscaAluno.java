@@ -243,7 +243,23 @@ public class BuscaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfldBuscaInputMethodTextChanged
 
     private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
-
+        if(txtfldBusca.getText().length() >= 2){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAluno.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();        
+            ResultSet rs = con.executaBusca(preparaSQL());        
+            try {
+                while(rs.next()){
+                    Object[] row = new Object [5];
+                    for(int i = 1; i <= 5; i++){
+                        row[i-1] = rs.getObject(i);
+                    }
+                    ((DefaultTableModel) tblBuscaAluno.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(BuscaAluno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_txtfldBuscaKeyTyped
 
     private void cmbbxBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxBuscaActionPerformed

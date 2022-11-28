@@ -92,6 +92,11 @@ public class BuscaAnamnese extends javax.swing.JFrame {
         cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Nome do Responsável" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfldBuscaKeyTyped(evt);
+            }
+        });
 
         btn03Buscar.setBackground(new java.awt.Color(242, 242, 242));
         btn03Buscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -236,6 +241,25 @@ public class BuscaAnamnese extends javax.swing.JFrame {
         int id = (int) tblBuscaAnamnese.getModel().getValueAt(tblBuscaAnamnese.getSelectedRow(), 0);
         MostraAnamnese mostraAnamnese = new MostraAnamnese(id);
     }//GEN-LAST:event_btn03SelecionarActionPerformed
+
+    private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
+        // TODO add your handling code here:
+        if(txtfldBusca.getText().length() >= 2){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAnamnese.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaSQL());
+            try {
+                while(rs.next()){
+                    Object[] row = new Object [6];
+                    for(int i = 1; i<= 6; i++) row [i-1] = rs.getObject(i);
+                    ((DefaultTableModel) tblBuscaAnamnese.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_txtfldBuscaKeyTyped
 
     /**
      * @param args the command line arguments
