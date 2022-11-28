@@ -35,21 +35,21 @@ public class BuscaEspecialista extends javax.swing.JFrame {
         switch (cmbbxBusca.getSelectedItem().toString()) {
             case "Nome":
                 return """
-                       SELECT crm, profissional.nome, especialidade.nome
+                       SELECT crm, profissional.nome, nome_especialidade
                        from profissional as profissional
                        inner join especialidade as especialidade
                        on especialidade.idespecialidade = profissional.fk_especialidade_idespecialidade
                        where profissional.nome like '"""+txtfldBusca.getText()+"%' order by profissional.nome";
             case "Especialidade":
                 return """
-                       SELECT crm, profissional.nome, especialidade.nome
+                       SELECT crm, profissional.nome, nome_especialidade
                        from profissional as profissional
                        inner join especialidade as especialidade
                        on especialidade.idespecialidade = profissional.fk_especialidade_idespecialidade
                        where crm like '"""+txtfldBusca.getText()+"%' order by profissional.nome";
             case "Carteira do Conselho":
                 return """
-                       SELECT crm, profissional.nome, especialidade.nome
+                       SELECT crm, profissional.nome, nome_especialidade
                        from profissional as profissional
                        inner join especialidade as especialidade
                        on especialidade.idespecialidade = profissional.fk_especialidade_idespecialidade
@@ -246,7 +246,8 @@ public class BuscaEspecialista extends javax.swing.JFrame {
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
         // TODO add your handling code here:     
-        
+        EditarEspecialista editar = new EditarEspecialista(tblBuscaEspecialista.getModel().getValueAt(tblBuscaEspecialista.getSelectedRow(), 0)+"");
+        this.dispose();
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void txtfldBuscaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtfldBuscaInputMethodTextChanged

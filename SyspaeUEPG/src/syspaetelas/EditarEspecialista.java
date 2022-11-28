@@ -21,6 +21,8 @@ public class EditarEspecialista extends javax.swing.JFrame {
      * Creates new form TelaCadastroEspecialista
      */
     
+    private String id;
+    
     public final class JtextFieldSomenteNumeros extends JTextField {
     private int maximoCaracteres=-1;// definição de -1
     // como  valor normal de um textfield sem limite de caracters
@@ -116,12 +118,13 @@ public class EditarEspecialista extends javax.swing.JFrame {
     }
 }
    
-    public EditarEspecialista() {
+    public EditarEspecialista(String getid) {
         initComponents();
         //this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
         setLocationRelativeTo(null);
-        
+        id = getid;
+        mostraItens();
     }
     
     //Função para habilitar os campos ao salvar
@@ -138,7 +141,28 @@ public class EditarEspecialista extends javax.swing.JFrame {
         txtfldCRM.setEditable(false);
     }
     
+    private String preparaSQL(){
+        return "SELECT crm, profissional.nome, nome_especialidade "
+                + "from profissional as profissional "
+                + "inner join especialidade as especialidade "
+                + "on especialidade.idespecialidade = profissional.fk_especialidade_idespecialidade "
+                + "where crm like '"+id+"'";
+    }
 
+    private void mostraItens(){
+        desabilitaCampos();
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(preparaSQL());
+        try {
+            while(rs.next()){
+                txtfldNomeEspecialista.setText(rs.getString("nome"));
+                txtfldCRM.setText(rs.getString("crm"));
+                cmbbxEspecialidade.setSelectedItem(rs.getString("nome_especialidade"));
+            }
+        } catch (Exception e) {
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
