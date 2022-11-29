@@ -121,8 +121,8 @@ public class EditarEspecialista extends javax.swing.JFrame {
 }
    
     public EditarEspecialista(String getid) {
+        btnEditar.setVisible(true);
         btnEditar.setVisible(false);
-        btnSalvar.setVisible(false);
         initComponents();
         //this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
@@ -182,12 +182,12 @@ public class EditarEspecialista extends javax.swing.JFrame {
         txtfldNomeEspecialista = new JtextFieldSomenteLetras(100);
         cmbbxEspecialidade = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         lblCamposObrigatorios = new javax.swing.JLabel();
         lblCRM = new javax.swing.JLabel();
         txtfldCRM = new JtextFieldSomenteNumeros(20);
         lblErro = new javax.swing.JLabel();
-        btnEditar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
 
         setTitle("Cadastrar Especialista");
         setLocation(new java.awt.Point(400, 200));
@@ -227,13 +227,13 @@ public class EditarEspecialista extends javax.swing.JFrame {
             }
         });
 
-        btnSalvar.setBackground(new java.awt.Color(242, 242, 242));
-        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Editar.png"))); // NOI18N
-        btnSalvar.setBorder(null);
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
+        btnEditar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Editar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
@@ -249,13 +249,13 @@ public class EditarEspecialista extends javax.swing.JFrame {
         lblErro.setForeground(new java.awt.Color(204, 0, 0));
         lblErro.setToolTipText("");
 
-        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
-        btnEditar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Salvar.png"))); // NOI18N
-        btnEditar.setBorder(null);
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setBackground(new java.awt.Color(242, 242, 242));
+        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Salvar.png"))); // NOI18N
+        btnSalvar.setBorder(null);
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -293,10 +293,10 @@ public class EditarEspecialista extends javax.swing.JFrame {
                         .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(290, 290, 290)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnEditar))
-                .addGap(17, 17, 17)
+                .addComponent(btnEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCancelar))
         );
         layout.setVerticalGroup(
@@ -325,9 +325,9 @@ public class EditarEspecialista extends javax.swing.JFrame {
                         .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvar)
                     .addComponent(btnEditar)
-                    .addComponent(btnCancelar)))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar)))
         );
 
         pack();
@@ -347,16 +347,18 @@ public class EditarEspecialista extends javax.swing.JFrame {
         if(sair.getReturnStatus()==1) this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
-        btnEditar.setVisible(true);
-        
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        btnSalvar.setVisible(true);
+        desabilitaCampos();
+        btnEditar.setVisible(true);
+        btnEditar.setVisible(false);
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
