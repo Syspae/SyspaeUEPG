@@ -128,7 +128,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){
         int id = 0;        
-        String busca = "Select idespecialidade from especialidade where nome like '"+cmbbxEspecialidade.getSelectedItem().toString()+"'";            
+        String busca = "Select idespecialidade from especialidade where nome_especialidade like '"+cmbbxEspecialidade.getSelectedItem().toString()+"'";            
                
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(busca);

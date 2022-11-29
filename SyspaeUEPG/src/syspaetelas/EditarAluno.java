@@ -1085,7 +1085,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblPaisNatual.setText("País Natural*");
 
         try {
-            txtfldCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###-###")));
+            txtfldCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -1209,7 +1209,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblEmail.setText("Email");
 
         try {
-            txtfldNumeroContato.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
+            txtfldNumeroContato.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -1846,7 +1846,8 @@ public class EditarAluno extends javax.swing.JFrame {
                     .addComponent(btnEditar)
                     .addComponent(btnSalvar)
                     .addComponent(btnSair1)
-                    .addComponent(btnSair)))
+                    .addComponent(btnSair))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();

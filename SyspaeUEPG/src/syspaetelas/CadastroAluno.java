@@ -830,7 +830,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblPaisNatual.setText("País Natural*");
 
         try {
-            txtfldCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###-###")));
+            txtfldCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -954,7 +954,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblEmail.setText("Email");
 
         try {
-            txtfldNumeroContato.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
+            txtfldNumeroContato.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -1604,7 +1604,8 @@ public class CadastroAluno extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSalvar)
-                            .addComponent(btnSair)))))
+                            .addComponent(btnSair))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
