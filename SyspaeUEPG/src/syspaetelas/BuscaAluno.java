@@ -34,8 +34,6 @@ public class BuscaAluno extends javax.swing.JFrame {
                 return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where nome like '" + busca + "%'order by nome ASC";
             case "CPF":
                 return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + busca + "%'order by nome ASC";
-            case "Matrícula":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where CAST(idaluno AS TEXT) like '" + busca + "%'order by nome ASC";
             case "Nome do Responsável":
                 return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + busca + "%'order by nome ASC";
             default:
@@ -84,7 +82,7 @@ public class BuscaAluno extends javax.swing.JFrame {
         lblBusca.setText("Buscar por:");
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Nome do Responsável" }));
+        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Nome do Responsável" }));
         cmbbxBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxBuscaActionPerformed(evt);

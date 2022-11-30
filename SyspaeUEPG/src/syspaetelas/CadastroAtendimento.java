@@ -29,6 +29,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         buscaProfissional();
         data();
         cmbbxEspecialidade.setEnabled(false);
+        btnAnamnese.setEnabled(false);
     }
 
     private void data(){
@@ -87,12 +88,12 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     //Função para pegar o nome da especialidade baseado no ID
     private void buscaEspecialidadeNome(){
         int id = buscaEspecialidadeID();
-        String buscaNome = "Select nome from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'";
+        String buscaNome = "Select nome_especialidade from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'";
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(buscaNome);
         try {
             while(rs.next()){
-                cmbbxEspecialidade.setText(rs.getString("nome"));
+                cmbbxEspecialidade.setText(rs.getString("nome_especialidade"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,7 +102,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     
     //Função para pegar o ID do aluno selecionado no combobox
     private int idAluno(){        
-        String busca = "Select * from aluno where nome like '"+cmbbxAluno.getSelectedItem().toString()+"%'";
+        String busca = "Select idaluno from aluno where nome like '"+cmbbxAluno.getSelectedItem().toString()+"'";
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca(busca);
         int id = 0;
@@ -219,6 +220,11 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         });
 
         cmbbxAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxAluno.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbbxAlunoItemStateChanged(evt);
+            }
+        });
 
         cmbbxProfissional.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxProfissional.addItemListener(new java.awt.event.ItemListener() {
@@ -443,6 +449,11 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     private void cmbbxProfissionalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxProfissionalItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbbxProfissionalItemStateChanged
+
+    private void cmbbxAlunoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxAlunoItemStateChanged
+        // TODO add your handling code here:
+        btnAnamnese.setEnabled(true);
+    }//GEN-LAST:event_cmbbxAlunoItemStateChanged
 
     /**
      * @param args the command line arguments

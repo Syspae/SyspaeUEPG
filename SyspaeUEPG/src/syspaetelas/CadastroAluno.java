@@ -1118,6 +1118,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblCampos.setText("Campos com (*) são obrigatórios");
 
         txtfldNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNome.setToolTipText("Nome do aluno");
         txtfldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldNomeActionPerformed(evt);

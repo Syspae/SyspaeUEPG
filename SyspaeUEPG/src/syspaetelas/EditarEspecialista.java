@@ -241,6 +241,7 @@ public class EditarEspecialista extends javax.swing.JFrame {
         lblEspecialidade.setText("Especialidade*");
 
         txtfldNomeEspecialista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNomeEspecialista.setToolTipText("Nome do profissional");
         txtfldNomeEspecialista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldNomeEspecialistaActionPerformed(evt);
@@ -372,6 +373,9 @@ public class EditarEspecialista extends javax.swing.JFrame {
                         .addComponent(btnSalvar)))
                 .addContainerGap())
         );
+
+        txtfldNomeEspecialista.getAccessibleContext().setAccessibleName("");
+        txtfldNomeEspecialista.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

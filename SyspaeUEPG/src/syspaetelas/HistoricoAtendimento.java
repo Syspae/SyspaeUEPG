@@ -42,13 +42,6 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
                        inner join atendimento as atendimento
                        ON aluno.idaluno = atendimento.fk_aluno_idaluno
                        WHERE cpf like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
-            case "Matrícula":
-                return """
-                       SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
-                       FROM aluno as aluno
-                       inner join atendimento as atendimento
-                       ON aluno.idaluno = atendimento.fk_aluno_idaluno
-                       WHERE idaluno like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
             case "Nome do Responsável":
                 return """
                        SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
@@ -83,7 +76,7 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         setResizable(false);
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Data de Nascimento" }));
+        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Data de Nascimento" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtfldBusca.addKeyListener(new java.awt.event.KeyAdapter() {

@@ -20,12 +20,15 @@ import java.time.format.DateTimeFormatter;
  */
 public class CadastroAnamnese extends javax.swing.JFrame {
     
+    private int idaluno;
+    
     /**
      * Creates new form TelaCadastroAnamnese
      * @param id
      */
     public CadastroAnamnese(int id) {
         initComponents();
+        idaluno = id;
         setLocationRelativeTo(null);
         this.setVisible(true);
         buscaAlunos(id);
@@ -33,6 +36,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         buscaNascimento();
         data();
         idade();
+        mostraItens();
     }
 
     /**
@@ -128,20 +132,83 @@ public class CadastroAnamnese extends javax.swing.JFrame {
     }
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
-    private String preparaSQL(){       
-        return "INSERT into anamnese (data_anamnese, doencas_familia, atendimentos_odontologicos, encaminhamentos_para_a_rede,"
+    private String preparaInsert(){       
+        return "INSERT into anamnese (data_nascimento, data_anamnese, doencas_familia, atendimentos_odontologicos, encaminhamentos_para_a_rede,"
                                             + "surdez_leve_ou_moderada, surdez_severa_ou_profunda, baixa_visao, cegueira, deficiencia_fisica,"
                                             + "surdocegueira, ingestao_de_alcool, habito_de_fumar, sindrome_de_down, condutas_tipicas, altas_habilidades_superdotado,"
-                                            + "deficiencia_mental, deficiencia_multipla, autismo, datamodificacao)"
-                                            + "values ('"+txtfldDataAnamnese.getText()+"', '"+txtDoencaFamilia.getText()+"', '"+txtAtendimentosOdonto.getText()+"', '"+txtEncaminhamentos.getText()+"'"
+                                            + "deficiencia_mental, deficiencia_multipla, autismo, datamodificacao, fk_aluno_idaluno)"
+                                            + "values ('"+txtfldDataNascimento.getText()+"', '"+txtfldDataAnamnese.getText()+"', '"+txtDoencaFamilia.getText()+"', '"+txtAtendimentosOdonto.getText()+"', '"+txtEncaminhamentos.getText()+"'"
                                             + ", '"+chckbxSurdezLeveModerada.isSelected()+"', '"+chckbxSurdezSeveraProfunda.isSelected()+"'"
                                             + ", '"+chckbxBaixaVisao.isSelected()+"', '"+chckbxCegueira.isSelected()+"', '"+chckbxDeficienciaFisica.isSelected()+"', '"+chckbxSurdocegueira.isSelected()+"'"
                                             + ", '"+chckbxIngestaoAlcool.isSelected()+"', '"+chckbxHabitoFumar.isSelected()+"'"
                                             + ", '"+chckbxSindromeDown.isSelected()+"', '"+chckbxCondutasTipicas.isSelected()+"', '"+chckbxAltasHabilidadesSuperdotado.isSelected()+"', "
                                             + "'"+chckbxDeficienciaMental.isSelected()+"', '"+chckbxDeficienciaMultipla.isSelected()+"', '"+chckbxAutismo.isSelected()+"', '"+dataModificacao()+"'"
-                                            + ")";       
+                                            + ", '"+idaluno+"')";       
     }
     
+    private void mostraItens(){
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca("select aluno.data_nascimento, * from anamnese, aluno where idaluno  = '"+idaluno+"'");
+        try {
+            while(rs.next()){
+                txtfldDataNascimento.setText(formataData(rs.getString("data_nascimento")));
+                txtfldDataAnamnese.setText(formataData(rs.getString("data_anamnese")));
+                txtDoencaFamilia.setText(rs.getString("doencas_familia"));
+                txtAtendimentosOdonto.setText(rs.getString("atendimentos_odontologicos"));
+                txtEncaminhamentos.setText(rs.getString("encaminhamentos_para_a_rede"));
+                chckbxSurdezLeveModerada.setSelected(rs.getBoolean("surdez_leve_ou_moderada"));
+                chckbxSurdezSeveraProfunda.setSelected(rs.getBoolean("surdez_severa_ou_profunda"));
+                chckbxBaixaVisao.setSelected(rs.getBoolean("baixa_visao"));
+                chckbxCegueira.setSelected(rs.getBoolean("cegueira"));
+                chckbxDeficienciaFisica.setSelected(rs.getBoolean("deficiencia_fisica"));
+                chckbxSurdocegueira.setSelected(rs.getBoolean("surdocegueira"));
+                chckbxIngestaoAlcool.setSelected(rs.getBoolean("ingestao_de_alcool"));
+                chckbxHabitoFumar.setSelected(rs.getBoolean("habito_de_fumar"));
+                chckbxSindromeDown.setSelected(rs.getBoolean("sindrome_de_down"));
+                chckbxCondutasTipicas.setSelected(rs.getBoolean("condutas_tipicas"));
+                chckbxAltasHabilidadesSuperdotado.setSelected(rs.getBoolean("altas_habilidades_superdotado"));
+                chckbxDeficienciaMental.setSelected(rs.getBoolean("deficiencia_mental"));
+                chckbxDeficienciaMultipla.setSelected(rs.getBoolean("deficiencia_multipla"));
+                chckbxAutismo.setSelected(rs.getBoolean("autismo"));                
+                updatePossivel(rs.getString("datamodificacao"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    
+    }
+    
+    private void habilitaCampos(){
+        txtfldDataNascimento.setEditable(true);
+        txtfldDataAnamnese.setEditable(true);
+        cmbbxNome.setEnabled(true);
+        txtAtendimentosOdonto.setEditable(true);
+        txtDoencaFamilia.setEditable(true);
+        txtEncaminhamentos.setEditable(true);
+        chckbxSurdezLeveModerada.setEnabled(true);
+        chckbxSurdezSeveraProfunda.setEnabled(true);
+        chckbxBaixaVisao.setEnabled(true);
+        chckbxCegueira.setEnabled(true);
+        chckbxDeficienciaFisica.setEnabled(true);
+        chckbxSurdocegueira.setEnabled(true);
+        chckbxIngestaoAlcool.setEnabled(true);
+        chckbxHabitoFumar.setEnabled(true);
+        chckbxSindromeDown.setEnabled(true);
+        chckbxCondutasTipicas.setEnabled(true);
+        chckbxAltasHabilidadesSuperdotado.setEnabled(true);
+        chckbxDeficienciaMental.setEnabled(true);
+        chckbxDeficienciaMultipla.setEnabled(true);
+        chckbxAutismo.setEnabled(true);
+    }
+    
+        private void updatePossivel(String dataModificacao){
+        LocalDate atual = LocalDate.now();
+        Date dataCriacao = Date.valueOf(dataModificacao);
+        Period tempo = Period.between(atual, dataCriacao.toLocalDate());
+        if(tempo.getDays() < 3) {
+            desabilitaCampos();
+            btnSalvar.setVisible(true);
+        }
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -479,7 +546,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(validaData(txtfldDataAnamnese.getText())){
             if(validaData(txtfldDataNascimento.getText())){
-                String SQL = preparaSQL();
+                String SQL = preparaInsert();
                 Conexao con = new Conexao();        
                 int insert = con.executaInsert(SQL);
                 if(insert == 1){

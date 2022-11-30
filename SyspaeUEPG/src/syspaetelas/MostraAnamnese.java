@@ -21,6 +21,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
     private int idAnamnese;
     /**
      * Creates new form TelaCadastroAnamnese
+     * @param id
      */
     public MostraAnamnese(int id) {
         initComponents();
@@ -142,11 +143,15 @@ public class MostraAnamnese extends javax.swing.JFrame {
             habilitaCampos();
             btnSalvar.setVisible(true);
         }
-        System.out.println(tempo.getDays());
     }
     
     private String preparaUpdate(){
-        return "";
+        return "UPDATE anamnese SET data_nascimento = '"+txtfldDataNascimento.getText()+"', data_anamnese = '"+txtfldDataAnamnese.getText()+"', doencas_familia = '"+txtDoencaFamilia.getText()+"',"
+                + "atendimentos_odontologicos = '"+txtAtendimentosOdonto.getText()+"', encaminhamentos_para_a_rede = '"+txtEncaminhamentos.getText()+"', surdez_leve_ou_moderada = '"+chckbxSurdezLeveModerada.isSelected()+"',"
+                + "surdez_severa_ou_profunda = '"+chckbxSurdezSeveraProfunda.isSelected()+"', baixa_visao = '"+chckbxBaixaVisao.isSelected()+"', cegueira = '"+chckbxCegueira.isSelected()+"', deficiencia_fisica = '"+chckbxDeficienciaFisica.isSelected()+"',"
+                + "surdocegueira = '"+chckbxSurdocegueira.isSelected()+"', ingestao_de_alcool = '"+chckbxIngestaoAlcool.isSelected()+"', habito_de_fumar = '"+chckbxHabitoFumar.isSelected()+"', sindrome_de_down = '"+chckbxSindromeDown.isSelected()+"',"
+                + "condutas_tipicas = '"+chckbxCondutasTipicas.isSelected()+"', altas_habilidades_superdotado = '"+chckbxAltasHabilidadesSuperdotado.isSelected()+"', deficiencia_mental = '"+chckbxDeficienciaMental.isSelected()+"',"
+                + "deficiencia_multipla = '"+chckbxDeficienciaMultipla.isSelected()+"', autismo = '"+chckbxAutismo.isSelected()+"' where fk_aluno_idaluno = "+idAnamnese+"";
     }
         
     @SuppressWarnings("unchecked")
@@ -487,9 +492,8 @@ public class MostraAnamnese extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(validaData(txtfldDataAnamnese.getText())){
             if(validaData(txtfldDataNascimento.getText())){
-                String SQL = preparaUpdate();
                 Conexao con = new Conexao();        
-                int insert = con.executaInsert(SQL);
+                int insert = con.executaInsert(preparaUpdate());
                 if(insert == 1){
                     lblSucesso.setText("Anamnese salva com sucesso!");
                     desabilitaCampos();
