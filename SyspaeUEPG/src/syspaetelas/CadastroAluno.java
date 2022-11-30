@@ -489,9 +489,9 @@ public class CadastroAluno extends javax.swing.JFrame {
         if(naturalidade_municipio.isBlank()){lblErro.setText("Campo obrigatorio Naturalidade/Municipio não preenchido!"); return 0;}
         if(uf_nat.equals("  ")){lblErro.setText("Campo obrigatorio UF não preenchido!"); return 0;}
         if(pais_natural.isBlank()){lblErro.setText("Campo obrigatorio Pais natural não preenchido!"); return 0;}
-        if(cep.equals("  .   -   ")){lblErro.setText("Campo obrigatorio CEP não preenchido!"); return 0;}
+        if(cep.isBlank()){lblErro.setText("Campo obrigatorio CEP não preenchido!"); return 0;}
         if(nome_responsavel.isBlank()){lblErro.setText("Campo obrigatorio Nome do Responsavel não preenchido!"); return 0;}
-        if(telefone_contato.equals("(  )      -    ")){lblErro.setText("Campo obrigatorio Telefone para contato não preenchido!"); return 0;}
+        if(telefone_contato.isBlank()){lblErro.setText("Campo obrigatorio Telefone para contato não preenchido!"); return 0;}
         if(endereco.isBlank()){lblErro.setText("Campo obrigatorio Endereço não preenchido!"); return 0;}
         if(num_casa.isBlank()){lblErro.setText("Campo obrigatorio Numero da casa não preenchido!"); return 0;}
         if(bairro.isBlank()){lblErro.setText("Campo obrigatorio Bairro não preenchido!"); return 0;}

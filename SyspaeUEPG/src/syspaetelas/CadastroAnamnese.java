@@ -37,6 +37,9 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         data();
         idade();
         mostraItens();
+        txtfldDataAnamnese.setEditable(false);
+        txtfldDataNascimento.setEditable(false);
+        
     }
 
     /**

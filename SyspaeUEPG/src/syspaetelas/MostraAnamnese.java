@@ -30,11 +30,13 @@ public class MostraAnamnese extends javax.swing.JFrame {
         idAnamnese = id;
         btnSalvar.setVisible(false);
         mostraItens();
+        txtfldDataAnamnese.setEditable(false);
+        txtfldDataNascimento.setEditable(false);
     }
 
     //Função que prepara a string passada como SQL
     private String preparaSQL(){
-        return "select aluno.data_nascimento, * from anamnese, aluno where idaluno  = '"+idAnamnese+"'";
+        return "select aluno.data_nascimento, * from anamnese, aluno where idanamnese  = '"+idAnamnese+"'";
     }
     
     //Função que formata a data
@@ -151,7 +153,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
                 + "surdez_severa_ou_profunda = '"+chckbxSurdezSeveraProfunda.isSelected()+"', baixa_visao = '"+chckbxBaixaVisao.isSelected()+"', cegueira = '"+chckbxCegueira.isSelected()+"', deficiencia_fisica = '"+chckbxDeficienciaFisica.isSelected()+"',"
                 + "surdocegueira = '"+chckbxSurdocegueira.isSelected()+"', ingestao_de_alcool = '"+chckbxIngestaoAlcool.isSelected()+"', habito_de_fumar = '"+chckbxHabitoFumar.isSelected()+"', sindrome_de_down = '"+chckbxSindromeDown.isSelected()+"',"
                 + "condutas_tipicas = '"+chckbxCondutasTipicas.isSelected()+"', altas_habilidades_superdotado = '"+chckbxAltasHabilidadesSuperdotado.isSelected()+"', deficiencia_mental = '"+chckbxDeficienciaMental.isSelected()+"',"
-                + "deficiencia_multipla = '"+chckbxDeficienciaMultipla.isSelected()+"', autismo = '"+chckbxAutismo.isSelected()+"' where fk_aluno_idaluno = "+idAnamnese+"";
+                + "deficiencia_multipla = '"+chckbxDeficienciaMultipla.isSelected()+"', autismo = '"+chckbxAutismo.isSelected()+"' where idanamnese = "+idAnamnese+"";
     }
         
     @SuppressWarnings("unchecked")

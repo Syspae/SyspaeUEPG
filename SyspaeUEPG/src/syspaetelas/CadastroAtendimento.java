@@ -453,6 +453,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     private void cmbbxAlunoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxAlunoItemStateChanged
         // TODO add your handling code here:
         btnAnamnese.setEnabled(true);
+        if(cmbbxAluno.getSelectedItem().toString().isBlank())btnAnamnese.setEnabled(false);
     }//GEN-LAST:event_cmbbxAlunoItemStateChanged
 
     /**

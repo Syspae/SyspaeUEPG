@@ -818,9 +818,9 @@ public class EditarAluno extends javax.swing.JFrame {
         if(naturalidade_municipio.isBlank()){lblErro.setText("Campo obrigatorio Naturalidade/Municipio não preenchido!"); return 0;}
         if(uf_nat.equals("  ")){lblErro.setText("Campo obrigatorio UF não preenchido!"); return 0;}
         if(pais_natural.isBlank()){lblErro.setText("Campo obrigatorio Pais natural não preenchido!"); return 0;}
-        if(cep.equals("  .   -   ")){lblErro.setText("Campo obrigatorio CEP não preenchido!"); return 0;}
+        if(cep.isBlank()){lblErro.setText("Campo obrigatorio CEP não preenchido!"); return 0;}
         if(nome_responsavel.isBlank()){lblErro.setText("Campo obrigatorio Nome do Responsavel não preenchido!"); return 0;}
-        if(telefone_contato.equals("(  )      -    ")){lblErro.setText("Campo obrigatorio Telefone para contato não preenchido!"); return 0;}
+        if(telefone_contato.isBlank()){lblErro.setText("Campo obrigatorio Telefone para contato não preenchido!"); return 0;}
         if(endereco.isBlank()){lblErro.setText("Campo obrigatorio Endereço não preenchido!"); return 0;}
         if(num_casa.isBlank()){lblErro.setText("Campo obrigatorio Numero da casa não preenchido!"); return 0;}
         if(bairro.isBlank()){lblErro.setText("Campo obrigatorio Bairro não preenchido!"); return 0;}
@@ -991,7 +991,6 @@ public class EditarAluno extends javax.swing.JFrame {
         txtfldLivroFolhas = new JtextFieldSomenteNumeros(9);
         lblErro = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
-        btnSair1 = new javax.swing.JButton();
         lblSucesso = new javax.swing.JLabel();
 
         setTitle("Editar Aluno");
@@ -1411,16 +1410,6 @@ public class EditarAluno extends javax.swing.JFrame {
             }
         });
 
-        btnSair1.setBackground(new java.awt.Color(242, 242, 242));
-        btnSair1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Sair (1).png"))); // NOI18N
-        btnSair1.setBorder(null);
-        btnSair1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair1ActionPerformed(evt);
-            }
-        });
-
         lblSucesso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblSucesso.setForeground(new java.awt.Color(0, 204, 0));
 
@@ -1658,9 +1647,7 @@ public class EditarAluno extends javax.swing.JFrame {
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1845,7 +1832,6 @@ public class EditarAluno extends javax.swing.JFrame {
                         .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnEditar)
                     .addComponent(btnSalvar)
-                    .addComponent(btnSair1)
                     .addComponent(btnSair))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -1936,14 +1922,6 @@ public class EditarAluno extends javax.swing.JFrame {
         this.btnEditar.setVisible(false);
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
-        // TODO add your handling code here:
-        TelaConfirma sair = new TelaConfirma(this, true);
-        if(sair.getReturnStatus()==1) this.dispose(); 
-        
-        
-    }//GEN-LAST:event_btnSair1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1952,7 +1930,6 @@ public class EditarAluno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox chckbxAtendente;
     private javax.swing.JCheckBox chckbxAtendimentoEspecializado;

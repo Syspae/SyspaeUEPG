@@ -205,6 +205,14 @@ public class EditarEspecialista extends javax.swing.JFrame {
         }
     }
     
+    private boolean verificaCampos(){
+        if(txtfldNomeEspecialista.getText().isBlank()){lblErro.setText("Campo nome não preenchido!"); return false;}
+        if(cmbbxEspecialidade.getSelectedItem().equals("--Selecione--")){lblErro.setText("Por favor selecione uma especialidade!"); return false;}
+        if(txtfldCRM.getText().isBlank()){lblErro.setText("Campo Carteira do Conselho não preenchido!"); return false;}
+        return true;   
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -403,6 +411,7 @@ public class EditarEspecialista extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        if(verificaCampos()){
         desabilitaCampos();
         btnSalvar.setVisible(false);
         btnEditar.setVisible(true);
@@ -419,6 +428,7 @@ public class EditarEspecialista extends javax.swing.JFrame {
         int insert = con.executaInsert(preparaUpdate(idprofissional));
         System.out.println(insert);
         if (insert == 1) lblSucesso.setText("Atualizado com sucesso!");
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

@@ -149,6 +149,12 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         txtfldCRM.setEditable(false);
     }
     
+    private boolean verificaCampos(){
+        if(txtfldNomeEspecialista.getText().isBlank()){lblErro.setText("Campo nome não preenchido!"); return false;}
+        if(cmbbxEspecialidade.getSelectedItem().equals("--Selecione--")){lblErro.setText("Por favor selecione uma especialidade!"); return false;}
+        if(txtfldCRM.getText().isBlank()){lblErro.setText("Campo Carteira do Conselho não preenchido!"); return false;}
+        return true;   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -320,15 +326,18 @@ public class CadastroEspecialista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
+        if(verificaCampos()){
         Conexao con = new Conexao();        
         int insert = con.executaInsert(preparaSQL());
         if(insert==1){
                 lblErro.setVisible(false);
                 lblSucesso.setText("Cadastro efetuado com sucesso!");
                 desabilitaCampos();
-                btnSalvar.setEnabled(false);
+                this.dispose();
+                CadastroEspecialista tela = new CadastroEspecialista();
             }
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
