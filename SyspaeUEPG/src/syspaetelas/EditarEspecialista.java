@@ -121,14 +121,13 @@ public class EditarEspecialista extends javax.swing.JFrame {
 }
    
     public EditarEspecialista(String getid) {
-        btnEditar.setVisible(true);
-        btnEditar.setVisible(false);
         initComponents();
         //this.setExtendedState(MAXIMIZED_BOTH);
         this.setVisible(true);
         setLocationRelativeTo(null);
         id = getid;
         mostraItens();
+        btnSalvar.setVisible(false);
     }
     
     //Função para habilitar os campos ao salvar
@@ -151,6 +150,45 @@ public class EditarEspecialista extends javax.swing.JFrame {
                 + "inner join especialidade as especialidade "
                 + "on especialidade.idespecialidade = profissional.fk_especialidade_idespecialidade "
                 + "where crm like '"+id+"'";
+    }
+    
+    private String preparaBusca(){
+        return "SELECT idprofissional from profissional where crm like '"+id+"'";
+    }
+    
+    private String preparaUpdate(int idprofissional){
+        switch (cmbbxEspecialidade.getSelectedItem().toString()) {
+            case "Fonoaudiologia":
+                return "UPDATE profissional SET nome = '"+txtfldNomeEspecialista.getText()+"',"
+                        + " crm = '"+txtfldCRM.getText()+"', fk_especialidade_idespecialidade = '1'"
+                        + " where idprofissional = '"+idprofissional+"'";
+            case "Fisioterapia":
+                return "UPDATE profissional SET nome = '"+txtfldNomeEspecialista.getText()+"',"
+                        + " crm = '"+txtfldCRM.getText()+"', fk_especialidade_idespecialidade = '2'"
+                        + "where idprofissional = "+idprofissional+"";
+            case "Psicologia":
+                return "UPDATE profissional SET nome = '"+txtfldNomeEspecialista.getText()+"',"
+                        + " crm = '"+txtfldCRM.getText()+"', fk_especialidade_idespecialidade = '3'"
+                        + "where idprofissional = "+idprofissional+"";
+            case "Terapia Ocupacional":
+                return "UPDATE profissional SET nome = '"+txtfldNomeEspecialista.getText()+"',"
+                        + " crm = '"+txtfldCRM.getText()+"', fk_especialidade_idespecialidade = '4'"
+                        + "where idprofissional = "+idprofissional+"";
+            case "Neurologia":
+                return "UPDATE profissional SET nome = '"+txtfldNomeEspecialista.getText()+"',"
+                        + " crm = '"+txtfldCRM.getText()+"', fk_especialidade_idespecialidade = '5'"
+                        + "where idprofissional = "+idprofissional+"";
+            case "Odontologia":
+                return "UPDATE profissional SET nome = '"+txtfldNomeEspecialista.getText()+"',"
+                        + " crm = '"+txtfldCRM.getText()+"', fk_especialidade_idespecialidade = '6'"
+                        + "where idprofissional = "+idprofissional+"";
+            case "Nutriçãp":
+                return "UPDATE profissional SET nome = '"+txtfldNomeEspecialista.getText()+"',"
+                        + " crm = '"+txtfldCRM.getText()+"', fk_especialidade_idespecialidade = '7'"
+                        + "where idprofissional = "+idprofissional+"";                   
+            default:
+                throw new AssertionError();
+        }
     }
 
     private void mostraItens(){
@@ -182,11 +220,11 @@ public class EditarEspecialista extends javax.swing.JFrame {
         txtfldNomeEspecialista = new JtextFieldSomenteLetras(100);
         cmbbxEspecialidade = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
         lblCamposObrigatorios = new javax.swing.JLabel();
         lblCRM = new javax.swing.JLabel();
         txtfldCRM = new JtextFieldSomenteNumeros(20);
         lblErro = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
 
         setTitle("Cadastrar Especialista");
@@ -227,16 +265,6 @@ public class EditarEspecialista extends javax.swing.JFrame {
             }
         });
 
-        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
-        btnEditar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Editar.png"))); // NOI18N
-        btnEditar.setBorder(null);
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-
         lblCamposObrigatorios.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCamposObrigatorios.setText("Campos com (*) são obrigatórios");
 
@@ -249,8 +277,14 @@ public class EditarEspecialista extends javax.swing.JFrame {
         lblErro.setForeground(new java.awt.Color(204, 0, 0));
         lblErro.setToolTipText("");
 
-        btnSalvar.setBackground(new java.awt.Color(242, 242, 242));
-        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Editar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Salvar.png"))); // NOI18N
         btnSalvar.setBorder(null);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -264,40 +298,46 @@ public class EditarEspecialista extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(lblNomeEspecialista))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(txtfldNomeEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(lblEspecialidade))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(cmbbxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(lblCRM))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(txtfldCRM, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(lblCamposObrigatorios))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(btnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelar))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(lblNomeEspecialista))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(txtfldNomeEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(lblEspecialidade))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(cmbbxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(lblCRM))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(txtfldCRM, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(11, 11, 11)
+                                        .addComponent(lblCamposObrigatorios))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 85, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,23 +351,26 @@ public class EditarEspecialista extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(cmbbxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lblCRM)
-                .addGap(6, 6, 6)
-                .addComponent(txtfldCRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblCamposObrigatorios)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEditar)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnSalvar)))
+                        .addComponent(lblCRM)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtfldCRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblCamposObrigatorios)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEditar)
+                        .addComponent(btnSalvar)))
+                .addContainerGap())
         );
 
         pack();
@@ -349,15 +392,29 @@ public class EditarEspecialista extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        desabilitaCampos();
-        btnEditar.setVisible(true);
+        habilitaCampos();
         btnEditar.setVisible(false);
+        btnSalvar.setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-
-        
+        desabilitaCampos();
+        btnSalvar.setVisible(false);
+        btnEditar.setVisible(true);
+        int idprofissional = 0;
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca(preparaBusca());
+        try {
+            while(rs.next()){
+                idprofissional = rs.getInt("idprofissional");
+            }
+        } catch (Exception e) {
+        }
+        System.out.println(idprofissional);
+        int insert = con.executaInsert(preparaUpdate(idprofissional));
+        System.out.println(insert);
+        if (insert == 1) lblSucesso.setText("Atualizado com sucesso!");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
