@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AlunosBolsaFamilia" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="38fcad25-da87-4d9e-9d7d-c39b42d8527f">
+	<property name="ireport.zoom" value="1.464100000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT  idaluno, nome, cpf, bolsa_familia, responsavel
+FROM aluno
+WHERE bolsa_familia = true]]>
+	</queryString>
+	<field name="idaluno" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="bolsa_familia" class="java.lang.Boolean"/>
+	<field name="responsavel" class="java.lang.String"/>
+	<variable name="idaluno_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{idaluno}]]></variableExpression>
+	</variable>
+	<group name="idaluno">
+		<groupExpression><![CDATA[$F{idaluno}]]></groupExpression>
+	</group>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+	</group>
+	<group name="cpf">
+		<groupExpression><![CDATA[$F{cpf}]]></groupExpression>
+	</group>
+	<group name="bolsa_familia">
+		<groupExpression><![CDATA[$F{bolsa_familia}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="555" height="79" uuid="825f3a7f-4890-4e7e-9aaa-d245e231e1c8"/>
+				<imageExpression><![CDATA["C:\\Users\\nip02\\Documents\\GitHub\\SyspaeUEPG\\SyspaeUEPG\\src\\images\\CabeçalhoRelatorio.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="91" width="555" height="20" uuid="84c4f30d-1957-4e83-97c5-57892e498c85"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alunos que recebem bolsa familia]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="798eddf6-b10a-4e6b-a0ae-903ff19396de"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mátricula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="233" height="20" uuid="7894e97a-9d60-4625-92ab-9a6642938f85"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="0" width="118" height="20" uuid="f25e694a-0234-4cb5-8001-074b07492101"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="1815066e-53c7-4e8c-b858-d973a0aa24a8"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Responsável]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="ce1361ca-08b1-44e4-85c5-52e57dc19567"/>
+				<textFieldExpression><![CDATA[$F{idaluno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="233" height="20" uuid="658e8e3e-ffec-4409-926e-ee1eb3685c16"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="0" width="118" height="20" uuid="b33ff6d0-46f5-425f-8e84-90a10f2e7324"/>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="1" width="100" height="20" uuid="31692650-aa90-417b-8df2-d38fc253c019"/>
+				<textFieldExpression><![CDATA[$F{responsavel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="492" y="22" width="63" height="20" uuid="719d73b7-1734-4859-979c-0b621f58eff9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="387" y="22" width="105" height="20" uuid="e262b312-6e8d-415d-9c96-b8a0ea0ae895"/>
+				<text><![CDATA[Relatório gerado em]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
