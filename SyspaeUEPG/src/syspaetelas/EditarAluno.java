@@ -862,12 +862,27 @@ public class EditarAluno extends javax.swing.JFrame {
     private void initComponents() {
 
         btnSair = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnInativar = new javax.swing.JButton();
+        txtfldFiliacao2 = new JtextFieldSomenteLetras(100);
+        txtfldCidade = new JtextFieldSomenteLetras(50);
+        txtfldCGM = new JtextFieldSomenteNumeros(20);
+        txtfldRG = new JtextFieldSomenteNumeros(9);
+        txtfldRNE = new JtextFieldSomenteNumeros(15);
+        txtfldNascimentoCasamento = new JtextFieldSomenteNumeros(30);
+        txtfldNDocumentoResponsavel = new JtextFieldSomenteNumeros(30);
+        txtfldNDocumentoFiliacao1 = new JtextFieldSomenteNumeros(30);
+        txtfldNDocumentoFiliacao2 = new JtextFieldSomenteNumeros(30);
+        txtfldNdaCasa = new JtextFieldSomenteNumeros(6);
+        txtfldEmail = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
         lblMatricula = new javax.swing.JLabel();
         txtfldMatricula = new javax.swing.JTextField();
         lblCGM = new javax.swing.JLabel();
         lblNascimento = new javax.swing.JLabel();
         lblSexo = new javax.swing.JLabel();
+        txtfldLivroFolhas = new JtextFieldSomenteNumeros(9);
         lblEstadoCivil = new javax.swing.JLabel();
         fldDataNascimento = new javax.swing.JFormattedTextField();
         cmbbxSexo = new javax.swing.JComboBox<>();
@@ -888,21 +903,6 @@ public class EditarAluno extends javax.swing.JFrame {
         lblEndereco = new javax.swing.JLabel();
         txtfldEndereco = new javax.swing.JTextField();
         lblNEE = new javax.swing.JLabel();
-        chckbxInterpreteLibras = new javax.swing.JCheckBox();
-        chckbxAtendente = new javax.swing.JCheckBox();
-        chckbxProfessorEspecializado = new javax.swing.JCheckBox();
-        chckbxAtendimentoEspecializado = new javax.swing.JCheckBox();
-        chckbxNaPropriaEscola = new javax.swing.JCheckBox();
-        chckbxOutraEscola = new javax.swing.JCheckBox();
-        chckbxCentroAtendimentoEspecializado = new javax.swing.JCheckBox();
-        chckbxUsoCadeiraRodas = new javax.swing.JCheckBox();
-        chckbxMuletasBengalas = new javax.swing.JCheckBox();
-        chckbxLivrosAmpliados = new javax.swing.JCheckBox();
-        chckbxRegleteSoroba = new javax.swing.JCheckBox();
-        chckbxCarteirasAdaptadas = new javax.swing.JCheckBox();
-        chckbxComputadoresAdaptados = new javax.swing.JCheckBox();
-        chckbxComunicacaoAlternativa = new javax.swing.JCheckBox();
-        btnSalvar = new javax.swing.JButton();
         lblNascimentoCasamento = new javax.swing.JLabel();
         lblLivroFolhas = new javax.swing.JLabel();
         lblDataEmissao = new javax.swing.JLabel();
@@ -928,14 +928,18 @@ public class EditarAluno extends javax.swing.JFrame {
         lblComplemento = new javax.swing.JLabel();
         lblBairro = new javax.swing.JLabel();
         lblCidade = new javax.swing.JLabel();
+        lblCorRaca = new javax.swing.JLabel();
+        cmbbxCorRaca = new javax.swing.JComboBox<>();
+        txtfldNome = new JtextFieldSomenteLetras(100);
+        txtfldOrgaoEmissor = new JtextFieldSomenteLetras(5);
+        txtfldMunicipio = new JtextFieldSomenteLetras(50);
+        txtfldPaisNatural = new JtextFieldSomenteLetras(15);
         lblEstado = new javax.swing.JLabel();
+        txtfldNomeCartorio = new JtextFieldSomenteLetras(150);
         txtfldDataEmissao = new javax.swing.JFormattedTextField();
+        txtfldResponsavel = new JtextFieldSomenteLetras(100);
         lblFiliacao2 = new javax.swing.JLabel();
-        lblEscolaridadeFiliacao1 = new javax.swing.JLabel();
-        cmbbxEscolariedadeFiliacao1 = new javax.swing.JComboBox<>();
-        lblTipoTransporte = new javax.swing.JLabel();
-        cmbbxTipoTransporte = new javax.swing.JComboBox<>();
-        lbllEscolariedadeFiliacao2 = new javax.swing.JLabel();
+        txtfldFiliacao1 = new JtextFieldSomenteLetras(100);
         cmbbxEscolariedadeFiliacao2 = new javax.swing.JComboBox<>();
         lblTipoMoradia = new javax.swing.JLabel();
         cmbbxTipoMoradia = new javax.swing.JComboBox<>();
@@ -947,32 +951,28 @@ public class EditarAluno extends javax.swing.JFrame {
         spnPessoasNaCasa = new javax.swing.JSpinner();
         lblRendaFamiliar = new javax.swing.JLabel();
         cmbbxRendaFamiliar = new javax.swing.JComboBox<>();
-        txtfldEmail = new javax.swing.JTextField();
-        lblCorRaca = new javax.swing.JLabel();
-        cmbbxCorRaca = new javax.swing.JComboBox<>();
-        lblCampos = new javax.swing.JLabel();
-        txtfldNome = new JtextFieldSomenteLetras(100);
-        txtfldOrgaoEmissor = new JtextFieldSomenteLetras(6);
-        txtfldMunicipio = new JtextFieldSomenteLetras(50);
-        txtfldPaisNatural = new JtextFieldSomenteLetras(15);
-        txtfldNomeCartorio = new JtextFieldSomenteLetras(150);
-        txtfldResponsavel = new JtextFieldSomenteLetras(100);
-        txtfldFiliacao1 = new JtextFieldSomenteLetras(100);
-        txtfldFiliacao2 = new JtextFieldSomenteLetras(100);
-        txtfldCidade = new JtextFieldSomenteLetras(50);
-        txtfldCGM = new JtextFieldSomenteNumeros(20);
-        txtfldRG = new JtextFieldSomenteNumeros(10);
-        txtfldRNE = new JtextFieldSomenteNumeros(15);
-        txtfldNascimentoCasamento = new JtextFieldSomenteNumeros(30);
-        txtfldNDocumentoResponsavel = new JtextFieldSomenteNumeros(30);
-        txtfldNDocumentoFiliacao1 = new JtextFieldSomenteNumeros(30);
-        txtfldNDocumentoFiliacao2 = new JtextFieldSomenteNumeros(30);
-        txtfldNdaCasa = new JtextFieldSomenteNumeros(6);
-        txtfldLivroFolhas = new JtextFieldSomenteNumeros(9);
         lblErro = new javax.swing.JLabel();
-        btnEditar = new javax.swing.JButton();
         lblSucesso = new javax.swing.JLabel();
-        btnInativar = new javax.swing.JButton();
+        chckbxInterpreteLibras = new javax.swing.JCheckBox();
+        chckbxAtendente = new javax.swing.JCheckBox();
+        chckbxProfessorEspecializado = new javax.swing.JCheckBox();
+        chckbxAtendimentoEspecializado = new javax.swing.JCheckBox();
+        chckbxNaPropriaEscola = new javax.swing.JCheckBox();
+        chckbxOutraEscola = new javax.swing.JCheckBox();
+        chckbxCentroAtendimentoEspecializado = new javax.swing.JCheckBox();
+        chckbxUsoCadeiraRodas = new javax.swing.JCheckBox();
+        chckbxMuletasBengalas = new javax.swing.JCheckBox();
+        chckbxLivrosAmpliados = new javax.swing.JCheckBox();
+        chckbxRegleteSoroba = new javax.swing.JCheckBox();
+        chckbxCarteirasAdaptadas = new javax.swing.JCheckBox();
+        chckbxComputadoresAdaptados = new javax.swing.JCheckBox();
+        chckbxComunicacaoAlternativa = new javax.swing.JCheckBox();
+        lblCampos = new javax.swing.JLabel();
+        lblEscolaridadeFiliacao1 = new javax.swing.JLabel();
+        cmbbxEscolariedadeFiliacao1 = new javax.swing.JComboBox<>();
+        lblTipoTransporte = new javax.swing.JLabel();
+        cmbbxTipoTransporte = new javax.swing.JComboBox<>();
+        lbllEscolariedadeFiliacao2 = new javax.swing.JLabel();
 
         setTitle("Editar Aluno");
         setResizable(false);
@@ -987,6 +987,76 @@ public class EditarAluno extends javax.swing.JFrame {
             }
         });
 
+        btnSalvar.setBackground(new java.awt.Color(242, 242, 242));
+        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Salvar.png"))); // NOI18N
+        btnSalvar.setBorder(null);
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Editar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnInativar.setText("Inativar");
+        btnInativar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInativarActionPerformed(evt);
+            }
+        });
+
+        txtfldFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldFiliacao2.setToolTipText("Nome da Filiação 2");
+
+        txtfldCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldCidade.setToolTipText("Cidade do Endereço");
+
+        txtfldCGM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldCGM.setToolTipText("Código Geral de Matrícula do Aluno");
+
+        txtfldRG.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldRG.setToolTipText("Carteira de Identidade do Aluno");
+        txtfldRG.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtfldRG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldRGActionPerformed(evt);
+            }
+        });
+
+        txtfldRNE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldRNE.setToolTipText("Registro Nacional Estrangeiro (caso aluno seja estrangeiro)");
+
+        txtfldNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNascimentoCasamento.setToolTipText("Certidão de Casamento ou Nascimento do Aluno");
+
+        txtfldNDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNDocumentoResponsavel.setToolTipText("Número do Documento do Responsável");
+
+        txtfldNDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNDocumentoFiliacao1.setToolTipText("Número do Documento da Filiação 1");
+
+        txtfldNDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNDocumentoFiliacao2.setToolTipText("Número do Documento da Filiação 2");
+
+        txtfldNdaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNdaCasa.setToolTipText("Número da casa");
+
+        txtfldEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldEmail.setToolTipText("Email do Responsável");
+        txtfldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldEmailActionPerformed(evt);
+            }
+        });
+
         lblNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblNome.setText("Nome*");
 
@@ -995,6 +1065,7 @@ public class EditarAluno extends javax.swing.JFrame {
 
         txtfldMatricula.setEditable(false);
         txtfldMatricula.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldMatricula.setToolTipText("Matrícula gerada automaticamente");
         txtfldMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldMatriculaActionPerformed(evt);
@@ -1010,6 +1081,9 @@ public class EditarAluno extends javax.swing.JFrame {
         lblSexo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblSexo.setText("Sexo*");
 
+        txtfldLivroFolhas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldLivroFolhas.setToolTipText("Livro e Folhas da Certidão");
+
         lblEstadoCivil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblEstadoCivil.setText("Estado Cívil*");
 
@@ -1018,6 +1092,7 @@ public class EditarAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        fldDataNascimento.setToolTipText("Data de Nascimento do Aluno");
         fldDataNascimento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         fldDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1027,9 +1102,16 @@ public class EditarAluno extends javax.swing.JFrame {
 
         cmbbxSexo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Feminino", "Masculino" }));
+        cmbbxSexo.setToolTipText("Sexo do Aluno");
+        cmbbxSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbxSexoActionPerformed(evt);
+            }
+        });
 
         cmbbxEstadoCivil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Casado(a)", "Divorciado(a)", "Separado(a)", "Solteiro(a)", "Viúvo(a)" }));
+        cmbbxEstadoCivil.setToolTipText("Estado Civil do Aluno");
 
         lblCPF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblCPF.setText("CPF*");
@@ -1039,6 +1121,7 @@ public class EditarAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtfldCPF.setToolTipText("CPF do Aluno");
         txtfldCPF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblMunicipio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -1049,6 +1132,7 @@ public class EditarAluno extends javax.swing.JFrame {
 
         cmbbxUF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceara", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        cmbbxUF.setToolTipText("Estado de Naturalidade do Aluno");
         cmbbxUF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxUFActionPerformed(evt);
@@ -1069,6 +1153,7 @@ public class EditarAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtfldCEP.setToolTipText("CEP de endereço do Aluno");
         txtfldCEP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblCEP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -1087,9 +1172,223 @@ public class EditarAluno extends javax.swing.JFrame {
         lblEndereco.setText("Endereço*");
 
         txtfldEndereco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldEndereco.setToolTipText("Endereço do Aluno (Logradouro)");
 
         lblNEE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblNEE.setText("Necessidades Educacionais Especiais");
+
+        lblNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblNascimentoCasamento.setText("Certidão de Nascimento/Casamento");
+
+        lblLivroFolhas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblLivroFolhas.setText("Livro/Folhas");
+
+        lblDataEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblDataEmissao.setText("Data de Emissão");
+
+        lblNomeCartorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblNomeCartorio.setText("Nome do Cartório/UF");
+
+        cmbbxDocumentoResposavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxDocumentoResposavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoResposavel.setToolTipText("Tipo de Documento do Responsável");
+
+        lblDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblDocumentoResponsavel.setText("Documento");
+
+        lblNDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblNDocumentoResponsavel.setText("Número");
+
+        cmbbxGrauParentesco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxGrauParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Avô(ó)", "Bisavô(ó)", "Bisneto(a)", "Filho(a)", "Irmão(ã)", "Mãe", "Neto(a)", "Pai", "Sobrinho(a)", "Tio(a)", "Outro" }));
+        cmbbxGrauParentesco.setToolTipText("Grau de Parentesco do Responsável");
+
+        lblGrauParentesco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblGrauParentesco.setText("Grau de Parentesco");
+
+        lblEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblEmail.setText("Email");
+
+        try {
+            txtfldNumeroContato.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtfldNumeroContato.setToolTipText("Telefone para Contato com o Responsável");
+        txtfldNumeroContato.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNumeroContato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldNumeroContatoActionPerformed(evt);
+            }
+        });
+
+        lblNumeroContato.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblNumeroContato.setText("Telefone para Contato*");
+
+        cmbbxDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxDocumentoFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao1.setToolTipText("Tipo de Documento da Filiação 1");
+        cmbbxDocumentoFiliacao1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbxDocumentoFiliacao1ActionPerformed(evt);
+            }
+        });
+
+        lblDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblDocumentoFiliacao1.setText("Documento");
+
+        lblNDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblNDocumentoFiliacao1.setText("Número");
+
+        cmbbxDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao2.setToolTipText("Tipo de Documento da Filiação 2");
+
+        lblDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblDocumentoFiliacao2.setText("Documento");
+
+        lblNDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblNDocumentoFiliacao2.setText("Número");
+
+        txtfldComplemento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldComplemento.setToolTipText("Complemento do Endereço");
+
+        txtfldBairro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBairro.setToolTipText("Bairro do Endereço");
+        txtfldBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldBairroActionPerformed(evt);
+            }
+        });
+
+        cmbbxEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceara", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        cmbbxEstado.setToolTipText("Estado do Endereço");
+        cmbbxEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbxEstadoActionPerformed(evt);
+            }
+        });
+
+        lblNdaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblNdaCasa.setText("Número da casa*");
+
+        lblComplemento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblComplemento.setText("Complemento");
+
+        lblBairro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblBairro.setText("Bairro*");
+
+        lblCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblCidade.setText("Cidade*");
+
+        lblCorRaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblCorRaca.setText("Cor/Raça*");
+
+        cmbbxCorRaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxCorRaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Amarela", "Branca", "Indígena", "Parda", "Preta" }));
+        cmbbxCorRaca.setToolTipText("Cor/Raça do aluno");
+
+        txtfldNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNome.setToolTipText("Nome do Aluno");
+        txtfldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldNomeActionPerformed(evt);
+            }
+        });
+
+        txtfldOrgaoEmissor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldOrgaoEmissor.setToolTipText("Órgão Emissor do RG");
+
+        txtfldMunicipio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldMunicipio.setToolTipText("Município de Naturalidade do Aluno");
+
+        txtfldPaisNatural.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldPaisNatural.setToolTipText("País de Naturalidade do Aluno");
+
+        lblEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblEstado.setText("Estado*");
+
+        txtfldNomeCartorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNomeCartorio.setToolTipText("Nome do Cartório em que foi emitida a certidão");
+
+        try {
+            txtfldDataEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtfldDataEmissao.setToolTipText("Data de Emissão da Certidão");
+        txtfldDataEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        txtfldResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldResponsavel.setToolTipText("Nome do Responsável pelo Aluno");
+
+        lblFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblFiliacao2.setText("Filiação 2");
+
+        txtfldFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldFiliacao1.setToolTipText("Nome da Filiação 1");
+
+        cmbbxEscolariedadeFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxEscolariedadeFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Analfabeto", "Até 5º Ano Incompleto", "5º Ano Completo", "6º ao 9º Ano do Fundamental", "Fundamental Completo", "Médio Incompleto", "Médio Completo", "Superior Incompleto", "Superior Completo", "Mestrado", "Doutorado", "Ignorado" }));
+        cmbbxEscolariedadeFiliacao2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbxEscolariedadeFiliacao2ActionPerformed(evt);
+            }
+        });
+
+        lblTipoMoradia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblTipoMoradia.setText("Tipo de Moradia*");
+
+        cmbbxTipoMoradia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxTipoMoradia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Alugada", "Cedida", "Própria" }));
+
+        lblRecebeBPC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblRecebeBPC.setText("Recebe BPC?");
+
+        cmbbxRecebeBPC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxRecebeBPC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
+        cmbbxRecebeBPC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbxRecebeBPCActionPerformed(evt);
+            }
+        });
+
+        lblRecebeBolsaFamilia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblRecebeBolsaFamilia.setText("Recebe Bolsa Familia?");
+
+        cmbbxRecebeBolsaFamilia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxRecebeBolsaFamilia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
+        cmbbxRecebeBolsaFamilia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbxRecebeBolsaFamiliaActionPerformed(evt);
+            }
+        });
+
+        lblPessoasNaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblPessoasNaCasa.setText("Quantas pessoas moram na casa?*");
+
+        spnPessoasNaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        spnPessoasNaCasa.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spnPessoasNaCasa.setToolTipText("Quantidade de pessoas na casa contando com o aluno");
+
+        lblRendaFamiliar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblRendaFamiliar.setText("Renda Familiar*");
+
+        cmbbxRendaFamiliar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxRendaFamiliar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Sem renda", "Até 1 sálario mínimo", "Entre 1 e 3 sálarios mínimos", "Entre 3 e 5 sálarios mínimos", "Mais de 5 sálarios mínimos" }));
+        cmbbxRendaFamiliar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbbxRendaFamiliarActionPerformed(evt);
+            }
+        });
+
+        lblErro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblErro.setForeground(new java.awt.Color(204, 0, 0));
+        lblErro.setToolTipText("");
+
+        lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
 
         chckbxInterpreteLibras.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chckbxInterpreteLibras.setText("Interprete de Libras");
@@ -1148,115 +1447,8 @@ public class EditarAluno extends javax.swing.JFrame {
         chckbxComunicacaoAlternativa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chckbxComunicacaoAlternativa.setText("Materiais de Comunicação Alternativa e Adaptada");
 
-        btnSalvar.setBackground(new java.awt.Color(242, 242, 242));
-        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Salvar.png"))); // NOI18N
-        btnSalvar.setBorder(null);
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
-            }
-        });
-
-        lblNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNascimentoCasamento.setText("Certidão de Nascimento/Casamento");
-
-        lblLivroFolhas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblLivroFolhas.setText("Livro/Folhas");
-
-        lblDataEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblDataEmissao.setText("Data de Emissão");
-
-        lblNomeCartorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNomeCartorio.setText("Nome do Cartório/UF");
-
-        cmbbxDocumentoResposavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoResposavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
-
-        lblDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblDocumentoResponsavel.setText("Documento");
-
-        lblNDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNDocumentoResponsavel.setText("Número");
-
-        cmbbxGrauParentesco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxGrauParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Pai", "Mãe", "Avô(ó)", "Bisavô(ó)", "Filho(a)", "Neto(a)", "Bisneto(a)", "Irmão(ã)", "Tio(a)", "Sobrinho(a)", "Outro" }));
-
-        lblGrauParentesco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblGrauParentesco.setText("Grau de Parentesco");
-
-        lblEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblEmail.setText("Email");
-
-        try {
-            txtfldNumeroContato.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldNumeroContato.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        lblNumeroContato.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNumeroContato.setText("Telefone para Contato*");
-
-        cmbbxDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
-        cmbbxDocumentoFiliacao1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbbxDocumentoFiliacao1ActionPerformed(evt);
-            }
-        });
-
-        lblDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblDocumentoFiliacao1.setText("Documento");
-
-        lblNDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNDocumentoFiliacao1.setText("Número");
-
-        cmbbxDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
-
-        lblDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblDocumentoFiliacao2.setText("Documento");
-
-        lblNDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNDocumentoFiliacao2.setText("Número");
-
-        txtfldComplemento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldBairro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtfldBairro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfldBairroActionPerformed(evt);
-            }
-        });
-
-        cmbbxEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceara", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
-
-        lblNdaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNdaCasa.setText("Número da casa*");
-
-        lblComplemento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblComplemento.setText("Complemento");
-
-        lblBairro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBairro.setText("Bairro*");
-
-        lblCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblCidade.setText("Cidade*");
-
-        lblEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblEstado.setText("Estado*");
-
-        try {
-            txtfldDataEmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtfldDataEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        lblFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblFiliacao2.setText("Filiação 2");
+        lblCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblCampos.setText("Campos com (*) são obrigatórios");
 
         lblEscolaridadeFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblEscolaridadeFiliacao1.setText("Escolariedade Filiação  1");
@@ -1273,376 +1465,265 @@ public class EditarAluno extends javax.swing.JFrame {
         lbllEscolariedadeFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lbllEscolariedadeFiliacao2.setText("Escolariedade Filiação 2");
 
-        cmbbxEscolariedadeFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxEscolariedadeFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Analfabeto", "Até 5º Ano Incompleto", "5º Ano Completo", "6º ao 9º Ano do Fundamental", "Fundamental Completo", "Médio Incompleto", "Médio Completo", "Superior Incompleto", "Superior Completo", "Mestrado", "Doutorado", "Ignorado" }));
-        cmbbxEscolariedadeFiliacao2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbbxEscolariedadeFiliacao2ActionPerformed(evt);
-            }
-        });
-
-        lblTipoMoradia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblTipoMoradia.setText("Tipo de Moradia*");
-
-        cmbbxTipoMoradia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxTipoMoradia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Alugada", "Cedida", "Própria" }));
-
-        lblRecebeBPC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblRecebeBPC.setText("Recebe BPC?");
-
-        cmbbxRecebeBPC.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxRecebeBPC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        cmbbxRecebeBPC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbbxRecebeBPCActionPerformed(evt);
-            }
-        });
-
-        lblRecebeBolsaFamilia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblRecebeBolsaFamilia.setText("Recebe Bolsa Familia?");
-
-        cmbbxRecebeBolsaFamilia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxRecebeBolsaFamilia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
-        cmbbxRecebeBolsaFamilia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbbxRecebeBolsaFamiliaActionPerformed(evt);
-            }
-        });
-
-        lblPessoasNaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblPessoasNaCasa.setText("Quantas pessoas moram na casa?*");
-
-        spnPessoasNaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        spnPessoasNaCasa.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-
-        lblRendaFamiliar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblRendaFamiliar.setText("Renda Familiar*");
-
-        cmbbxRendaFamiliar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxRendaFamiliar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Sem renda", "Até 1 sálario mínimo", "Entre 1 e 3 sálarios mínimos", "Entre 3 e 5 sálarios mínimos", "Mais de 5 sálarios mínimos" }));
-        cmbbxRendaFamiliar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbbxRendaFamiliarActionPerformed(evt);
-            }
-        });
-
-        txtfldEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        lblCorRaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblCorRaca.setText("Cor/Raça*");
-
-        cmbbxCorRaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxCorRaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Amarela", "Branca", "Indígena", "Parda", "Preta" }));
-
-        lblCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblCampos.setText("Campos com (*) são obrigatórios");
-
-        txtfldNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtfldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfldNomeActionPerformed(evt);
-            }
-        });
-
-        txtfldOrgaoEmissor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldMunicipio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldPaisNatural.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldNomeCartorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldCGM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldRG.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldRNE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldNDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldNDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldNDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldNdaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        txtfldLivroFolhas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        lblErro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblErro.setForeground(new java.awt.Color(204, 0, 0));
-        lblErro.setToolTipText("");
-
-        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Editar.png"))); // NOI18N
-        btnEditar.setBorder(null);
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-
-        lblSucesso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblSucesso.setForeground(new java.awt.Color(0, 204, 0));
-
-        btnInativar.setText("Inativar");
-        btnInativar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInativarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblMatricula)
-                .addGap(81, 81, 81)
-                .addComponent(lblNome)
-                .addGap(392, 392, 392)
-                .addComponent(lblCorRaca)
-                .addGap(87, 87, 87)
-                .addComponent(lblCGM)
-                .addGap(108, 108, 108)
-                .addComponent(lblNascimento)
-                .addGap(18, 18, 18)
-                .addComponent(lblSexo)
-                .addGap(115, 115, 115)
-                .addComponent(lblEstadoCivil))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txtfldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbxCorRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldCGM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(fldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblCPF)
-                .addGap(135, 135, 135)
-                .addComponent(lblRG)
-                .addGap(18, 18, 18)
-                .addComponent(lblOrgaoEmissor)
-                .addGap(126, 126, 126)
-                .addComponent(lblMunicipio)
-                .addGap(109, 109, 109)
-                .addComponent(lblUF)
-                .addGap(161, 161, 161)
-                .addComponent(lblPaisNatual)
-                .addGap(120, 120, 120)
-                .addComponent(lblCEP))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txtfldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldRG, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldOrgaoEmissor, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldPaisNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblRNE)
-                .addGap(140, 140, 140)
-                .addComponent(lblNascimentoCasamento)
-                .addGap(90, 90, 90)
-                .addComponent(lblLivroFolhas)
-                .addGap(45, 45, 45)
-                .addComponent(lblDataEmissao)
-                .addGap(36, 36, 36)
-                .addComponent(lblNomeCartorio))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txtfldRNE, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(txtfldNascimentoCasamento, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldLivroFolhas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldNomeCartorio, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblResponsavel)
-                .addGap(286, 286, 286)
-                .addComponent(lblDocumentoResponsavel)
-                .addGap(63, 63, 63)
-                .addComponent(lblNDocumentoResponsavel)
-                .addGap(104, 104, 104)
-                .addComponent(lblGrauParentesco)
-                .addGap(18, 18, 18)
-                .addComponent(lblEmail)
-                .addGap(238, 238, 238)
-                .addComponent(lblNumeroContato, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txtfldResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbxDocumentoResposavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldNDocumentoResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbxGrauParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldNumeroContato, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblFiliacao1)
-                .addGap(331, 331, 331)
-                .addComponent(lblDocumentoFiliacao1)
-                .addGap(63, 63, 63)
-                .addComponent(lblNDocumentoFiliacao1)
-                .addGap(104, 104, 104)
-                .addComponent(lblFiliacao2)
-                .addGap(272, 272, 272)
-                .addComponent(lblDocumentoFiliacao2)
-                .addGap(87, 87, 87)
-                .addComponent(lblNDocumentoFiliacao2))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(txtfldFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbxDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldNDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldNDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(lblEndereco)
-                .addGap(267, 267, 267)
-                .addComponent(lblNdaCasa)
-                .addGap(18, 18, 18)
-                .addComponent(lblComplemento)
-                .addGap(134, 134, 134)
-                .addComponent(lblBairro)
-                .addGap(138, 138, 138)
-                .addComponent(lblCidade)
-                .addGap(233, 233, 233)
-                .addComponent(lblEstado))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(txtfldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldNdaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(cmbbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblMatricula)
+                        .addGap(81, 81, 81)
+                        .addComponent(lblNome)
+                        .addGap(392, 392, 392)
+                        .addComponent(lblCorRaca)
+                        .addGap(87, 87, 87)
+                        .addComponent(lblCGM)
+                        .addGap(108, 108, 108)
+                        .addComponent(lblNascimento)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblSexo)
+                        .addGap(115, 115, 115)
+                        .addComponent(lblEstadoCivil))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(txtfldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxCorRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldCGM, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(fldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblCPF)
+                        .addGap(135, 135, 135)
+                        .addComponent(lblRG)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblOrgaoEmissor)
+                        .addGap(126, 126, 126)
+                        .addComponent(lblMunicipio)
+                        .addGap(109, 109, 109)
+                        .addComponent(lblUF)
+                        .addGap(161, 161, 161)
+                        .addComponent(lblPaisNatual)
+                        .addGap(120, 120, 120)
+                        .addComponent(lblCEP))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(txtfldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldRG, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldOrgaoEmissor, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldPaisNatural, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblRNE)
+                        .addGap(140, 140, 140)
+                        .addComponent(lblNascimentoCasamento)
+                        .addGap(90, 90, 90)
+                        .addComponent(lblLivroFolhas)
+                        .addGap(45, 45, 45)
+                        .addComponent(lblDataEmissao)
+                        .addGap(36, 36, 36)
+                        .addComponent(lblNomeCartorio))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(txtfldRNE, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(txtfldNascimentoCasamento, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldLivroFolhas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldNomeCartorio, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblResponsavel)
+                        .addGap(286, 286, 286)
+                        .addComponent(lblDocumentoResponsavel)
+                        .addGap(63, 63, 63)
+                        .addComponent(lblNDocumentoResponsavel)
+                        .addGap(104, 104, 104)
+                        .addComponent(lblGrauParentesco)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEmail)
+                        .addGap(238, 238, 238)
+                        .addComponent(lblNumeroContato, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(txtfldResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxDocumentoResposavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldNDocumentoResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxGrauParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtfldNumeroContato, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblFiliacao1)
+                        .addGap(331, 331, 331)
+                        .addComponent(lblDocumentoFiliacao1)
+                        .addGap(63, 63, 63)
+                        .addComponent(lblNDocumentoFiliacao1)
+                        .addGap(104, 104, 104)
+                        .addComponent(lblFiliacao2)
+                        .addGap(205, 205, 205)
+                        .addComponent(lblDocumentoFiliacao2)
+                        .addGap(87, 87, 87)
+                        .addComponent(lblNDocumentoFiliacao2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(txtfldFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldNDocumentoFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldNDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblEndereco)
+                        .addGap(267, 267, 267)
+                        .addComponent(lblNdaCasa)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblComplemento)
+                        .addGap(134, 134, 134)
+                        .addComponent(lblBairro)
+                        .addGap(138, 138, 138)
+                        .addComponent(lblCidade)
+                        .addGap(225, 225, 225)
+                        .addComponent(lblEstado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(txtfldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldNdaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(cmbbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(198, 198, 198)
                         .addComponent(lblNEE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(chckbxInterpreteLibras)
                         .addGap(205, 205, 205)
-                        .addComponent(chckbxUsoCadeiraRodas))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(chckbxAtendente)
-                        .addGap(264, 264, 264)
-                        .addComponent(chckbxMuletasBengalas))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chckbxProfessorEspecializado)
-                            .addComponent(chckbxAtendimentoEspecializado)
-                            .addComponent(chckbxNaPropriaEscola)
-                            .addComponent(chckbxOutraEscola)
-                            .addComponent(chckbxCentroAtendimentoEspecializado))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chckbxLivrosAmpliados)
-                            .addComponent(chckbxRegleteSoroba)
-                            .addComponent(chckbxCarteirasAdaptadas)
-                            .addComponent(chckbxComunicacaoAlternativa)
-                            .addComponent(chckbxComputadoresAdaptados))))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chckbxUsoCadeiraRodas)
+                        .addGap(266, 266, 266)
                         .addComponent(lblTipoTransporte)
                         .addGap(24, 24, 24)
-                        .addComponent(lblEscolaridadeFiliacao1))
+                        .addComponent(lblEscolaridadeFiliacao1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblRecebeBolsaFamilia))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(chckbxAtendente)
+                        .addGap(264, 264, 264)
+                        .addComponent(chckbxMuletasBengalas)
+                        .addGap(238, 238, 238)
                         .addComponent(cmbbxTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(cmbbxEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbbxEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxRecebeBolsaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(chckbxProfessorEspecializado)
+                        .addGap(97, 97, 97)
+                        .addComponent(chckbxLivrosAmpliados)
+                        .addGap(322, 322, 322)
                         .addComponent(lblTipoMoradia)
                         .addGap(43, 43, 43)
-                        .addComponent(lbllEscolariedadeFiliacao2))
+                        .addComponent(lbllEscolariedadeFiliacao2)
+                        .addGap(22, 22, 22)
+                        .addComponent(lblRecebeBPC))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(chckbxAtendimentoEspecializado)
+                        .addGap(79, 79, 79)
+                        .addComponent(chckbxRegleteSoroba)
+                        .addGap(282, 282, 282)
                         .addComponent(cmbbxTipoMoradia, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(cmbbxEscolariedadeFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnInativar)
-                        .addComponent(lblPessoasNaCasa)))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRecebeBolsaFamilia)
-                    .addComponent(cmbbxRecebeBolsaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRecebeBPC)
-                    .addComponent(cmbbxRecebeBPC, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRendaFamiliar)
-                    .addComponent(cmbbxRendaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(lblCampos)
-                .addGap(261, 261, 261)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbbxEscolariedadeFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbbxRecebeBPC, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chckbxNaPropriaEscola)
+                            .addComponent(chckbxOutraEscola))
+                        .addGap(218, 218, 218)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chckbxCarteirasAdaptadas)
+                            .addComponent(chckbxComputadoresAdaptados))
+                        .addGap(264, 264, 264)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPessoasNaCasa)
+                            .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRendaFamiliar)
+                            .addComponent(cmbbxRendaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chckbxCentroAtendimentoEspecializado)
+                            .addComponent(lblCampos))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chckbxComunicacaoAlternativa)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(243, 243, 243)
+                                .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(323, 323, 323)
+                                .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(620, 620, 620)
+                                .addComponent(btnInativar)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMatricula)
                     .addComponent(lblNome)
@@ -1660,7 +1741,7 @@ public class EditarAluno extends javax.swing.JFrame {
                     .addComponent(fldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCPF)
                     .addComponent(lblRG)
@@ -1678,7 +1759,7 @@ public class EditarAluno extends javax.swing.JFrame {
                     .addComponent(cmbbxUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldPaisNatural, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRNE)
                     .addComponent(lblNascimentoCasamento)
@@ -1724,7 +1805,7 @@ public class EditarAluno extends javax.swing.JFrame {
                     .addComponent(txtfldFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbbxDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldNDocumentoFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEndereco)
                     .addComponent(lblNdaCasa)
@@ -1740,92 +1821,97 @@ public class EditarAluno extends javax.swing.JFrame {
                     .addComponent(txtfldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addComponent(lblNEE)
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chckbxInterpreteLibras)
+                    .addComponent(chckbxUsoCadeiraRodas)
+                    .addComponent(lblTipoTransporte)
+                    .addComponent(lblEscolaridadeFiliacao1)
+                    .addComponent(lblRecebeBolsaFamilia))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbbxTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbbxEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbbxRecebeBolsaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNEE)
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chckbxInterpreteLibras)
-                            .addComponent(chckbxUsoCadeiraRodas))
-                        .addGap(6, 6, 6)
+                        .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chckbxAtendente)
-                            .addComponent(chckbxMuletasBengalas))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chckbxProfessorEspecializado)
-                                .addGap(6, 6, 6)
-                                .addComponent(chckbxAtendimentoEspecializado)
-                                .addGap(6, 6, 6)
-                                .addComponent(chckbxNaPropriaEscola)
-                                .addGap(6, 6, 6)
-                                .addComponent(chckbxOutraEscola)
-                                .addGap(6, 6, 6)
-                                .addComponent(chckbxCentroAtendimentoEspecializado))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(chckbxLivrosAmpliados)
-                                .addGap(6, 6, 6)
-                                .addComponent(chckbxRegleteSoroba)
-                                .addGap(6, 6, 6)
-                                .addComponent(chckbxCarteirasAdaptadas)
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(chckbxComunicacaoAlternativa))
-                                    .addComponent(chckbxComputadoresAdaptados)))))
+                            .addComponent(chckbxMuletasBengalas))))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chckbxProfessorEspecializado)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(chckbxLivrosAmpliados))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblTipoMoradia))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbllEscolariedadeFiliacao2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblRecebeBPC)))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(chckbxAtendimentoEspecializado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(chckbxRegleteSoroba))
+                    .addComponent(cmbbxTipoMoradia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbbxEscolariedadeFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbbxRecebeBPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chckbxNaPropriaEscola)
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxOutraEscola))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(chckbxCarteirasAdaptadas)
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxComputadoresAdaptados))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblRendaFamiliar)
+                        .addGap(6, 6, 6)
+                        .addComponent(cmbbxRendaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chckbxCentroAtendimentoEspecializado)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblCampos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(chckbxComunicacaoAlternativa)
+                        .addGap(9, 9, 9)
+                        .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(btnInativar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTipoTransporte)
-                                    .addComponent(lblEscolaridadeFiliacao1))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbbxTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbbxEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTipoMoradia)
-                                    .addComponent(lbllEscolariedadeFiliacao2))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbbxTipoMoradia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbbxEscolariedadeFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(6, 6, 6)
-                                .addComponent(lblPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblRecebeBolsaFamilia)
-                                .addGap(6, 6, 6)
-                                .addComponent(cmbbxRecebeBolsaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(lblRecebeBPC)
-                                .addGap(6, 6, 6)
-                                .addComponent(cmbbxRecebeBPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(lblRendaFamiliar)
-                                .addGap(6, 6, 6)
-                                .addComponent(cmbbxRendaFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSalvar)
+                            .addComponent(btnEditar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lblCampos))
-                    .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnSair)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnInativar)
-                            .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addComponent(btnSair)))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
@@ -1840,38 +1926,6 @@ public class EditarAluno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void txtfldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldMatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfldMatriculaActionPerformed
-
-    private void txtfldBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfldBairroActionPerformed
-
-    private void cmbbxUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxUFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbbxUFActionPerformed
-
-    private void chckbxInterpreteLibrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxInterpreteLibrasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chckbxInterpreteLibrasActionPerformed
-
-    private void chckbxOutraEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxOutraEscolaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chckbxOutraEscolaActionPerformed
-
-    private void chckbxMuletasBengalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxMuletasBengalasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chckbxMuletasBengalasActionPerformed
-
-    private void cmbbxRecebeBolsaFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxRecebeBolsaFamiliaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbbxRecebeBolsaFamiliaActionPerformed
-
-    private void cmbbxEscolariedadeFiliacao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxEscolariedadeFiliacao2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbbxEscolariedadeFiliacao2ActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // Botão para salvar a edição       
         int valida = validaObrigatorios();
@@ -1885,26 +1939,6 @@ public class EditarAluno extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
-
-    private void fldDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldDataNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fldDataNascimentoActionPerformed
-
-    private void cmbbxRendaFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxRendaFamiliarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbbxRendaFamiliarActionPerformed
-
-    private void txtfldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfldNomeActionPerformed
-
-    private void cmbbxRecebeBPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxRecebeBPCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbbxRecebeBPCActionPerformed
-
-    private void cmbbxDocumentoFiliacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxDocumentoFiliacao1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbbxDocumentoFiliacao1ActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // Botão para habilitar a edição
@@ -1930,6 +1964,78 @@ public class EditarAluno extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnInativarActionPerformed
+
+    private void txtfldRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldRGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldRGActionPerformed
+
+    private void txtfldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldEmailActionPerformed
+
+    private void txtfldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldMatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldMatriculaActionPerformed
+
+    private void fldDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldDataNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fldDataNascimentoActionPerformed
+
+    private void cmbbxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbxSexoActionPerformed
+
+    private void cmbbxUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxUFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbxUFActionPerformed
+
+    private void txtfldNumeroContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldNumeroContatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldNumeroContatoActionPerformed
+
+    private void cmbbxDocumentoFiliacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxDocumentoFiliacao1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbxDocumentoFiliacao1ActionPerformed
+
+    private void txtfldBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldBairroActionPerformed
+
+    private void cmbbxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbxEstadoActionPerformed
+
+    private void txtfldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldNomeActionPerformed
+
+    private void cmbbxEscolariedadeFiliacao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxEscolariedadeFiliacao2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbxEscolariedadeFiliacao2ActionPerformed
+
+    private void cmbbxRecebeBPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxRecebeBPCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbxRecebeBPCActionPerformed
+
+    private void cmbbxRecebeBolsaFamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxRecebeBolsaFamiliaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbxRecebeBolsaFamiliaActionPerformed
+
+    private void cmbbxRendaFamiliarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxRendaFamiliarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbbxRendaFamiliarActionPerformed
+
+    private void chckbxInterpreteLibrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxInterpreteLibrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chckbxInterpreteLibrasActionPerformed
+
+    private void chckbxOutraEscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxOutraEscolaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chckbxOutraEscolaActionPerformed
+
+    private void chckbxMuletasBengalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxMuletasBengalasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chckbxMuletasBengalasActionPerformed
 
     /**
      * @param args the command line arguments

@@ -139,7 +139,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         // Combo box's
         cmbbxAluno.setEnabled(false);        
         cmbbxProfissional.setEnabled(false);
-        cmbbxEspecialidade.setEnabled(false);        
+        cmbbxEspecialidade.setEnabled(false);
     }
     
     // Função para validar as datas

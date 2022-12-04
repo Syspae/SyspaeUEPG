@@ -655,7 +655,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         cmbbxCorRaca = new javax.swing.JComboBox<>();
         lblCampos = new javax.swing.JLabel();
         txtfldNome = new JtextFieldSomenteLetras(100);
-        txtfldOrgaoEmissor = new JtextFieldSomenteLetras(6);
+        txtfldOrgaoEmissor = new JtextFieldSomenteLetras(5);
         txtfldMunicipio = new JtextFieldSomenteLetras(50);
         txtfldPaisNatural = new JtextFieldSomenteLetras(15);
         txtfldNomeCartorio = new JtextFieldSomenteLetras(150);
@@ -664,7 +664,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         txtfldFiliacao2 = new JtextFieldSomenteLetras(100);
         txtfldCidade = new JtextFieldSomenteLetras(50);
         txtfldCGM = new JtextFieldSomenteNumeros(20);
-        txtfldRG = new JtextFieldSomenteNumeros(12);
+        txtfldRG = new JtextFieldSomenteNumeros(9);
         txtfldRNE = new JtextFieldSomenteNumeros(15);
         txtfldNascimentoCasamento = new JtextFieldSomenteNumeros(30);
         txtfldNDocumentoResponsavel = new JtextFieldSomenteNumeros(30);
@@ -696,6 +696,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         txtfldMatricula.setEditable(false);
         txtfldMatricula.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldMatricula.setToolTipText("Matrícula gerada automaticamente");
         txtfldMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldMatriculaActionPerformed(evt);
@@ -719,6 +720,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        fldDataNascimento.setToolTipText("Data de Nascimento do Aluno");
         fldDataNascimento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         fldDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -728,6 +730,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxSexo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Feminino", "Masculino" }));
+        cmbbxSexo.setToolTipText("Sexo do Aluno");
         cmbbxSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxSexoActionPerformed(evt);
@@ -736,6 +739,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxEstadoCivil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Casado(a)", "Divorciado(a)", "Separado(a)", "Solteiro(a)", "Viúvo(a)" }));
+        cmbbxEstadoCivil.setToolTipText("Estado Civil do Aluno");
 
         lblCPF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblCPF.setText("CPF*");
@@ -745,6 +749,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtfldCPF.setToolTipText("CPF do Aluno");
         txtfldCPF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblMunicipio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -755,6 +760,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxUF.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceara", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        cmbbxUF.setToolTipText("Estado de Naturalidade do Aluno");
         cmbbxUF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxUFActionPerformed(evt);
@@ -775,6 +781,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtfldCEP.setToolTipText("CEP de endereço do Aluno");
         txtfldCEP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblCEP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -793,6 +800,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblEndereco.setText("Endereço*");
 
         txtfldEndereco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldEndereco.setToolTipText("Endereço do Aluno (Logradouro)");
 
         lblNEE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblNEE.setText("Necessidades Educacionais Especiais");
@@ -878,6 +886,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxDocumentoResposavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxDocumentoResposavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoResposavel.setToolTipText("Tipo de Documento do Responsável");
 
         lblDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoResponsavel.setText("Documento");
@@ -887,6 +896,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxGrauParentesco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxGrauParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Avô(ó)", "Bisavô(ó)", "Bisneto(a)", "Filho(a)", "Irmão(ã)", "Mãe", "Neto(a)", "Pai", "Sobrinho(a)", "Tio(a)", "Outro" }));
+        cmbbxGrauParentesco.setToolTipText("Grau de Parentesco do Responsável");
 
         lblGrauParentesco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblGrauParentesco.setText("Grau de Parentesco");
@@ -899,6 +909,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtfldNumeroContato.setToolTipText("Telefone para Contato com o Responsável");
         txtfldNumeroContato.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtfldNumeroContato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -911,6 +922,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxDocumentoFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao1.setToolTipText("Tipo de Documento da Filiação 1");
         cmbbxDocumentoFiliacao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxDocumentoFiliacao1ActionPerformed(evt);
@@ -925,6 +937,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
+        cmbbxDocumentoFiliacao2.setToolTipText("Tipo de Documento da Filiação 2");
 
         lblDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoFiliacao2.setText("Documento");
@@ -933,8 +946,10 @@ public class CadastroAluno extends javax.swing.JFrame {
         lblNDocumentoFiliacao2.setText("Número");
 
         txtfldComplemento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldComplemento.setToolTipText("Complemento do Endereço");
 
         txtfldBairro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBairro.setToolTipText("Bairro do Endereço");
         txtfldBairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldBairroActionPerformed(evt);
@@ -943,6 +958,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceara", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
+        cmbbxEstado.setToolTipText("Estado do Endereço");
         cmbbxEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxEstadoActionPerformed(evt);
@@ -969,6 +985,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtfldDataEmissao.setToolTipText("Data de Emissão da Certidão");
         txtfldDataEmissao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -1030,6 +1047,7 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         spnPessoasNaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         spnPessoasNaCasa.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spnPessoasNaCasa.setToolTipText("Quantidade de pessoas na casa contando com o aluno");
 
         lblRendaFamiliar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblRendaFamiliar.setText("Renda Familiar*");
@@ -1043,6 +1061,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         });
 
         txtfldEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldEmail.setToolTipText("Email do Responsável");
         txtfldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldEmailActionPerformed(evt);
@@ -1054,12 +1073,13 @@ public class CadastroAluno extends javax.swing.JFrame {
 
         cmbbxCorRaca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxCorRaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Amarela", "Branca", "Indígena", "Parda", "Preta" }));
+        cmbbxCorRaca.setToolTipText("Cor/Raça do aluno");
 
         lblCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCampos.setText("Campos com (*) são obrigatórios");
 
         txtfldNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtfldNome.setToolTipText("Nome do aluno");
+        txtfldNome.setToolTipText("Nome do Aluno");
         txtfldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfldNomeActionPerformed(evt);
@@ -1067,38 +1087,61 @@ public class CadastroAluno extends javax.swing.JFrame {
         });
 
         txtfldOrgaoEmissor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldOrgaoEmissor.setToolTipText("Órgão Emissor do RG");
 
         txtfldMunicipio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldMunicipio.setToolTipText("Município de Naturalidade do Aluno");
 
         txtfldPaisNatural.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldPaisNatural.setToolTipText("País de Naturalidade do Aluno");
 
         txtfldNomeCartorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNomeCartorio.setToolTipText("Nome do Cartório em que foi emitida a certidão");
 
         txtfldResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldResponsavel.setToolTipText("Nome do Responsável pelo Aluno");
 
         txtfldFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldFiliacao1.setToolTipText("Nome da Filiação 1");
 
         txtfldFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldFiliacao2.setToolTipText("Nome da Filiação 2");
 
         txtfldCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldCidade.setToolTipText("Cidade do Endereço");
 
         txtfldCGM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldCGM.setToolTipText("Código Geral de Matrícula do Aluno");
 
         txtfldRG.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldRG.setToolTipText("Carteira de Identidade do Aluno");
+        txtfldRG.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtfldRG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldRGActionPerformed(evt);
+            }
+        });
 
         txtfldRNE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldRNE.setToolTipText("Registro Nacional Estrangeiro (caso aluno seja estrangeiro)");
 
         txtfldNascimentoCasamento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNascimentoCasamento.setToolTipText("Certidão de Casamento ou Nascimento do Aluno");
 
         txtfldNDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNDocumentoResponsavel.setToolTipText("Número do Documento do Responsável");
 
         txtfldNDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNDocumentoFiliacao1.setToolTipText("Número do Documento da Filiação 1");
 
         txtfldNDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNDocumentoFiliacao2.setToolTipText("Número do Documento da Filiação 2");
 
         txtfldNdaCasa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldNdaCasa.setToolTipText("Número da casa");
 
         txtfldLivroFolhas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldLivroFolhas.setToolTipText("Livro e Folhas da Certidão");
 
         lblErro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblErro.setForeground(new java.awt.Color(204, 0, 0));
@@ -1469,10 +1512,6 @@ public class CadastroAluno extends javax.swing.JFrame {
                     .addComponent(lblEscolaridadeFiliacao1)
                     .addComponent(lblRecebeBolsaFamilia))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chckbxAtendente)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(chckbxMuletasBengalas))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(cmbbxTipoTransporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1481,7 +1520,13 @@ public class CadastroAluno extends javax.swing.JFrame {
                         .addComponent(cmbbxEscolariedadeFiliacao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(cmbbxRecebeBolsaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbbxRecebeBolsaFamilia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chckbxAtendente)
+                            .addComponent(chckbxMuletasBengalas))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chckbxProfessorEspecializado)
                     .addGroup(layout.createSequentialGroup()
@@ -1521,7 +1566,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lblPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -1547,7 +1592,7 @@ public class CadastroAluno extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSalvar)
                             .addComponent(btnSair))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1656,6 +1701,10 @@ public class CadastroAluno extends javax.swing.JFrame {
     private void cmbbxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbbxEstadoActionPerformed
+
+    private void txtfldRGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldRGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldRGActionPerformed
 
     /**
      * @param args the command line arguments
