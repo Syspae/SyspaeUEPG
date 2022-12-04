@@ -161,6 +161,13 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         return formatador.format(atual);
     }
     
+    // Função para verificar se os campos foram preenchidos corretamente
+    private boolean verificaCampos(){
+        if(cmbbxAluno.getSelectedItem().toString().isEmpty()){lblErro.setText("Selecione um aluno!"); return false;}
+        if(cmbbxProfissional.getSelectedItem().toString().isEmpty()){lblErro.setText("Selecione um profissional!"); return false;}
+        return true;
+    }
+    
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){
         return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade,datamodificacao) "
@@ -426,13 +433,16 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // Botão para salvar o atendimento
         if(validaData(txtfldDataAtendimento.getText())){
-            Conexao con = new Conexao();
-            int insert = con.executaInsert(preparaSQL());
-            if(insert == 1){
-                lblSucesso.setText("Atendimento efetuado com sucesso!");
-                btnAnamnese.setEnabled(true);
-                desabilitaCampos();
-            }else lblErro.setText("Erro ao cadastrar atendimento!");
+            if(verificaCampos()){
+                Conexao con = new Conexao();
+                int insert = con.executaInsert(preparaSQL());
+                if(insert == 1){
+                    lblErro.setVisible(false);
+                    lblSucesso.setText("Atendimento efetuado com sucesso!");
+                    btnAnamnese.setEnabled(true);
+                    desabilitaCampos();
+                }else lblErro.setText("Erro ao cadastrar atendimento!");
+            }
         }        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
