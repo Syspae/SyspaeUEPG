@@ -246,7 +246,7 @@ public class EditarEspecialista extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
 
-        setTitle("Cadastrar Especialista");
+        setTitle("Editar Especialista");
         setLocation(new java.awt.Point(400, 200));
         setResizable(false);
 

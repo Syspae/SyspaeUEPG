@@ -88,7 +88,7 @@ public class BuscaEspecialista extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setTitle("Buscar Aluno");
+        setTitle("Buscar Especialista");
         setResizable(false);
 
         lblBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
