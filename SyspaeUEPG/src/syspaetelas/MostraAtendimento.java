@@ -75,6 +75,32 @@ public class MostraAtendimento extends javax.swing.JFrame {
         return formatador.format(novaData); 
     }
 
+    private int idAluno(){
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca("Select idaluno from aluno where nome = '"+cmbbxAluno.getSelectedItem()+"'");
+        try {
+            while(rs.next()){
+                return rs.getInt("idaluno");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MostraAtendimento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
+    private int idAnamnese(){
+        Conexao con = new Conexao();
+        int id = idAluno();
+        ResultSet rs = con.executaBusca("Select idanamnese from anamnese where fk_aluno_idaluno = '"+id+"'");
+        try {
+            while(rs.next()){
+                return rs.getInt("idanamnese");
+            }
+        } catch (Exception ex) {
+           Logger.getLogger(MostraAtendimento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -275,7 +301,7 @@ public class MostraAtendimento extends javax.swing.JFrame {
 
     private void btnAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnamneseActionPerformed
         // Botão para mostrar a anamnese refente a aquele atendimento
-        MostraAnamnese tela06 = new MostraAnamnese(idAtendimento);
+        MostraAnamnese tela06 = new MostraAnamnese(idAnamnese());
     }//GEN-LAST:event_btnAnamneseActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

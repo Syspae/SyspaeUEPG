@@ -140,6 +140,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         cmbbxAluno.setEnabled(false);        
         cmbbxProfissional.setEnabled(false);
         cmbbxEspecialidade.setEnabled(false);
+        // Botões
+        btnSalvar.setEnabled(false);
     }
     
     // Função para validar as datas
@@ -436,8 +438,11 @@ public class CadastroAtendimento extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // Botão para fechar a janela
+        if(btnSalvar.isEnabled()){
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1) this.dispose();
+        }
+        this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void cmbbxProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxProfissionalActionPerformed

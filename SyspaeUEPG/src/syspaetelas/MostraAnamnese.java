@@ -34,11 +34,12 @@ public class MostraAnamnese extends javax.swing.JFrame {
         mostraItens();
         txtfldDataAnamnese.setEditable(false);
         txtfldDataNascimento.setEditable(false);
+        cmbbxNome.setEnabled(false);
     }
 
     //Função que prepara a string passada como SQL
     private String preparaSQL(){
-        return "select aluno.data_nascimento, * from anamnese, aluno where idanamnese  = '"+idAnamnese+"'";
+        return "SELECT * FROM anamnese as anamnese inner join aluno as aluno ON aluno.idaluno = anamnese.fk_aluno_idaluno WHERE idanamnese = '"+idAnamnese+"'";
     }
     
     //Função que formata a data
