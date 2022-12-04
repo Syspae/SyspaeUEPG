@@ -30,11 +30,12 @@ public class MostraAnamnese extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setVisible(true);
         idAnamnese = id;
-        btnSalvar.setVisible(false);
         mostraItens();
         txtfldDataAnamnese.setEditable(false);
         txtfldDataNascimento.setEditable(false);
         cmbbxNome.setEnabled(false);
+        desabilitaCampos();
+        btnEditar.setVisible(true);
     }
 
     //Função que prepara a string passada como SQL
@@ -74,6 +75,8 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxDeficienciaMental.setEnabled(false);
         chckbxDeficienciaMultipla.setEnabled(false);
         chckbxAutismo.setEnabled(false);
+        btnSalvar.setVisible(false);
+        btnEditar.setVisible(true);
     }
     
     // Função para habilitar os campos
@@ -101,6 +104,8 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxDeficienciaMental.setEnabled(true);
         chckbxDeficienciaMultipla.setEnabled(true);
         chckbxAutismo.setEnabled(true);
+        btnEditar.setVisible(false);
+        btnSalvar.setVisible(true);
     }
     
     //Função que pega as informações do banco e coloca nos campos
@@ -192,9 +197,9 @@ public class MostraAnamnese extends javax.swing.JFrame {
         lblEncaminhamentos = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtEncaminhamentos = new javax.swing.JTextArea();
-        chckbxSurdezSeveraProfunda = new javax.swing.JCheckBox();
-        chckbxSurdezLeveModerada = new javax.swing.JCheckBox();
-        chckbxBaixaVisao = new javax.swing.JCheckBox();
+        btnCancelar = new javax.swing.JButton();
+        lblSucesso = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
         chckbxCegueira = new javax.swing.JCheckBox();
         chckbxDeficienciaFisica = new javax.swing.JCheckBox();
         chckbxSurdocegueira = new javax.swing.JCheckBox();
@@ -206,9 +211,12 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxDeficienciaMental = new javax.swing.JCheckBox();
         chckbxDeficienciaMultipla = new javax.swing.JCheckBox();
         chckbxAutismo = new javax.swing.JCheckBox();
-        btnCancelar = new javax.swing.JButton();
-        lblSucesso = new javax.swing.JLabel();
-        btnSalvar = new javax.swing.JButton();
+        lblIdade = new javax.swing.JLabel();
+        lblIdadeAluno = new javax.swing.JLabel();
+        chckbxSurdezSeveraProfunda = new javax.swing.JCheckBox();
+        chckbxSurdezLeveModerada = new javax.swing.JCheckBox();
+        chckbxBaixaVisao = new javax.swing.JCheckBox();
+        btnEditar = new javax.swing.JButton();
 
         setTitle("Anamnese");
         setResizable(false);
@@ -267,19 +275,28 @@ public class MostraAnamnese extends javax.swing.JFrame {
         txtEncaminhamentos.setRows(5);
         jScrollPane3.setViewportView(txtEncaminhamentos);
 
-        chckbxSurdezSeveraProfunda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        chckbxSurdezSeveraProfunda.setText("Surdez severa ou profunda");
-
-        chckbxSurdezLeveModerada.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        chckbxSurdezLeveModerada.setText("Surdez leve ou moderada");
-        chckbxSurdezLeveModerada.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(242, 242, 242));
+        btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Cancelar.png"))); // NOI18N
+        btnCancelar.setBorder(null);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chckbxSurdezLeveModeradaActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
-        chckbxBaixaVisao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        chckbxBaixaVisao.setText("Baixa visão");
+        lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
+
+        btnSalvar.setBackground(new java.awt.Color(242, 242, 242));
+        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Salvar.png"))); // NOI18N
+        btnSalvar.setBorder(null);
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         chckbxCegueira.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chckbxCegueira.setText("Cegueira");
@@ -319,7 +336,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxDeficienciaMental.setText("Deficiência Mental");
 
         chckbxDeficienciaMultipla.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        chckbxDeficienciaMultipla.setText("Deficiência multípla");
+        chckbxDeficienciaMultipla.setText("Deficiência Multípla");
         chckbxDeficienciaMultipla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chckbxDeficienciaMultiplaActionPerformed(evt);
@@ -329,26 +346,31 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxAutismo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         chckbxAutismo.setText("Autismo");
 
-        btnCancelar.setBackground(new java.awt.Color(242, 242, 242));
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Cancelar.png"))); // NOI18N
-        btnCancelar.setBorder(null);
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        lblIdade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        lblIdadeAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblIdadeAluno.setText("Idade do Aluno");
+
+        chckbxSurdezSeveraProfunda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chckbxSurdezSeveraProfunda.setText("Surdez severa ou profunda");
+
+        chckbxSurdezLeveModerada.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chckbxSurdezLeveModerada.setText("Surdez leve ou moderada");
+        chckbxSurdezLeveModerada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                chckbxSurdezLeveModeradaActionPerformed(evt);
             }
         });
 
-        lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
+        chckbxBaixaVisao.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        chckbxBaixaVisao.setText("Baixa visão");
 
-        btnSalvar.setBackground(new java.awt.Color(242, 242, 242));
-        btnSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Salvar.png"))); // NOI18N
-        btnSalvar.setBorder(null);
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setBackground(new java.awt.Color(242, 242, 242));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Editar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
@@ -357,146 +379,154 @@ public class MostraAnamnese extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancelar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblDoencaFamilia)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblNome)
-                                                .addGap(0, 329, Short.MAX_VALUE))
-                                            .addComponent(cmbbxNome, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lblDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtfldDataNascimento))
-                                        .addGap(35, 35, 35)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblDataAnamnese, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtfldDataAnamnese))))
-                        .addGap(19, 19, 19))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSucesso)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                                .addComponent(lblEncaminhamentos, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblAtendimentosOdonto, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(17, 17, 17)
+                        .addComponent(lblNome)
+                        .addGap(347, 347, 347)
+                        .addComponent(lblDataNascimento)
+                        .addGap(35, 35, 35)
+                        .addComponent(lblDataAnamnese))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(cmbbxNome, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtfldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(txtfldDataAnamnese, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblDoencaFamilia)
+                        .addGap(405, 405, 405)
+                        .addComponent(lblIdadeAluno)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chckbxCegueira)
-                            .addComponent(chckbxBaixaVisao)
-                            .addComponent(chckbxSurdocegueira)
-                            .addComponent(chckbxDeficienciaFisica)
-                            .addComponent(chckbxHabitoFumar)
-                            .addComponent(chckbxIngestaoAlcool)
-                            .addComponent(chckbxSurdezLeveModerada)
-                            .addComponent(chckbxSurdezSeveraProfunda)
-                            .addComponent(chckbxCondutasTipicas)
-                            .addComponent(chckbxSindromeDown)
-                            .addComponent(chckbxDeficienciaMental)
                             .addComponent(chckbxAltasHabilidadesSuperdotado)
                             .addComponent(chckbxAutismo)
-                            .addComponent(chckbxDeficienciaMultipla))
-                        .addGap(69, 69, 69))))
+                            .addComponent(chckbxBaixaVisao)
+                            .addComponent(chckbxCegueira)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblAtendimentosOdonto)
+                        .addGap(232, 232, 232)
+                        .addComponent(chckbxCondutasTipicas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chckbxDeficienciaFisica)
+                            .addComponent(chckbxDeficienciaMental)
+                            .addComponent(chckbxDeficienciaMultipla)
+                            .addComponent(chckbxHabitoFumar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblEncaminhamentos)
+                        .addGap(216, 216, 216)
+                        .addComponent(chckbxIngestaoAlcool))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chckbxSindromeDown)
+                            .addComponent(chckbxSurdezLeveModerada)
+                            .addComponent(chckbxSurdezSeveraProfunda)
+                            .addComponent(chckbxSurdocegueira)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEditar)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addComponent(btnCancelar)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNome)
                     .addComponent(lblDataNascimento)
                     .addComponent(lblDataAnamnese))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmbbxNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfldDataAnamnese, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDoencaFamilia)
+                    .addComponent(lblIdadeAluno)
+                    .addComponent(lblIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDoencaFamilia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblAtendimentosOdonto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblEncaminhamentos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(chckbxSurdezLeveModerada)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chckbxSurdezSeveraProfunda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chckbxAltasHabilidadesSuperdotado)
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxAutismo)
+                        .addGap(6, 6, 6)
                         .addComponent(chckbxBaixaVisao)
-                        .addGap(8, 8, 8)
-                        .addComponent(chckbxCegueira)
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxCegueira)))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lblAtendimentosOdonto))
+                    .addComponent(chckbxCondutasTipicas))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(chckbxDeficienciaFisica)
-                        .addGap(8, 8, 8)
-                        .addComponent(chckbxSurdocegueira)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chckbxIngestaoAlcool)
-                        .addGap(8, 8, 8)
-                        .addComponent(chckbxHabitoFumar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chckbxSindromeDown)
-                        .addGap(8, 8, 8)
-                        .addComponent(chckbxCondutasTipicas)
-                        .addGap(3, 3, 3)
-                        .addComponent(chckbxAltasHabilidadesSuperdotado)
-                        .addGap(8, 8, 8)
+                        .addGap(6, 6, 6)
                         .addComponent(chckbxDeficienciaMental)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(6, 6, 6)
                         .addComponent(chckbxDeficienciaMultipla)
-                        .addGap(8, 8, 8)
-                        .addComponent(chckbxAutismo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxHabitoFumar)))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEncaminhamentos)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(chckbxIngestaoAlcool)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxSindromeDown)
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxSurdezLeveModerada)
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxSurdezSeveraProfunda)
+                        .addGap(6, 6, 6)
+                        .addComponent(chckbxSurdocegueira)))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblSucesso)
-                                .addGap(21, 21, 21)
-                                .addComponent(btnCancelar))
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(24, 24, 24))))
+                            .addComponent(btnEditar)
+                            .addComponent(btnSalvar)
+                            .addComponent(btnCancelar))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void chckbxSurdezLeveModeradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxSurdezLeveModeradaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chckbxSurdezLeveModeradaActionPerformed
-
-    private void chckbxDeficienciaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxDeficienciaFisicaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chckbxDeficienciaFisicaActionPerformed
-
-    private void chckbxHabitoFumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxHabitoFumarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chckbxHabitoFumarActionPerformed
-
-    private void chckbxDeficienciaMultiplaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxDeficienciaMultiplaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chckbxDeficienciaMultiplaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // Botão para fechar a janela
@@ -521,11 +551,33 @@ public class MostraAnamnese extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void chckbxDeficienciaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxDeficienciaFisicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chckbxDeficienciaFisicaActionPerformed
+
+    private void chckbxHabitoFumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxHabitoFumarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chckbxHabitoFumarActionPerformed
+
+    private void chckbxDeficienciaMultiplaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxDeficienciaMultiplaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chckbxDeficienciaMultiplaActionPerformed
+
+    private void chckbxSurdezLeveModeradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxSurdezLeveModeradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chckbxSurdezLeveModeradaActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        habilitaCampos();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox chckbxAltasHabilidadesSuperdotado;
     private javax.swing.JCheckBox chckbxAutismo;
@@ -550,6 +602,8 @@ public class MostraAnamnese extends javax.swing.JFrame {
     private javax.swing.JLabel lblDataNascimento;
     private javax.swing.JLabel lblDoencaFamilia;
     private javax.swing.JLabel lblEncaminhamentos;
+    private javax.swing.JLabel lblIdade;
+    private javax.swing.JLabel lblIdadeAluno;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSucesso;
     private javax.swing.JTextArea txtAtendimentosOdonto;

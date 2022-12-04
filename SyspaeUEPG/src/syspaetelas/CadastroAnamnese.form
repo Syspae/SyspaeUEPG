@@ -38,34 +38,32 @@
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="chckbxCegueira" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chckbxCondutasTipicas" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chckbxDeficienciaFisica" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chckbxDeficienciaMental" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chckbxDeficienciaMultipla" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chckbxHabitoFumar" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chckbxIngestaoAlcool" min="-2" max="-2" attributes="0"/>
-                                          <Component id="chckbxSindromeDown" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="chckbxAutismo" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxBaixaVisao" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxSurdezLeveModerada" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxSurdezSeveraProfunda" min="-2" max="-2" attributes="0"/>
-                                  <Component id="chckbxSurdocegueira" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="chckbxAltasHabilidadesSuperdotado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="chckbxCegueira" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chckbxCondutasTipicas" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chckbxDeficienciaFisica" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chckbxDeficienciaMental" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chckbxDeficienciaMultipla" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chckbxHabitoFumar" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chckbxIngestaoAlcool" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chckbxSindromeDown" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="chckbxAutismo" min="-2" max="-2" attributes="0"/>
+                              <Component id="chckbxBaixaVisao" min="-2" max="-2" attributes="0"/>
+                              <Component id="chckbxSurdezLeveModerada" min="-2" max="-2" attributes="0"/>
+                              <Component id="chckbxSurdezSeveraProfunda" min="-2" max="-2" attributes="0"/>
+                              <Component id="chckbxSurdocegueira" min="-2" max="-2" attributes="0"/>
+                              <Component id="chckbxAltasHabilidadesSuperdotado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -137,8 +135,9 @@
                       <Component id="jScrollPane3" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="chckbxAltasHabilidadesSuperdotado" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="chckbxAutismo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="chckbxBaixaVisao" min="-2" max="-2" attributes="0"/>

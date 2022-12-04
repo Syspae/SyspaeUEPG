@@ -137,6 +137,7 @@ public class MenuInicial extends javax.swing.JFrame {
             }
         });
 
+        btnRelatorio.setBackground(new java.awt.Color(242, 242, 242));
         btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Relatórios.png"))); // NOI18N
         btnRelatorio.setBorder(null);
         btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
