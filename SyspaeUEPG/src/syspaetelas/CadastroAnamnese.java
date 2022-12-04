@@ -23,6 +23,8 @@ import java.util.logging.Logger;
 public class CadastroAnamnese extends javax.swing.JFrame {
     
     private int idaluno;
+    private int idAnamnese;
+    private String SQL;
     
     /**
      * Creates new form TelaCadastroAnamnese
@@ -142,21 +144,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         return formatador.format(atual);
     }
     
-    //Função para pegar os campos preenchidos e transformar na SQL pra inserção
-    private String preparaInsert(){       
-        return "INSERT into anamnese (data_nascimento, data_anamnese, doencas_familia, atendimentos_odontologicos, encaminhamentos_para_a_rede,"
-                                            + "surdez_leve_ou_moderada, surdez_severa_ou_profunda, baixa_visao, cegueira, deficiencia_fisica,"
-                                            + "surdocegueira, ingestao_de_alcool, habito_de_fumar, sindrome_de_down, condutas_tipicas, altas_habilidades_superdotado,"
-                                            + "deficiencia_mental, deficiencia_multipla, autismo, datamodificacao, fk_aluno_idaluno)"
-                                            + "values ('"+txtfldDataNascimento.getText()+"', '"+txtfldDataAnamnese.getText()+"', '"+txtDoencaFamilia.getText()+"', '"+txtAtendimentosOdonto.getText()+"', '"+txtEncaminhamentos.getText()+"'"
-                                            + ", '"+chckbxSurdezLeveModerada.isSelected()+"', '"+chckbxSurdezSeveraProfunda.isSelected()+"'"
-                                            + ", '"+chckbxBaixaVisao.isSelected()+"', '"+chckbxCegueira.isSelected()+"', '"+chckbxDeficienciaFisica.isSelected()+"', '"+chckbxSurdocegueira.isSelected()+"'"
-                                            + ", '"+chckbxIngestaoAlcool.isSelected()+"', '"+chckbxHabitoFumar.isSelected()+"'"
-                                            + ", '"+chckbxSindromeDown.isSelected()+"', '"+chckbxCondutasTipicas.isSelected()+"', '"+chckbxAltasHabilidadesSuperdotado.isSelected()+"', "
-                                            + "'"+chckbxDeficienciaMental.isSelected()+"', '"+chckbxDeficienciaMultipla.isSelected()+"', '"+chckbxAutismo.isSelected()+"', '"+dataModificacao()+"'"
-                                            + ", '"+idaluno+"')";       
-    }
-    
+        
     // Função para mostrar os itens
     private void mostraItens(){
         Conexao con = new Conexao();
@@ -181,7 +169,8 @@ public class CadastroAnamnese extends javax.swing.JFrame {
                 chckbxAltasHabilidadesSuperdotado.setSelected(rs.getBoolean("altas_habilidades_superdotado"));
                 chckbxDeficienciaMental.setSelected(rs.getBoolean("deficiencia_mental"));
                 chckbxDeficienciaMultipla.setSelected(rs.getBoolean("deficiencia_multipla"));
-                chckbxAutismo.setSelected(rs.getBoolean("autismo"));                
+                chckbxAutismo.setSelected(rs.getBoolean("autismo"));        
+                idAnamnese = rs.getInt("idanamnese");
                 updatePossivel(rs.getString("datamodificacao"));
             }
         } catch (Exception ex) {
@@ -223,11 +212,25 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         Period tempo = Period.between(dataCriacao.toLocalDate(), atual);
         int dias = tempo.getDays();
         if(dias < 3) {
-            habilitaCampos();
-            btnSalvar.setVisible(true);
+            SQL = "UPDATE anamnese SET data_nascimento = '"+txtfldDataNascimento.getText()+"', data_anamnese = '"+txtfldDataAnamnese.getText()+"', doencas_familia = '"+txtDoencaFamilia.getText()+"',"
+                + "atendimentos_odontologicos = '"+txtAtendimentosOdonto.getText()+"', encaminhamentos_para_a_rede = '"+txtEncaminhamentos.getText()+"', surdez_leve_ou_moderada = '"+chckbxSurdezLeveModerada.isSelected()+"',"
+                + "surdez_severa_ou_profunda = '"+chckbxSurdezSeveraProfunda.isSelected()+"', baixa_visao = '"+chckbxBaixaVisao.isSelected()+"', cegueira = '"+chckbxCegueira.isSelected()+"', deficiencia_fisica = '"+chckbxDeficienciaFisica.isSelected()+"',"
+                + "surdocegueira = '"+chckbxSurdocegueira.isSelected()+"', ingestao_de_alcool = '"+chckbxIngestaoAlcool.isSelected()+"', habito_de_fumar = '"+chckbxHabitoFumar.isSelected()+"', sindrome_de_down = '"+chckbxSindromeDown.isSelected()+"',"
+                + "condutas_tipicas = '"+chckbxCondutasTipicas.isSelected()+"', altas_habilidades_superdotado = '"+chckbxAltasHabilidadesSuperdotado.isSelected()+"', deficiencia_mental = '"+chckbxDeficienciaMental.isSelected()+"',"
+                + "deficiencia_multipla = '"+chckbxDeficienciaMultipla.isSelected()+"', autismo = '"+chckbxAutismo.isSelected()+"' where idanamnese = "+idAnamnese+"";
+
         }else {
-            desabilitaCampos();
-            btnSalvar.setVisible(false);
+            SQL = "INSERT into anamnese (data_nascimento, data_anamnese, doencas_familia, atendimentos_odontologicos, encaminhamentos_para_a_rede,"
+                + "surdez_leve_ou_moderada, surdez_severa_ou_profunda, baixa_visao, cegueira, deficiencia_fisica,"
+                + "surdocegueira, ingestao_de_alcool, habito_de_fumar, sindrome_de_down, condutas_tipicas, altas_habilidades_superdotado,"
+                + "deficiencia_mental, deficiencia_multipla, autismo, datamodificacao, fk_aluno_idaluno)"
+                + "values ('"+txtfldDataNascimento.getText()+"', '"+txtfldDataAnamnese.getText()+"', '"+txtDoencaFamilia.getText()+"', '"+txtAtendimentosOdonto.getText()+"', '"+txtEncaminhamentos.getText()+"'"
+                + ", '"+chckbxSurdezLeveModerada.isSelected()+"', '"+chckbxSurdezSeveraProfunda.isSelected()+"'"
+                + ", '"+chckbxBaixaVisao.isSelected()+"', '"+chckbxCegueira.isSelected()+"', '"+chckbxDeficienciaFisica.isSelected()+"', '"+chckbxSurdocegueira.isSelected()+"'"
+                + ", '"+chckbxIngestaoAlcool.isSelected()+"', '"+chckbxHabitoFumar.isSelected()+"'"
+                + ", '"+chckbxSindromeDown.isSelected()+"', '"+chckbxCondutasTipicas.isSelected()+"', '"+chckbxAltasHabilidadesSuperdotado.isSelected()+"', "
+                + "'"+chckbxDeficienciaMental.isSelected()+"', '"+chckbxDeficienciaMultipla.isSelected()+"', '"+chckbxAutismo.isSelected()+"', '"+dataModificacao()+"'"
+                + ", '"+idaluno+"')";       
         }
     }
     
@@ -578,7 +581,6 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         // Botão para salvar a anamnese
         if(validaData(txtfldDataAnamnese.getText())){
             if(validaData(txtfldDataNascimento.getText())){
-                String SQL = preparaInsert();
                 Conexao con = new Conexao();        
                 int insert = con.executaInsert(SQL);
                 if(insert == 1){
