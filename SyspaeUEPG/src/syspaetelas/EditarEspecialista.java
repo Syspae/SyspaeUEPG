@@ -218,7 +218,8 @@ public class EditarEspecialista extends javax.swing.JFrame {
     
     // Função para verificar se os campos estão preenchidos corretamente
     private boolean verificaCampos(){
-        if(txtfldNomeEspecialista.getText().isBlank()){lblErro.setText("Campo nome não preenchido!"); return false;}
+        if(txtfldNomeEspecialista.getText().isBlank()){lblErro.setText("Campo nome não preenchido!"); return false;}        
+        if(txtfldNomeEspecialista.getText().length() < 3){lblErro.setText("Nome muito curto!"); return false;}
         if(cmbbxEspecialidade.getSelectedItem().equals("--Selecione--")){lblErro.setText("Por favor selecione uma especialidade!"); return false;}
         if(txtfldCRM.getText().isBlank()){lblErro.setText("Campo Carteira do Conselho não preenchido!"); return false;}
         return true;   

@@ -43,7 +43,17 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         mostraItens();
         txtfldDataAnamnese.setEditable(false);
         txtfldDataNascimento.setEditable(false);
-        
+        SQL = "INSERT into anamnese (data_nascimento, data_anamnese, doencas_familia, atendimentos_odontologicos, encaminhamentos_para_a_rede,"
+                + "surdez_leve_ou_moderada, surdez_severa_ou_profunda, baixa_visao, cegueira, deficiencia_fisica,"
+                + "surdocegueira, ingestao_de_alcool, habito_de_fumar, sindrome_de_down, condutas_tipicas, altas_habilidades_superdotado,"
+                + "deficiencia_mental, deficiencia_multipla, autismo, datamodificacao, fk_aluno_idaluno)"
+                + "values ('"+txtfldDataNascimento.getText()+"', '"+txtfldDataAnamnese.getText()+"', '"+txtDoencaFamilia.getText()+"', '"+txtAtendimentosOdonto.getText()+"', '"+txtEncaminhamentos.getText()+"'"
+                + ", '"+chckbxSurdezLeveModerada.isSelected()+"', '"+chckbxSurdezSeveraProfunda.isSelected()+"'"
+                + ", '"+chckbxBaixaVisao.isSelected()+"', '"+chckbxCegueira.isSelected()+"', '"+chckbxDeficienciaFisica.isSelected()+"', '"+chckbxSurdocegueira.isSelected()+"'"
+                + ", '"+chckbxIngestaoAlcool.isSelected()+"', '"+chckbxHabitoFumar.isSelected()+"'"
+                + ", '"+chckbxSindromeDown.isSelected()+"', '"+chckbxCondutasTipicas.isSelected()+"', '"+chckbxAltasHabilidadesSuperdotado.isSelected()+"', "
+                + "'"+chckbxDeficienciaMental.isSelected()+"', '"+chckbxDeficienciaMultipla.isSelected()+"', '"+chckbxAutismo.isSelected()+"', '"+dataModificacao()+"'"
+                + ", '"+idaluno+"')"; 
     }
 
     /**
