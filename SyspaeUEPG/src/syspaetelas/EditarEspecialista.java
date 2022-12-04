@@ -409,8 +409,11 @@ public class EditarEspecialista extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // Botão para fechar a janela
+        if(btnEditar.isEnabled())this.dispose();
+        else{
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1) this.dispose();
+        }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
