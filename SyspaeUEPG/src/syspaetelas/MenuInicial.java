@@ -239,13 +239,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
         // TODO add your handling code here:
-        Relatorio relatorio = new Relatorio();
-        //
-        try {
-            relatorio.geraRelatorio();
-        } catch (JRException ex) {
-            Logger.getLogger(MenuInicial.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        TelaRelatorio tela08 = new TelaRelatorio();
     }//GEN-LAST:event_btnRelatorioActionPerformed
 
     /**
