@@ -170,7 +170,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
                 chckbxDeficienciaMultipla.setSelected(rs.getBoolean("deficiencia_multipla"));
                 chckbxAutismo.setSelected(rs.getBoolean("autismo"));        
                 idAnamnese = rs.getInt("idanamnese");
-                dataModificacao = rs.getString("datamodificacao");
+                dataModificacao = rs.getString("aluno.datamodificacao");
             }
         } catch (Exception ex) {
             Logger.getLogger(CadastroAnamnese.class.getName()).log(Level.SEVERE, null, ex);
@@ -202,11 +202,22 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         chckbxDeficienciaMental.setEnabled(true);
         chckbxDeficienciaMultipla.setEnabled(true);
         chckbxAutismo.setEnabled(true);
-    }
+    }   
     
     // Função para verificar se é possivel atualizar a anamnese se a data de modificação for menor que três dias
     private String updatePossivel(String dataModificacao){
         LocalDate atual = LocalDate.now();
+        if(dataModificacao == null) return "INSERT into anamnese (data_nascimento, data_anamnese, doencas_familia, atendimentos_odontologicos, encaminhamentos_para_a_rede,"
+                                            + "surdez_leve_ou_moderada, surdez_severa_ou_profunda, baixa_visao, cegueira, deficiencia_fisica,"
+                                            + "surdocegueira, ingestao_de_alcool, habito_de_fumar, sindrome_de_down, condutas_tipicas, altas_habilidades_superdotado,"
+                                            + "deficiencia_mental, deficiencia_multipla, autismo, datamodificacao, fk_aluno_idaluno)"
+                                            + "values ('"+txtfldDataNascimento.getText()+"', '"+txtfldDataAnamnese.getText()+"', '"+txtDoencaFamilia.getText()+"', '"+txtAtendimentosOdonto.getText()+"', '"+txtEncaminhamentos.getText()+"'"
+                                            + ", '"+chckbxSurdezLeveModerada.isSelected()+"', '"+chckbxSurdezSeveraProfunda.isSelected()+"'"
+                                            + ", '"+chckbxBaixaVisao.isSelected()+"', '"+chckbxCegueira.isSelected()+"', '"+chckbxDeficienciaFisica.isSelected()+"', '"+chckbxSurdocegueira.isSelected()+"'"
+                                            + ", '"+chckbxIngestaoAlcool.isSelected()+"', '"+chckbxHabitoFumar.isSelected()+"'"
+                                            + ", '"+chckbxSindromeDown.isSelected()+"', '"+chckbxCondutasTipicas.isSelected()+"', '"+chckbxAltasHabilidadesSuperdotado.isSelected()+"', "
+                                            + "'"+chckbxDeficienciaMental.isSelected()+"', '"+chckbxDeficienciaMultipla.isSelected()+"', '"+chckbxAutismo.isSelected()+"', '"+dataModificacao()+"'"
+                                            + ", '"+idaluno+"')";  
         Date dataCriacao = Date.valueOf(dataModificacao);
         Period tempo = Period.between(dataCriacao.toLocalDate(), atual);
         int dias = tempo.getDays();

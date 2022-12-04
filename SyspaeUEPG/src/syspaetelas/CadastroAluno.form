@@ -1801,7 +1801,7 @@
         <Property name="toolTipText" type="java.lang.String" value="Livro e Folhas da Certid&#xe3;o"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JtextFieldSomenteNumeros(9)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JtextFieldSomenteNumeros(8)"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="lblErro">
