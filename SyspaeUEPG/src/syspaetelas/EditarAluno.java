@@ -1919,8 +1919,13 @@ public class EditarAluno extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // Botão para fechar a janela
+        if(btnSalvar.isVisible()){
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1){
+            BuscaAluno novatela = new BuscaAluno();
+            this.dispose();
+        }
+        }else {
             BuscaAluno novatela = new BuscaAluno();
             this.dispose();
         }
