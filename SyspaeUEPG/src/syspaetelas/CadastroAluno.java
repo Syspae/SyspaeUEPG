@@ -7,12 +7,14 @@ package syspaetelas;
 import static java.lang.System.exit;
 import controleConexao.Conexao;
 import java.awt.event.KeyEvent;
+import java.lang.System.Logger;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
+import java.util.logging.Level;
 import javax.swing.JTextField;
 
 /**
@@ -204,8 +206,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     
     //Funções para tratamento de dados para mandar ao banco
     private char estado_civil(){
-        String estado_civil = cmbbxEstadoCivil.getSelectedItem().toString();
-        switch (estado_civil) {
+        switch (cmbbxEstadoCivil.getSelectedItem().toString()) {
             case "--Selecione--":
                 return ' ';
             case "Solteiro(a)":
@@ -290,8 +291,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
     
     private char transporte(){
-        String getTransporte = cmbbxTipoTransporte.getSelectedItem().toString();
-        switch (getTransporte) {
+        switch (cmbbxTipoTransporte.getSelectedItem().toString()) {
             case "--Selecione--":
                 return ' ';
             case "Próprio":
@@ -306,8 +306,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
     
     private char moradia(){
-        String getMoradia = cmbbxTipoMoradia.getSelectedItem().toString();
-        switch (getMoradia) {
+        switch (cmbbxTipoMoradia.getSelectedItem().toString()) {
             case "--Selecione--":
                 return ' ';
             case "Própria":
@@ -322,8 +321,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
     
     private String renda(){
-        String getRenda = cmbbxRendaFamiliar.getSelectedItem().toString();
-        switch (getRenda) {
+        switch (cmbbxRendaFamiliar.getSelectedItem().toString()) {
             case "--Selecione--":
                 return "   ";
             case "Sem renda":
@@ -342,8 +340,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
     
     private char sexo(){
-        String getSexo = cmbbxSexo.getSelectedItem().toString();
-        switch (getSexo) {
+        switch (cmbbxSexo.getSelectedItem().toString()) {
             case "--Selecione--":
                 return ' ';
             case "Masculino":
@@ -356,8 +353,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
     
     private boolean bolsa_familia(){
-        String getBolsa = cmbbxRecebeBolsaFamilia.getSelectedItem().toString();
-        switch (getBolsa) {
+        switch (cmbbxRecebeBolsaFamilia.getSelectedItem().toString()) {
             case "Não":
                 return false;
             case "Sim":
@@ -368,8 +364,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
     
     private boolean bpc(){
-        String getbpc = cmbbxRecebeBPC.getSelectedItem().toString();
-        switch (getbpc) {
+        switch (cmbbxRecebeBPC.getSelectedItem().toString()) {
             case "Não":
                 return false;
             case "Sim":
@@ -380,8 +375,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
     
     private char cor_raca(){
-        String getCor = cmbbxCorRaca.getSelectedItem().toString();
-        switch (getCor) {
+        switch (cmbbxCorRaca.getSelectedItem().toString()) {
             case "--Selecione--":
                 return ' ';
             case "Branca":
@@ -452,19 +446,8 @@ public class CadastroAluno extends javax.swing.JFrame {
             }
     }
    
-    //Função para validar os campos obrigatorios
-    private int validaObrigatorios(){
-        String nome = txtfldNome.getText();
-        String naturalidade_municipio = txtfldMunicipio.getText();
-        String pais_natural = txtfldPaisNatural.getText();
-        String cep = txtfldCEP.getText();
-        String nome_responsavel = txtfldResponsavel.getText();
-        String telefone_contato = txtfldNumeroContato.getText();
-        String endereco = txtfldEndereco.getText();
-        String num_casa = txtfldNdaCasa.getText();
-        String bairro = txtfldBairro.getText();
-        String cidade = txtfldCidade.getText();
-        
+    // Função para validar os campos obrigatorios
+    private int validaObrigatorios(){        
         char estado_civil = estado_civil();
         String uf_nat = uf("nat");
         String uf_atual = uf("atual");
@@ -472,13 +455,10 @@ public class CadastroAluno extends javax.swing.JFrame {
         char moradia = moradia();
         String renda = renda();
         char sexo = sexo();
-        char cor_raca = cor_raca();
+        char cor_raca = cor_raca();        
+        boolean cpf = validaCpf(txtfldCPF.getText());  
         
-        boolean cpf = validaCpf(txtfldCPF.getText());
-        
-
-        
-        if(nome.isBlank()){lblErro.setText("Campo obrigatorio Nome não preenchido!"); return 0;}        
+        if(txtfldNome.getText().isBlank()){lblErro.setText("Campo obrigatorio Nome não preenchido!"); return 0;}        
         if(cor_raca == ' '){lblErro.setText("Campo obrigatorio Cor/Raça não preenchido!"); return 0;}
         if(fldDataNascimento.getText().equals("  /  /    ")){lblErro.setText("Campo obrigatorio data de nascimento não preenchido!"); return 0;}
         boolean data = validaData(fldDataNascimento.getText());
@@ -486,25 +466,25 @@ public class CadastroAluno extends javax.swing.JFrame {
         if(sexo == ' '){lblErro.setText("Campo obrigatorio Sexo não preenchido!"); return 0;}
         if(estado_civil == ' '){lblErro.setText("Campo obrigatorio Estado Civil não preenchido!"); return 0;}
         if(!cpf){lblErro.setText("CPF invalido!"); return 0;}
-        if(naturalidade_municipio.isBlank()){lblErro.setText("Campo obrigatorio Naturalidade/Municipio não preenchido!"); return 0;}
+        if(txtfldMunicipio.getText().isBlank()){lblErro.setText("Campo obrigatorio Naturalidade/Municipio não preenchido!"); return 0;}
         if(uf_nat.equals("  ")){lblErro.setText("Campo obrigatorio UF não preenchido!"); return 0;}
-        if(pais_natural.isBlank()){lblErro.setText("Campo obrigatorio Pais natural não preenchido!"); return 0;}
-        if(cep.isBlank()){lblErro.setText("Campo obrigatorio CEP não preenchido!"); return 0;}
-        if(nome_responsavel.isBlank()){lblErro.setText("Campo obrigatorio Nome do Responsavel não preenchido!"); return 0;}
-        if(telefone_contato.isBlank()){lblErro.setText("Campo obrigatorio Telefone para contato não preenchido!"); return 0;}
-        if(endereco.isBlank()){lblErro.setText("Campo obrigatorio Endereço não preenchido!"); return 0;}
-        if(num_casa.isBlank()){lblErro.setText("Campo obrigatorio Numero da casa não preenchido!"); return 0;}
-        if(bairro.isBlank()){lblErro.setText("Campo obrigatorio Bairro não preenchido!"); return 0;}
-        if(cidade.isBlank()){lblErro.setText("Campo obrigatorio Cidade não preenchido!"); return 0;}
+        if(txtfldPaisNatural.getText().isBlank()){lblErro.setText("Campo obrigatorio Pais natural não preenchido!"); return 0;}
+        if(txtfldCEP.getText().isBlank()){lblErro.setText("Campo obrigatorio CEP não preenchido!"); return 0;}
+        if(txtfldResponsavel.getText().isBlank()){lblErro.setText("Campo obrigatorio Nome do Responsavel não preenchido!"); return 0;}
+        if(txtfldNumeroContato.getText().isBlank()){lblErro.setText("Campo obrigatorio Telefone para contato não preenchido!"); return 0;}
+        if(txtfldEndereco.getText().isBlank()){lblErro.setText("Campo obrigatorio Endereço não preenchido!"); return 0;}
+        if(txtfldNdaCasa.getText().isBlank()){lblErro.setText("Campo obrigatorio Numero da casa não preenchido!"); return 0;}
+        if(txtfldBairro.getText().isBlank()){lblErro.setText("Campo obrigatorio Bairro não preenchido!"); return 0;}
+        if(txtfldCidade.getText().isBlank()){lblErro.setText("Campo obrigatorio Cidade não preenchido!"); return 0;}
         if(uf_atual.equals("  ")){lblErro.setText("Campo obrigatorio Estado não preenchido!"); return 0;}
         if(transporte == ' '){lblErro.setText("Campo obrigatorio Tipo de Transporte não preenchido!"); return 0;}
         if(moradia == ' '){lblErro.setText("Campo obrigatorio Tipo de Moradia não preenchido!"); return 0;}
-        if(renda.equals("   ")){lblErro.setText("Campo obrigatorio Renda Familiar não preenchido!"); return 0;}
-        
+        if(renda.equals("   ")){lblErro.setText("Campo obrigatorio Renda Familiar não preenchido!"); return 0;}        
         
         return 1;
 }
     
+    // Função para validar as datas
     private boolean validaData(String data){
         LocalDate atual = LocalDate.now();
         
@@ -514,6 +494,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         return !nascimento.isAfter(atual);
     }
     
+    // Função para formatar a data de moficação
     private String dataModificacao(){
         LocalDate atual = LocalDate.now();        
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -521,54 +502,14 @@ public class CadastroAluno extends javax.swing.JFrame {
     }
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
-    private String preparaSQL(){
-        String nome = txtfldNome.getText();
-        String cgm = txtfldCGM.getText();
-        String data_nascimento = fldDataNascimento.getText();       
-        String cpf = txtfldCPF.getText();
-        String rg = txtfldRG.getText();
-        String orgao_emissor = txtfldOrgaoEmissor.getText();
-        String naturalidade_municipio = txtfldMunicipio.getText();
-        String pais_natural = txtfldPaisNatural.getText();
-        String cep = txtfldCEP.getText();
-        String rne = txtfldRNE.getText();
-        String certidao = txtfldNascimentoCasamento.getText();
-        String livro_folhas = txtfldLivroFolhas.getText();
+    private String preparaSQL(){     
         String data_emissao = txtfldDataEmissao.getText();
-        String nome_cartorio = txtfldNomeCartorio.getText();
-        String nome_responsavel = txtfldResponsavel.getText();
         String doc_resp = cmbbxDocumentoResposavel.getSelectedItem().toString();
-        String num_doc_resp = txtfldNDocumentoResponsavel.getText();
         String grau_parentesco = cmbbxGrauParentesco.getSelectedItem().toString();
-        String email = txtfldEmail.getText();
-        String telefone_contato = txtfldNumeroContato.getText();
-        String filiacao1 = txtfldFiliacao1.getText();
         String doc_f1 = cmbbxDocumentoFiliacao1.getSelectedItem().toString();
-        String num_doc_f1 = txtfldNDocumentoFiliacao1.getText();
         String esc_f1 = cmbbxEscolariedadeFiliacao1.getSelectedItem().toString();
-        String filiacao2 = txtfldFiliacao2.getText();
         String doc_f2 = cmbbxDocumentoFiliacao2.getSelectedItem().toString();
-        String num_doc_f2 = txtfldNDocumentoFiliacao1.getText();
         String esc_f2 = cmbbxEscolariedadeFiliacao2.getSelectedItem().toString();
-        String endereco = txtfldEndereco.getText();
-        String num_casa = txtfldNdaCasa.getText();
-        String complemento = txtfldComplemento.getText();
-        String bairro = txtfldBairro.getText();
-        String cidade = txtfldCidade.getText();
-        Boolean interprete_libras = chckbxInterpreteLibras.isSelected();
-        Boolean atendente = chckbxAtendente.isSelected();
-        Boolean prof_espec_permanente = chckbxProfessorEspecializado.isSelected();
-        Boolean atend_edc_espc = chckbxAtendimentoEspecializado.isSelected();
-        Boolean propria_escola = chckbxNaPropriaEscola.isSelected();
-        Boolean outra_escola = chckbxOutraEscola.isSelected();
-        Boolean centro_atd_edc_espc = chckbxCentroAtendimentoEspecializado.isSelected();
-        Boolean cadeira_rodas = chckbxUsoCadeiraRodas.isSelected();
-        Boolean muletas_bengalas = chckbxMuletasBengalas.isSelected();
-        Boolean livros_ampliados = chckbxLivrosAmpliados.isSelected();
-        Boolean reglete_soroba = chckbxRegleteSoroba.isSelected();
-        Boolean carteiras_adpts = chckbxCarteirasAdaptadas.isSelected();
-        Boolean compt_adpts = chckbxComputadoresAdaptados.isSelected();
-        Boolean mat_comn_alt = chckbxComunicacaoAlternativa.isSelected();    
         int pessoas_moram_casa = (int) spnPessoasNaCasa.getValue();        
         
         char estado_civil = estado_civil();
@@ -591,30 +532,30 @@ public class CadastroAluno extends javax.swing.JFrame {
         if(esc_f2.equals("--Selecione--")) esc_f2 = "NaN";
         if(data_emissao.equals("  /  /    ")) data_emissao = "11/11/1111";
         
-        
-        
-        
-        String SQL = "INSERT into aluno (nome, cgm, municipio_nat, data_nascimento,"
-                                        + "pais_nat, rg, orgao_rg, cpf, rne, certidao_nascimento, livro_folhas,"
-                                        + " nome_cartorio, data_emissao, responsavel, doc_resp, numero_doc_resp, grau_parentesco,"
-                                        + " email_resp, telefone_contato, filiacao_1, doc_f1, num_doc_f1,"
-                                        + " filiacao_2, doc_f2, num_doc_f2, endereco, num_casa, complemento,"
-                                        + " bairro, cidade, cep, estado_civil, uf_nat, escolaridade_f1, escolaridade_f2, uf_atual,"
-                                        + " tipo_transporte, tipo_moradia, renda_familiar, interprete_libras, atendente, professor_especializado_permanente,"
-                                        + " atendimento_educacional_especializado, na_propria_escola, centro_de_atendimento_educacional_especializado,"
-                                        + " uso_de_cadeira_de_rodas, uso_de_muletas_bengalas, livros_ampliados, reglete_soroba_braile,"
-                                        + " carteiras_adaptadas, computadores_adaptados, sexo, materiais_de_comunicacao_alternativa, outra_escola,"
-                                        + " bolsa_familia, bpc, pessoas_na_casa, cor_raca, datamodificacao, inativado)"
-                                        + "values ('"+nome+"', '"+cgm+"', '"+naturalidade_municipio+"', '"+data_nascimento+"'"
-                                        + ", '"+pais_natural+"', '"+rg+"', '"+orgao_emissor+"', '"+cpf+"', '"+rne+"', '"+certidao+"', '"+livro_folhas+"'"
-                                        + ", '"+nome_cartorio+"', '"+data_emissao+"', '"+nome_responsavel+"', '"+doc_resp+"', '"+num_doc_resp+"', '"+grau_parentesco+"'"                       
-                                        + ", '"+email+"', '"+telefone_contato+"', '"+filiacao1+"', '"+doc_f1+"', '"+num_doc_f1+"', '"+filiacao2+"'"
-                                        + ", '"+doc_f2+"', '"+num_doc_f2+"', '"+endereco+"', '"+num_casa+"', '"+complemento+"', '"+bairro+"', '"+cidade+"'"
-                                        + ", '"+cep+"','"+estado_civil+"', '"+uf_nat+"', '"+esc_f1+"', '"+esc_f2+"', '"+uf_atual+"', '" +transporte+"', '"+moradia+"', '"+renda+"'"
-                                        + ", '"+interprete_libras+"', '"+atendente+"', '"+prof_espec_permanente+"', '"+atend_edc_espc+"', '"+propria_escola+"', '"+centro_atd_edc_espc+"'"
-                                        + ", '"+cadeira_rodas+"', '"+muletas_bengalas+"', '"+livros_ampliados+"', '"+reglete_soroba+"', '"+carteiras_adpts+"', '"+compt_adpts+"'"
-                                        + ", '"+sexo+"', '"+mat_comn_alt+"', '"+outra_escola+"', '"+bolsa_familia+"', '"+bpc+"', '"+pessoas_moram_casa+"', '"+cor_raca+"', '"+dataModificacao+"', 'false'"
-                                        + ")" ;
+        String SQL = "INSERT into aluno "
+                + "(nome, cgm, municipio_nat, data_nascimento,"
+                + "pais_nat, rg, orgao_rg, cpf, rne, certidao_nascimento, livro_folhas,"
+                + " nome_cartorio, data_emissao, responsavel, doc_resp, numero_doc_resp, grau_parentesco,"
+                + " email_resp, telefone_contato, filiacao_1, doc_f1, num_doc_f1,"
+                + " filiacao_2, doc_f2, num_doc_f2, endereco, num_casa, complemento,"
+                + " bairro, cidade, cep, estado_civil, uf_nat, escolaridade_f1, escolaridade_f2, uf_atual,"
+                + " tipo_transporte, tipo_moradia, renda_familiar, interprete_libras, atendente, professor_especializado_permanente,"
+                + " atendimento_educacional_especializado, na_propria_escola, centro_de_atendimento_educacional_especializado,"
+                + " uso_de_cadeira_de_rodas, uso_de_muletas_bengalas, livros_ampliados, reglete_soroba_braile,"
+                + " carteiras_adaptadas, computadores_adaptados, sexo, materiais_de_comunicacao_alternativa, outra_escola,"
+                + " bolsa_familia, bpc, pessoas_na_casa, cor_raca, datamodificacao, inativado)"
+                + "values "
+                + "('"+txtfldNome.getText()+"', '"+txtfldCGM.getText()+"', '"+txtfldMunicipio.getText()+"', '"+fldDataNascimento.getText()+"'"
+                + ", '"+txtfldPaisNatural.getText()+"', '"+txtfldRG.getText()+"', '"+txtfldOrgaoEmissor.getText()+"', '"+txtfldCPF.getText()+"'"
+                + ", '"+txtfldRNE.getText()+"', '"+txtfldNascimentoCasamento.getText()+"', '"+txtfldLivroFolhas.getText()+"'"
+                + ", '"+txtfldNomeCartorio.getText()+"', '"+data_emissao+"', '"+txtfldResponsavel.getText()+"', '"+doc_resp+"', '"+txtfldNDocumentoResponsavel.getText()+"', '"+grau_parentesco+"'"                       
+                + ", '"+txtfldEmail.getText()+"', '"+txtfldNumeroContato.getText()+"', '"+txtfldFiliacao1.getText()+"', '"+doc_f1+"', '"+txtfldNDocumentoFiliacao1.getText()+"', '"+txtfldFiliacao2.getText()+"'"
+                + ", '"+doc_f2+"', '"+txtfldNDocumentoFiliacao1.getText()+"', '"+txtfldEndereco.getText()+"', '"+txtfldNdaCasa.getText()+"', '"+txtfldComplemento.getText()+"', '"+txtfldBairro.getText()+"', '"+txtfldCidade.getText()+"'"
+                + ", '"+txtfldCEP.getText()+"','"+estado_civil+"', '"+uf_nat+"', '"+esc_f1+"', '"+esc_f2+"', '"+uf_atual+"', '" +transporte+"', '"+moradia+"', '"+renda+"'"
+                + ", '"+chckbxInterpreteLibras.isSelected()+"', '"+chckbxAtendente.isSelected()+"', '"+chckbxProfessorEspecializado.isSelected()+"', '"+chckbxAtendimentoEspecializado.isSelected()+"', '"+chckbxNaPropriaEscola.isSelected()+"', '"+chckbxCentroAtendimentoEspecializado.isSelected()+"'"
+                + ", '"+chckbxUsoCadeiraRodas.isSelected()+"', '"+chckbxMuletasBengalas.isSelected()+"', '"+chckbxLivrosAmpliados.isSelected()+"', '"+chckbxRegleteSoroba.isSelected()+"', '"+chckbxCarteirasAdaptadas.isSelected()+"', '"+chckbxComputadoresAdaptados.isSelected()+"'"
+                + ", '"+sexo+"', '"+chckbxComunicacaoAlternativa.isSelected()+"', '"+chckbxOutraEscola.isSelected()+"', '"+bolsa_familia+"', '"+bpc+"', '"+pessoas_moram_casa+"', '"+cor_raca+"', '"+dataModificacao+"', 'false'"
+                + ")" ;
         
         return SQL;
     }
@@ -1613,7 +1554,7 @@ public class CadastroAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1) this.dispose(); 
     }//GEN-LAST:event_btnSairActionPerformed
@@ -1651,13 +1592,11 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbbxEscolariedadeFiliacao2ActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:       
-        
+        // Botão para salvar os dados do aluno
         int valida = validaObrigatorios();
         if(valida==1){
             Conexao con = new Conexao();        
-            int insert = con.executaInsert(preparaSQL());      
-
+            int insert = con.executaInsert(preparaSQL());     
 
             //Colocar ID na tela
             String id = null; 
@@ -1667,10 +1606,10 @@ public class CadastroAluno extends javax.swing.JFrame {
                 while(rs.next()){
                     id = rs.getString(1);
                 }
-            } catch (Exception e) {
+            } catch (Exception ex) {
+                java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
             }
             txtfldMatricula.setText(id);      
-
 
             if(insert==1){
                 lblErro.setVisible(false);
@@ -1678,7 +1617,6 @@ public class CadastroAluno extends javax.swing.JFrame {
                 desabilitaCampos();
                 dispose();                
                 CadastroAluno tela02 = new CadastroAluno("cadastro");
-                
             }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed

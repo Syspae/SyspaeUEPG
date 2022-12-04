@@ -25,22 +25,22 @@ public class BuscaAluno extends javax.swing.JFrame {
         
     }
     
-    //Função para buscar alunos cadastrados baseado no combobox de busca
+    // Função para buscar alunos cadastrados baseado no combobox de busca
     private String preparaSQL(){
-        String busca = txtfldBusca.getText();
-        String tipoBusca = cmbbxBusca.getSelectedItem().toString();
-        switch (tipoBusca) {
+        switch (cmbbxBusca.getSelectedItem().toString()) {
             case "Nome":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where nome like '" + busca + "%'order by nome ASC";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel "
+                        + "from aluno where nome like '" + txtfldBusca.getText() + "%'order by nome ASC";
             case "CPF":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where cpf like '" + busca + "%'order by nome ASC";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel "
+                        + "from aluno where cpf like '" + txtfldBusca.getText() + "%'order by nome ASC";
             case "Nome do Responsável":
-                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel  from aluno where responsavel like '" + busca + "%'order by nome ASC";
+                return "select idaluno, nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, responsavel "
+                        + "from aluno where responsavel like '" + txtfldBusca.getText() + "%'order by nome ASC";
             default:
                 throw new AssertionError();
         }
-    }
-    
+    }    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -224,14 +224,13 @@ public class BuscaAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         BuscaAluno.this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        // TODO add your handling code here:     
-        String s = tblBuscaAluno.getModel().getValueAt(tblBuscaAluno.getSelectedRow(), 0)+"";        
-        EditarAluno editar = new EditarAluno(s);
+        // Botão para abrir a tela de edição do aluno selecionado
+        EditarAluno editar = new EditarAluno(tblBuscaAluno.getModel().getValueAt(tblBuscaAluno.getSelectedRow(), 0)+"");
         this.dispose();
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
@@ -240,6 +239,7 @@ public class BuscaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfldBuscaInputMethodTextChanged
 
     private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
+        // Função para busca dinamica para 3 ou mais caracteres
         if(txtfldBusca.getText().length() >= 2){
             DefaultTableModel table = (DefaultTableModel) tblBuscaAluno.getModel();
             table.setRowCount(0);
@@ -269,7 +269,7 @@ public class BuscaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfldBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        // Botão para busca para 3 ou mais caracteres
         if(txtfldBusca.getText().length() >= 3){
             DefaultTableModel table = (DefaultTableModel) tblBuscaAluno.getModel();
             table.setRowCount(0);

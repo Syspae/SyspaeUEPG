@@ -205,12 +205,12 @@ public class BuscaAnamnese extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn03CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03CancelarActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         BuscaAnamnese.this.dispose();
     }//GEN-LAST:event_btn03CancelarActionPerformed
 
     private void btn03BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03BuscarActionPerformed
-        // TODO add your handling code here:
+        // Botão para busca para 3 ou mais caracteres
         if(txtfldBusca.getText().length() >= 3){
             DefaultTableModel table = (DefaultTableModel) tblBuscaAnamnese.getModel();
             table.setRowCount(0);
@@ -235,7 +235,7 @@ public class BuscaAnamnese extends javax.swing.JFrame {
     }//GEN-LAST:event_btn03SelecionarActionPerformed
 
     private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
-        // TODO add your handling code here:
+        // Função para busca dinamica para 3 ou mais caracteres
         if(txtfldBusca.getText().length() >= 2){
             DefaultTableModel table = (DefaultTableModel) tblBuscaAnamnese.getModel();
             table.setRowCount(0);
