@@ -27,7 +27,8 @@ public class Relatorio {
         String SQL = """
                      SELECT  idaluno, nome, cpf, bolsa_familia, responsavel
                      FROM aluno
-                     WHERE bolsa_familia = true""";
+                     WHERE bolsa_familia = true
+                     order by nome ASC""";
         ResultSet rs = con.executaBusca(SQL);
         JRResultSetDataSource jrRS =  new JRResultSetDataSource(rs);
         InputStream caminho = this.getClass().getClassLoader().getResourceAsStream("relatorios/AlunosBolsaFamilia.jrxml");

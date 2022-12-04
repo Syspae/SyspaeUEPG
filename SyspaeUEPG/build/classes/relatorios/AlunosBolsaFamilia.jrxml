@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AlunosBolsaFamilia" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="38fcad25-da87-4d9e-9d7d-c39b42d8527f">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AlunosBolsaFamilia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="38fcad25-da87-4d9e-9d7d-c39b42d8527f">
 	<property name="ireport.zoom" value="1.464100000000001"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT  idaluno, nome, cpf, bolsa_familia, responsavel
 FROM aluno
-WHERE bolsa_familia = true]]>
+WHERE bolsa_familia = true
+order by nome ASC]]>
 	</queryString>
 	<field name="idaluno" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
@@ -35,7 +36,7 @@ WHERE bolsa_familia = true]]>
 		<band height="111" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="555" height="79" uuid="825f3a7f-4890-4e7e-9aaa-d245e231e1c8"/>
-				<imageExpression><![CDATA["C:\\Users\\nip02\\Documents\\GitHub\\SyspaeUEPG\\SyspaeUEPG\\src\\images\\CabeçalhoRelatorio.png"]]></imageExpression>
+				<imageExpression><![CDATA["images/CabeçalhoRelatorio.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="0" y="91" width="555" height="20" uuid="84c4f30d-1957-4e83-97c5-57892e498c85"/>
