@@ -34,6 +34,6 @@ public class Relatorio {
         InputStream caminho = this.getClass().getClassLoader().getResourceAsStream("relatorios/AlunosBolsaFamilia.jrxml");
         JasperReport jr = JasperCompileManager.compileReport(caminho);
         JasperPrint jp = JasperFillManager.fillReport(jr, new HashMap(), jrRS);
-        JasperViewer.viewReport(jp);
+        JasperViewer.viewReport(jp, false);
     }
 }
