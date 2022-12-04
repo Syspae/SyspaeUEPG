@@ -439,7 +439,10 @@ public class EditarEspecialista extends javax.swing.JFrame {
             System.out.println(idprofissional);
             int insert = con.executaInsert(preparaUpdate(idprofissional));
             System.out.println(insert);
-            if (insert == 1) lblSucesso.setText("Atualizado com sucesso!");
+            if (insert == 1) {
+                lblSucesso.setText("Atualizado com sucesso!");
+                lblErro.setVisible(false);
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
