@@ -160,7 +160,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
     // Função para mostrar os itens
     private void mostraItens(){
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca("select aluno.data_nascimento, * from anamnese, aluno where idaluno  = '"+idaluno+"'");
+        ResultSet rs = con.executaBusca("SELECT * FROM anamnese as anamnese inner join aluno as aluno ON aluno.idaluno = anamnese.fk_aluno_idaluno WHERE aluno.idaluno = '"+idaluno+"'");
         try {
             while(rs.next()){
                 txtfldDataNascimento.setText(formataData(rs.getString("data_nascimento")));

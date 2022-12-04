@@ -417,7 +417,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnamneseActionPerformed
-        // Botão para criar uma nova anamnese
+        // Botão para criar uma nova anamnese        
         CadastroAnamnese tela06 = new CadastroAnamnese(idAluno());
     }//GEN-LAST:event_btnAnamneseActionPerformed
 
