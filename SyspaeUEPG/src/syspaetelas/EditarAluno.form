@@ -253,8 +253,11 @@
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="cmbbxEscolariedadeFiliacao2" min="-2" pref="159" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblPessoasNaCasa" min="-2" max="-2" attributes="0"/>
                   <Component id="spnPessoasNaCasa" min="-2" pref="85" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="btnInativar" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPessoasNaCasa" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -495,13 +498,16 @@
                       <Component id="lblCampos" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="lblErro" min="-2" pref="16" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                      <Component id="lblSucesso" min="-2" pref="19" max="-2" attributes="0"/>
-                  </Group>
                   <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSair" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnInativar" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSucesso" min="-2" pref="19" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace pref="12" max="32767" attributes="0"/>
           </Group>
@@ -1755,6 +1761,14 @@
           <Color blue="0" green="cc" red="0" type="rgb"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnInativar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Inativar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInativarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

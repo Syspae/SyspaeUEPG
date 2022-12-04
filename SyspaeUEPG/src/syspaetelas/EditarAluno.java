@@ -10,8 +10,10 @@ import java.sql.*;
 import javax.swing.JTextField;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -185,7 +187,8 @@ public class EditarAluno extends javax.swing.JFrame {
         id = getid;
         
 
-        mostraAluno(id);       
+        mostraAluno(id); 
+        btnInativar.setVisible(false);
     }
     
     //Função para colocar as informações do aluno nos campos
@@ -992,6 +995,7 @@ public class EditarAluno extends javax.swing.JFrame {
         lblErro = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
         lblSucesso = new javax.swing.JLabel();
+        btnInativar = new javax.swing.JButton();
 
         setTitle("Editar Aluno");
         setResizable(false);
@@ -1413,6 +1417,13 @@ public class EditarAluno extends javax.swing.JFrame {
         lblSucesso.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblSucesso.setForeground(new java.awt.Color(0, 204, 0));
 
+        btnInativar.setText("Inativar");
+        btnInativar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInativarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1623,8 +1634,10 @@ public class EditarAluno extends javax.swing.JFrame {
                         .addComponent(cmbbxTipoMoradia, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(cmbbxEscolariedadeFiliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblPessoasNaCasa)
-                    .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnPessoasNaCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnInativar)
+                        .addComponent(lblPessoasNaCasa)))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRecebeBolsaFamilia)
@@ -1827,12 +1840,14 @@ public class EditarAluno extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(lblCampos))
                     .addComponent(lblErro, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnEditar)
                     .addComponent(btnSalvar)
-                    .addComponent(btnSair))
+                    .addComponent(btnSair)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnInativar)
+                            .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -1890,7 +1905,7 @@ public class EditarAluno extends javax.swing.JFrame {
 
             if(insert==1){
                 lblErro.setVisible(false);
-                lblSucesso.setText("Cadastro efetuado com sucesso!");
+                lblSucesso.setText("Cadastro atualizado com sucesso!");
                 desabilitaCampos();
             }
         }
@@ -1922,6 +1937,25 @@ public class EditarAluno extends javax.swing.JFrame {
         this.btnEditar.setVisible(false);
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void btnInativarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInativarActionPerformed
+        // TODO add your handling code here:
+        int confirma = JOptionPane.showConfirmDialog(null, "Deseja inativar o aluno? A ação não pode ser revertida", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(confirma==JOptionPane.YES_OPTION){
+        String motivo = JOptionPane.showInputDialog("Motivo da inativação");
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime dataAtual = LocalDateTime.now();
+        Conexao con = new Conexao();
+        int insert = con.executaInsert("UPDATE aluno SET inativado = 'true', data_inativado = '"+dataAtual+"' where idaluno = '"+id+"'");
+        if(insert==1){
+                lblErro.setVisible(false);
+                lblSucesso.setText("Aluno inativado com sucesso!");
+                desabilitaCampos();
+                btnEditar.setVisible(false);
+                btnSalvar.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_btnInativarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1929,6 +1963,7 @@ public class EditarAluno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnInativar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox chckbxAtendente;

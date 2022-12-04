@@ -232,7 +232,6 @@ public class BuscaAluno extends javax.swing.JFrame {
         // TODO add your handling code here:     
         String s = tblBuscaAluno.getModel().getValueAt(tblBuscaAluno.getSelectedRow(), 0)+"";        
         EditarAluno editar = new EditarAluno(s);
-        System.out.println(s);
         this.dispose();
     }//GEN-LAST:event_btnSelecionarActionPerformed
 

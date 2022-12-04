@@ -279,6 +279,11 @@ public class CadastroAnamnese extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtfldDataAnamnese.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldDataAnamnese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfldDataAnamneseActionPerformed(evt);
+            }
+        });
 
         lblDataNascimento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDataNascimento.setText("Data de Nascimento");
@@ -563,6 +568,10 @@ public class CadastroAnamnese extends javax.swing.JFrame {
             }
         }        
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtfldDataAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfldDataAnamneseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfldDataAnamneseActionPerformed
 
 
 
