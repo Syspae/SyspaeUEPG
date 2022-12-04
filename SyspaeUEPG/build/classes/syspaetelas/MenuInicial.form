@@ -48,7 +48,7 @@
                   </Group>
                   <Component id="jLabel1" min="-2" pref="1280" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -239,7 +239,7 @@
     <Component class="javax.swing.JButton" name="btnRelatorio">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\carlo\Downloads\Bot&#xe3;o Relat&#xf3;rios.png"/>
+          <Image iconType="3" name="/images/Bot&#xe3;o Relat&#xf3;rios.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>

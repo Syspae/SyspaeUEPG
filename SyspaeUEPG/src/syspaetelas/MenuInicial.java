@@ -137,7 +137,7 @@ public class MenuInicial extends javax.swing.JFrame {
             }
         });
 
-        btnRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\carlo\\Downloads\\Botão Relatórios.png")); // NOI18N
+        btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Relatórios.png"))); // NOI18N
         btnRelatorio.setBorder(null);
         btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +171,7 @@ public class MenuInicial extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btn01Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,6 +240,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
         // TODO add your handling code here:
         Relatorio relatorio = new Relatorio();
+        //
         try {
             relatorio.geraRelatorio();
         } catch (JRException ex) {
