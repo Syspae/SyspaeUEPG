@@ -161,10 +161,10 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){
-        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, datamodificacao) "
+        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade,datamodificacao) "
                     + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"'"
                     + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', "
-                    + "'"+cmbbxProfissional.getSelectedItem().toString()+"', '"+dataModificacao()+"')";
+                    + "'"+cmbbxProfissional.getSelectedItem().toString()+"', '"+cmbbxEspecialidade.getText()+"','"+dataModificacao()+"')";
     }
     
     /**
