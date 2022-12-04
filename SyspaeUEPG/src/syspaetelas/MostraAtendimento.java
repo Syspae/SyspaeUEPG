@@ -7,6 +7,8 @@ package syspaetelas;
 import controleConexao.Conexao;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,13 +37,15 @@ public class MostraAtendimento extends javax.swing.JFrame {
     
     //Função que desativa os campos
     private void desabilitaCampos(){
-        cmbbxAluno.setEnabled(false);
-        txtfldDataAtendimento.setEditable(false);
-        cmbbxProfissional.setEnabled(false);
-        cmbbxEspecialidade.setEnabled(false);
+        // Textfield's
+        txtfldDataAtendimento.setEditable(false);        
         txtMotivoAtendimento.setEditable(false);
         txtDiagnostico.setEditable(false);
         txtTratamento.setEditable(false);
+        // Combo box's
+        cmbbxAluno.setEnabled(false);
+        cmbbxProfissional.setEnabled(false);
+        cmbbxEspecialidade.setEnabled(false);
     }
     
     //Função que mostra os itens nos campos
@@ -59,8 +63,8 @@ public class MostraAtendimento extends javax.swing.JFrame {
                 txtDiagnostico.setText(rs.getString("diagnostico"));
                 txtTratamento.setText(rs.getString("tratamento"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(MostraAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -270,12 +274,12 @@ public class MostraAtendimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnamneseActionPerformed
-        // TODO add your handling code here:
+        // Botão para mostrar a anamnese refente a aquele atendimento
         MostraAnamnese tela06 = new MostraAnamnese(idAtendimento);
     }//GEN-LAST:event_btnAnamneseActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 

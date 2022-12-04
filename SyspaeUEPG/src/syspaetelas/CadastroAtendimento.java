@@ -11,6 +11,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,7 +33,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         cmbbxEspecialidade.setEnabled(false);
         btnAnamnese.setEnabled(false);
     }
-
+    
+    // Função para pegar e formatar a data atual do sistema
     private void data(){
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDateTime dataAtual = LocalDateTime.now();
@@ -41,46 +44,43 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     //Função para pegar os alunos cadastrados e colocar no combobox
     private void buscaAlunos(){
         cmbbxAluno.addItem("");
-        String busca = "Select nome from aluno order by nome ASC";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select nome from aluno order by nome ASC");
         try {
             while(rs.next()){
                 cmbbxAluno.addItem(rs.getString("nome"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     //Função para pegar os profissionais cadastrados e colocar no combobox
     private void buscaProfissional(){
         cmbbxProfissional.addItem("");
-        String busca = "Select nome from profissional order by nome ASC";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select nome from profissional order by nome ASC");
         try {
             while(rs.next()){
                 cmbbxProfissional.addItem(rs.getString("nome"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
  
    }
     
     //Função para pegar o ID da especialidade relacionada ao profissional
     private int buscaEspecialidadeID(){
-        String buscaId = "select fk_especialidade_idespecialidade from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"'";
         int id = 0;
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(buscaId);
+        ResultSet rs = con.executaBusca("select fk_especialidade_idespecialidade from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"'");
         try {
             while(rs.next()){
                 id = rs.getInt("fk_especialidade_idespecialidade");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
         return id;
     }
@@ -88,59 +88,61 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     //Função para pegar o nome da especialidade baseado no ID
     private void buscaEspecialidadeNome(){
         int id = buscaEspecialidadeID();
-        String buscaNome = "Select nome_especialidade from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(buscaNome);
+        ResultSet rs = con.executaBusca("Select nome_especialidade from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'");
         try {
             while(rs.next()){
                 cmbbxEspecialidade.setText(rs.getString("nome_especialidade"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     //Função para pegar o ID do aluno selecionado no combobox
     private int idAluno(){        
-        String busca = "Select idaluno from aluno where nome like '"+cmbbxAluno.getSelectedItem().toString()+"'";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select idaluno from aluno where nome like '"+cmbbxAluno.getSelectedItem().toString()+"'");
         int id = 0;
         try {
             while(rs.next()){
                 id = rs.getInt("idaluno");
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+             Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);           
         }
         return id;
     }
     
     //Função para pegar o ID do profissional selecionado no combobox
     private int idProfissional(){
-        String busca = "Select * from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"%'";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select * from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"%'");
         int id = 0;
         try {
             while(rs.next()){
                 id = rs.getInt("idprofissional");
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+             Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);                       
         }
         return id;
     }
     
     //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
-        cmbbxAluno.setEnabled(false);
+        // Textfield's
         txtfldDataAtendimento.setEditable(false);
-        cmbbxProfissional.setEnabled(false);
-        cmbbxEspecialidade.setEnabled(false);
         txtMotivoAtendimento.setEditable(false);
         txtDiagnostico.setEditable(false);
         txtTratamento.setEditable(false);
+        // Combo box's
+        cmbbxAluno.setEnabled(false);        
+        cmbbxProfissional.setEnabled(false);
+        cmbbxEspecialidade.setEnabled(false);        
     }
     
+    // Função para validar as datas
     private boolean validaData(String data){
         LocalDate atual = LocalDate.now();
         
@@ -150,6 +152,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         return !nascimento.isAfter(atual);
     }
     
+    // Função para inserir a data atual como data de modificação
     private String dataModificacao(){
         LocalDate atual = LocalDate.now();        
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -414,12 +417,12 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnamneseActionPerformed
-        // TODO add your handling code here:
+        // Botão para criar uma nova anamnese
         CadastroAnamnese tela06 = new CadastroAnamnese(idAluno());
     }//GEN-LAST:event_btnAnamneseActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        // Botão para salvar o atendimento
         if(validaData(txtfldDataAtendimento.getText())){
             Conexao con = new Conexao();
             int insert = con.executaInsert(preparaSQL());
@@ -432,7 +435,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1) this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
@@ -451,7 +454,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbbxProfissionalItemStateChanged
 
     private void cmbbxAlunoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxAlunoItemStateChanged
-        // TODO add your handling code here:
+        // Função para apenas habilitar o botão da anamnese se houver um aluno selecionado 
         btnAnamnese.setEnabled(true);
         if(cmbbxAluno.getSelectedItem().toString().isBlank())btnAnamnese.setEnabled(false);
     }//GEN-LAST:event_cmbbxAlunoItemStateChanged

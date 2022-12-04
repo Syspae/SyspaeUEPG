@@ -9,6 +9,8 @@ import static java.time.Clock.system;
 import controleConexao.Conexao;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -132,18 +134,23 @@ public class EditarEspecialista extends javax.swing.JFrame {
     
     //Função para habilitar os campos ao salvar
     private void habilitaCampos(){
+        // Textfield's
         txtfldNomeEspecialista.setEditable(true);
-        cmbbxEspecialidade.setEnabled(true);
         txtfldCRM.setEditable(true);
+        // Combo box's
+        cmbbxEspecialidade.setEnabled(true);
     }
     
     //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
+        // Textfield's
         txtfldNomeEspecialista.setEditable(false);
-        cmbbxEspecialidade.setEnabled(false);
         txtfldCRM.setEditable(false);
+        // Combo box's
+        cmbbxEspecialidade.setEnabled(false);
     }
     
+    // Função para preparar a string para busca
     private String preparaSQL(){
         return "SELECT crm, profissional.nome, nome_especialidade "
                 + "from profissional as profissional "
@@ -152,10 +159,12 @@ public class EditarEspecialista extends javax.swing.JFrame {
                 + "where crm like '"+id+"'";
     }
     
+    // Função para buscar o id do profissional mostrado
     private String preparaBusca(){
         return "SELECT idprofissional from profissional where crm like '"+id+"'";
     }
     
+    // Função para preparar a string para o update baseado na escolha da especialidade
     private String preparaUpdate(int idprofissional){
         switch (cmbbxEspecialidade.getSelectedItem().toString()) {
             case "Fonoaudiologia":
@@ -191,6 +200,7 @@ public class EditarEspecialista extends javax.swing.JFrame {
         }
     }
 
+    // Função para mostrar os itens
     private void mostraItens(){
         desabilitaCampos();
         Conexao con = new Conexao();
@@ -201,17 +211,18 @@ public class EditarEspecialista extends javax.swing.JFrame {
                 txtfldCRM.setText(rs.getString("crm"));
                 cmbbxEspecialidade.setSelectedItem(rs.getString("nome_especialidade"));
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.getLogger(EditarEspecialista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    // Função para verificar se os campos estão preenchidos corretamente
     private boolean verificaCampos(){
         if(txtfldNomeEspecialista.getText().isBlank()){lblErro.setText("Campo nome não preenchido!"); return false;}
         if(cmbbxEspecialidade.getSelectedItem().equals("--Selecione--")){lblErro.setText("Por favor selecione uma especialidade!"); return false;}
         if(txtfldCRM.getText().isBlank()){lblErro.setText("Campo Carteira do Conselho não preenchido!"); return false;}
         return true;   
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -397,37 +408,38 @@ public class EditarEspecialista extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbbxEspecialidadeActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1) this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        // Botão para habilitar a edição
         habilitaCampos();
         btnEditar.setVisible(false);
         btnSalvar.setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        // Botão para salvar a edição
         if(verificaCampos()){
-        desabilitaCampos();
-        btnSalvar.setVisible(false);
-        btnEditar.setVisible(true);
-        int idprofissional = 0;
-        Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(preparaBusca());
-        try {
-            while(rs.next()){
-                idprofissional = rs.getInt("idprofissional");
+            desabilitaCampos();
+            btnSalvar.setVisible(false);
+            btnEditar.setVisible(true);
+            int idprofissional = 0;
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaBusca());
+            try {
+                while(rs.next()){
+                    idprofissional = rs.getInt("idprofissional");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(EditarEspecialista.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (Exception e) {
-        }
-        System.out.println(idprofissional);
-        int insert = con.executaInsert(preparaUpdate(idprofissional));
-        System.out.println(insert);
-        if (insert == 1) lblSucesso.setText("Atualizado com sucesso!");
+            System.out.println(idprofissional);
+            int insert = con.executaInsert(preparaUpdate(idprofissional));
+            System.out.println(insert);
+            if (insert == 1) lblSucesso.setText("Atualizado com sucesso!");
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

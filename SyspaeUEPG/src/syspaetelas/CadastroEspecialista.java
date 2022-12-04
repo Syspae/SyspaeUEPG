@@ -9,6 +9,8 @@ import static java.time.Clock.system;
 import controleConexao.Conexao;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -127,28 +129,29 @@ public class CadastroEspecialista extends javax.swing.JFrame {
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){
-        int id = 0;        
-        String busca = "Select idespecialidade from especialidade where nome_especialidade like '"+cmbbxEspecialidade.getSelectedItem().toString()+"'";            
-               
+        int id = 0;                  
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select idespecialidade from especialidade where nome_especialidade like '"+cmbbxEspecialidade.getSelectedItem().toString()+"'");
         try {
             while(rs.next()){
                 id = rs.getInt("idespecialidade");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroEspecialista.class.getName()).log(Level.SEVERE, null, ex);
         }        
         return "INSERT into profissional (nome, crm, fk_especialidade_idespecialidade) values ('"+txtfldNomeEspecialista.getText()+"', '"+txtfldCRM.getText()+"', '"+id+"')";
     }
     
     //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
+        // Text field's
         txtfldNomeEspecialista.setEditable(false);
-        cmbbxEspecialidade.setEnabled(false);
         txtfldCRM.setEditable(false);
+        // Combo box's        
+        cmbbxEspecialidade.setEnabled(false);
     }
     
+    // Função para vefirificar se os campos estão preenchidos corretamente
     private boolean verificaCampos(){
         if(txtfldNomeEspecialista.getText().isBlank()){lblErro.setText("Campo nome não preenchido!"); return false;}
         if(cmbbxEspecialidade.getSelectedItem().equals("--Selecione--")){lblErro.setText("Por favor selecione uma especialidade!"); return false;}
@@ -320,13 +323,13 @@ public class CadastroEspecialista extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbbxEspecialidadeActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1) this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        // Botão para salvar o especialista
         if(verificaCampos()){
         Conexao con = new Conexao();        
         int insert = con.executaInsert(preparaSQL());

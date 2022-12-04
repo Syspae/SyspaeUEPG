@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,12 +50,15 @@ public class MostraAnamnese extends javax.swing.JFrame {
     
     //Função que desabilita os campos 
     private void desabilitaCampos(){
+        // Textfield's
         txtfldDataNascimento.setEditable(false);
         txtfldDataAnamnese.setEditable(false);
-        cmbbxNome.setEnabled(false);
         txtAtendimentosOdonto.setEditable(false);
         txtDoencaFamilia.setEditable(false);
         txtEncaminhamentos.setEditable(false);
+        // Combo box's
+        cmbbxNome.setEnabled(false);
+        // Check box's
         chckbxSurdezLeveModerada.setEnabled(false);
         chckbxSurdezSeveraProfunda.setEnabled(false);
         chckbxBaixaVisao.setEnabled(false);
@@ -70,13 +75,17 @@ public class MostraAnamnese extends javax.swing.JFrame {
         chckbxAutismo.setEnabled(false);
     }
     
+    // Função para habilitar os campos
     private void habilitaCampos(){
+        // Textfield's
         txtfldDataNascimento.setEditable(true);
         txtfldDataAnamnese.setEditable(true);
-        cmbbxNome.setEnabled(true);
         txtAtendimentosOdonto.setEditable(true);
         txtDoencaFamilia.setEditable(true);
         txtEncaminhamentos.setEditable(true);
+        // Combo box's
+        cmbbxNome.setEnabled(true);
+        // Check box's
         chckbxSurdezLeveModerada.setEnabled(true);
         chckbxSurdezSeveraProfunda.setEnabled(true);
         chckbxBaixaVisao.setEnabled(true);
@@ -122,12 +131,13 @@ public class MostraAnamnese extends javax.swing.JFrame {
                 chckbxAutismo.setSelected(rs.getBoolean("autismo"));
                 updatePossivel(rs.getString("datamodificacao"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(MostraAnamnese.class.getName()).log(Level.SEVERE, null, ex);
         }
     
     }
     
+    // Função para validar as datas
     private boolean validaData(String data){
         LocalDate atual = LocalDate.now();
         
@@ -137,6 +147,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
         return !nascimento.isAfter(atual);
     }
     
+    // Função para verificar se é possivel alterar a anamnese
     private void updatePossivel(String dataModificacao){
         LocalDate atual = LocalDate.now();
         Date dataCriacao = Date.valueOf(dataModificacao);
@@ -147,6 +158,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
         }
     }
     
+    // Função para preparar a string do update
     private String preparaUpdate(){
         return "UPDATE anamnese SET data_nascimento = '"+txtfldDataNascimento.getText()+"', data_anamnese = '"+txtfldDataAnamnese.getText()+"', doencas_familia = '"+txtDoencaFamilia.getText()+"',"
                 + "atendimentos_odontologicos = '"+txtAtendimentosOdonto.getText()+"', encaminhamentos_para_a_rede = '"+txtEncaminhamentos.getText()+"', surdez_leve_ou_moderada = '"+chckbxSurdezLeveModerada.isSelected()+"',"
@@ -482,7 +494,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
     }//GEN-LAST:event_chckbxDeficienciaMultiplaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -491,7 +503,7 @@ public class MostraAnamnese extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbbxNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        // Botão para salvar a edição
         if(validaData(txtfldDataAnamnese.getText())){
             if(validaData(txtfldDataNascimento.getText())){
                 Conexao con = new Conexao();        
