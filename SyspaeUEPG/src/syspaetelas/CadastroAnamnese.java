@@ -220,10 +220,14 @@ public class CadastroAnamnese extends javax.swing.JFrame {
     private void updatePossivel(String dataModificacao){
         LocalDate atual = LocalDate.now();
         Date dataCriacao = Date.valueOf(dataModificacao);
-        Period tempo = Period.between(atual, dataCriacao.toLocalDate());
-        if(tempo.getDays() < 3) {
-            desabilitaCampos();
+        Period tempo = Period.between(dataCriacao.toLocalDate(), atual);
+        int dias = tempo.getDays();
+        if(dias < 3) {
+            habilitaCampos();
             btnSalvar.setVisible(true);
+        }else {
+            desabilitaCampos();
+            btnSalvar.setVisible(false);
         }
     }
     
