@@ -439,9 +439,7 @@ public class EditarEspecialista extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(EditarEspecialista.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(idprofissional);
             int insert = con.executaInsert(preparaUpdate(idprofissional));
-            System.out.println(insert);
             if (insert == 1) {
                 lblSucesso.setText("Atualizado com sucesso!");
                 lblErro.setVisible(false);
