@@ -1765,6 +1765,7 @@ public class CadastroAluno extends javax.swing.JFrame {
         }
         else {
             cmbbxDocumentoFiliacao1.setEnabled(false);
+            cmbbxDocumentoFiliacao1.setSelectedIndex(0);
             txtfldNDocumentoFiliacao1.setEnabled(false);              
             cmbbxEscolariedadeFiliacao1.setEnabled(false);
             cmbbxEscolariedadeFiliacao1.setSelectedIndex(0);
@@ -1803,7 +1804,8 @@ public class CadastroAluno extends javax.swing.JFrame {
             cmbbxEscolariedadeFiliacao2.setEnabled(true);
         }
         else {
-            cmbbxDocumentoFiliacao2.setEnabled(false);
+            cmbbxDocumentoFiliacao2.setEnabled(false);            
+            cmbbxDocumentoFiliacao2.setSelectedIndex(0);
             txtfldNDocumentoFiliacao2.setEnabled(false);              
             cmbbxEscolariedadeFiliacao2.setEnabled(false);
             cmbbxEscolariedadeFiliacao2.setSelectedIndex(0);            

@@ -55,27 +55,6 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         }
     }
     
-    private String especialidade(String id){
-        switch (id) {
-            case "1":
-                return "Fono";
-            case "2":
-                return "Fisio";
-            case "3":
-                return "Psico";
-            case "4":
-                return "Terapia";
-            case "5":
-                return "Neuro";
-            case "6": 
-                return "Odonto";
-            case "7":
-                return "Nutri";
-            default:
-                throw new AssertionError();
-        }
-    }
-    
     //Função para pegar os profissionais cadastrados e colocar no combobox
     private void buscaProfissional(){
         cmbbxProfissional.addItem("");
@@ -83,7 +62,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         ResultSet rs = con.executaBusca("Select * from profissional order by nome ASC");
         try {
             while(rs.next()){
-                cmbbxProfissional.addItem(rs.getString("nome") + " - " + especialidade(rs.getString("fk_especialidade_idespecialidade")));
+                cmbbxProfissional.addItem(rs.getString("nome"));
             }
         } catch (Exception ex) {
             Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
