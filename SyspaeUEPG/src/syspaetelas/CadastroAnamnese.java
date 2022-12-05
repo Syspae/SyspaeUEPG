@@ -295,6 +295,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         txtDoencaFamilia.setColumns(20);
         txtDoencaFamilia.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtDoencaFamilia.setRows(5);
+        txtDoencaFamilia.setToolTipText("Doenças que os familiares possuem ou já possuíram");
         jScrollPane1.setViewportView(txtDoencaFamilia);
 
         try {
@@ -336,6 +337,7 @@ public class CadastroAnamnese extends javax.swing.JFrame {
         txtEncaminhamentos.setColumns(20);
         txtEncaminhamentos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtEncaminhamentos.setRows(5);
+        txtEncaminhamentos.setToolTipText("Encaminhamento para a rede como o CREAS");
         jScrollPane3.setViewportView(txtEncaminhamentos);
 
         chckbxSurdezSeveraProfunda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N

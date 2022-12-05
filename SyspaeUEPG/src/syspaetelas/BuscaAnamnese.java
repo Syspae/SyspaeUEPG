@@ -84,6 +84,7 @@ public class BuscaAnamnese extends javax.swing.JFrame {
         cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Nome do Responsável" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBusca.setToolTipText("Digite ao mínimo 3 caracteres");
         txtfldBusca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtfldBuscaKeyTyped(evt);

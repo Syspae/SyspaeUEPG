@@ -236,6 +236,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         lblCRM.setText("Carteira do Conselho*");
 
         txtfldCRM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldCRM.setToolTipText("Número da Carteira do Conselho");
 
         lblErro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblErro.setForeground(new java.awt.Color(204, 0, 0));

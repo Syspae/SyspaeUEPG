@@ -103,6 +103,7 @@ public class BuscaEspecialista extends javax.swing.JFrame {
         });
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBusca.setToolTipText("Digite ao mínimo 3 caracteres");
         txtfldBusca.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
