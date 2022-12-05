@@ -1015,6 +1015,11 @@ public class EditarAluno extends javax.swing.JFrame {
 
         txtfldFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtfldFiliacao2.setToolTipText("Nome da Filiação 2");
+        txtfldFiliacao2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfldFiliacao2KeyTyped(evt);
+            }
+        });
 
         txtfldCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtfldCidade.setToolTipText("Cidade do Endereço");
@@ -1192,6 +1197,11 @@ public class EditarAluno extends javax.swing.JFrame {
         cmbbxDocumentoResposavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxDocumentoResposavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
         cmbbxDocumentoResposavel.setToolTipText("Tipo de Documento do Responsável");
+        cmbbxDocumentoResposavel.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbbxDocumentoResposavelItemStateChanged(evt);
+            }
+        });
 
         lblDocumentoResponsavel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoResponsavel.setText("Documento");
@@ -1228,6 +1238,11 @@ public class EditarAluno extends javax.swing.JFrame {
         cmbbxDocumentoFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxDocumentoFiliacao1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
         cmbbxDocumentoFiliacao1.setToolTipText("Tipo de Documento da Filiação 1");
+        cmbbxDocumentoFiliacao1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbbxDocumentoFiliacao1ItemStateChanged(evt);
+            }
+        });
         cmbbxDocumentoFiliacao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxDocumentoFiliacao1ActionPerformed(evt);
@@ -1243,6 +1258,11 @@ public class EditarAluno extends javax.swing.JFrame {
         cmbbxDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxDocumentoFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "CNH", "CPF", "RG", "RNE", "Outro" }));
         cmbbxDocumentoFiliacao2.setToolTipText("Tipo de Documento da Filiação 2");
+        cmbbxDocumentoFiliacao2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbbxDocumentoFiliacao2ItemStateChanged(evt);
+            }
+        });
 
         lblDocumentoFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDocumentoFiliacao2.setText("Documento");
@@ -1328,6 +1348,11 @@ public class EditarAluno extends javax.swing.JFrame {
 
         txtfldFiliacao1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtfldFiliacao1.setToolTipText("Nome da Filiação 1");
+        txtfldFiliacao1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfldFiliacao1KeyTyped(evt);
+            }
+        });
 
         cmbbxEscolariedadeFiliacao2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxEscolariedadeFiliacao2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Analfabeto", "Até 5º Ano Incompleto", "5º Ano Completo", "6º ao 9º Ano do Fundamental", "Fundamental Completo", "Médio Incompleto", "Médio Completo", "Superior Incompleto", "Superior Completo", "Mestrado", "Doutorado", "Ignorado" }));
@@ -2041,6 +2066,53 @@ public class EditarAluno extends javax.swing.JFrame {
     private void chckbxMuletasBengalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chckbxMuletasBengalasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chckbxMuletasBengalasActionPerformed
+
+    private void txtfldFiliacao1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldFiliacao1KeyTyped
+        // TODO add your handling code here:
+        if(txtfldFiliacao1.getText().length() > 2) {
+            cmbbxDocumentoFiliacao1.setEnabled(true);
+            cmbbxEscolariedadeFiliacao1.setEnabled(true);
+        }
+        else {
+            cmbbxDocumentoFiliacao1.setEnabled(false);
+            txtfldNDocumentoFiliacao1.setEnabled(false);              
+            cmbbxEscolariedadeFiliacao1.setEnabled(false);
+        }
+    }//GEN-LAST:event_txtfldFiliacao1KeyTyped
+
+    private void cmbbxDocumentoFiliacao1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxDocumentoFiliacao1ItemStateChanged
+        // TODO add your handling code here:
+        if(cmbbxDocumentoFiliacao1.getSelectedItem().toString().equals("--Selecione--")){
+            txtfldNDocumentoFiliacao1.setEnabled(false);
+        }else txtfldNDocumentoFiliacao1.setEnabled(true);
+    }//GEN-LAST:event_cmbbxDocumentoFiliacao1ItemStateChanged
+
+    private void txtfldFiliacao2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldFiliacao2KeyTyped
+        // TODO add your handling code here:
+        if(txtfldFiliacao2.getText().length() > 2) {
+            cmbbxDocumentoFiliacao2.setEnabled(true);
+            cmbbxEscolariedadeFiliacao2.setEnabled(true);
+        }
+        else {
+            cmbbxDocumentoFiliacao2.setEnabled(false);
+            txtfldNDocumentoFiliacao2.setEnabled(false);              
+            cmbbxEscolariedadeFiliacao2.setEnabled(false);
+        }
+    }//GEN-LAST:event_txtfldFiliacao2KeyTyped
+
+    private void cmbbxDocumentoFiliacao2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxDocumentoFiliacao2ItemStateChanged
+        // TODO add your handling code here:
+        if(cmbbxDocumentoFiliacao2.getSelectedItem().toString().equals("--Selecione--")){
+            txtfldNDocumentoFiliacao2.setEnabled(false);
+        }else txtfldNDocumentoFiliacao2.setEnabled(true);
+    }//GEN-LAST:event_cmbbxDocumentoFiliacao2ItemStateChanged
+
+    private void cmbbxDocumentoResposavelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxDocumentoResposavelItemStateChanged
+        // TODO add your handling code here:
+        if(cmbbxDocumentoResposavel.getSelectedItem().toString().equals("--Selecione--")){
+            txtfldNDocumentoResponsavel.setEnabled(false);
+        }else txtfldNDocumentoResponsavel.setEnabled(true);
+    }//GEN-LAST:event_cmbbxDocumentoResposavelItemStateChanged
 
     /**
      * @param args the command line arguments

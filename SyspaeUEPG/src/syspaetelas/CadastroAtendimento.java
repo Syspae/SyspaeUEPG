@@ -55,20 +55,41 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         }
     }
     
+    private String especialidade(String id){
+        switch (id) {
+            case "1":
+                return "Fono";
+            case "2":
+                return "Fisio";
+            case "3":
+                return "Psico";
+            case "4":
+                return "Terapia";
+            case "5":
+                return "Neuro";
+            case "6": 
+                return "Odonto";
+            case "7":
+                return "Nutri";
+            default:
+                throw new AssertionError();
+        }
+    }
+    
     //Função para pegar os profissionais cadastrados e colocar no combobox
     private void buscaProfissional(){
         cmbbxProfissional.addItem("");
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca("Select nome from profissional order by nome ASC");
+        ResultSet rs = con.executaBusca("Select * from profissional order by nome ASC");
         try {
             while(rs.next()){
-                cmbbxProfissional.addItem(rs.getString("nome"));
+                cmbbxProfissional.addItem(rs.getString("nome") + " - " + especialidade(rs.getString("fk_especialidade_idespecialidade")));
             }
         } catch (Exception ex) {
             Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
- 
    }
+    
     
     //Função para pegar o ID da especialidade relacionada ao profissional
     private int buscaEspecialidadeID(){
@@ -88,6 +109,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     //Função para pegar o nome da especialidade baseado no ID
     private void buscaEspecialidadeNome(){
         int id = buscaEspecialidadeID();
+        System.out.println(id);
         Conexao con = new Conexao();
         ResultSet rs = con.executaBusca("Select nome_especialidade from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'");
         try {
@@ -456,15 +478,19 @@ public class CadastroAtendimento extends javax.swing.JFrame {
 
     private void cmbbxProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxProfissionalActionPerformed
         // TODO add your handling code here:
+        if(!cmbbxProfissional.getSelectedItem().toString().isBlank()){
         buscaEspecialidadeNome();
+        }
     }//GEN-LAST:event_cmbbxProfissionalActionPerformed
 
     private void cmbbxProfissionalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmbbxProfissionalPropertyChange
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbbxProfissionalPropertyChange
 
     private void cmbbxProfissionalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxProfissionalItemStateChanged
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbbxProfissionalItemStateChanged
 
     private void cmbbxAlunoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxAlunoItemStateChanged
