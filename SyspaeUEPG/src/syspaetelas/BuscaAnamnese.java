@@ -30,13 +30,29 @@ public class BuscaAnamnese extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where nome like '" + txtfldBusca.getText() + "%'";
+                return """
+                       SELECT idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, 
+                       data_anamnese, idanamnese  
+                       from aluno as aluno
+                       inner join anamnese as anamnese
+                       on aluno.idaluno = anamnese.fk_aluno_idaluno
+                       where nome like '"""+txtfldBusca.getText()+"%'order by nome ASC, idanamnese DESC";
             case "CPF":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where cpf like'" + txtfldBusca.getText() + "%'";
-            case "Matrícula":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where CAST(idaluno AS TEXT) like'" + txtfldBusca.getText() + "%'";
+                return """
+                       SELECT idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, 
+                       data_anamnese, idanamnese  
+                       from aluno as aluno
+                       inner join anamnese as anamnese
+                       on aluno.idaluno = anamnese.fk_aluno_idaluno
+                       where cpf like '"""+txtfldBusca.getText()+"%'order by nome ASC, idanamnese DESC";
             case "Nome do Responsável":
-                return "select idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, data_anamnese, idanamnese  from aluno, anamnese where responsavel like'" + txtfldBusca.getText() + "%'";
+                return """
+                       SELECT idaluno, nome, to_char(aluno.data_nascimento, 'DD/MM/YYYY'), cpf, 
+                       data_anamnese, idanamnese  
+                       from aluno as aluno
+                       inner join anamnese as anamnese
+                       on aluno.idaluno = anamnese.fk_aluno_idaluno
+                       where responsavel like '"""+txtfldBusca.getText()+"%'order by nome ASC, idanamnese DESC";
             default:
                 throw new AssertionError();
         }
@@ -65,9 +81,15 @@ public class BuscaAnamnese extends javax.swing.JFrame {
         setResizable(false);
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Nome do Responsável", "Data de Nascimento" }));
+        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Nome do Responsável" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBusca.setToolTipText("Digite ao mínimo 3 caracteres");
+        txtfldBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfldBuscaKeyTyped(evt);
+            }
+        });
 
         btn03Buscar.setBackground(new java.awt.Color(242, 242, 242));
         btn03Buscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -184,32 +206,53 @@ public class BuscaAnamnese extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn03CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03CancelarActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         BuscaAnamnese.this.dispose();
     }//GEN-LAST:event_btn03CancelarActionPerformed
 
     private void btn03BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03BuscarActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel table = (DefaultTableModel) tblBuscaAnamnese.getModel();
-        table.setRowCount(0);
-        Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(preparaSQL());
-        try {
-            while(rs.next()){
-                Object[] row = new Object [6];
-                for(int i = 1; i<= 6; i++) row [i-1] = rs.getObject(i);
-                ((DefaultTableModel) tblBuscaAnamnese.getModel()).insertRow(rs.getRow() - 1, row);
+        // Botão para busca para 3 ou mais caracteres
+        if(txtfldBusca.getText().length() >= 3){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAnamnese.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaSQL());
+            try {
+                while(rs.next()){
+                    Object[] row = new Object [6];
+                    for(int i = 1; i<= 6; i++) row [i-1] = rs.getObject(i);
+                    ((DefaultTableModel) tblBuscaAnamnese.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_btn03BuscarActionPerformed
 
     private void btn03SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03SelecionarActionPerformed
         // TODO add your handling code here:   
-        int id = (int) tblBuscaAnamnese.getModel().getValueAt(tblBuscaAnamnese.getSelectedRow(), 0);
+        int id = (int) tblBuscaAnamnese.getModel().getValueAt(tblBuscaAnamnese.getSelectedRow(), 5);
         MostraAnamnese mostraAnamnese = new MostraAnamnese(id);
     }//GEN-LAST:event_btn03SelecionarActionPerformed
+
+    private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
+        // Função para busca dinamica para 3 ou mais caracteres
+        if(txtfldBusca.getText().length() >= 2){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAnamnese.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaSQL());
+            try {
+                while(rs.next()){
+                    Object[] row = new Object [6];
+                    for(int i = 1; i<= 6; i++) row [i-1] = rs.getObject(i);
+                    ((DefaultTableModel) tblBuscaAnamnese.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_txtfldBuscaKeyTyped
 
     /**
      * @param args the command line arguments

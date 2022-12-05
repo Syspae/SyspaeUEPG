@@ -5,7 +5,14 @@
 package syspaetelas;
 
 import controleConexao.Conexao;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,116 +29,152 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         this.setVisible(true);
         buscaAlunos();
         buscaProfissional();
+        data();
+        cmbbxEspecialidade.setEnabled(false);
         btnAnamnese.setEnabled(false);
     }
-
+    
+    // Função para pegar e formatar a data atual do sistema
+    private void data(){
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime dataAtual = LocalDateTime.now();
+        txtfldDataAtendimento.setText(formatador.format(dataAtual));
+    }
+    
     //Função para pegar os alunos cadastrados e colocar no combobox
     private void buscaAlunos(){
-        String busca = "Select nome from aluno";
+        cmbbxAluno.addItem("");
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select nome from aluno order by nome ASC");
         try {
             while(rs.next()){
                 cmbbxAluno.addItem(rs.getString("nome"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     //Função para pegar os profissionais cadastrados e colocar no combobox
     private void buscaProfissional(){
-        String busca = "Select nome from profissional";
+        cmbbxProfissional.addItem("");
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select * from profissional order by nome ASC");
         try {
             while(rs.next()){
                 cmbbxProfissional.addItem(rs.getString("nome"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
- 
    }
+    
     
     //Função para pegar o ID da especialidade relacionada ao profissional
     private int buscaEspecialidadeID(){
-        String buscaId = "select fk_especialidade_idespecialidade from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"'";
         int id = 0;
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(buscaId);
+        ResultSet rs = con.executaBusca("select fk_especialidade_idespecialidade from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"'");
         try {
             while(rs.next()){
                 id = rs.getInt("fk_especialidade_idespecialidade");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
         return id;
     }
     
     //Função para pegar o nome da especialidade baseado no ID
     private void buscaEspecialidadeNome(){
-        cmbbxEspecialidade.removeAllItems();
         int id = buscaEspecialidadeID();
-        String buscaNome = "Select nome from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'";
+        System.out.println(id);
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(buscaNome);
+        ResultSet rs = con.executaBusca("Select nome_especialidade from especialidade where CAST(idespecialidade AS TEXT) like '"+id+"'");
         try {
             while(rs.next()){
-                cmbbxEspecialidade.addItem(rs.getString("nome"));
+                cmbbxEspecialidade.setText(rs.getString("nome_especialidade"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     //Função para pegar o ID do aluno selecionado no combobox
     private int idAluno(){        
-        String busca = "Select * from aluno where nome like '"+cmbbxAluno.getSelectedItem().toString()+"%'";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select idaluno from aluno where nome like '"+cmbbxAluno.getSelectedItem().toString()+"'");
         int id = 0;
         try {
             while(rs.next()){
                 id = rs.getInt("idaluno");
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+             Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);           
         }
         return id;
     }
     
     //Função para pegar o ID do profissional selecionado no combobox
     private int idProfissional(){
-        String busca = "Select * from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"%'";
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select * from profissional where nome like '"+cmbbxProfissional.getSelectedItem().toString()+"%'");
         int id = 0;
         try {
             while(rs.next()){
                 id = rs.getInt("idprofissional");
             }
-        } catch (Exception e) {
+        } catch (Exception ex) {
+             Logger.getLogger(CadastroAtendimento.class.getName()).log(Level.SEVERE, null, ex);                       
         }
         return id;
     }
     
     //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
-        cmbbxAluno.setEnabled(false);
+        // Textfield's
         txtfldDataAtendimento.setEditable(false);
-        cmbbxProfissional.setEnabled(false);
-        cmbbxEspecialidade.setEnabled(false);
         txtMotivoAtendimento.setEditable(false);
         txtDiagnostico.setEditable(false);
         txtTratamento.setEditable(false);
+        // Combo box's
+        cmbbxAluno.setEnabled(false);        
+        cmbbxProfissional.setEnabled(false);
+        cmbbxEspecialidade.setEnabled(false);
+        // Botões
+        btnSalvar.setEnabled(false);
+    }
+    
+    // Função para validar as datas
+    private boolean validaData(String data){
+        LocalDate atual = LocalDate.now();
+        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate nascimento = LocalDate.parse(data, formatador);
+        
+        return !nascimento.isAfter(atual);
+    }
+    
+    // Função para inserir a data atual como data de modificação
+    private String dataModificacao(){
+        LocalDate atual = LocalDate.now();        
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return formatador.format(atual);
+    }
+    
+    // Função para verificar se os campos foram preenchidos corretamente
+    private boolean verificaCampos(){
+        if(cmbbxAluno.getSelectedItem().toString().isEmpty()){lblErro.setText("Selecione um aluno!"); return false;}
+        if(cmbbxProfissional.getSelectedItem().toString().isEmpty()){lblErro.setText("Selecione um profissional!"); return false;}
+        return true;
     }
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
-    private String preparaSQL(){        
-        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade) "
+    private String preparaSQL(){
+        return "Insert into atendimento (data_do_atendimento, motivo_do_atendimento, diagnostico, tratamento, fk_aluno_idaluno, fk_profissional_idprofissional, aluno, profissional, especialidade,datamodificacao) "
                     + "values ('"+txtfldDataAtendimento.getText()+"', '"+txtMotivoAtendimento.getText()+"', '"+txtDiagnostico.getText()+"'"
-                    + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', '"+cmbbxProfissional.getSelectedItem().toString()+"', '"+cmbbxEspecialidade.getSelectedItem().toString()+"')";
+                    + ", '"+txtTratamento.getText()+"', '"+idAluno()+"', '"+idProfissional()+"', '"+cmbbxAluno.getSelectedItem().toString()+"', "
+                    + "'"+cmbbxProfissional.getSelectedItem().toString()+"', '"+cmbbxEspecialidade.getText()+"','"+dataModificacao()+"')";
     }
     
     /**
@@ -147,7 +190,6 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         cmbbxAluno = new javax.swing.JComboBox<>();
         cmbbxProfissional = new javax.swing.JComboBox<>();
-        cmbbxEspecialidade = new javax.swing.JComboBox<>();
         txtfldDataAtendimento = new javax.swing.JFormattedTextField();
         lblDataAtendimento = new javax.swing.JLabel();
         lblEspecialidade = new javax.swing.JLabel();
@@ -165,6 +207,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         txtTratamento = new javax.swing.JTextArea();
         lblErro = new javax.swing.JLabel();
         lblSucesso = new javax.swing.JLabel();
+        cmbbxEspecialidade = new javax.swing.JTextField();
 
         setTitle("Cadastrar Atendimento");
         setResizable(false);
@@ -190,6 +233,11 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         });
 
         cmbbxAluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cmbbxAluno.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbbxAlunoItemStateChanged(evt);
+            }
+        });
 
         cmbbxProfissional.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cmbbxProfissional.addItemListener(new java.awt.event.ItemListener() {
@@ -207,8 +255,6 @@ public class CadastroAtendimento extends javax.swing.JFrame {
                 cmbbxProfissionalPropertyChange(evt);
             }
         });
-
-        cmbbxEspecialidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         try {
             txtfldDataAtendimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -270,6 +316,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
         lblSucesso.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSucesso.setForeground(new java.awt.Color(38, 151, 0));
 
+        cmbbxEspecialidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -299,8 +347,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblSucesso, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbbxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblEspecialidade)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -313,7 +360,8 @@ public class CadastroAtendimento extends javax.swing.JFrame {
                                                 .addComponent(btnAnamnese))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
-                                                .addComponent(btnSair))))))
+                                                .addComponent(btnSair))))
+                                    .addComponent(cmbbxEspecialidade)))
                             .addComponent(jScrollPane2)
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -379,39 +427,56 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnamneseActionPerformed
-        // TODO add your handling code here:
+        // Botão para criar uma nova anamnese        
         CadastroAnamnese tela06 = new CadastroAnamnese(idAluno());
     }//GEN-LAST:event_btnAnamneseActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
-        Conexao con = new Conexao();
-        int insert = con.executaInsert(preparaSQL());
-        if(insert == 1){
-            lblSucesso.setText("Atendimento efetuado com sucesso!");
-            btnAnamnese.setEnabled(true);
-            desabilitaCampos();
-        }else lblErro.setText("Erro ao cadastrar atendimento!");
+        // Botão para salvar o atendimento
+        if(validaData(txtfldDataAtendimento.getText())){
+            if(verificaCampos()){
+                Conexao con = new Conexao();
+                int insert = con.executaInsert(preparaSQL());
+                if(insert == 1){
+                    lblErro.setVisible(false);
+                    lblSucesso.setText("Atendimento efetuado com sucesso!");
+                    btnAnamnese.setEnabled(true);
+                    desabilitaCampos();
+                }else lblErro.setText("Erro ao cadastrar atendimento!");
+            }
+        }        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
+        if(!cmbbxAluno.getSelectedItem().toString().isBlank() || !btnSalvar.isEnabled()){
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1) this.dispose();
+        }else this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void cmbbxProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbbxProfissionalActionPerformed
         // TODO add your handling code here:
+        if(!cmbbxProfissional.getSelectedItem().toString().isBlank()){
         buscaEspecialidadeNome();
+        }
     }//GEN-LAST:event_cmbbxProfissionalActionPerformed
 
     private void cmbbxProfissionalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmbbxProfissionalPropertyChange
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbbxProfissionalPropertyChange
 
     private void cmbbxProfissionalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxProfissionalItemStateChanged
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_cmbbxProfissionalItemStateChanged
+
+    private void cmbbxAlunoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbbxAlunoItemStateChanged
+        // Função para apenas habilitar o botão da anamnese se houver um aluno selecionado 
+        btnAnamnese.setEnabled(true);
+        if(cmbbxAluno.getSelectedItem().toString().isBlank())btnAnamnese.setEnabled(false);
+    }//GEN-LAST:event_cmbbxAlunoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -422,7 +487,7 @@ public class CadastroAtendimento extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbbxAluno;
-    private javax.swing.JComboBox<String> cmbbxEspecialidade;
+    private javax.swing.JTextField cmbbxEspecialidade;
     private javax.swing.JComboBox<String> cmbbxProfissional;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

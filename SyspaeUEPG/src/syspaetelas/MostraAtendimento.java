@@ -7,6 +7,8 @@ package syspaetelas;
 import controleConexao.Conexao;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +20,7 @@ public class MostraAtendimento extends javax.swing.JFrame {
     
     /**
      * Creates new form TelaCadastroAtendimento
+     * @param id
      */
     public MostraAtendimento(int id) {
         initComponents();
@@ -34,13 +37,15 @@ public class MostraAtendimento extends javax.swing.JFrame {
     
     //Função que desativa os campos
     private void desabilitaCampos(){
-        cmbbxAluno.setEnabled(false);
-        txtfldDataAtendimento.setEditable(false);
-        cmbbxProfissional.setEnabled(false);
-        cmbbxEspecialidade.setEnabled(false);
+        // Textfield's
+        txtfldDataAtendimento.setEditable(false);        
         txtMotivoAtendimento.setEditable(false);
         txtDiagnostico.setEditable(false);
         txtTratamento.setEditable(false);
+        // Combo box's
+        cmbbxAluno.setEnabled(false);
+        cmbbxProfissional.setEnabled(false);
+        cmbbxEspecialidade.setEnabled(false);
     }
     
     //Função que mostra os itens nos campos
@@ -58,8 +63,8 @@ public class MostraAtendimento extends javax.swing.JFrame {
                 txtDiagnostico.setText(rs.getString("diagnostico"));
                 txtTratamento.setText(rs.getString("tratamento"));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(MostraAtendimento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -70,6 +75,32 @@ public class MostraAtendimento extends javax.swing.JFrame {
         return formatador.format(novaData); 
     }
 
+    private int idAluno(){
+        Conexao con = new Conexao();
+        ResultSet rs = con.executaBusca("Select idaluno from aluno where nome = '"+cmbbxAluno.getSelectedItem()+"'");
+        try {
+            while(rs.next()){
+                return rs.getInt("idaluno");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MostraAtendimento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
+    private int idAnamnese(){
+        Conexao con = new Conexao();
+        int id = idAluno();
+        ResultSet rs = con.executaBusca("Select idanamnese from anamnese where fk_aluno_idaluno = '"+id+"'");
+        try {
+            while(rs.next()){
+                return rs.getInt("idanamnese");
+            }
+        } catch (Exception ex) {
+           Logger.getLogger(MostraAtendimento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -269,12 +300,12 @@ public class MostraAtendimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnamneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnamneseActionPerformed
-        // TODO add your handling code here:
-        MostraAnamnese tela06 = new MostraAnamnese(idAtendimento);
+        // Botão para mostrar a anamnese refente a aquele atendimento
+        MostraAnamnese tela06 = new MostraAnamnese(idAnamnese());
     }//GEN-LAST:event_btnAnamneseActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 

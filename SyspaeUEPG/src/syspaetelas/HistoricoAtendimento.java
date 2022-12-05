@@ -29,13 +29,26 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
     private String preparaSQL(){
         switch ((String) cmbbxBusca.getSelectedItem()) {
             case "Nome":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE aluno.nome like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return """
+                       SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
+                       FROM aluno as aluno
+                       inner join atendimento as atendimento
+                       ON aluno.idaluno = atendimento.fk_aluno_idaluno
+                       WHERE aluno.nome like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
             case "CPF":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE cpf like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
-            case "Matrícula":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE CAST(idaluno AS TEXT) like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return """
+                       SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
+                       FROM aluno as aluno
+                       inner join atendimento as atendimento
+                       ON aluno.idaluno = atendimento.fk_aluno_idaluno
+                       WHERE cpf like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
             case "Nome do Responsável":
-                return "SELECT idaluno,	aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional.nome FROM aluno, atendimento, profissional WHERE responsavel like '" + txtfldBusca.getText() + "%' and idaluno = fk_aluno_idaluno";
+                return """
+                       SELECT idaluno, aluno.nome, to_char(data_nascimento, 'DD/MM/YYYY'), cpf, idatendimento, to_char(data_do_atendimento, 'DD/MM/YYYY'), profissional
+                       FROM aluno as aluno
+                       inner join atendimento as atendimento
+                       ON aluno.idaluno = atendimento.fk_aluno_idaluno
+                       WHERE responsavel like '"""+txtfldBusca.getText()+"%' order by aluno.nome ASC";
             default:
                 throw new AssertionError();
         }
@@ -63,9 +76,15 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
         setResizable(false);
 
         cmbbxBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Matrícula", "Data de Nascimento" }));
+        cmbbxBusca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Data de Nascimento" }));
 
         txtfldBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldBusca.setToolTipText("Digite ao mínimo 3 caracteres");
+        txtfldBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfldBuscaKeyTyped(evt);
+            }
+        });
 
         btn03Buscar.setBackground(new java.awt.Color(242, 242, 242));
         btn03Buscar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -184,32 +203,53 @@ public class HistoricoAtendimento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn03CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03CancelarActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
         this.dispose();
     }//GEN-LAST:event_btn03CancelarActionPerformed
 
     private void btn03SelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03SelecionarActionPerformed
-        // TODO add your handling code here:
+        // Botão para abrir o atendimento selecionado
         int id = (int) tblBuscaAtendimento.getModel().getValueAt(tblBuscaAtendimento.getSelectedRow(), 4);        
         MostraAtendimento atendimento = new MostraAtendimento(id);
     }//GEN-LAST:event_btn03SelecionarActionPerformed
 
     private void btn03BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn03BuscarActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel table = (DefaultTableModel) tblBuscaAtendimento.getModel();
-        table.setRowCount(0);
-        Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(preparaSQL());
-        try {
-            while(rs.next()){
-                Object[] row = new Object[7];
-                for(int i = 1; i<=7; i++) row[i-1] = rs.getObject(i);
-                ((DefaultTableModel) tblBuscaAtendimento.getModel()).insertRow(rs.getRow() - 1, row);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }       
+        // Botão para busca para 3 ou mais caracteres
+        if(txtfldBusca.getText().length() >= 3){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAtendimento.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaSQL());
+            try {
+                while(rs.next()){
+                    Object[] row = new Object[7];
+                    for(int i = 1; i<=7; i++) row[i-1] = rs.getObject(i);
+                    ((DefaultTableModel) tblBuscaAtendimento.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(HistoricoAtendimento.class.getName()).log(Level.SEVERE, null, ex);
+            }       
+        }
     }//GEN-LAST:event_btn03BuscarActionPerformed
+
+    private void txtfldBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfldBuscaKeyTyped
+        // Função para busca dinamica para 3 ou mais caracteres
+        if(txtfldBusca.getText().length() >= 2){
+            DefaultTableModel table = (DefaultTableModel) tblBuscaAtendimento.getModel();
+            table.setRowCount(0);
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(preparaSQL());
+            try {
+                while(rs.next()){
+                    Object[] row = new Object[7];
+                    for(int i = 1; i<=7; i++) row[i-1] = rs.getObject(i);
+                    ((DefaultTableModel) tblBuscaAtendimento.getModel()).insertRow(rs.getRow() - 1, row);
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(HistoricoAtendimento.class.getName()).log(Level.SEVERE, null, ex);
+            }       
+        }
+    }//GEN-LAST:event_txtfldBuscaKeyTyped
 
     /**
      * @param args the command line arguments

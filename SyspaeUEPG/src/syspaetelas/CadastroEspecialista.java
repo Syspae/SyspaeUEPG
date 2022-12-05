@@ -9,6 +9,8 @@ import static java.time.Clock.system;
 import controleConexao.Conexao;
 import java.awt.event.KeyEvent;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextField;
 
 /**
@@ -127,28 +129,36 @@ public class CadastroEspecialista extends javax.swing.JFrame {
     
     //Função para pegar os campos preenchidos e transformar na SQL pra inserção
     private String preparaSQL(){
-        int id = 0;        
-        String busca = "Select idespecialidade from especialidade where nome like '"+cmbbxEspecialidade.getSelectedItem().toString()+"'";            
-               
+        int id = 0;                  
         Conexao con = new Conexao();
-        ResultSet rs = con.executaBusca(busca);
+        ResultSet rs = con.executaBusca("Select idespecialidade from especialidade where nome_especialidade like '"+cmbbxEspecialidade.getSelectedItem().toString()+"'");
         try {
             while(rs.next()){
                 id = rs.getInt("idespecialidade");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroEspecialista.class.getName()).log(Level.SEVERE, null, ex);
         }        
         return "INSERT into profissional (nome, crm, fk_especialidade_idespecialidade) values ('"+txtfldNomeEspecialista.getText()+"', '"+txtfldCRM.getText()+"', '"+id+"')";
     }
     
     //Função para desabilitar os campos ao salvar
     private void desabilitaCampos(){
+        // Text field's
         txtfldNomeEspecialista.setEditable(false);
-        cmbbxEspecialidade.setEnabled(false);
         txtfldCRM.setEditable(false);
+        // Combo box's        
+        cmbbxEspecialidade.setEnabled(false);
     }
     
+    // Função para vefirificar se os campos estão preenchidos corretamente
+    private boolean verificaCampos(){
+        if(txtfldNomeEspecialista.getText().isBlank()){lblErro.setText("Campo nome não preenchido!"); return false;}
+        if(txtfldNomeEspecialista.getText().length() < 3){lblErro.setText("Nome muito curto!"); return false;}
+        if(cmbbxEspecialidade.getSelectedItem().equals("--Selecione--")){lblErro.setText("Por favor selecione uma especialidade!"); return false;}
+        if(txtfldCRM.getText().isBlank()){lblErro.setText("Campo Carteira do Conselho não preenchido!"); return false;}
+        return true;   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,7 +202,7 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         });
 
         cmbbxEspecialidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cmbbxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Fonoaudiologia", "Fisioterapia", "Psicologia", "Terapia Ocupacional", "Neurologia", "Odontologia", "Nutrição" }));
+        cmbbxEspecialidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "Fisioterapia", "Fonoaudiologia", "Neurologia", "Nutrição", "Odontologia", "Psicologia", "Terapia Ocupacional" }));
         cmbbxEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbbxEspecialidadeActionPerformed(evt);
@@ -223,9 +233,10 @@ public class CadastroEspecialista extends javax.swing.JFrame {
         lblCamposObrigatorios.setText("Campos com (*) são obrigatórios");
 
         lblCRM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblCRM.setText("CRM*");
+        lblCRM.setText("Carteira do Conselho*");
 
         txtfldCRM.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtfldCRM.setToolTipText("Número da Carteira do Conselho");
 
         lblErro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblErro.setForeground(new java.awt.Color(204, 0, 0));
@@ -314,21 +325,27 @@ public class CadastroEspecialista extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbbxEspecialidadeActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        // Botão para fechar a janela
+        if(txtfldNomeEspecialista.getText().isBlank() || txtfldCRM.getText().isBlank())this.dispose();
+        else{
         TelaConfirma sair = new TelaConfirma(this, true);
         if(sair.getReturnStatus()==1) this.dispose();
+        }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:        
+        // Botão para salvar o especialista
+        if(verificaCampos()){
         Conexao con = new Conexao();        
         int insert = con.executaInsert(preparaSQL());
         if(insert==1){
                 lblErro.setVisible(false);
                 lblSucesso.setText("Cadastro efetuado com sucesso!");
                 desabilitaCampos();
-                btnSalvar.setEnabled(false);
+                this.dispose();
+                CadastroEspecialista tela = new CadastroEspecialista();
             }
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

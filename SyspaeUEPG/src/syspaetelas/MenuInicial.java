@@ -1,10 +1,18 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package syspaetelas;
 
+import controleConexao.Conexao;
 import static java.lang.System.exit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import relatorios.Relatorio;
 
 /**
  *
@@ -12,6 +20,8 @@ import static java.lang.System.exit;
  */
 public class MenuInicial extends javax.swing.JFrame {
 
+     
+    Conexao con = new Conexao();
     /**
      * Creates new form TelaInicial
      */
@@ -39,6 +49,8 @@ public class MenuInicial extends javax.swing.JFrame {
         btn01CadEspecialista = new javax.swing.JButton();
         btn01Sair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btn01BuscaEspecialista = new javax.swing.JButton();
+        btnRelatorio = new javax.swing.JButton();
 
         setTitle("Syspae");
         setResizable(false);
@@ -115,13 +127,32 @@ public class MenuInicial extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Tela de Fundo.png"))); // NOI18N
 
+        btn01BuscaEspecialista.setBackground(new java.awt.Color(242, 242, 242));
+        btn01BuscaEspecialista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn01BuscaEspecialista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Buscar Especialista (1).png"))); // NOI18N
+        btn01BuscaEspecialista.setBorder(null);
+        btn01BuscaEspecialista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn01BuscaEspecialistaActionPerformed(evt);
+            }
+        });
+
+        btnRelatorio.setBackground(new java.awt.Color(242, 242, 242));
+        btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Botão Relatórios.png"))); // NOI18N
+        btnRelatorio.setBorder(null);
+        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn01CadAluno)
                         .addGap(18, 18, 18)
@@ -134,10 +165,14 @@ public class MenuInicial extends javax.swing.JFrame {
                         .addComponent(btn01BuscaAnamnese)
                         .addGap(18, 18, 18)
                         .addComponent(btn01CadEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn01BuscaEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRelatorio)
+                        .addGap(18, 18, 18)
                         .addComponent(btn01Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,10 +186,12 @@ public class MenuInicial extends javax.swing.JFrame {
                         .addComponent(btn01HistAtend, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btn01CadAluno)
                     .addComponent(btn01CadEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn01BuscaEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRelatorio)
                     .addComponent(btn01Sair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -193,8 +230,18 @@ public class MenuInicial extends javax.swing.JFrame {
     private void btn01SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01SairActionPerformed
         // TODO add your handling code here:        
         TelaConfirma sair = new TelaConfirma(this, true);
-        if(sair.getReturnStatus()==1) this.dispose();
+        if(sair.getReturnStatus()==1) exit(1);
     }//GEN-LAST:event_btn01SairActionPerformed
+
+    private void btn01BuscaEspecialistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01BuscaEspecialistaActionPerformed
+        // TODO add your handling code here:
+        BuscaEspecialista tela07 = new BuscaEspecialista();
+    }//GEN-LAST:event_btn01BuscaEspecialistaActionPerformed
+
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+        // TODO add your handling code here:
+        TelaRelatorio tela08 = new TelaRelatorio();
+    }//GEN-LAST:event_btnRelatorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,12 +250,14 @@ public class MenuInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn01BuscaAnamnese;
+    private javax.swing.JButton btn01BuscaEspecialista;
     private javax.swing.JButton btn01CadAluno;
     private javax.swing.JButton btn01CadEspecialista;
     private javax.swing.JButton btn01HistAtend;
     private javax.swing.JButton btn01NovoAtend;
     private javax.swing.JButton btn01Sair;
     private javax.swing.JButton btn01buscarAluno;
+    private javax.swing.JButton btnRelatorio;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
